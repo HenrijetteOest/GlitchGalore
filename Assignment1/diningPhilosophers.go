@@ -1,91 +1,145 @@
-
 package main
 
 import (
 	"fmt"
-	"time" 
 )
 
 /* ***************************************
 
-Notes
+Explanation:
 
-philosopher asks left fork first
-left fork checks if it is free, changes itself if necessary, and then responds yes or no
-   - the fork only changes if it's free and the philosopher wants it
-   - or the philosopher is done using it and returns it (where it turns from false to true (back on table))
-The fork doesn't change upon pick-up request if it's not-free 
-Process repeats on the right side (which is exactly the same as the left side)
-    if this fork is not free, put the left fork down again (to avoid deadlocks)
-	if it is free then the philosopher eats until some time (sleep method) then she puts the forks down again 
+There are total of three functions, main, Philosopher, and Fork.
+A philosopher has four channels, two for each neighbouring fork.
+Same for a fork, it also has four channelse, two for each neighbouring philosopher.
 
-Total of 20 channels in the question.
+Deadlocks are avoided thanks to
+If a philosopher picks up a fork, and can not pick up the second fork,
+the philosopher puts down the first fork.
 
-A philosopher has 4 channels, two for each neighbouring fork.
-Same for a fork, it also has 4 channelse, two for each neighbouring philosopher
+Starvation is theoretically posible but statistically improbable
+as when the main function continues towards infinity, the probability is evenly distributed.
 
 **********************************************/
 
+func Philosopher(toRightFork chan bool, fromRightFork chan bool, toLeftFork chan bool, FromLeftFork chan bool, name int) {
+	fmt.Printf("Philosopher %d sits down at table \n", name)
+	counter := 0
 
+	for {
+		//True: "Can I have the fork"
+		//False: "I'm done"
+		toRightFork <- true
+		RightForkReply := <-fromRightFork //what does the fork say
 
-// channels for 3 philosophers and forks.
-var P1R := make(chan bool)
-var P1L := make(chan bool)
-var P2R := make(chan bool)
-var P2L := make(chan bool)
-var P3R := make(chan bool)
-var P3L := make(chan bool)
-var P4R := make(chan bool)
-var P4L := make(chan bool)
-var P5R := make(chan bool)
-var P5L := make(chan bool)
+		if RightForkReply {
+			toLeftFork <- true
+			LeftForkReply := <-FromLeftFork //if true picks left fork up, if false puts fork
 
-func Philosopher(){
-	//table.Lock()  // table is out
-	//philosopher tries to pick up forks via channels 
-	var iHaveR = false
-	var iHaveL = false
+			if LeftForkReply == true {
+				counter++
+				fmt.Printf("Philosopher %d is eating (%d) \n", name, counter)
+				fmt.Printf("Philosopher %d is done eating and goes back to thinking \n", name)
+				toRightFork <- false //puts right fork down
+				toLeftFork <- false  // puts left fork down
 
-	rFork := someChannel1
-	if (rFork) {
-		iHaveR = true
-		someChannel1 = <- false
+			} else {
+				toRightFork <- false //puts right fork down
+			}
+		} else {
+
+			fmt.Printf("Philosopher %d is thinking \n", name)
+
+		}
 	}
-
-	lFork := someChannel2
-	if (rFork) {
-		iHaveL = true
-		someChannel2 = <- false
-	}
-
-	if (rFork && !lFork) {
-	
-	}
-
-	if (rFork && lFork) {	// you pick them both up
-		fmt.Println(Philosopher + " Eating")
-		someChannel1 <- false
-		someChannel2 <- false
-		
-	} 
-
-	//table.Unlock()
-	
-
 }
 
-func Fork(chan RightPhil, chan LeftPhil) {
-	var onTable = true
-	var takeMe =
-	var placeMe = 
-}
+func Fork(fromRightPhil chan bool, toRightPhil chan bool, fromLeftPhil chan bool, toLeftPhil chan bool, RPhil int, LPhil int) {
+	onTable := true //fork starts on table
+	PRrequest := false
+	PLrequest := false
 
+	for {
+
+		select {
+
+		case PRrequest = <-fromRightPhil:
+
+			if onTable == false && PRrequest == false {
+				onTable = true
+
+			} else if onTable == false && PRrequest == true {
+				toRightPhil <- false
+			} else if onTable == true && PRrequest == false {
+				fmt.Println("something went wrong")
+			} else if onTable == true && PRrequest == true {
+				onTable = false
+				toRightPhil <- true
+			}
+
+		case PLrequest = <-fromLeftPhil:
+
+			if onTable == false && PLrequest == false {
+				onTable = true
+
+			} else if onTable == false && PLrequest == true {
+				toLeftPhil <- false
+			} else if onTable == true && PLrequest == false {
+				fmt.Println("something went wrong")
+
+			} else if onTable == true && PLrequest == true {
+				onTable = false
+				toLeftPhil <- true
+
+			}
+		}
+
+	}
+}
 
 func main() {
-	go Philosopher()
-	go Fork()
 
-	for{		
+	// 20 channels for 5 philosophers and forks.
+	P1Rin := make(chan bool)
+	P1Rout := make(chan bool)
+	P1Lin := make(chan bool)
+	P1Lout := make(chan bool)
+
+	P2Rin := make(chan bool)
+	P2Rout := make(chan bool)
+	P2Lin := make(chan bool)
+	P2Lout := make(chan bool)
+
+	P3Rin := make(chan bool)
+	P3Rout := make(chan bool)
+	P3Lin := make(chan bool)
+	P3Lout := make(chan bool)
+
+	P4Rin := make(chan bool)
+	P4Rout := make(chan bool)
+	P4Lin := make(chan bool)
+	P4Lout := make(chan bool)
+
+	P5Rin := make(chan bool)
+	P5Rout := make(chan bool)
+	P5Lin := make(chan bool)
+	P5Lout := make(chan bool)
+
+	//INITIALIZATION OF PHILOSOPHERS AND FORKS
+
+	go Fork(P1Rout, P1Rin, P2Lout, P2Lin, 1, 2) // Fork A
+	go Fork(P2Rout, P2Rin, P3Lout, P3Lin, 2, 3) // Fork B
+	go Fork(P3Rout, P3Rin, P4Lout, P4Lin, 3, 4) // Fork C
+	go Fork(P4Rout, P4Rin, P5Lout, P5Lin, 4, 5) // Fork D
+	go Fork(P5Rout, P5Rin, P1Lout, P1Lin, 5, 1) // Fork F
+
+	go Philosopher(P1Rout, P1Rin, P1Lout, P1Lin, 1) // Philosopher 1
+	go Philosopher(P2Rout, P2Rin, P2Lout, P2Lin, 2) // Philosopher 2
+	go Philosopher(P3Rout, P3Rin, P3Lout, P3Lin, 3) // Philosopher 3
+	go Philosopher(P4Rout, P4Rin, P4Lout, P4Lin, 4) // Philosopher 4
+	go Philosopher(P5Rout, P5Rin, P5Lout, P5Lin, 5) // Philosopher 5
+
+	for {
+
 	}
+
 }
- 
