@@ -13,8 +13,11 @@ A philosopher has four channels, two for each neighbouring fork.
 Same for a fork, it also has four channelse, two for each neighbouring philosopher.
 
 Deadlocks are avoided thanks to
-If a philosopher picks up a fork, and can not pick up the second fork,
-the philosopher puts down the first fork.
+if a philosopher is allowed to pick up a fork, 
+then he/she asks for the other fork, 
+and if he/she is not allowed to pick it, 
+then the philosopher puts down the first fork.
+
 
 Starvation is theoretically posible but statistically improbable
 as when the main function continues towards infinity, the probability is evenly distributed.
