@@ -59,4 +59,5 @@ func main() {
 	//handshake 1 = SYN seq=x (100)
 	//handshake 2 = SYN-ACK  ack = x+1(100 +1 ) seq= y(300)
 	//handshake 3 = ACK  ack=y+1(300+1) seq=x+1 (100+1)
+	//slide 24 + 25 !!!
 }
