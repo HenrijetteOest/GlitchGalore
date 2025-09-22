@@ -12,7 +12,7 @@ import (
 
 func client(SYN chan int, ACK chan int) {
 	var x, y int
-	y = 0
+	//y = 0
 
 	//handshake 1 starts here
 	fmt.Println("Handshake 1 start in client")
@@ -21,13 +21,15 @@ func client(SYN chan int, ACK chan int) {
 
 	// 	Handshake 2
 	if <-SYN == (x + 1) {
+		y = <-ACK
 		fmt.Printf("	handshake ended, x = '%d', y = '%d' \n", x, y)
 		// Handshake 3
 		fmt.Println("Handshake 3 start in client")
-		y = <-ACK
 		SYN <- (x + 1)
 		ACK <- (y + 1)
 		// Potentially send data
+	} else {
+		fmt.Println("Wrong return value from server")
 	}
 }
 
