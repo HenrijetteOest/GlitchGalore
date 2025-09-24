@@ -5,14 +5,8 @@ import (
 	"time"
 )
 
-/*type handshake struct{
-	seq, ack int;
-
-}*/
-
 func client(SYN chan int, ACK chan int) {
 	var x, y int
-	//y = 0
 
 	//handshake 1 starts here
 	fmt.Println("Handshake 1 start in client")
@@ -25,8 +19,8 @@ func client(SYN chan int, ACK chan int) {
 		fmt.Printf("	handshake ended, x = '%d', y = '%d' \n", x, y)
 		// Handshake 3
 		fmt.Println("Handshake 3 start in client")
-		SYN <- (x + 1)
 		ACK <- (y + 1)
+		SYN <- (x + 1)
 		// Potentially send data
 	} else {
 		fmt.Println("Wrong return value from server")
@@ -34,7 +28,7 @@ func client(SYN chan int, ACK chan int) {
 }
 
 func server(SYN chan int, ACK chan int) {
-	var x, y int
+	var x, y, tmp int
 	y = 0
 
 	//handshake 1
@@ -47,7 +41,13 @@ func server(SYN chan int, ACK chan int) {
 	ACK <- y
 
 	// handshake 3
-	fmt.Printf("	seq should be 101 and is '%d', ack should be 301 and is '%d' \n", <-SYN, <-ACK)
+	tmp = <-ACK
+	if tmp == (y + 1) {
+		fmt.Printf("	seq should be 101 and is '%d', ack should be 301 and is '%d' \n", <-SYN, tmp)
+		fmt.Println("	connection established")
+	} else {
+		fmt.Println("Wrong return value from client")
+	}
 }
 
 func main() {
@@ -58,8 +58,5 @@ func main() {
 	go server(SYN, ACK)
 
 	time.Sleep(2 * time.Second)
-	//handshake 1 = SYN seq=x (100)
-	//handshake 2 = SYN-ACK  ack = x+1(100 +1 ) seq= y(300)
-	//handshake 3 = ACK  ack=y+1(300+1) seq=x+1 (100+1)
-	//slide 24 + 25 !!!
+
 }
