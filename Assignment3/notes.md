@@ -1,17 +1,33 @@
 
-### Message
+## Message
 string: text 0-128 chars 
 
 
-### Client
+## Client
 string: username (for fun, not necessary)
 int: id
 
 
 
-
-
-
-### Useful Links
+## Useful Links
 
 https://dev.to/yash_mahakal/implementing-bidirectional-grpc-streaming-a-practical-guide-3afi
+
+
+
+
+
+# Report Notes:
+
+## discuss, whether you are going to use server-side streaming, client-side streaming, or bidirectional streaming?
+
+
+
+## describe your system architecture - do you have a server-client architecture, peer-to-peer, or something else?
+
+
+
+## describe what RPC methods are implemented, of what type, and what messages types are used for communicationdescribe how you have implemented the calculation of the timestamps
+
+
+## provide a diagram, that traces a sequence of RPC calls together with the Lamport timestamps, that corresponds to a chosen sequence of interactions: Client X joins, Client X Publishes, ..., Client X leaves. 
