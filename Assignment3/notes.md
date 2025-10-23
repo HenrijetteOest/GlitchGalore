@@ -7,13 +7,17 @@ string: text 0-128 chars
 string: username (for fun, not necessary)
 int: id
 
+goroutine der læser consecutively fra terminalen eller hardcode det
 
 
 ## Useful Links
 
 https://dev.to/yash_mahakal/implementing-bidirectional-grpc-streaming-a-practical-guide-3afi
 
+Different streaming versions
+https://grpc.io/docs/languages/go/basics/#server-side-streaming-rpc
 
+https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide/route_guide.proto 
 
 
 

@@ -9,7 +9,6 @@ message User{
     string name = 2; 
 }
 
-
 message ChitChatMessage{
     User user = 1;
     string message = 2;
