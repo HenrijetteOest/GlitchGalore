@@ -16,8 +16,7 @@ message ChitChatMessage{
 }
 
 service ChitChat{
-    rpc JoinChat (User) returns (Empty) {};
+    rpc JoinChat (User) returns (Empty) {}; //change Empty to stream of ChitChatMessages
     rpc LeaveChat (User) returns (Empty) {};
-    rpc SendMessage (ChitChatMessage) returns (Empty) {}; //we likely will need to use streams
-    
+    rpc SendMessage (stream ChitChatMessage) returns (Empty) {}; //we likely will need to use streams
 }

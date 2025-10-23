@@ -1,13 +1,29 @@
+# Notes
 
 ## Message
 string: text 0-128 chars 
 
-
-## Client
+## User:
 string: username (for fun, not necessary)
 int: id
 
-goroutine der læser consecutively fra terminalen eller hardcode det
+## Client:
+- Needs to be able to take input from a terminal (goroutine der læser consecutively fra terminalen eller hardcode det)
+  - To save Name
+  - To continuosly get "messages" to send to the server.
+- Needs a one-way stream to the Server, which is used whenever SendMessage() is called.
+- (A method for getting a unique id)
+
+
+## Server:
+- Needs a one-way stream from Server to *all* connected clients (that is clients in the chat). This stream is used whenever broadcasting() is called.
+
+## Proto:
+- proto should not be empty when joinChat() is called (?)
+
+## Streams:
+1) client-to-server: sendMessage() ("Server here is what I want to share with the world")
+2) Server-to-client: broadcast() ("Listen all chat participants, this is a message for *all* of you")
 
 
 ## Useful Links
@@ -21,10 +37,23 @@ https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide/rout
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Report Notes:
 
 ## discuss, whether you are going to use server-side streaming, client-side streaming, or bidirectional streaming?
-
 
 
 ## describe your system architecture - do you have a server-client architecture, peer-to-peer, or something else?
