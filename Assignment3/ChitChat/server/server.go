@@ -13,11 +13,16 @@ import (
 
 type ChitChatServer struct {
 	proto.UnimplementedChitChatServer
+	//stream proto.ChitChat_JoinChatServer
 }
 
-func (s *ChitChatServer) JoinChat(ctx context.Context, clientUser *proto.User) (*proto.Empty, error) {
-	log.Printf("Client '%s' with id: '%d' joined the chat \n", clientUser.Name, clientUser.Id)
-	return nil, status.Errorf(codes.Unimplemented, "method JoinChat not implemented")
+// removed clientUser *proto.User, from the arguments
+func (s *ChitChatServer) JoinChat(grpc.BidiStreamingServer[proto.ChitChatMessage, proto.ChitChatMessage]) error {
+	// save the stream to the server struct??
+
+	// Below is before changes
+	//log.Printf("Client '%s' with id: '%d' joined the chat \n", clientUser.Name, clientUser.Id)
+	return status.Errorf(codes.Unimplemented, "method JoinChat not implemented")
 }
 func (s *ChitChatServer) LeaveChat(ctx context.Context, clientUser *proto.User) (*proto.Empty, error) {
 	log.Printf("Client '%s' with id: '%d' left the chat \n", clientUser.Name, clientUser.Id)
@@ -25,8 +30,9 @@ func (s *ChitChatServer) LeaveChat(ctx context.Context, clientUser *proto.User) 
 }
 
 func (s *ChitChatServer) SendMessage(ctx context.Context, clientMessage *proto.ChitChatMessage) (*proto.Empty, error) {
+	out := new(proto.Empty)
 	log.Printf("Client %s says %s at time: %d \n", clientMessage.User.Name, clientMessage.Message, clientMessage.Lamport)
-	return nil, status.Errorf(codes.Unimplemented, "method sendMessage not implemented")
+	return out, nil
 }
 
 func (s *ChitChatServer) start_server() {

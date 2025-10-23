@@ -15,8 +15,11 @@ message ChitChatMessage{
     int32 lamport = 3;
 }
 
+// changed JoinChat to send and return a stream ChitChatMessage (not the physical same streams)
+// With streams we no longer need a direct rpc function SendMessage, instead we can call stream.send() 
+// from client. Thereby using the stream to do the call, instead of calling the old method each time
 service ChitChat{
-    rpc JoinChat (User) returns (Empty) {}; //change Empty to stream of ChitChatMessages
+    rpc JoinChat (stream ChitChatMessage) returns (stream ChitChatMessage) {}; //change Empty to stream of ChitChatMessages
     rpc LeaveChat (User) returns (Empty) {};
-    rpc SendMessage (stream ChitChatMessage) returns (Empty) {}; //we likely will need to use streams
+    // rpc SendMessage (stream ChitChatMessage) returns (Empty) {}; //we likely will need to use streams
 }
