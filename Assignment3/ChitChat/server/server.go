@@ -24,6 +24,11 @@ func (s *ChitChatServer) LeaveChat(ctx context.Context, clientUser *proto.User) 
 	return nil, status.Errorf(codes.Unimplemented, "method LeaveChat not implemented")
 }
 
+func (s *ChitChatServer) SendMessage(ctx context.Context, clientMessage *proto.ChitChatMessage) (*proto.Empty, error) {
+	log.Printf("Client %s says %s at time: %d \n", clientMessage.User.Name, clientMessage.Message, clientMessage.Lamport)
+	return nil, status.Errorf(codes.Unimplemented, "method sendMessage not implemented")
+}
+
 func (s *ChitChatServer) start_server() {
 	grpcServer := grpc.NewServer()
 	listener, err := net.Listen("tcp", ":5050")

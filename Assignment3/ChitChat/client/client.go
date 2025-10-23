@@ -17,8 +17,10 @@ func main() {
 
 	client := proto.NewChitChatClient(conn)
 
-	client.JoinChat(context.Background(), &proto.User{Id: 1, Name: "Alice"}) //, Lamport: 77
+	client.JoinChat(context.Background(), &proto.User{Id: 1, Name: "Alice"})
 
 	client.LeaveChat(context.Background(), &proto.User{Id: 1, Name: "Alice"})
+
+	client.SendMessage(context.Background(), &proto.ChitChatMessage{User: &proto.User{Id: 1, Name: "Alice"}, Message: "Hello World!", Lamport: 10})
 
 }
