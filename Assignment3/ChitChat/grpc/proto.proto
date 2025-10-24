@@ -5,31 +5,19 @@ option go_package = "./pb"; //ChitChat/grpc/proto
 
 message Empty{} 
 
-message User{
+message UserLamport{
     int32 id = 1;
     string name = 2; 
+    int32 lamport = 3;
 }
 
 message ChitChatMessage{
-    User user = 1;
+    UserLamport user = 1;
     string message = 2;
-    int32 lamport = 3;
 }
 
-message Broadcast {
-    User user = 1;
-    string message = 2;
-    int32 lamport = 3;
+service ChitChatService{
+    rpc JoinChat (UserLamport) returns (stream ChitChatMessage) {};    
+    rpc LeaveChat (UserLamport) returns (Empty) {};
+    rpc Publish (ChitChatMessage) returns (Empty) {};
 }
-
-// changed JoinChat to send and return a stream ChitChatMessage (not the physical same streams)
-// With streams we no longer need a direct rpc function SendMessage, instead we can call stream.send() 
-// from client. Thereby using the stream to do the call, instead of calling the old method each time
-
-service ChitChat{
-    rpc TestServerStream (User) returns (stream Broadcast);    
-    rpc LeaveChat (User) returns (Empty) {};
-}
-
-// rpc JoinChat (ChitChatMessage) returns (stream Broadcast) {}; 
-// rpc SendMessage (stream ChitChatMessage) returns (Empty) {}; //we likely will need to use streams

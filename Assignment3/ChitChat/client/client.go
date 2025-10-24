@@ -16,15 +16,15 @@ func main() {
 	}
 
 	defer conn.Close()	// new line from the internet
-	client := pb.NewChitChatClient(conn)
+	client := pb.NewChitChatServiceClient(conn)
 
-	stream1, _ := client.TestServerStream(context.Background(), &pb.User{Name: "Alicia", Id: 0})
+	stream1, _ := client.JoinChat(context.Background(), &pb.UserLamport{Name: "Alicia", Id: 0})
 	for {
 		msg, err := stream1.Recv()
 		if err == io.EOF {
 			break
 		}
-		log.Println("TestServerStream: ", msg.Message)
+		log.Println("JoinChat: ", msg.Message)
 	}
 
 	//client.JoinChat(context.Background(), &proto.User{Id: 1, Name: "Alice"})
