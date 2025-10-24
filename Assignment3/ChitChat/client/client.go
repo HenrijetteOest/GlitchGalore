@@ -1,11 +1,14 @@
 package main
 
 import (
-	pb "ChitChat/grpc" //pb used to be proto
 	"log"
 	"context"
 	"io"
+
 	"google.golang.org/grpc"
+
+	pb "ChitChat/grpc" //pb used to be proto
+
 )
 
 func main() {
@@ -15,19 +18,33 @@ func main() {
 		log.Fatalf("Not working, %v", err)
 	}
 
-	defer conn.Close()	// new line from the internet
+	defer conn.Close()	
 	client := pb.NewChitChatServiceClient(conn)
 
-	stream1, _ := client.JoinChat(context.Background(), &pb.UserLamport{Name: "Alicia", Id: 0})
+	// join chat method
+	stream1, _ := client.JoinChat(context.Background(), &pb.UserLamport{Name: "Alice", Id: 0})
+	// Below loop is where a client receives a response to a joinChat request
+	// We suspect the stream might be closed too soon
+	// The internet talked about perhaps using a goroutine to keep it alive
+	// but we did not fully understand how that would work.
 	for {
 		msg, err := stream1.Recv()
+		
 		if err == io.EOF {
 			break
+			//log.Println("Something went wrong with receiving from stream: ")
 		}
 		log.Println("JoinChat: ", msg.Message)
 	}
 
-	//client.JoinChat(context.Background(), &proto.User{Id: 1, Name: "Alice"})
+	// Below for loop lets the client live forever!
+	// migth be irrelevant
+	for {
+
+	}
+
+
+	// older methods we might be able to reuse or use as guides
 	//client.SendMessage(context.Background(), &proto.ChitChatMessage{User: &proto.User{Id: 1, Name: "Alice"}, Message: "Hello World!", Lamport: 10})
 	//Stream.Send(&proto.ChitChatMessage{User: &proto.User{Id: 1, Name: "Alice"}, Message: "This is a message", Lamport: 10})
 	
