@@ -6,14 +6,14 @@ import (
 	"io"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 
 	pb "ChitChat/grpc" //pb used to be proto
 
 )
 
 func main() {
-	//conn, err := grpc.NewClient("localhost:5050", grpc.WithTranspotCredentials(insecure.NewCredentials()))
-	conn, err := grpc.Dial("localhost:5050", grpc.WithInsecure())
+	conn, err := grpc.NewClient("localhost:5050", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Not working, %v", err)
 	}
