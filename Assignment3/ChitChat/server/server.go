@@ -4,6 +4,7 @@ import (
 	"log"
 	"net"
 	"fmt"
+	"context"
 
 	"google.golang.org/grpc"
 
@@ -12,12 +13,13 @@ import (
 )
 
 
-// userStreams is an array of active streams
+// userStreams is a map of active streams
 // meant to receive new streams in JoinChat when a client joins
 // and decrement when in LeaveChat, when a client leaves.
 type ChitChatServer struct {
 	pb.UnimplementedChitChatServiceServer
-	userStreams []pb.ChitChatService_JoinChatServer
+	userStreams map[int32]pb.ChitChatService_JoinChatServer
+	
 }
 
 
@@ -26,76 +28,74 @@ type ChitChatServer struct {
 // Also calls the local method Broadcast() which then sends a message
 // to all active clients that "x has joined the chat"  
 func (s *ChitChatServer) JoinChat(req *pb.UserLamport, stream pb.ChitChatService_JoinChatServer) error {
-	s.userStreams = append(s.userStreams, stream)
-	
+	//s.userStreams = append(s.userStreams, stream)
+	s.userStreams[req.Id] = stream	//map version
+
+	// message for joining
+	msg := fmt.Sprintf("JoinChat: Participant %s with id %d joined Chit Chat at logical time L - %d", req.Name, req.Id, req.Lamport)
+
 	fmt.Printf("arrayet er opdateret: %v \n", s.userStreams) 	//homemade debug statement
-	s.Broadcast(req)
+	s.Broadcast(req, msg)
 	log.Printf("Broadcasting burde være færdigt...")	//homemade debug statement
 
-	// From go tour website:
-	// The select statement lets a goroutine wait on multiple communication operations
-	// A select blocks until one of its cases can run, then it executes that case. It chooses one at random if multiple are ready. 
 	select{}	// homemade from chat
 
     // return nil	// we never make it here due to the select{} block above (i think)
 }
 
-// Broadcasts to all clients in the list of user streams
-// The userStreams array is updated in JoinChat to contain multiple streams 
-func (s *ChitChatServer) Broadcast (req *pb.UserLamport) error {
-	fmt.Println("Number of clients with 'open' streams: ", len(s.userStreams))
+func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.UserLamport) (*pb.Empty, error) {
+	// message for leaving 
+	msg := fmt.Sprintf("LeaveChat: Participant %s with id %d left Chit Chat at logical time L - %d", req.Name, req.Id, req.Lamport)
 	
+	delete(s.userStreams, req.Id) 
+	
+	s.Broadcast(req, msg)
+
+	return &pb.Empty{}, nil
+}
+
+// Broadcasts a message to all clients in the list of user streams
+// The userStreams array is updated in JoinChat to contain multiple streams 
+func (s *ChitChatServer) Broadcast (req *pb.UserLamport, msg string) error {
+	fmt.Println("Number of clients with 'open' streams: ", len(s.userStreams))		// homemade debugging
+
 	// Go through all streams in the userStream list and send them the same message
-	msg := fmt.Sprintf("Participant %s joined Chit Chat at logical time L - %d", req.Name, req.Lamport)
 	broadcastMsg := &pb.ChitChatMessage{Message: msg}
 
-	for i := 0; i < len(s.userStreams); i++ {
-		// fmt.Println("	For loop iteration: ", i) 	//homemade debug statement
-		err := s.userStreams[i].Send(broadcastMsg)
+	for key, _ := range s.userStreams {
+		err := s.userStreams[key].Send(broadcastMsg)
 		if err != nil {
-			log.Printf("error trying to send to clien: %d (stream closed) %v", i, err)
+			log.Printf("error trying to send to clien: %d (stream closed) %v", key, err)
 			continue
 		}
-	} 
+	}
 
-	// fmt.Println("For loop over!")		//homemade debug statement
 	return nil 
 }
 
-/* Uncomment method below later (and update it to fit with what is in main)
+func main() {
+	
+	server := &ChitChatServer{ userStreams: make(map[int32]pb.ChitChatService_JoinChatServer)}
+	server.start_server()
+}
+
+// Uncomment method below later (and update it to fit with what is in main)
 func (s *ChitChatServer) start_server() {
-	grpcServer := grpc.NewServer()
+	
 	listener, err := net.Listen("tcp", ":5050")
 	if err != nil {
 		log.Fatalf("Did not work in server")
 	}
 
-	pb.RegisterChitChatServer(grpcServer, s) //registers the unimplemented server (implements the server)
+	grpcServer := grpc.NewServer()
+	pb.RegisterChitChatServiceServer(grpcServer, s) //registers the unimplemented server (implements the server)
+	log.Println("Server running on port 5050...")
 
 	err = grpcServer.Serve(listener) //activates the server
-
 	if err != nil {
 		log.Fatalf("Did not work in server")
 	}
 
 }
-*/
 
-func main() {
-	//server := &ChitChatServer{}
-	//server.start_server()
 
-	lis, err := net.Listen("tcp", ":5050")
-	if err != nil {
-		log.Fatalf("Did not work in server")
-	}
-
-	grpcServer := grpc.NewServer()
-	pb.RegisterChitChatServiceServer(grpcServer, &ChitChatServer{})
-	log.Println("Server running on port 5050...")  // homemade, not part of the ITU template
-	if err := grpcServer.Serve(lis); err !=nil {
-		log.Fatalf("Did not work in server: %v", err)
-	}
-
-	// after some time close the server again and log it
-}
