@@ -26,6 +26,9 @@ int: id
 2) Server-to-client: broadcast() ("Listen all chat participants, this is a message for *all* of you")
 
 
+## Concurrency:
+- We are going to need to implement something to prevent deadlocks and race conditions for our local lamports
+
 ## Useful Links
 
 https://dev.to/yash_mahakal/implementing-bidirectional-grpc-streaming-a-practical-guide-3afi
