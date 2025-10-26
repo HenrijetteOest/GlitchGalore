@@ -29,14 +29,27 @@ func makeRandomClient() *pb.UserLamport {
 	user := &pb.UserLamport{Id: RandomId, Name: randomName, Lamport: lamport}
 	return user
 }
-/*
-func int32 updateLamport(l lamport){
-	
+
+func incrementLamport(lamport int32) int32 {
+	return lamport+1
 }
-func int32 syncLamport(client lamport, server lamport){}
-*/
+
+func incrementUserLamport(user *pb.UserLamport) *pb.UserLamport {
+	user.Lamport = user.Lamport + 1
+	return user
+}
+
+func syncLamport(clientLamport int32, serverLamport int32) int32 {
+	if (clientLamport < serverLamport){
+		clientLamport = incrementLamport(serverLamport)
+		return clientLamport
+	}
+	return incrementLamport(clientLamport)
+}
+
 
 func main() {
+
 	conn, err := grpc.NewClient("localhost:5050", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Not working, %v", err)
@@ -45,11 +58,14 @@ func main() {
 	defer conn.Close()
 	client := pb.NewChitChatServiceClient(conn)
 
+	// make a user with random name and random id
 	userTest := makeRandomClient()
 
 	// join chat method call
-	stream1, _ := client.JoinChat(context.Background(), userTest)
-
+	//stream1, _ := client.JoinChat(context.Background(), userTest)
+	log.Printf("Before joinchat inside client, a user is now: name: %s, id: %d, lamport: %d ", userTest.Name, userTest.Id, userTest.Lamport)
+	stream1, _ := client.JoinChat(context.Background(), incrementUserLamport(userTest))
+	log.Printf("After joinchat inside client, a user is now: name: %s, id: %d, lamport: %d ", userTest.Name, userTest.Id, userTest.Lamport)
 	// Below loop is where a client receives a response to a joinChat request
 	/*
 		for {
@@ -69,7 +85,6 @@ func main() {
 
 		if err == io.EOF {
 			break
-			//log.Println("Something went wrong with receiving from stream: ")
 		}
 		log.Println(msg.Message)
 
