@@ -8,6 +8,7 @@ require (
 )
 
 require (
+	github.com/random-names/go v0.0.0-20190609025437-4cca751ffd3b // indirect
 	golang.org/x/net v0.42.0 // indirect
 	golang.org/x/sys v0.34.0 // indirect
 	golang.org/x/text v0.27.0 // indirect

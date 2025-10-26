@@ -1,63 +1,60 @@
 package main
 
 import (
+	"context"
+	"fmt"
 	"log"
 	"net"
-	"fmt"
-	"context"
 
 	"google.golang.org/grpc"
 
 	pb "ChitChat/grpc" //pb used to be proto
-
 )
-
 
 // userStreams is a map of active streams
 // meant to receive new streams in JoinChat when a client joins
 // and decrement when in LeaveChat, when a client leaves.
 type ChitChatServer struct {
 	pb.UnimplementedChitChatServiceServer
+	lamport     int32
 	userStreams map[int32]pb.ChitChatService_JoinChatServer
-	
 }
 
-
-// The join chat method, whereby a client joins the chat 
+// The join chat method, whereby a client joins the chat
 // The server then saves the client stream in an array of streams
 // Also calls the local method Broadcast() which then sends a message
-// to all active clients that "x has joined the chat"  
+// to all active clients that "x has joined the chat"
 func (s *ChitChatServer) JoinChat(req *pb.UserLamport, stream pb.ChitChatService_JoinChatServer) error {
 	//s.userStreams = append(s.userStreams, stream)
-	s.userStreams[req.Id] = stream	//map version
+	s.userStreams[req.Id] = stream //map version
 
 	// message for joining
 	msg := fmt.Sprintf("JoinChat: Participant %s with id %d joined Chit Chat at logical time L - %d", req.Name, req.Id, req.Lamport)
 
-	fmt.Printf("arrayet er opdateret: %v \n", s.userStreams) 	//homemade debug statement
+	fmt.Printf("arrayet er opdateret: %v \n", s.userStreams) //homemade debug statement
 	s.Broadcast(req, msg)
-	log.Printf("Broadcasting burde være færdigt...")	//homemade debug statement
+	log.Printf("Broadcasting burde være færdigt...") //homemade debug statement
 
-	select{}	// homemade from chat
+	select {} // homemade from chat
 
-    // return nil	// we never make it here due to the select{} block above (i think)
+	// return nil	// we never make it here due to the select{} block above (i think)
 }
 
 func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.UserLamport) (*pb.Empty, error) {
-	// message for leaving 
+	// message for leaving
 	msg := fmt.Sprintf("LeaveChat: Participant %s with id %d left Chit Chat at logical time L - %d", req.Name, req.Id, req.Lamport)
-	
-	delete(s.userStreams, req.Id) 
-	
+
+	delete(s.userStreams, req.Id)
+
 	s.Broadcast(req, msg)
 
 	return &pb.Empty{}, nil
 }
 
 // Broadcasts a message to all clients in the list of user streams
-// The userStreams array is updated in JoinChat to contain multiple streams 
-func (s *ChitChatServer) Broadcast (req *pb.UserLamport, msg string) error {
-	fmt.Println("Number of clients with 'open' streams: ", len(s.userStreams))		// homemade debugging
+// The userStreams array is updated in JoinChat to contain multiple streams
+func (s *ChitChatServer) Broadcast(req *pb.UserLamport, msg string) error {
+	fmt.Println("Number of clients with 'open' streams: ", len(s.userStreams)) // homemade debugging
 
 	// Go through all streams in the userStream list and send them the same message
 	broadcastMsg := &pb.ChitChatMessage{Message: msg}
@@ -70,18 +67,18 @@ func (s *ChitChatServer) Broadcast (req *pb.UserLamport, msg string) error {
 		}
 	}
 
-	return nil 
+	return nil
 }
 
 func main() {
-	
-	server := &ChitChatServer{ userStreams: make(map[int32]pb.ChitChatService_JoinChatServer)}
+
+	server := &ChitChatServer{lamport: 0, userStreams: make(map[int32]pb.ChitChatService_JoinChatServer)}
 	server.start_server()
 }
 
 // Uncomment method below later (and update it to fit with what is in main)
 func (s *ChitChatServer) start_server() {
-	
+
 	listener, err := net.Listen("tcp", ":5050")
 	if err != nil {
 		log.Fatalf("Did not work in server")
@@ -97,5 +94,3 @@ func (s *ChitChatServer) start_server() {
 	}
 
 }
-
-
