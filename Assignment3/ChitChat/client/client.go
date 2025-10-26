@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+
 	"time"
 
 	"google.golang.org/grpc"
@@ -33,7 +34,6 @@ func makeRandomClient() ChitChatter {
 	if err2 != nil {
 		fmt.Println(err2)
 	}
-	fmt.Println(randomName, "this is the name")
 
 	chitChatter := ChitChatter{
 		ID:   randomID,
@@ -63,7 +63,6 @@ func localJoinChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter
 		log.Fatalf("Not working in client 1")
 	}
 	*isActivePointer = true
-	log.Printf("After joinchat inside client, a user is now: name: %s, id: %d, lamport: %d ", localChitChatter.Name, localChitChatter.ID, *lamportPointer)
 	return stream1
 }
 
@@ -76,15 +75,32 @@ func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatte
 	log.Println("client: I left the chat")
 }
 
-func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], lamportPointer *int32) {
-	for {
+func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], lamportPointer *int32, isActivePointer *bool) {
+	for *isActivePointer {
 		msg, err := msgStream.Recv()
-
 		if err == io.EOF {
 			break
 		}
 		syncLamport(lamportPointer, msg.User.GetLamport())
 		log.Println(msg.Message)
+	}
+}
+
+func localSendMessage(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32, message string) {
+	incrementLamport(lamportPointer)
+	client.Publish(context.Background(), &pb.ChitChatMessage{User: &pb.UserLamport{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: *lamportPointer}, Message: message})
+}
+
+func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32) {
+
+	for i := 0; i < 5; i++ {
+		message, err := rn.GetRandomName("./all.last", &rn.Options{})
+		message = fmt.Sprintf("%s from loop %d", message, i)
+		if err != nil {
+			log.Fatalf("Not working in messageLoop")
+		}
+		localSendMessage(client, localChitChatter, lamportPointer, message)
+		time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
 	}
 }
 
@@ -111,12 +127,13 @@ func main() {
 
 	/* join chat method call */
 
-	log.Printf("Before joinchat inside client, a user is now: name: %s, id: %d, lamport: %d ", localChitChatter.Name, localChitChatter.ID, localLamport)
 	stream1 := localJoinChat(client, localChitChatter, lamportPointer, isActivePointer)
 
-	receiveMessages(stream1, lamportPointer)
+	go receiveMessages(stream1, lamportPointer, isActivePointer)
 
-	time.Sleep(20 * time.Second)
+	go SendMessageLoop(client, localChitChatter, lamportPointer)
+
+	time.Sleep(40 * time.Second)
 
 	localLeaveChat(client, localChitChatter, lamportPointer, isActivePointer)
 

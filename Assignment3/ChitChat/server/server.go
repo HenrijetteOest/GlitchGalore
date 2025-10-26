@@ -51,12 +51,19 @@ func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.UserLamport) (*p
 	return &pb.Empty{}, nil
 }
 
+func (s *ChitChatServer) Publish(ctx context.Context, req *pb.ChitChatMessage) (*pb.Empty, error) {
+	msg := fmt.Sprintf("%s: %s - Timestamp: %d", req.GetUser().GetName(), req.GetMessage(), req.User.GetLamport())
+	s.Broadcast(req.GetUser(), msg)
+	return &pb.Empty{}, nil
+}
+
 // Broadcasts a message to all clients in the list of user streams
 // The userStreams array is updated in JoinChat to contain multiple streams
 func (s *ChitChatServer) Broadcast(req *pb.UserLamport, msg string) error {
 	fmt.Println("Number of clients with 'open' streams: ", len(s.userStreams)) // homemade debugging
 
 	// Go through all streams in the userStream list and send them the same message
+
 	broadcastMsg := &pb.ChitChatMessage{Message: msg}
 
 	for key, _ := range s.userStreams {
