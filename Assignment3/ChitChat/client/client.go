@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"time"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -49,29 +50,42 @@ func incrementLamport(lamport *int32) {
 }
 
 /* Function to synchronize the lamport timestamp with the ChitChat Server Lamport Timestamp */
-func syncLamport(localLamport int32, serverLamport int32) int32 {
-	updatedLocalLamport := max(localLamport, serverLamport) + 1
-	return updatedLocalLamport
+func syncLamport(localLamport *int32, serverLamport int32) {
+	*localLamport = max(*localLamport, serverLamport) + 1
 }
 
 /* JoinChat function call with lamport increments*/
-func localJoinChat(client pb.ChitChatServiceClient, lamportPointer *int32, localChitChatter ChitChatter) grpc.ServerStreamingClient[pb.ChitChatMessage] {
+func localJoinChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32, isActivePointer *bool) grpc.ServerStreamingClient[pb.ChitChatMessage] {
 
 	incrementLamport(lamportPointer)
 	stream1, err := client.JoinChat(context.Background(), &pb.UserLamport{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: *lamportPointer})
 	if err != nil {
 		log.Fatalf("Not working in client 1")
 	}
+	*isActivePointer = true
 	log.Printf("After joinchat inside client, a user is now: name: %s, id: %d, lamport: %d ", localChitChatter.Name, localChitChatter.ID, *lamportPointer)
 	return stream1
 }
 
 /* LeaveChat function call with lamport increments*/
-func localLeaveChat(client pb.ChitChatServiceClient, lamportPointer *int32, localChitChatter ChitChatter) {
+func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32, isActivePointer *bool) {
 
 	incrementLamport(lamportPointer)
 	client.LeaveChat(context.Background(), &pb.UserLamport{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: *lamportPointer})
+	*isActivePointer = false
 	log.Println("client: I left the chat")
+}
+
+func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], lamportPointer *int32) {
+	for {
+		msg, err := msgStream.Recv()
+
+		if err == io.EOF {
+			break
+		}
+		syncLamport(lamportPointer, msg.User.GetLamport())
+		log.Println(msg.Message)
+	}
 }
 
 func main() {
@@ -79,6 +93,10 @@ func main() {
 	/* Lamport Timestamp */
 	localLamport := int32(0)
 	var lamportPointer *int32 = &localLamport
+
+	/* ChitChatter State */
+	isActive := false
+	var isActivePointer *bool = &isActive
 
 	conn, err := grpc.NewClient("localhost:5050", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -94,21 +112,13 @@ func main() {
 	/* join chat method call */
 
 	log.Printf("Before joinchat inside client, a user is now: name: %s, id: %d, lamport: %d ", localChitChatter.Name, localChitChatter.ID, localLamport)
-	stream1 := localJoinChat(client, lamportPointer, localChitChatter)
+	stream1 := localJoinChat(client, localChitChatter, lamportPointer, isActivePointer)
 
-	// hardcoded forloop for testing that a client can actually leave the chat
-	// this happens after a client has received 2 broadcasts
-	for i := 0; i < 2; i++ {
-		msg, err := stream1.Recv()
+	receiveMessages(stream1, lamportPointer)
 
-		if err == io.EOF {
-			break
-		}
-		log.Println(msg.Message)
+	time.Sleep(20 * time.Second)
 
-	}
-
-	localLeaveChat(client, lamportPointer, localChitChatter)
+	localLeaveChat(client, localChitChatter, lamportPointer, isActivePointer)
 
 	// Below for loop lets the client live forever!
 	// migth be irrelevant
@@ -136,3 +146,21 @@ func main() {
 // older methods we might be able to reuse or use as guides
 //client.SendMessage(context.Background(), &proto.ChitChatMessage{User: &proto.User{Id: 1, Name: "Alice"}, Message: "Hello World!", Lamport: 10})
 //Stream.Send(&proto.ChitChatMessage{User: &proto.User{Id: 1, Name: "Alice"}, Message: "This is a message", Lamport: 10})
+
+/*OLD recieve message loop*/
+
+/*
+
+//hardcoded forloop for testing that a client can actually leave the chat
+//this happens after a client has received 2 broadcasts
+
+for i := 0; i < 2; i++ {
+		msg, err := stream1.Recv()
+
+		if err == io.EOF {
+			break
+		}
+		log.Println(msg.Message)
+
+	}
+*/
