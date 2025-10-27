@@ -7,7 +7,7 @@ import (
 	"log"
 	"sync"
 	"time"
-
+	"os"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
@@ -118,6 +118,12 @@ func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatt
 }
 
 func main() {
+	file, e := os.OpenFile("client.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if e != nil {
+		log.Fatalf("Failed to open log file: %v", e)
+	}
+	log.SetOutput(file)
+
 
 	/* Lamport Timestamp */
 	localLamport = 0
