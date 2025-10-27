@@ -49,7 +49,7 @@ func incrementLamport(lamport *int32, mu *sync.Mutex) {
 	mu.Lock()
 	defer mu.Unlock()
 	*lamport = *lamport + 1
-	
+	log.Print(&lamport)
 }
 
 /* Function to synchronize the lamport timestamp with the ChitChat Server Lamport Timestamp */
@@ -57,6 +57,7 @@ func syncLamport(localLamport *int32, serverLamport int32, mu *sync.Mutex) {
 	mu.Lock()
 	defer mu.Unlock()
 	*localLamport = max(*localLamport, serverLamport) + 1
+	log.Print(&localLamport)
 }
 
 /* JoinChat function call with lamport increments*/
@@ -102,16 +103,13 @@ func localSendMessage(client pb.ChitChatServiceClient, localChitChatter ChitChat
 	client.Publish(context.Background(), &pb.ChitChatMessage{User: &pb.UserLamport{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: *lamportPointer}, Message: message})
 }
 
-
 func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32, lamportMutex *sync.Mutex) {
 
 	for i := 0; i < 5; i++ {
-		//absolutePath := "Assignment3/ChitChat/all.last"
-		//message, err := rn.GetRandomName(absolutePath, &rn.Options{})
-		
+
 		message, err := rn.GetRandomName("./all.last", &rn.Options{})
-		
-		message = fmt.Sprintf("%s from loop %d", message, i)
+
+		message = fmt.Sprintf("%s", message)
 		if err != nil {
 			log.Fatalf("Not working in messageLoop")
 		}
@@ -125,7 +123,7 @@ func main() {
 	/* Lamport Timestamp */
 	localLamport := int32(0)
 	var lamportPointer *int32 = &localLamport
-	var lamportMutex sync.Mutex 
+	var lamportMutex sync.Mutex
 
 	/* ChitChatter State */
 	isActive := false

@@ -26,27 +26,35 @@ type ChitChatServer struct {
 // Also calls the local method Broadcast() which then sends a message
 // to all active clients that "x has joined the chat"
 func (s *ChitChatServer) JoinChat(req *pb.UserLamport, stream pb.ChitChatService_JoinChatServer) error {
-	//s.userStreams = append(s.userStreams, stream)
 	s.userStreams[req.Id] = stream //map version
 
+	if s.lamport < req.Lamport {
+		s.lamport = req.Lamport + 1
+	} else {
+		s.lamport = s.lamport + 1
+	}
+	log.Printf("lamport in JoinChat %d", s.lamport)
 	// message for joining
-	msg := fmt.Sprintf("JoinChat: Participant %s with id %d joined Chit Chat at logical time L - %d", req.Name, req.Id, req.Lamport)
+	msg := fmt.Sprintf("JoinChat: Participant %s with id %d joined Chit Chat at logical time L - %d", req.Name, req.Id, s.lamport)
 
-	fmt.Printf("arrayet er opdateret: %v \n", s.userStreams) //homemade debug statement
+	//fmt.Printf("arrayet er opdateret: %v \n", s.userStreams) //homemade debug statement (delete later)
 	s.Broadcast(req, msg)
-	log.Printf("Broadcasting burde være færdigt...") //homemade debug statement
+	//log.Printf("Broadcasting burde være færdigt...") //homemade debug statement (delete later)
 
 	select {} // homemade from chat
-
-	// return nil	// we never make it here due to the select{} block above (i think)
 }
 
 func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.UserLamport) (*pb.Empty, error) {
 	// message for leaving
-	msg := fmt.Sprintf("LeaveChat: Participant %s with id %d left Chit Chat at logical time L - %d", req.Name, req.Id, req.Lamport)
+	if s.lamport < req.Lamport {
+		s.lamport = req.Lamport + 1
+	} else {
+		s.lamport = s.lamport + 1
+	}
+	log.Printf("lamport in LeaveChat %d", s.lamport)
+	msg := fmt.Sprintf("LeaveChat: Participant %s with id %d left Chit Chat at logical time L - %d", req.Name, req.Id, s.lamport)
 
 	delete(s.userStreams, req.Id)
-	//broadcastMsg := &pb.ChitChatMessage{User: req, Message: msg}
 
 	s.Broadcast(req, msg)
 
@@ -54,7 +62,14 @@ func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.UserLamport) (*p
 }
 
 func (s *ChitChatServer) Publish(ctx context.Context, req *pb.ChitChatMessage) (*pb.Empty, error) {
-	msg := fmt.Sprintf("%s: %s - Timestamp: %d", req.GetUser().GetName(), req.GetMessage(), req.User.GetLamport())
+	if s.lamport < req.User.Lamport {
+		s.lamport = req.User.Lamport + 1
+	} else {
+		s.lamport = s.lamport + 1
+	}
+	log.Printf("lamport i publish %d", s.lamport)
+	msg := fmt.Sprintf("%s: %s - Timestamp: %d", req.GetUser().GetName(), req.GetMessage(), s.lamport)
+	s.lamport++
 	s.Broadcast(req.GetUser(), msg)
 	return &pb.Empty{}, nil
 }
@@ -62,13 +77,12 @@ func (s *ChitChatServer) Publish(ctx context.Context, req *pb.ChitChatMessage) (
 // Broadcasts a message to all clients in the list of user streams
 // The userStreams array is updated in JoinChat to contain multiple streams
 func (s *ChitChatServer) Broadcast(req *pb.UserLamport, msg string) error {
-	fmt.Println("Number of clients with 'open' streams: ", len(s.userStreams)) // homemade debugging
+	//fmt.Println("Number of clients with 'open' streams: ", len(s.userStreams)) // homemade debugging
 
 	waitGroup := sync.WaitGroup{}
 	done := make(chan int32)
-
-	// Go through all streams in the userStream list and send them the same message
-
+	s.lamport++
+	log.Print(s.lamport)
 	broadcastMsg := &pb.ChitChatMessage{User: req, Message: msg}
 
 	for key, _ := range s.userStreams {
