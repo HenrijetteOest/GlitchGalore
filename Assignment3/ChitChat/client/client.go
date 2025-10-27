@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 	"log"
-
+	"sync"
 	"time"
 
 	"google.golang.org/grpc"
@@ -45,19 +45,24 @@ func makeRandomClient() ChitChatter {
 
 /* Function to increment the lamport timestamp */
 
-func incrementLamport(lamport *int32) {
-	*lamport++
+func incrementLamport(lamport *int32, mu *sync.Mutex) {
+	mu.Lock()
+	defer mu.Unlock()
+	*lamport = *lamport + 1
+	
 }
 
 /* Function to synchronize the lamport timestamp with the ChitChat Server Lamport Timestamp */
-func syncLamport(localLamport *int32, serverLamport int32) {
+func syncLamport(localLamport *int32, serverLamport int32, mu *sync.Mutex) {
+	mu.Lock()
+	defer mu.Unlock()
 	*localLamport = max(*localLamport, serverLamport) + 1
 }
 
 /* JoinChat function call with lamport increments*/
-func localJoinChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32, isActivePointer *bool) grpc.ServerStreamingClient[pb.ChitChatMessage] {
+func localJoinChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32, isActivePointer *bool, lamportMutex *sync.Mutex) grpc.ServerStreamingClient[pb.ChitChatMessage] {
 
-	incrementLamport(lamportPointer)
+	incrementLamport(lamportPointer, lamportMutex)
 	stream1, err := client.JoinChat(context.Background(), &pb.UserLamport{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: *lamportPointer})
 	if err != nil {
 		log.Fatalf("Not working in client 1")
@@ -67,39 +72,50 @@ func localJoinChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter
 }
 
 /* LeaveChat function call with lamport increments*/
-func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32, isActivePointer *bool) {
+func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32, isActivePointer *bool, lamportMutex *sync.Mutex) {
 
-	incrementLamport(lamportPointer)
+	incrementLamport(lamportPointer, lamportMutex)
 	client.LeaveChat(context.Background(), &pb.UserLamport{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: *lamportPointer})
 	*isActivePointer = false
 	log.Println("client: I left the chat")
 }
 
-func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], lamportPointer *int32, isActivePointer *bool) {
+func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], lamportPointer *int32, isActivePointer *bool, lamportMutex *sync.Mutex) {
 	for *isActivePointer {
 		msg, err := msgStream.Recv()
 		if err == io.EOF {
 			break
 		}
-		syncLamport(lamportPointer, msg.User.GetLamport())
+
+		if err != nil {
+			log.Printf("error receiving message: %v", err)
+			break
+		}
+
+		syncLamport(lamportPointer, msg.User.GetLamport(), lamportMutex)
 		log.Println(msg.Message)
 	}
 }
 
-func localSendMessage(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32, message string) {
-	incrementLamport(lamportPointer)
+func localSendMessage(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32, message string, lamportMutex *sync.Mutex) {
+	incrementLamport(lamportPointer, lamportMutex)
 	client.Publish(context.Background(), &pb.ChitChatMessage{User: &pb.UserLamport{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: *lamportPointer}, Message: message})
 }
 
-func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32) {
+
+func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter, lamportPointer *int32, lamportMutex *sync.Mutex) {
 
 	for i := 0; i < 5; i++ {
+		//absolutePath := "Assignment3/ChitChat/all.last"
+		//message, err := rn.GetRandomName(absolutePath, &rn.Options{})
+		
 		message, err := rn.GetRandomName("./all.last", &rn.Options{})
+		
 		message = fmt.Sprintf("%s from loop %d", message, i)
 		if err != nil {
 			log.Fatalf("Not working in messageLoop")
 		}
-		localSendMessage(client, localChitChatter, lamportPointer, message)
+		localSendMessage(client, localChitChatter, lamportPointer, message, lamportMutex)
 		time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
 	}
 }
@@ -109,6 +125,7 @@ func main() {
 	/* Lamport Timestamp */
 	localLamport := int32(0)
 	var lamportPointer *int32 = &localLamport
+	var lamportMutex sync.Mutex 
 
 	/* ChitChatter State */
 	isActive := false
@@ -127,15 +144,15 @@ func main() {
 
 	/* join chat method call */
 
-	stream1 := localJoinChat(client, localChitChatter, lamportPointer, isActivePointer)
+	stream1 := localJoinChat(client, localChitChatter, lamportPointer, isActivePointer, &lamportMutex)
 
-	go receiveMessages(stream1, lamportPointer, isActivePointer)
+	go receiveMessages(stream1, lamportPointer, isActivePointer, &lamportMutex)
 
-	go SendMessageLoop(client, localChitChatter, lamportPointer)
+	go SendMessageLoop(client, localChitChatter, lamportPointer, &lamportMutex)
 
 	time.Sleep(40 * time.Second)
 
-	localLeaveChat(client, localChitChatter, lamportPointer, isActivePointer)
+	localLeaveChat(client, localChitChatter, lamportPointer, isActivePointer, &lamportMutex)
 
 	// Below for loop lets the client live forever!
 	// migth be irrelevant

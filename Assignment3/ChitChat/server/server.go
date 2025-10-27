@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net"
-
+	"sync"
 	"google.golang.org/grpc"
 
 	pb "ChitChat/grpc" //pb used to be proto
@@ -45,7 +45,8 @@ func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.UserLamport) (*p
 	msg := fmt.Sprintf("LeaveChat: Participant %s with id %d left Chit Chat at logical time L - %d", req.Name, req.Id, req.Lamport)
 
 	delete(s.userStreams, req.Id)
-
+	//broadcastMsg := &pb.ChitChatMessage{User: req, Message: msg}
+		
 	s.Broadcast(req, msg)
 
 	return &pb.Empty{}, nil
@@ -57,6 +58,45 @@ func (s *ChitChatServer) Publish(ctx context.Context, req *pb.ChitChatMessage) (
 	return &pb.Empty{}, nil
 }
 
+// Broadcasts a message to all clients in the list of user streams
+// The userStreams array is updated in JoinChat to contain multiple streams
+func (s *ChitChatServer) Broadcast(req *pb.UserLamport, msg string) error {
+	fmt.Println("Number of clients with 'open' streams: ", len(s.userStreams)) // homemade debugging
+	
+	waitGroup := sync.WaitGroup{}
+	done := make(chan int32)
+	
+	// Go through all streams in the userStream list and send them the same message
+
+	broadcastMsg := &pb.ChitChatMessage{User: req, Message: msg}
+		
+
+	for key, _ := range s.userStreams {
+
+		waitGroup.Add(1)
+
+		//go broadcastToClient(broadcast msg, clientId)
+		go func(clientId int32) {
+			defer waitGroup.Done()
+			err := s.userStreams[clientId].Send(broadcastMsg)
+			if err != nil {
+				log.Printf("error trying to send to client: %d (stream closed) %v", clientId, err)
+			}
+		}(key)
+
+		go func(){
+			waitGroup.Wait()
+			close(done)
+		}()
+		
+	}
+	<-done
+	return nil
+}
+
+
+
+/*
 // Broadcasts a message to all clients in the list of user streams
 // The userStreams array is updated in JoinChat to contain multiple streams
 func (s *ChitChatServer) Broadcast(req *pb.UserLamport, msg string) error {
@@ -75,7 +115,7 @@ func (s *ChitChatServer) Broadcast(req *pb.UserLamport, msg string) error {
 	}
 
 	return nil
-}
+}*/
 
 func main() {
 
