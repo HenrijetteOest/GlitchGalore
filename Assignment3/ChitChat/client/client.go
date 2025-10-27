@@ -90,8 +90,9 @@ func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], i
 		}
 
 		log.Println(msg.Message)
-		log.Printf("lamport from server: %d", msg.Lamport)
+		log.Printf("local lamport: %d and lamport from server: %d", localLamport, msg.Lamport)
 		syncLamport(msg.Lamport)
+		log.Printf("local lamport after sync mechanism: %d", localLamport)
 	}
 }
 
