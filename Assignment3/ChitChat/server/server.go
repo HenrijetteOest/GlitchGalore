@@ -28,12 +28,13 @@ type ChitChatServer struct {
 func (s *ChitChatServer) JoinChat(req *pb.UserLamport, stream pb.ChitChatService_JoinChatServer) error {
 	s.userStreams[req.Id] = stream //map version
 
+	log.Printf("Local Lamport in JoinChat before sync: %d and message lamport: %d", s.lamport, req.Lamport)
 	if s.lamport < req.Lamport {
 		s.lamport = req.Lamport + 1
 	} else {
 		s.lamport = s.lamport + 1
 	}
-	log.Printf("lamport in JoinChat %d", s.lamport)
+	log.Printf("Lamport in Join after sync: %d", s.lamport)
 	// message for joining
 	msg := fmt.Sprintf("JoinChat: Participant %s with id %d joined Chit Chat at logical time L - %d", req.Name, req.Id, s.lamport)
 
@@ -46,12 +47,13 @@ func (s *ChitChatServer) JoinChat(req *pb.UserLamport, stream pb.ChitChatService
 
 func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.UserLamport) (*pb.Empty, error) {
 	// message for leaving
+	log.Printf("Local Lamport in LeaveChat before sync: %d and message lamport: %d", s.lamport, req.Lamport)
 	if s.lamport < req.Lamport {
 		s.lamport = req.Lamport + 1
 	} else {
 		s.lamport = s.lamport + 1
 	}
-	log.Printf("lamport in LeaveChat %d", s.lamport)
+	log.Printf("Lamport in LeaveChat after sync: %d", s.lamport)
 	msg := fmt.Sprintf("LeaveChat: Participant %s with id %d left Chit Chat at logical time L - %d", req.Name, req.Id, s.lamport)
 
 	delete(s.userStreams, req.Id)
@@ -62,14 +64,15 @@ func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.UserLamport) (*p
 }
 
 func (s *ChitChatServer) Publish(ctx context.Context, req *pb.ChitChatMessage) (*pb.Empty, error) {
+	log.Printf("Local Lamport in Publish before sync: %d and message lamport: %d", s.lamport, req.User.Lamport)
+	//sync mechanism works
 	if s.lamport < req.User.Lamport {
 		s.lamport = req.User.Lamport + 1
 	} else {
 		s.lamport = s.lamport + 1
 	}
-	log.Printf("lamport i publish %d", s.lamport)
+	log.Printf("Lamport in Publish after sync: %d", s.lamport)
 	msg := fmt.Sprintf("%s: %s - Timestamp: %d", req.GetUser().GetName(), req.GetMessage(), s.lamport)
-	s.lamport++
 	s.Broadcast(req.GetUser(), msg)
 	return &pb.Empty{}, nil
 }
@@ -82,7 +85,6 @@ func (s *ChitChatServer) Broadcast(req *pb.UserLamport, msg string) error {
 	waitGroup := sync.WaitGroup{}
 	done := make(chan int32)
 	s.lamport++
-	log.Print(s.lamport)
 	broadcastMsg := &pb.ChitChatMessage{User: req, Message: msg}
 
 	for key, _ := range s.userStreams {
