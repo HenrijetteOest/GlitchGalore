@@ -5,19 +5,20 @@ option go_package = "./pb"; //ChitChat/grpc/proto
 
 message Empty{} 
 
-message UserLamport{
+message User{
     int32 id = 1;
     string name = 2; 
     int32 lamport = 3;
 }
 
 message ChitChatMessage{
-    UserLamport user = 1;
+    User user = 1;
     string message = 2;
+    int32 lamport = 3;
 }
 
 service ChitChatService{
-    rpc JoinChat (UserLamport) returns (stream ChitChatMessage) {};    
-    rpc LeaveChat (UserLamport) returns (Empty) {};
+    rpc JoinChat (User) returns (stream ChitChatMessage) {};    
+    rpc LeaveChat (User) returns (Empty) {};
     rpc Publish (ChitChatMessage) returns (Empty) {};
 }

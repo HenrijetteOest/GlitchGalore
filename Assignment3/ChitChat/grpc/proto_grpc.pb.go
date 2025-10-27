@@ -28,8 +28,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ChitChatServiceClient interface {
-	JoinChat(ctx context.Context, in *UserLamport, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ChitChatMessage], error)
-	LeaveChat(ctx context.Context, in *UserLamport, opts ...grpc.CallOption) (*Empty, error)
+	JoinChat(ctx context.Context, in *User, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ChitChatMessage], error)
+	LeaveChat(ctx context.Context, in *User, opts ...grpc.CallOption) (*Empty, error)
 	Publish(ctx context.Context, in *ChitChatMessage, opts ...grpc.CallOption) (*Empty, error)
 }
 
@@ -41,13 +41,13 @@ func NewChitChatServiceClient(cc grpc.ClientConnInterface) ChitChatServiceClient
 	return &chitChatServiceClient{cc}
 }
 
-func (c *chitChatServiceClient) JoinChat(ctx context.Context, in *UserLamport, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ChitChatMessage], error) {
+func (c *chitChatServiceClient) JoinChat(ctx context.Context, in *User, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ChitChatMessage], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	stream, err := c.cc.NewStream(ctx, &ChitChatService_ServiceDesc.Streams[0], ChitChatService_JoinChat_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[UserLamport, ChitChatMessage]{ClientStream: stream}
+	x := &grpc.GenericClientStream[User, ChitChatMessage]{ClientStream: stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func (c *chitChatServiceClient) JoinChat(ctx context.Context, in *UserLamport, o
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type ChitChatService_JoinChatClient = grpc.ServerStreamingClient[ChitChatMessage]
 
-func (c *chitChatServiceClient) LeaveChat(ctx context.Context, in *UserLamport, opts ...grpc.CallOption) (*Empty, error) {
+func (c *chitChatServiceClient) LeaveChat(ctx context.Context, in *User, opts ...grpc.CallOption) (*Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Empty)
 	err := c.cc.Invoke(ctx, ChitChatService_LeaveChat_FullMethodName, in, out, cOpts...)
@@ -84,8 +84,8 @@ func (c *chitChatServiceClient) Publish(ctx context.Context, in *ChitChatMessage
 // All implementations must embed UnimplementedChitChatServiceServer
 // for forward compatibility.
 type ChitChatServiceServer interface {
-	JoinChat(*UserLamport, grpc.ServerStreamingServer[ChitChatMessage]) error
-	LeaveChat(context.Context, *UserLamport) (*Empty, error)
+	JoinChat(*User, grpc.ServerStreamingServer[ChitChatMessage]) error
+	LeaveChat(context.Context, *User) (*Empty, error)
 	Publish(context.Context, *ChitChatMessage) (*Empty, error)
 	mustEmbedUnimplementedChitChatServiceServer()
 }
@@ -97,10 +97,10 @@ type ChitChatServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedChitChatServiceServer struct{}
 
-func (UnimplementedChitChatServiceServer) JoinChat(*UserLamport, grpc.ServerStreamingServer[ChitChatMessage]) error {
+func (UnimplementedChitChatServiceServer) JoinChat(*User, grpc.ServerStreamingServer[ChitChatMessage]) error {
 	return status.Errorf(codes.Unimplemented, "method JoinChat not implemented")
 }
-func (UnimplementedChitChatServiceServer) LeaveChat(context.Context, *UserLamport) (*Empty, error) {
+func (UnimplementedChitChatServiceServer) LeaveChat(context.Context, *User) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LeaveChat not implemented")
 }
 func (UnimplementedChitChatServiceServer) Publish(context.Context, *ChitChatMessage) (*Empty, error) {
@@ -128,18 +128,18 @@ func RegisterChitChatServiceServer(s grpc.ServiceRegistrar, srv ChitChatServiceS
 }
 
 func _ChitChatService_JoinChat_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(UserLamport)
+	m := new(User)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(ChitChatServiceServer).JoinChat(m, &grpc.GenericServerStream[UserLamport, ChitChatMessage]{ServerStream: stream})
+	return srv.(ChitChatServiceServer).JoinChat(m, &grpc.GenericServerStream[User, ChitChatMessage]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type ChitChatService_JoinChatServer = grpc.ServerStreamingServer[ChitChatMessage]
 
 func _ChitChatService_LeaveChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UserLamport)
+	in := new(User)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -151,7 +151,7 @@ func _ChitChatService_LeaveChat_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: ChitChatService_LeaveChat_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChitChatServiceServer).LeaveChat(ctx, req.(*UserLamport))
+		return srv.(ChitChatServiceServer).LeaveChat(ctx, req.(*User))
 	}
 	return interceptor(ctx, in, info, handler)
 }

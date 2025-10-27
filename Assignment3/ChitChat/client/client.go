@@ -65,7 +65,7 @@ func syncLamport(serverLamport int32) {
 func localJoinChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter, isActivePointer *bool) grpc.ServerStreamingClient[pb.ChitChatMessage] {
 
 	incrementLamport()
-	stream1, err := client.JoinChat(context.Background(), &pb.UserLamport{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport})
+	stream1, err := client.JoinChat(context.Background(), &pb.User{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport})
 	if err != nil {
 		log.Fatalf("Not working in client 1")
 	}
@@ -77,7 +77,7 @@ func localJoinChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter
 func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter, isActivePointer *bool) {
 
 	incrementLamport()
-	client.LeaveChat(context.Background(), &pb.UserLamport{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport})
+	client.LeaveChat(context.Background(), &pb.User{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport})
 	*isActivePointer = false
 	log.Println("client: I left the chat")
 }
@@ -90,15 +90,15 @@ func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], i
 		}
 
 		log.Println(msg.Message)
-		log.Printf("lamport from server: %d", msg.User.Lamport)
-		syncLamport(msg.User.Lamport)
+		log.Printf("lamport from server: %d", msg.Lamport)
+		syncLamport(msg.Lamport)
 	}
 }
 
 func localSendMessage(client pb.ChitChatServiceClient, localChitChatter ChitChatter, message string) {
 	incrementLamport()
 	log.Println(message, localLamport)
-	client.Publish(context.Background(), &pb.ChitChatMessage{User: &pb.UserLamport{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport}, Message: message})
+	client.Publish(context.Background(), &pb.ChitChatMessage{User: &pb.User{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport}, Message: message, Lamport: localLamport})
 }
 
 func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter, isActive *bool) {

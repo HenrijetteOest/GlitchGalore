@@ -25,7 +25,7 @@ type ChitChatServer struct {
 // The server then saves the client stream in an array of streams
 // Also calls the local method Broadcast() which then sends a message
 // to all active clients that "x has joined the chat"
-func (s *ChitChatServer) JoinChat(req *pb.UserLamport, stream pb.ChitChatService_JoinChatServer) error {
+func (s *ChitChatServer) JoinChat(req *pb.User, stream pb.ChitChatService_JoinChatServer) error {
 	s.userStreams[req.Id] = stream //map version
 
 	log.Printf("Local Lamport in JoinChat before sync: %d and message lamport: %d", s.lamport, req.Lamport)
@@ -45,7 +45,7 @@ func (s *ChitChatServer) JoinChat(req *pb.UserLamport, stream pb.ChitChatService
 	select {} // homemade from chat
 }
 
-func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.UserLamport) (*pb.Empty, error) {
+func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.User) (*pb.Empty, error) {
 	// message for leaving
 	log.Printf("Local Lamport in LeaveChat before sync: %d and message lamport: %d", s.lamport, req.Lamport)
 	if s.lamport < req.Lamport {
@@ -79,13 +79,13 @@ func (s *ChitChatServer) Publish(ctx context.Context, req *pb.ChitChatMessage) (
 
 // Broadcasts a message to all clients in the list of user streams
 // The userStreams array is updated in JoinChat to contain multiple streams
-func (s *ChitChatServer) Broadcast(req *pb.UserLamport, msg string) error {
+func (s *ChitChatServer) Broadcast(req *pb.User, msg string) error {
 	//fmt.Println("Number of clients with 'open' streams: ", len(s.userStreams)) // homemade debugging
 
 	waitGroup := sync.WaitGroup{}
 	done := make(chan int32)
 	s.lamport++
-	broadcastMsg := &pb.ChitChatMessage{User: req, Message: msg}
+	broadcastMsg := &pb.ChitChatMessage{User: req, Message: msg, Lamport: s.lamport}
 
 	for key, _ := range s.userStreams {
 
