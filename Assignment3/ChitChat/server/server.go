@@ -6,6 +6,7 @@ import (
 	"log"
 	"net"
 	"sync"
+
 	"google.golang.org/grpc"
 
 	pb "ChitChat/grpc" //pb used to be proto
@@ -46,7 +47,7 @@ func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.UserLamport) (*p
 
 	delete(s.userStreams, req.Id)
 	//broadcastMsg := &pb.ChitChatMessage{User: req, Message: msg}
-		
+
 	s.Broadcast(req, msg)
 
 	return &pb.Empty{}, nil
@@ -62,14 +63,13 @@ func (s *ChitChatServer) Publish(ctx context.Context, req *pb.ChitChatMessage) (
 // The userStreams array is updated in JoinChat to contain multiple streams
 func (s *ChitChatServer) Broadcast(req *pb.UserLamport, msg string) error {
 	fmt.Println("Number of clients with 'open' streams: ", len(s.userStreams)) // homemade debugging
-	
+
 	waitGroup := sync.WaitGroup{}
 	done := make(chan int32)
-	
+
 	// Go through all streams in the userStream list and send them the same message
 
 	broadcastMsg := &pb.ChitChatMessage{User: req, Message: msg}
-		
 
 	for key, _ := range s.userStreams {
 
@@ -83,18 +83,15 @@ func (s *ChitChatServer) Broadcast(req *pb.UserLamport, msg string) error {
 				log.Printf("error trying to send to client: %d (stream closed) %v", clientId, err)
 			}
 		}(key)
-
-		go func(){
-			waitGroup.Wait()
-			close(done)
-		}()
-		
 	}
+	go func() {
+		waitGroup.Wait()
+		close(done)
+	}()
+
 	<-done
 	return nil
 }
-
-
 
 /*
 // Broadcasts a message to all clients in the list of user streams
