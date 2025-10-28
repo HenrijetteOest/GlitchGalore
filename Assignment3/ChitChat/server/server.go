@@ -63,6 +63,7 @@ func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.User) (*pb.Empty
 	fileLog.Printf("/ Server / Client %d Leaves Chat / Lamport %d", req.Id, s.lamport)
 	msg := fmt.Sprintf("%s with id %d left Chit Chat at logical time %d", req.Name, req.Id, s.lamport)
 
+	
 	delete(s.userStreams, req.Id)
 
 	s.Broadcast(req, msg)

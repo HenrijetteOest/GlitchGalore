@@ -93,6 +93,7 @@ func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatte
 // Receives messages as long as the stream is active,
 // which is tracked by the isActivePointer
 func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], isActivePointer *bool, localChitChatter ChitChatter) {
+	
 	for *isActivePointer{
 		msg, err := msgStream.Recv()
 		if err == io.EOF {
@@ -104,8 +105,9 @@ func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], i
 
 		fileLog.Printf("/ Client %d / Received [Client %d]'s Message from Server / Lamport %d", localChitChatter.ID, msg.User.Id, localLamport)
 		termLog.Println(msg.Message)
-		
 	}
+		
+	
 }
 
 // Sends a ChitChatMessage to the Server
@@ -129,6 +131,7 @@ func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatt
 			log.Fatalf("Not working in messageLoop")
 		}
 		localSendMessage(client, localChitChatter, message)
+		time.Sleep(time.Duration(int32(rand.Intn(5))) * time.Second)
 
 	}
 }
