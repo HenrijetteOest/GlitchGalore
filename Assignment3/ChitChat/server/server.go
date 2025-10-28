@@ -6,6 +6,8 @@ import (
 	"log"
 	"net"
 	"sync"
+	"os"
+	"io"
 
 	"google.golang.org/grpc"
 
@@ -28,13 +30,13 @@ type ChitChatServer struct {
 func (s *ChitChatServer) JoinChat(req *pb.User, stream pb.ChitChatService_JoinChatServer) error {
 	s.userStreams[req.Id] = stream //map version
 
-	log.Printf("Local Lamport in JoinChat before sync: %d and message lamport: %d", s.lamport, req.Lamport)
+	//log.Printf("Local Lamport in JoinChat before sync: %d and message lamport: %d", s.lamport, req.Lamport)
 	if s.lamport < req.Lamport {
 		s.lamport = req.Lamport + 1
 	} else {
 		s.lamport = s.lamport + 1
 	}
-	log.Printf("Lamport in Join after sync: %d", s.lamport)
+	//log.Printf("Lamport in Join after sync: %d", s.lamport)
 	// message for joining
 	msg := fmt.Sprintf("JoinChat: Participant %s with id %d joined Chit Chat at logical time L - %d", req.Name, req.Id, s.lamport)
 
@@ -47,13 +49,13 @@ func (s *ChitChatServer) JoinChat(req *pb.User, stream pb.ChitChatService_JoinCh
 
 func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.User) (*pb.Empty, error) {
 	// message for leaving
-	log.Printf("Local Lamport in LeaveChat before sync: %d and message lamport: %d", s.lamport, req.Lamport)
+	//log.Printf("Local Lamport in LeaveChat before sync: %d and message lamport: %d", s.lamport, req.Lamport)
 	if s.lamport < req.Lamport {
 		s.lamport = req.Lamport + 1
 	} else {
 		s.lamport = s.lamport + 1
 	}
-	log.Printf("Lamport in LeaveChat after sync: %d", s.lamport)
+	//log.Printf("Lamport in LeaveChat after sync: %d", s.lamport)
 	msg := fmt.Sprintf("LeaveChat: Participant %s with id %d left Chit Chat at logical time L - %d", req.Name, req.Id, s.lamport)
 
 	delete(s.userStreams, req.Id)
@@ -64,14 +66,14 @@ func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.User) (*pb.Empty
 }
 
 func (s *ChitChatServer) Publish(ctx context.Context, req *pb.ChitChatMessage) (*pb.Empty, error) {
-	log.Printf("Local Lamport in Publish before sync: %d and message lamport: %d", s.lamport, req.User.Lamport)
+	//log.Printf("Local Lamport in Publish before sync: %d and message lamport: %d", s.lamport, req.User.Lamport)
 	//sync mechanism works
 	if s.lamport < req.User.Lamport {
 		s.lamport = req.User.Lamport + 1
 	} else {
 		s.lamport = s.lamport + 1
 	}
-	log.Printf("Lamport in Publish after sync: %d", s.lamport)
+	//log.Printf("Lamport in Publish after sync: %d", s.lamport)
 	msg := fmt.Sprintf("%s: %s - Timestamp: %d", req.GetUser().GetName(), req.GetMessage(), s.lamport)
 	s.Broadcast(req.GetUser(), msg)
 	return &pb.Empty{}, nil
@@ -132,8 +134,22 @@ func (s *ChitChatServer) Broadcast(req *pb.UserLamport, msg string) error {
 
 func main() {
 
+	file, e := os.OpenFile("system.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if e != nil {
+		log.Fatalf("Failed to open log file: %v", e)
+	}
+
+	//code below (line 127-132) comes from chatGPT
+	defer file.Close()
+	// Create a multi-writer to write to both the file and stdout
+	multiWriter := io.MultiWriter(os.Stdout, file)
+	// Set the log output to the multi-writer
+	log.SetOutput(multiWriter)
+	log.Println("Logging to both file and terminal!")
+
 	server := &ChitChatServer{lamport: 0, userStreams: make(map[int32]pb.ChitChatService_JoinChatServer)}
 	server.start_server()
+	
 }
 
 // Uncomment method below later (and update it to fit with what is in main)
@@ -146,11 +162,14 @@ func (s *ChitChatServer) start_server() {
 
 	grpcServer := grpc.NewServer()
 	pb.RegisterChitChatServiceServer(grpcServer, s) //registers the unimplemented server (implements the server)
+	log.Printf("Server, Event: Startup, Lamport Timestamp: %d", s.lamport)
 	log.Println("Server running on port 5050...")
 
 	err = grpcServer.Serve(listener) //activates the server
 	if err != nil {
 		log.Fatalf("Did not work in server")
 	}
+
+	
 
 }

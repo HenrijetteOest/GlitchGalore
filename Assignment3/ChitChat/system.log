@@ -1,0 +1,18 @@
+2025/10/28 12:01:13 Logging to both file and terminal!
+2025/10/28 12:01:16 Server, Event: Startup, Lamport Timestamp: 0
+2025/10/28 12:01:16 Server running on port 5050...
+2025/10/28 12:01:30 Client 957, JoinChat: Participant IRMA with id 957 joined Chit Chat at logical time L - 2
+2025/10/28 12:01:31 Client 957, IRMA: HWA - Timestamp: 6
+2025/10/28 12:01:34 Client 957, IRMA: IN - Timestamp: 10
+2025/10/28 12:01:36 Client 957, IRMA: SHERA - Timestamp: 14
+2025/10/28 12:01:52 Client 957, JoinChat: Participant DORI with id 637 joined Chit Chat at logical time L - 16
+2025/10/28 12:01:52 Client 637, JoinChat: Participant DORI with id 637 joined Chit Chat at logical time L - 16
+2025/10/28 12:01:52 Client 637, DORI: DORIAN - Timestamp: 20
+2025/10/28 12:01:52 Client 957, DORI: DORIAN - Timestamp: 20
+2025/10/28 12:01:56 Client 957, DORI: IRAIDA - Timestamp: 24
+2025/10/28 12:01:56 Client 637, DORI: IRAIDA - Timestamp: 24
+2025/10/28 12:01:56 Client 637, DORI: DARLENA - Timestamp: 28
+2025/10/28 12:01:56 Client 957, DORI: DARLENA - Timestamp: 28
+2025/10/28 12:02:00 client: I left the chat
+2025/10/28 12:02:00 Client 637, LeaveChat: Participant IRMA with id 957 left Chit Chat at logical time L - 32
+2025/10/28 12:02:21 client: I left the chat

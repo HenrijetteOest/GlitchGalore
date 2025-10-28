@@ -31,7 +31,7 @@ type ChitChatter struct {
 /* Creates a ChitChat User with random id and name*/
 func makeRandomClient() ChitChatter {
 	// generate a random id
-	randomID := rand.Int31()
+	randomID := int32(rand.Intn(999)+1)
 	// generate a random user name with the random name methods from https://github.com/random-names/go
 	randomName, err2 := rn.GetRandomName("./all.last", &rn.Options{})
 	if err2 != nil {
@@ -82,29 +82,28 @@ func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatte
 	log.Println("client: I left the chat")
 }
 
-func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], isActivePointer *bool) {
+func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], isActivePointer *bool, localChitChatter ChitChatter) {
 	for *isActivePointer {
 		msg, err := msgStream.Recv()
 		if err == io.EOF {
 			break
 		}
 
-		log.Println(msg.Message)
-		log.Printf("local lamport: %d and lamport from server: %d", localLamport, msg.Lamport)
+		log.Printf("Client %d, %s", localChitChatter.ID, msg.Message )
+		//log.Printf("local lamport: %d and lamport from server: %d", localLamport, msg.Lamport) //homemade debug
 		syncLamport(msg.Lamport)
-		log.Printf("local lamport after sync mechanism: %d", localLamport)
+		//log.Printf("local lamport after sync mechanism: %d", localLamport) //homemade debug
 	}
 }
 
 func localSendMessage(client pb.ChitChatServiceClient, localChitChatter ChitChatter, message string) {
 	incrementLamport()
-	log.Println(message, localLamport)
 	client.Publish(context.Background(), &pb.ChitChatMessage{User: &pb.User{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport}, Message: message, Lamport: localLamport})
 }
 
 func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter, isActive *bool) {
 
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 3; i++ {
 
 		message, err := rn.GetRandomName("./all.last", &rn.Options{})
 
@@ -118,11 +117,18 @@ func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatt
 }
 
 func main() {
-	file, e := os.OpenFile("client.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	file, e := os.OpenFile("system.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if e != nil {
 		log.Fatalf("Failed to open log file: %v", e)
 	}
-	log.SetOutput(file)
+
+	//code below (line 127-132) comes from chatGPT
+	defer file.Close()
+	// Create a multi-writer to write to both the file and stdout
+	multiWriter := io.MultiWriter(os.Stdout, file)
+	// Set the log output to the multi-writer
+	log.SetOutput(multiWriter)
+
 
 
 	/* Lamport Timestamp */
@@ -147,11 +153,11 @@ func main() {
 
 	stream1 := localJoinChat(client, localChitChatter, isActivePointer)
 
-	go receiveMessages(stream1, isActivePointer)
+	go receiveMessages(stream1, isActivePointer, localChitChatter)
 
 	go SendMessageLoop(client, localChitChatter, isActivePointer)
 
-	time.Sleep(40 * time.Second)
+	time.Sleep(30 * time.Second)
 
 	localLeaveChat(client, localChitChatter, isActivePointer)
 

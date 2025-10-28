@@ -67,3 +67,22 @@ https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide/rout
 
 
 ## provide a diagram, that traces a sequence of RPC calls together with the Lamport timestamps, that corresponds to a chosen sequence of interactions: Client X joins, Client X Publishes, ..., Client X leaves. 
+
+
+
+
+
+
+
+# Log Message Format
+
+
+
+Date, Time, Component, Event, Lamport Timestamp 
+
+"Component: Server, Event: Startup: Lamport Timestamp: &d", s.lamport
+
+Date: year/month/day 
+Time: hour/minute/second
+Component: Server | Client [ID]
+Event: Join Chat | Leave Chat | Publish Message | Broadcast 
