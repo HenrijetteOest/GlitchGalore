@@ -108,10 +108,10 @@ func (s *ChitChatServer) Broadcast(req *pb.User, msg string) error {
 			defer waitGroup.Done()
 			err := s.userStreams[clientId].Send(broadcastMsg)
 			if err != nil {
-				if errors.Is(err, io.EOF) {
-					s.userStreams
-					return nil
-				}
+				//if errors.Is(err, io.EOF) {
+				//	s.userStreams[clientId].SendAndClose(broadcastMsg)
+				//	return nil
+				//}
 				log.Printf("error trying to send to client: %d (stream closed) %v", clientId, err)
 			}
 			fileLog.Printf("/ Server / Broadcast message to user %d from user %d / Lamport %d", clientId, req.Id, s.lamport)
@@ -143,7 +143,7 @@ func main() {
 	server.start_server()
 
 	//fileLog.Printf("/ Server / before time sleep / %d", server.lamport)
-	//time.Sleep(45 * time.Second)
+	time.Sleep(45 * time.Second)
 	//server.shutdown_server()
 
 	/*

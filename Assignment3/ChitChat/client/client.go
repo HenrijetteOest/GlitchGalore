@@ -122,7 +122,7 @@ func localSendMessage(client pb.ChitChatServiceClient, localChitChatter ChitChat
 
 // Sends a total of 50 proto ChitChatMessages 
 func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter) {
-	for i := 0; i < 50; i++ {
+	for i := 0; i < 20; i++ {
 
 		message, err := rn.GetRandomName("./all.last", &rn.Options{})
 
