@@ -1,502 +1,88 @@
-2025/10/28 20:04:23 / Server / Startup / 0
-2025/10/28 20:04:26 / Client 738 / Join Chat Request / Lamport 1
-2025/10/28 20:04:26 / Server / Client 738 Joins Chat / Lamport 2
-2025/10/28 20:04:26 / Server / Broadcast message to user 738 from user 738 / Lamport 3
-2025/10/28 20:04:26 / Client 738 / Received [Client 738]'s Message from Server / Lamport 4
-2025/10/28 20:04:26 / Client 738 / Send Message / Lamport 5
-2025/10/28 20:04:26 / Server / Receive message from user 738 / Lamport 6
-2025/10/28 20:04:26 / Server / Broadcast message to user 738 from user 738 / Lamport 7
-2025/10/28 20:04:26 / Client 738 / Received [Client 738]'s Message from Server / Lamport 8
-2025/10/28 20:04:28 / Client 468 / Join Chat Request / Lamport 1
-2025/10/28 20:04:28 / Client 468 / Send Message / Lamport 2
-2025/10/28 20:04:28 / Server / Receive message from user 468 / Lamport 8
-2025/10/28 20:04:28 / Server / Broadcast message to user 468 from user 468 / Lamport 9
-2025/10/28 20:04:28 / Server / Broadcast message to user 738 from user 468 / Lamport 9
-2025/10/28 20:04:28 / Client 738 / Received [Client 468]'s Message from Server / Lamport 10
-2025/10/28 20:04:28 / Client 468 / Received [Client 468]'s Message from Server / Lamport 10
-2025/10/28 20:04:28 / Client 738 / Send Message / Lamport 11
-2025/10/28 20:04:28 / Server / Receive message from user 738 / Lamport 12
-2025/10/28 20:04:28 / Server / Broadcast message to user 738 from user 738 / Lamport 13
-2025/10/28 20:04:28 / Server / Broadcast message to user 468 from user 738 / Lamport 13
-2025/10/28 20:04:28 / Client 738 / Received [Client 738]'s Message from Server / Lamport 14
-2025/10/28 20:04:28 / Client 468 / Received [Client 738]'s Message from Server / Lamport 14
-2025/10/28 20:04:28 / Client 738 / Send Message / Lamport 15
-2025/10/28 20:04:28 / Server / Receive message from user 738 / Lamport 16
-2025/10/28 20:04:28 / Server / Broadcast message to user 738 from user 738 / Lamport 17
-2025/10/28 20:04:28 / Server / Broadcast message to user 468 from user 738 / Lamport 17
-2025/10/28 20:04:28 / Client 468 / Received [Client 738]'s Message from Server / Lamport 18
-2025/10/28 20:04:28 / Client 738 / Received [Client 738]'s Message from Server / Lamport 18
-2025/10/28 20:04:29 / Client 580 / Join Chat Request / Lamport 1
-2025/10/28 20:04:30 / Client 580 / Send Message / Lamport 2
-2025/10/28 20:04:30 / Server / Receive message from user 580 / Lamport 18
-2025/10/28 20:04:30 / Server / Broadcast message to user 580 from user 580 / Lamport 19
-2025/10/28 20:04:30 / Server / Broadcast message to user 468 from user 580 / Lamport 19
-2025/10/28 20:04:30 / Server / Broadcast message to user 738 from user 580 / Lamport 19
-2025/10/28 20:04:30 / Client 468 / Received [Client 580]'s Message from Server / Lamport 20
-2025/10/28 20:04:30 / Client 580 / Received [Client 580]'s Message from Server / Lamport 20
-2025/10/28 20:04:30 / Client 738 / Received [Client 580]'s Message from Server / Lamport 20
-2025/10/28 20:04:30 / Client 468 / Send Message / Lamport 21
-2025/10/28 20:04:30 / Server / Receive message from user 468 / Lamport 22
-2025/10/28 20:04:30 / Server / Broadcast message to user 580 from user 468 / Lamport 23
-2025/10/28 20:04:30 / Server / Broadcast message to user 738 from user 468 / Lamport 23
-2025/10/28 20:04:30 / Server / Broadcast message to user 468 from user 468 / Lamport 23
-2025/10/28 20:04:30 / Client 468 / Received [Client 468]'s Message from Server / Lamport 24
-2025/10/28 20:04:30 / Client 580 / Received [Client 468]'s Message from Server / Lamport 24
-2025/10/28 20:04:30 / Client 738 / Received [Client 468]'s Message from Server / Lamport 24
-2025/10/28 20:04:30 / Client 738 / Send Message / Lamport 25
-2025/10/28 20:04:30 / Server / Receive message from user 738 / Lamport 26
-2025/10/28 20:04:30 / Server / Broadcast message to user 580 from user 738 / Lamport 27
-2025/10/28 20:04:30 / Server / Broadcast message to user 468 from user 738 / Lamport 27
-2025/10/28 20:04:30 / Server / Broadcast message to user 738 from user 738 / Lamport 27
-2025/10/28 20:04:30 / Client 738 / Received [Client 738]'s Message from Server / Lamport 28
-2025/10/28 20:04:30 / Client 580 / Received [Client 738]'s Message from Server / Lamport 28
-2025/10/28 20:04:30 / Client 468 / Received [Client 738]'s Message from Server / Lamport 28
-2025/10/28 20:04:31 / Client 580 / Send Message / Lamport 29
-2025/10/28 20:04:31 / Server / Receive message from user 580 / Lamport 30
-2025/10/28 20:04:31 / Server / Broadcast message to user 580 from user 580 / Lamport 31
-2025/10/28 20:04:31 / Server / Broadcast message to user 468 from user 580 / Lamport 31
-2025/10/28 20:04:31 / Server / Broadcast message to user 738 from user 580 / Lamport 31
-2025/10/28 20:04:31 / Client 580 / Received [Client 580]'s Message from Server / Lamport 32
-2025/10/28 20:04:31 / Client 738 / Received [Client 580]'s Message from Server / Lamport 32
-2025/10/28 20:04:31 / Client 468 / Received [Client 580]'s Message from Server / Lamport 32
-2025/10/28 20:04:33 / Client 580 / Send Message / Lamport 33
-2025/10/28 20:04:33 / Server / Receive message from user 580 / Lamport 34
-2025/10/28 20:04:33 / Server / Broadcast message to user 580 from user 580 / Lamport 35
-2025/10/28 20:04:33 / Server / Broadcast message to user 468 from user 580 / Lamport 35
-2025/10/28 20:04:33 / Server / Broadcast message to user 738 from user 580 / Lamport 35
-2025/10/28 20:04:33 / Client 580 / Received [Client 580]'s Message from Server / Lamport 36
-2025/10/28 20:04:33 / Client 468 / Received [Client 580]'s Message from Server / Lamport 36
-2025/10/28 20:04:33 / Client 738 / Received [Client 580]'s Message from Server / Lamport 36
-2025/10/28 20:04:33 / Client 580 / Send Message / Lamport 37
-2025/10/28 20:04:33 / Server / Receive message from user 580 / Lamport 38
-2025/10/28 20:04:33 / Server / Broadcast message to user 468 from user 580 / Lamport 39
-2025/10/28 20:04:33 / Server / Broadcast message to user 580 from user 580 / Lamport 39
-2025/10/28 20:04:33 / Server / Broadcast message to user 738 from user 580 / Lamport 39
-2025/10/28 20:04:33 / Client 738 / Received [Client 580]'s Message from Server / Lamport 40
-2025/10/28 20:04:33 / Client 468 / Received [Client 580]'s Message from Server / Lamport 40
-2025/10/28 20:04:33 / Client 580 / Received [Client 580]'s Message from Server / Lamport 40
-2025/10/28 20:04:33 / Client 580 / Send Message / Lamport 41
-2025/10/28 20:04:33 / Server / Receive message from user 580 / Lamport 42
-2025/10/28 20:04:33 / Server / Broadcast message to user 738 from user 580 / Lamport 43
-2025/10/28 20:04:33 / Server / Broadcast message to user 468 from user 580 / Lamport 43
-2025/10/28 20:04:33 / Server / Broadcast message to user 580 from user 580 / Lamport 43
-2025/10/28 20:04:33 / Client 580 / Received [Client 580]'s Message from Server / Lamport 44
-2025/10/28 20:04:33 / Client 468 / Received [Client 580]'s Message from Server / Lamport 44
-2025/10/28 20:04:33 / Client 738 / Received [Client 580]'s Message from Server / Lamport 44
-2025/10/28 20:04:33 / Client 468 / Send Message / Lamport 45
-2025/10/28 20:04:33 / Server / Receive message from user 468 / Lamport 46
-2025/10/28 20:04:33 / Server / Broadcast message to user 580 from user 468 / Lamport 47
-2025/10/28 20:04:33 / Server / Broadcast message to user 468 from user 468 / Lamport 47
-2025/10/28 20:04:33 / Server / Broadcast message to user 738 from user 468 / Lamport 47
-2025/10/28 20:04:33 / Client 468 / Received [Client 468]'s Message from Server / Lamport 48
-2025/10/28 20:04:33 / Client 580 / Received [Client 468]'s Message from Server / Lamport 48
-2025/10/28 20:04:33 / Client 738 / Received [Client 468]'s Message from Server / Lamport 48
-2025/10/28 20:04:33 / Client 738 / Send Message / Lamport 49
-2025/10/28 20:04:33 / Server / Receive message from user 738 / Lamport 50
-2025/10/28 20:04:33 / Server / Broadcast message to user 738 from user 738 / Lamport 51
-2025/10/28 20:04:33 / Server / Broadcast message to user 580 from user 738 / Lamport 51
-2025/10/28 20:04:33 / Server / Broadcast message to user 468 from user 738 / Lamport 51
-2025/10/28 20:04:33 / Client 738 / Received [Client 738]'s Message from Server / Lamport 52
-2025/10/28 20:04:33 / Client 580 / Received [Client 738]'s Message from Server / Lamport 52
-2025/10/28 20:04:33 / Client 468 / Received [Client 738]'s Message from Server / Lamport 52
-2025/10/28 20:04:34 / Client 468 / Send Message / Lamport 53
-2025/10/28 20:04:34 / Server / Receive message from user 468 / Lamport 54
-2025/10/28 20:04:34 / Server / Broadcast message to user 738 from user 468 / Lamport 55
-2025/10/28 20:04:34 / Server / Broadcast message to user 468 from user 468 / Lamport 55
-2025/10/28 20:04:34 / Server / Broadcast message to user 580 from user 468 / Lamport 55
-2025/10/28 20:04:34 / Client 468 / Received [Client 468]'s Message from Server / Lamport 56
-2025/10/28 20:04:34 / Client 580 / Received [Client 468]'s Message from Server / Lamport 56
-2025/10/28 20:04:34 / Client 738 / Received [Client 468]'s Message from Server / Lamport 56
-2025/10/28 20:04:34 / Client 468 / Send Message / Lamport 57
-2025/10/28 20:04:34 / Server / Receive message from user 468 / Lamport 58
-2025/10/28 20:04:34 / Server / Broadcast message to user 468 from user 468 / Lamport 59
-2025/10/28 20:04:34 / Server / Broadcast message to user 580 from user 468 / Lamport 59
-2025/10/28 20:04:34 / Server / Broadcast message to user 738 from user 468 / Lamport 59
-2025/10/28 20:04:34 / Client 468 / Received [Client 468]'s Message from Server / Lamport 60
-2025/10/28 20:04:34 / Client 580 / Received [Client 468]'s Message from Server / Lamport 60
-2025/10/28 20:04:34 / Client 738 / Received [Client 468]'s Message from Server / Lamport 60
-2025/10/28 20:04:34 / Client 738 / Send Message / Lamport 61
-2025/10/28 20:04:34 / Server / Receive message from user 738 / Lamport 62
-2025/10/28 20:04:34 / Server / Broadcast message to user 738 from user 738 / Lamport 63
-2025/10/28 20:04:34 / Server / Broadcast message to user 468 from user 738 / Lamport 63
-2025/10/28 20:04:34 / Server / Broadcast message to user 580 from user 738 / Lamport 63
-2025/10/28 20:04:34 / Client 738 / Received [Client 738]'s Message from Server / Lamport 64
-2025/10/28 20:04:34 / Client 580 / Received [Client 738]'s Message from Server / Lamport 64
-2025/10/28 20:04:34 / Client 468 / Received [Client 738]'s Message from Server / Lamport 64
-2025/10/28 20:04:34 / Client 738 / Send Message / Lamport 65
-2025/10/28 20:04:34 / Server / Receive message from user 738 / Lamport 66
-2025/10/28 20:04:34 / Server / Broadcast message to user 580 from user 738 / Lamport 67
-2025/10/28 20:04:34 / Server / Broadcast message to user 738 from user 738 / Lamport 67
-2025/10/28 20:04:34 / Server / Broadcast message to user 468 from user 738 / Lamport 67
-2025/10/28 20:04:34 / Client 580 / Received [Client 738]'s Message from Server / Lamport 68
-2025/10/28 20:04:34 / Client 468 / Received [Client 738]'s Message from Server / Lamport 68
-2025/10/28 20:04:34 / Client 738 / Received [Client 738]'s Message from Server / Lamport 68
-2025/10/28 20:04:36 / Client 468 / Send Message / Lamport 69
-2025/10/28 20:04:36 / Server / Receive message from user 468 / Lamport 70
-2025/10/28 20:04:36 / Server / Broadcast message to user 738 from user 468 / Lamport 71
-2025/10/28 20:04:36 / Server / Broadcast message to user 468 from user 468 / Lamport 71
-2025/10/28 20:04:36 / Server / Broadcast message to user 580 from user 468 / Lamport 71
-2025/10/28 20:04:36 / Client 468 / Received [Client 468]'s Message from Server / Lamport 72
-2025/10/28 20:04:36 / Client 738 / Received [Client 468]'s Message from Server / Lamport 72
-2025/10/28 20:04:36 / Client 580 / Received [Client 468]'s Message from Server / Lamport 72
-2025/10/28 20:04:37 / Client 580 / Send Message / Lamport 73
-2025/10/28 20:04:37 / Server / Receive message from user 580 / Lamport 74
-2025/10/28 20:04:37 / Server / Broadcast message to user 738 from user 580 / Lamport 75
-2025/10/28 20:04:37 / Server / Broadcast message to user 468 from user 580 / Lamport 75
-2025/10/28 20:04:37 / Server / Broadcast message to user 580 from user 580 / Lamport 75
-2025/10/28 20:04:37 / Client 468 / Received [Client 580]'s Message from Server / Lamport 76
-2025/10/28 20:04:37 / Client 738 / Received [Client 580]'s Message from Server / Lamport 76
-2025/10/28 20:04:37 / Client 580 / Received [Client 580]'s Message from Server / Lamport 76
-2025/10/28 20:04:37 / Client 580 / Send Message / Lamport 77
-2025/10/28 20:04:37 / Server / Receive message from user 580 / Lamport 78
-2025/10/28 20:04:37 / Server / Broadcast message to user 580 from user 580 / Lamport 79
-2025/10/28 20:04:37 / Server / Broadcast message to user 468 from user 580 / Lamport 79
-2025/10/28 20:04:37 / Server / Broadcast message to user 738 from user 580 / Lamport 79
-2025/10/28 20:04:37 / Client 468 / Received [Client 580]'s Message from Server / Lamport 80
-2025/10/28 20:04:37 / Client 580 / Received [Client 580]'s Message from Server / Lamport 80
-2025/10/28 20:04:37 / Client 738 / Received [Client 580]'s Message from Server / Lamport 80
-2025/10/28 20:04:37 / Client 738 / Send Message / Lamport 81
-2025/10/28 20:04:37 / Server / Receive message from user 738 / Lamport 82
-2025/10/28 20:04:37 / Server / Broadcast message to user 738 from user 738 / Lamport 83
-2025/10/28 20:04:37 / Server / Broadcast message to user 468 from user 738 / Lamport 83
-2025/10/28 20:04:37 / Server / Broadcast message to user 580 from user 738 / Lamport 83
-2025/10/28 20:04:37 / Client 738 / Received [Client 738]'s Message from Server / Lamport 84
-2025/10/28 20:04:37 / Client 468 / Received [Client 738]'s Message from Server / Lamport 84
-2025/10/28 20:04:37 / Client 580 / Received [Client 738]'s Message from Server / Lamport 84
-2025/10/28 20:04:38 / Client 468 / Send Message / Lamport 85
-2025/10/28 20:04:38 / Server / Receive message from user 468 / Lamport 86
-2025/10/28 20:04:38 / Server / Broadcast message to user 738 from user 468 / Lamport 87
-2025/10/28 20:04:38 / Server / Broadcast message to user 468 from user 468 / Lamport 87
-2025/10/28 20:04:38 / Server / Broadcast message to user 580 from user 468 / Lamport 87
-2025/10/28 20:04:38 / Client 580 / Received [Client 468]'s Message from Server / Lamport 88
-2025/10/28 20:04:38 / Client 738 / Received [Client 468]'s Message from Server / Lamport 88
-2025/10/28 20:04:38 / Client 468 / Received [Client 468]'s Message from Server / Lamport 88
-2025/10/28 20:04:39 / Client 580 / Send Message / Lamport 89
-2025/10/28 20:04:39 / Server / Receive message from user 580 / Lamport 90
-2025/10/28 20:04:39 / Server / Broadcast message to user 738 from user 580 / Lamport 91
-2025/10/28 20:04:39 / Server / Broadcast message to user 468 from user 580 / Lamport 91
-2025/10/28 20:04:39 / Server / Broadcast message to user 580 from user 580 / Lamport 91
-2025/10/28 20:04:39 / Client 580 / Received [Client 580]'s Message from Server / Lamport 92
-2025/10/28 20:04:39 / Client 738 / Received [Client 580]'s Message from Server / Lamport 92
-2025/10/28 20:04:39 / Client 468 / Received [Client 580]'s Message from Server / Lamport 92
-2025/10/28 20:04:40 / Client 580 / Send Message / Lamport 93
-2025/10/28 20:04:40 / Server / Receive message from user 580 / Lamport 94
-2025/10/28 20:04:40 / Server / Broadcast message to user 738 from user 580 / Lamport 95
-2025/10/28 20:04:40 / Server / Broadcast message to user 468 from user 580 / Lamport 95
-2025/10/28 20:04:40 / Server / Broadcast message to user 580 from user 580 / Lamport 95
-2025/10/28 20:04:40 / Client 468 / Received [Client 580]'s Message from Server / Lamport 96
-2025/10/28 20:04:40 / Client 580 / Received [Client 580]'s Message from Server / Lamport 96
-2025/10/28 20:04:40 / Client 738 / Received [Client 580]'s Message from Server / Lamport 96
-2025/10/28 20:04:40 / Client 468 / Send Message / Lamport 97
-2025/10/28 20:04:40 / Server / Receive message from user 468 / Lamport 98
-2025/10/28 20:04:40 / Server / Broadcast message to user 738 from user 468 / Lamport 99
-2025/10/28 20:04:40 / Server / Broadcast message to user 468 from user 468 / Lamport 99
-2025/10/28 20:04:40 / Server / Broadcast message to user 580 from user 468 / Lamport 99
-2025/10/28 20:04:40 / Client 468 / Received [Client 468]'s Message from Server / Lamport 100
-2025/10/28 20:04:40 / Client 580 / Received [Client 468]'s Message from Server / Lamport 100
-2025/10/28 20:04:40 / Client 738 / Received [Client 468]'s Message from Server / Lamport 100
-2025/10/28 20:04:40 / Client 738 / Send Message / Lamport 101
-2025/10/28 20:04:40 / Server / Receive message from user 738 / Lamport 102
-2025/10/28 20:04:40 / Server / Broadcast message to user 738 from user 738 / Lamport 103
-2025/10/28 20:04:40 / Server / Broadcast message to user 468 from user 738 / Lamport 103
-2025/10/28 20:04:40 / Server / Broadcast message to user 580 from user 738 / Lamport 103
-2025/10/28 20:04:40 / Client 738 / Received [Client 738]'s Message from Server / Lamport 104
-2025/10/28 20:04:40 / Client 468 / Received [Client 738]'s Message from Server / Lamport 104
-2025/10/28 20:04:40 / Client 580 / Received [Client 738]'s Message from Server / Lamport 104
-2025/10/28 20:04:41 / Client 468 / Send Message / Lamport 105
-2025/10/28 20:04:41 / Server / Receive message from user 468 / Lamport 106
-2025/10/28 20:04:41 / Server / Broadcast message to user 580 from user 468 / Lamport 107
-2025/10/28 20:04:41 / Server / Broadcast message to user 468 from user 468 / Lamport 107
-2025/10/28 20:04:41 / Server / Broadcast message to user 738 from user 468 / Lamport 107
-2025/10/28 20:04:41 / Client 468 / Received [Client 468]'s Message from Server / Lamport 108
-2025/10/28 20:04:41 / Client 738 / Received [Client 468]'s Message from Server / Lamport 108
-2025/10/28 20:04:41 / Client 580 / Received [Client 468]'s Message from Server / Lamport 108
-2025/10/28 20:04:43 / Client 580 / Send Message / Lamport 109
-2025/10/28 20:04:43 / Server / Receive message from user 580 / Lamport 110
-2025/10/28 20:04:43 / Server / Broadcast message to user 580 from user 580 / Lamport 111
-2025/10/28 20:04:43 / Server / Broadcast message to user 738 from user 580 / Lamport 111
-2025/10/28 20:04:43 / Server / Broadcast message to user 468 from user 580 / Lamport 111
-2025/10/28 20:04:43 / Client 580 / Received [Client 580]'s Message from Server / Lamport 112
-2025/10/28 20:04:43 / Client 468 / Received [Client 580]'s Message from Server / Lamport 112
-2025/10/28 20:04:43 / Client 738 / Received [Client 580]'s Message from Server / Lamport 112
-2025/10/28 20:04:43 / Client 580 / Send Message / Lamport 113
-2025/10/28 20:04:43 / Server / Receive message from user 580 / Lamport 114
-2025/10/28 20:04:43 / Server / Broadcast message to user 468 from user 580 / Lamport 115
-2025/10/28 20:04:43 / Server / Broadcast message to user 580 from user 580 / Lamport 115
-2025/10/28 20:04:43 / Server / Broadcast message to user 738 from user 580 / Lamport 115
-2025/10/28 20:04:43 / Client 738 / Received [Client 580]'s Message from Server / Lamport 116
-2025/10/28 20:04:43 / Client 468 / Received [Client 580]'s Message from Server / Lamport 116
-2025/10/28 20:04:43 / Client 580 / Received [Client 580]'s Message from Server / Lamport 116
-2025/10/28 20:04:43 / Client 468 / Send Message / Lamport 117
-2025/10/28 20:04:43 / Server / Receive message from user 468 / Lamport 118
-2025/10/28 20:04:43 / Server / Broadcast message to user 468 from user 468 / Lamport 119
-2025/10/28 20:04:43 / Server / Broadcast message to user 738 from user 468 / Lamport 119
-2025/10/28 20:04:43 / Server / Broadcast message to user 580 from user 468 / Lamport 119
-2025/10/28 20:04:43 / Client 468 / Received [Client 468]'s Message from Server / Lamport 120
-2025/10/28 20:04:43 / Client 580 / Received [Client 468]'s Message from Server / Lamport 120
-2025/10/28 20:04:43 / Client 738 / Received [Client 468]'s Message from Server / Lamport 120
-2025/10/28 20:04:44 / Client 738 / Send Message / Lamport 121
-2025/10/28 20:04:44 / Server / Receive message from user 738 / Lamport 122
-2025/10/28 20:04:44 / Server / Broadcast message to user 468 from user 738 / Lamport 123
-2025/10/28 20:04:44 / Server / Broadcast message to user 738 from user 738 / Lamport 123
-2025/10/28 20:04:44 / Server / Broadcast message to user 580 from user 738 / Lamport 123
-2025/10/28 20:04:44 / Client 738 / Received [Client 738]'s Message from Server / Lamport 124
-2025/10/28 20:04:44 / Client 468 / Received [Client 738]'s Message from Server / Lamport 124
-2025/10/28 20:04:44 / Client 580 / Received [Client 738]'s Message from Server / Lamport 124
-2025/10/28 20:04:45 / Client 580 / Send Message / Lamport 125
-2025/10/28 20:04:45 / Server / Receive message from user 580 / Lamport 126
-2025/10/28 20:04:45 / Server / Broadcast message to user 468 from user 580 / Lamport 127
-2025/10/28 20:04:45 / Server / Broadcast message to user 738 from user 580 / Lamport 127
-2025/10/28 20:04:45 / Server / Broadcast message to user 580 from user 580 / Lamport 127
-2025/10/28 20:04:45 / Client 468 / Received [Client 580]'s Message from Server / Lamport 128
-2025/10/28 20:04:45 / Client 738 / Received [Client 580]'s Message from Server / Lamport 128
-2025/10/28 20:04:45 / Client 580 / Received [Client 580]'s Message from Server / Lamport 128
-2025/10/28 20:04:45 / Client 468 / Send Message / Lamport 129
-2025/10/28 20:04:45 / Server / Receive message from user 468 / Lamport 130
-2025/10/28 20:04:45 / Server / Broadcast message to user 738 from user 468 / Lamport 131
-2025/10/28 20:04:45 / Server / Broadcast message to user 468 from user 468 / Lamport 131
-2025/10/28 20:04:45 / Server / Broadcast message to user 580 from user 468 / Lamport 131
-2025/10/28 20:04:45 / Client 468 / Received [Client 468]'s Message from Server / Lamport 132
-2025/10/28 20:04:45 / Client 580 / Received [Client 468]'s Message from Server / Lamport 132
-2025/10/28 20:04:45 / Client 738 / Received [Client 468]'s Message from Server / Lamport 132
-2025/10/28 20:04:48 / Client 468 / Send Message / Lamport 133
-2025/10/28 20:04:48 / Server / Receive message from user 468 / Lamport 134
-2025/10/28 20:04:48 / Server / Broadcast message to user 580 from user 468 / Lamport 135
-2025/10/28 20:04:48 / Server / Broadcast message to user 468 from user 468 / Lamport 135
-2025/10/28 20:04:48 / Server / Broadcast message to user 738 from user 468 / Lamport 135
-2025/10/28 20:04:48 / Client 468 / Received [Client 468]'s Message from Server / Lamport 136
-2025/10/28 20:04:48 / Client 580 / Received [Client 468]'s Message from Server / Lamport 136
-2025/10/28 20:04:48 / Client 738 / Received [Client 468]'s Message from Server / Lamport 136
-2025/10/28 20:04:48 / Client 738 / Send Message / Lamport 137
-2025/10/28 20:04:48 / Server / Receive message from user 738 / Lamport 138
-2025/10/28 20:04:48 / Server / Broadcast message to user 738 from user 738 / Lamport 139
-2025/10/28 20:04:48 / Server / Broadcast message to user 580 from user 738 / Lamport 139
-2025/10/28 20:04:48 / Server / Broadcast message to user 468 from user 738 / Lamport 139
-2025/10/28 20:04:48 / Client 738 / Received [Client 738]'s Message from Server / Lamport 140
-2025/10/28 20:04:48 / Client 468 / Received [Client 738]'s Message from Server / Lamport 140
-2025/10/28 20:04:48 / Client 580 / Received [Client 738]'s Message from Server / Lamport 140
-2025/10/28 20:04:49 / Client 580 / Send Message / Lamport 141
-2025/10/28 20:04:49 / Server / Receive message from user 580 / Lamport 142
-2025/10/28 20:04:49 / Server / Broadcast message to user 468 from user 580 / Lamport 143
-2025/10/28 20:04:49 / Server / Broadcast message to user 738 from user 580 / Lamport 143
-2025/10/28 20:04:49 / Server / Broadcast message to user 580 from user 580 / Lamport 143
-2025/10/28 20:04:49 / Client 738 / Received [Client 580]'s Message from Server / Lamport 144
-2025/10/28 20:04:49 / Client 468 / Received [Client 580]'s Message from Server / Lamport 144
-2025/10/28 20:04:49 / Client 580 / Received [Client 580]'s Message from Server / Lamport 144
-2025/10/28 20:04:49 / Client 580 / Send Message / Lamport 145
-2025/10/28 20:04:49 / Server / Receive message from user 580 / Lamport 146
-2025/10/28 20:04:49 / Server / Broadcast message to user 580 from user 580 / Lamport 147
-2025/10/28 20:04:49 / Server / Broadcast message to user 468 from user 580 / Lamport 147
-2025/10/28 20:04:49 / Server / Broadcast message to user 738 from user 580 / Lamport 147
-2025/10/28 20:04:49 / Client 580 / Received [Client 580]'s Message from Server / Lamport 148
-2025/10/28 20:04:49 / Client 738 / Received [Client 580]'s Message from Server / Lamport 148
-2025/10/28 20:04:49 / Client 468 / Received [Client 580]'s Message from Server / Lamport 148
-2025/10/28 20:04:49 / Client 738 / Send Message / Lamport 149
-2025/10/28 20:04:49 / Server / Receive message from user 738 / Lamport 150
-2025/10/28 20:04:49 / Server / Broadcast message to user 738 from user 738 / Lamport 151
-2025/10/28 20:04:49 / Server / Broadcast message to user 468 from user 738 / Lamport 151
-2025/10/28 20:04:49 / Server / Broadcast message to user 580 from user 738 / Lamport 151
-2025/10/28 20:04:49 / Client 580 / Received [Client 738]'s Message from Server / Lamport 152
-2025/10/28 20:04:49 / Client 468 / Received [Client 738]'s Message from Server / Lamport 152
-2025/10/28 20:04:49 / Client 738 / Received [Client 738]'s Message from Server / Lamport 152
-2025/10/28 20:04:50 / Client 580 / Send Message / Lamport 153
-2025/10/28 20:04:50 / Server / Receive message from user 580 / Lamport 154
-2025/10/28 20:04:50 / Server / Broadcast message to user 738 from user 580 / Lamport 155
-2025/10/28 20:04:50 / Server / Broadcast message to user 580 from user 580 / Lamport 155
-2025/10/28 20:04:50 / Server / Broadcast message to user 468 from user 580 / Lamport 155
-2025/10/28 20:04:50 / Client 580 / Received [Client 580]'s Message from Server / Lamport 156
-2025/10/28 20:04:50 / Client 738 / Received [Client 580]'s Message from Server / Lamport 156
-2025/10/28 20:04:50 / Client 468 / Received [Client 580]'s Message from Server / Lamport 156
-2025/10/28 20:04:52 / Client 468 / Send Message / Lamport 157
-2025/10/28 20:04:52 / Server / Receive message from user 468 / Lamport 158
-2025/10/28 20:04:52 / Server / Broadcast message to user 738 from user 468 / Lamport 159
-2025/10/28 20:04:52 / Server / Broadcast message to user 468 from user 468 / Lamport 159
-2025/10/28 20:04:52 / Server / Broadcast message to user 580 from user 468 / Lamport 159
-2025/10/28 20:04:52 / Client 468 / Received [Client 468]'s Message from Server / Lamport 160
-2025/10/28 20:04:52 / Client 580 / Received [Client 468]'s Message from Server / Lamport 160
-2025/10/28 20:04:52 / Client 738 / Received [Client 468]'s Message from Server / Lamport 160
-2025/10/28 20:04:53 / Client 738 / Send Message / Lamport 161
-2025/10/28 20:04:53 / Server / Receive message from user 738 / Lamport 162
-2025/10/28 20:04:53 / Server / Broadcast message to user 580 from user 738 / Lamport 163
-2025/10/28 20:04:53 / Server / Broadcast message to user 468 from user 738 / Lamport 163
-2025/10/28 20:04:53 / Server / Broadcast message to user 738 from user 738 / Lamport 163
-2025/10/28 20:04:53 / Client 738 / Received [Client 738]'s Message from Server / Lamport 164
-2025/10/28 20:04:53 / Client 468 / Received [Client 738]'s Message from Server / Lamport 164
-2025/10/28 20:04:53 / Client 580 / Received [Client 738]'s Message from Server / Lamport 164
-2025/10/28 20:04:54 / Client 580 / Send Message / Lamport 165
-2025/10/28 20:04:54 / Server / Receive message from user 580 / Lamport 166
-2025/10/28 20:04:54 / Server / Broadcast message to user 468 from user 580 / Lamport 167
-2025/10/28 20:04:54 / Server / Broadcast message to user 580 from user 580 / Lamport 167
-2025/10/28 20:04:54 / Server / Broadcast message to user 738 from user 580 / Lamport 167
-2025/10/28 20:04:54 / Client 580 / Received [Client 580]'s Message from Server / Lamport 168
-2025/10/28 20:04:54 / Client 468 / Received [Client 580]'s Message from Server / Lamport 168
-2025/10/28 20:04:54 / Client 738 / Received [Client 580]'s Message from Server / Lamport 168
-2025/10/28 20:04:54 / Client 468 / Send Message / Lamport 169
-2025/10/28 20:04:54 / Server / Receive message from user 468 / Lamport 170
-2025/10/28 20:04:54 / Server / Broadcast message to user 738 from user 468 / Lamport 171
-2025/10/28 20:04:54 / Server / Broadcast message to user 468 from user 468 / Lamport 171
-2025/10/28 20:04:54 / Server / Broadcast message to user 580 from user 468 / Lamport 171
-2025/10/28 20:04:54 / Client 580 / Received [Client 468]'s Message from Server / Lamport 172
-2025/10/28 20:04:54 / Client 468 / Received [Client 468]'s Message from Server / Lamport 172
-2025/10/28 20:04:54 / Client 738 / Received [Client 468]'s Message from Server / Lamport 172
-2025/10/28 20:04:55 / Client 738 / Send Message / Lamport 173
-2025/10/28 20:04:55 / Server / Receive message from user 738 / Lamport 174
-2025/10/28 20:04:55 / Server / Broadcast message to user 580 from user 738 / Lamport 175
-2025/10/28 20:04:55 / Server / Broadcast message to user 468 from user 738 / Lamport 175
-2025/10/28 20:04:55 / Server / Broadcast message to user 738 from user 738 / Lamport 175
-2025/10/28 20:04:55 / Client 738 / Received [Client 738]'s Message from Server / Lamport 176
-2025/10/28 20:04:55 / Client 468 / Received [Client 738]'s Message from Server / Lamport 176
-2025/10/28 20:04:55 / Client 580 / Received [Client 738]'s Message from Server / Lamport 176
-2025/10/28 20:04:55 / Client 738 / Send Message / Lamport 177
-2025/10/28 20:04:55 / Server / Receive message from user 738 / Lamport 178
-2025/10/28 20:04:55 / Server / Broadcast message to user 738 from user 738 / Lamport 179
-2025/10/28 20:04:55 / Server / Broadcast message to user 468 from user 738 / Lamport 179
-2025/10/28 20:04:55 / Server / Broadcast message to user 580 from user 738 / Lamport 179
-2025/10/28 20:04:55 / Client 738 / Received [Client 738]'s Message from Server / Lamport 180
-2025/10/28 20:04:55 / Client 580 / Received [Client 738]'s Message from Server / Lamport 180
-2025/10/28 20:04:55 / Client 468 / Received [Client 738]'s Message from Server / Lamport 180
-2025/10/28 20:04:55 / Client 738 / Send Message / Lamport 181
-2025/10/28 20:04:55 / Server / Receive message from user 738 / Lamport 182
-2025/10/28 20:04:55 / Server / Broadcast message to user 738 from user 738 / Lamport 183
-2025/10/28 20:04:55 / Server / Broadcast message to user 468 from user 738 / Lamport 183
-2025/10/28 20:04:55 / Server / Broadcast message to user 580 from user 738 / Lamport 183
-2025/10/28 20:04:55 / Client 468 / Received [Client 738]'s Message from Server / Lamport 184
-2025/10/28 20:04:55 / Client 580 / Received [Client 738]'s Message from Server / Lamport 184
-2025/10/28 20:04:55 / Client 738 / Received [Client 738]'s Message from Server / Lamport 184
-2025/10/28 20:04:56 / Client 738 / Leave Chat Request / Lamport 185
-2025/10/28 20:04:56 / Server / Client 738 Leaves Chat / Lamport 186
-2025/10/28 20:04:56 / Server / Broadcast message to user 580 from user 738 / Lamport 187
-2025/10/28 20:04:56 / Server / Broadcast message to user 468 from user 738 / Lamport 187
-2025/10/28 20:04:56 / Client 580 / Received [Client 738]'s Message from Server / Lamport 188
-2025/10/28 20:04:56 / Client 468 / Received [Client 738]'s Message from Server / Lamport 188
-2025/10/28 20:04:57 / Client 580 / Send Message / Lamport 189
-2025/10/28 20:04:57 / Server / Receive message from user 580 / Lamport 190
-2025/10/28 20:04:57 / Server / Broadcast message to user 468 from user 580 / Lamport 191
-2025/10/28 20:04:57 / Server / Broadcast message to user 580 from user 580 / Lamport 191
-2025/10/28 20:04:57 / Client 580 / Received [Client 580]'s Message from Server / Lamport 192
-2025/10/28 20:04:57 / Client 468 / Received [Client 580]'s Message from Server / Lamport 192
-2025/10/28 20:04:57 / Client 738 / Send Message / Lamport 186
-2025/10/28 20:04:57 / Server / Receive message from user 738 / Lamport 192
-2025/10/28 20:04:57 / Server / Broadcast message to user 468 from user 738 / Lamport 193
-2025/10/28 20:04:57 / Server / Broadcast message to user 580 from user 738 / Lamport 193
-2025/10/28 20:04:57 / Client 468 / Received [Client 738]'s Message from Server / Lamport 194
-2025/10/28 20:04:57 / Client 580 / Received [Client 738]'s Message from Server / Lamport 194
-2025/10/28 20:04:58 / Client 580 / Send Message / Lamport 195
-2025/10/28 20:04:58 / Server / Receive message from user 580 / Lamport 196
-2025/10/28 20:04:58 / Server / Broadcast message to user 468 from user 580 / Lamport 197
-2025/10/28 20:04:58 / Server / Broadcast message to user 580 from user 580 / Lamport 197
-2025/10/28 20:04:58 / Client 468 / Received [Client 580]'s Message from Server / Lamport 198
-2025/10/28 20:04:58 / Client 580 / Received [Client 580]'s Message from Server / Lamport 198
-2025/10/28 20:04:58 / Client 468 / Leave Chat Request / Lamport 199
-2025/10/28 20:04:58 / Server / Client 468 Leaves Chat / Lamport 200
-2025/10/28 20:04:58 / Server / Broadcast message to user 580 from user 468 / Lamport 201
-2025/10/28 20:04:58 / Client 580 / Received [Client 468]'s Message from Server / Lamport 202
-2025/10/28 20:04:58 / Client 468 / Send Message / Lamport 200
-2025/10/28 20:04:58 / Server / Receive message from user 468 / Lamport 202
-2025/10/28 20:04:58 / Server / Broadcast message to user 580 from user 468 / Lamport 203
-2025/10/28 20:04:58 / Client 580 / Received [Client 468]'s Message from Server / Lamport 204
-2025/10/28 20:05:00 / Client 580 / Leave Chat Request / Lamport 205
-2025/10/28 20:05:00 / Server / Client 580 Leaves Chat / Lamport 206
-2025/10/28 20:05:00 / Client 738 / Send Message / Lamport 187
-2025/10/28 20:05:00 / Server / Receive message from user 738 / Lamport 208
-2025/10/28 20:05:01 / Client 738 / Send Message / Lamport 188
-2025/10/28 20:05:01 / Server / Receive message from user 738 / Lamport 210
-2025/10/28 20:05:02 / Client 580 / Send Message / Lamport 206
-2025/10/28 20:05:02 / Server / Receive message from user 580 / Lamport 212
-2025/10/28 20:05:02 / Client 468 / Send Message / Lamport 201
-2025/10/28 20:05:02 / Server / Receive message from user 468 / Lamport 214
-2025/10/28 20:05:02 / Client 738 / Send Message / Lamport 189
-2025/10/28 20:05:02 / Server / Receive message from user 738 / Lamport 216
-2025/10/28 20:05:04 / Client 468 / Send Message / Lamport 202
-2025/10/28 20:05:04 / Server / Receive message from user 468 / Lamport 218
-2025/10/28 20:05:05 / Client 580 / Send Message / Lamport 207
-2025/10/28 20:05:05 / Server / Receive message from user 580 / Lamport 220
-2025/10/28 20:05:08 / Client 468 / Send Message / Lamport 203
-2025/10/28 20:05:08 / Server / Receive message from user 468 / Lamport 222
-2025/10/28 20:05:11 / Client 468 / Send Message / Lamport 204
-2025/10/28 20:05:11 / Server / Receive message from user 468 / Lamport 224
-2025/10/28 20:05:13 / Client 468 / Send Message / Lamport 205
-2025/10/28 20:05:13 / Server / Receive message from user 468 / Lamport 226
-2025/10/28 20:09:43 / Client 207 / Join Chat Request / Lamport 1
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 2
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 228
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 229
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 230
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 231
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 232
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 233
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 234
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 235
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 236
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 237
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 238
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 239
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 240
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 241
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 242
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 243
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 244
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 245
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 246
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 247
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 248
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 249
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 250
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 251
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 252
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 253
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 254
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 255
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 256
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 257
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 258
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 259
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 260
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 261
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 262
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 263
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 264
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 265
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 266
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 267
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 268
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 269
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 270
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 271
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 272
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 273
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 274
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 275
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 276
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 277
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 278
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 279
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 280
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 281
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 282
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 283
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 284
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 285
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 286
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 287
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 288
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 289
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 290
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 291
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 292
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 293
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 294
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 295
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 296
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 297
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 298
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 299
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 300
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 301
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 302
-2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 303
-2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 304
-2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 305
-2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 306
-2025/10/28 20:10:14 / Client 207 / Leave Chat Request / Lamport 307
-2025/10/28 20:10:14 / Server / Client 207 Leaves Chat / Lamport 308
+2025/10/28 20:15:07 / Client 244 / Join Chat Request / Lamport 1
+2025/10/28 20:15:12 / Server / Startup / 0
+2025/10/28 20:15:15 / Client 243 / Join Chat Request / Lamport 1
+2025/10/28 20:15:15 / Server / Client 243 Joins Chat / Lamport 2
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 3
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 4
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 5
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 6
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 7
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 8
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 9
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 10
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 11
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 12
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 13
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 14
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 15
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 16
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 17
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 18
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 19
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 20
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 21
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 22
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 23
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 24
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 25
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 26
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 27
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 28
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 29
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 30
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 31
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 32
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 33
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 34
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 35
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 36
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 37
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 38
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 39
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 40
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 41
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 42
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 43
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 44
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 45
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 46
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 47
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 48
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 49
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 50
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 51
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 52
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 53
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 54
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 55
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 56
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 57
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 58
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 59
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 60
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 61
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 62
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 63
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 64
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 65
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 66
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 67
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 68
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 69
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 70
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 71
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 72
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 73
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 74
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 75
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 76
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 77
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 78
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 79
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 80
+2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 81
+2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 82
+2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 83
+2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 84
+2025/10/28 20:15:16 / Server / force shutdown / 83
+2025/10/28 20:15:16 / Server / shutdowned / 83

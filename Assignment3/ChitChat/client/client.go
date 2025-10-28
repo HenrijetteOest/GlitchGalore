@@ -51,7 +51,6 @@ func makeRandomClient() ChitChatter {
 }
 
 /* Function to increment the lamport timestamp */
-
 func incrementLamport() {
 	mu.Lock()
 	defer mu.Unlock()
@@ -91,7 +90,6 @@ func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatte
 	*isActivePointer = false
 }
 
-// receive ChitChatMessages from the stream
 // Receives messages as long as the stream is active,
 // which is tracked by the isActivePointer
 func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], isActivePointer *bool, localChitChatter ChitChatter) {
@@ -177,5 +175,4 @@ func main() {
 
 	for {
 	}
-
 }
