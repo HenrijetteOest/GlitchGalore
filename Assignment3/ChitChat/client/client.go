@@ -131,7 +131,7 @@ func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatt
 			log.Fatalf("Not working in messageLoop")
 		}
 		localSendMessage(client, localChitChatter, message)
-		time.Sleep(time.Duration(rand.Intn(5)) * time.Second)
+
 	}
 }
 

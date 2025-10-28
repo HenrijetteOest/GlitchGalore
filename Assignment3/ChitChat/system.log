@@ -417,3 +417,86 @@
 2025/10/28 20:05:11 / Server / Receive message from user 468 / Lamport 224
 2025/10/28 20:05:13 / Client 468 / Send Message / Lamport 205
 2025/10/28 20:05:13 / Server / Receive message from user 468 / Lamport 226
+2025/10/28 20:09:43 / Client 207 / Join Chat Request / Lamport 1
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 2
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 228
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 229
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 230
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 231
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 232
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 233
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 234
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 235
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 236
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 237
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 238
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 239
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 240
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 241
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 242
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 243
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 244
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 245
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 246
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 247
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 248
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 249
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 250
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 251
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 252
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 253
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 254
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 255
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 256
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 257
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 258
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 259
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 260
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 261
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 262
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 263
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 264
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 265
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 266
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 267
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 268
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 269
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 270
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 271
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 272
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 273
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 274
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 275
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 276
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 277
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 278
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 279
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 280
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 281
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 282
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 283
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 284
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 285
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 286
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 287
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 288
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 289
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 290
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 291
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 292
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 293
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 294
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 295
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 296
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 297
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 298
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 299
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 300
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 301
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 302
+2025/10/28 20:09:44 / Client 207 / Send Message / Lamport 303
+2025/10/28 20:09:44 / Server / Receive message from user 207 / Lamport 304
+2025/10/28 20:09:44 / Server / Broadcast message to user 207 from user 207 / Lamport 305
+2025/10/28 20:09:44 / Client 207 / Received [Client 207]'s Message from Server / Lamport 306
+2025/10/28 20:10:14 / Client 207 / Leave Chat Request / Lamport 307
+2025/10/28 20:10:14 / Server / Client 207 Leaves Chat / Lamport 308
