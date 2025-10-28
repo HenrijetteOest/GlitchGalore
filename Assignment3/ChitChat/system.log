@@ -1,18 +1,299 @@
-2025/10/28 12:01:13 Logging to both file and terminal!
-2025/10/28 12:01:16 Server, Event: Startup, Lamport Timestamp: 0
-2025/10/28 12:01:16 Server running on port 5050...
-2025/10/28 12:01:30 Client 957, JoinChat: Participant IRMA with id 957 joined Chit Chat at logical time L - 2
-2025/10/28 12:01:31 Client 957, IRMA: HWA - Timestamp: 6
-2025/10/28 12:01:34 Client 957, IRMA: IN - Timestamp: 10
-2025/10/28 12:01:36 Client 957, IRMA: SHERA - Timestamp: 14
-2025/10/28 12:01:52 Client 957, JoinChat: Participant DORI with id 637 joined Chit Chat at logical time L - 16
-2025/10/28 12:01:52 Client 637, JoinChat: Participant DORI with id 637 joined Chit Chat at logical time L - 16
-2025/10/28 12:01:52 Client 637, DORI: DORIAN - Timestamp: 20
-2025/10/28 12:01:52 Client 957, DORI: DORIAN - Timestamp: 20
-2025/10/28 12:01:56 Client 957, DORI: IRAIDA - Timestamp: 24
-2025/10/28 12:01:56 Client 637, DORI: IRAIDA - Timestamp: 24
-2025/10/28 12:01:56 Client 637, DORI: DARLENA - Timestamp: 28
-2025/10/28 12:01:56 Client 957, DORI: DARLENA - Timestamp: 28
-2025/10/28 12:02:00 client: I left the chat
-2025/10/28 12:02:00 Client 637, LeaveChat: Participant IRMA with id 957 left Chit Chat at logical time L - 32
-2025/10/28 12:02:21 client: I left the chat
+2025/10/28 15:22:25 / Server / Startup / 0
+2025/10/28 15:22:35 / Client 999 / Join Chat Request / Lamport 1
+2025/10/28 15:22:35 / Server / Client 999 Joins Chat / Lamport 2
+2025/10/28 15:22:35 / Server / Broadcast message to user 999 from user 999 / Lamport 3
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 4
+2025/10/28 15:22:36 / Client 999 / Send Message / Lamport 5
+2025/10/28 15:22:36 / Server / Receive message from user 999 / Lamport 6
+2025/10/28 15:22:36 / Server / Broadcast message to user 999 from user 999 / Lamport 7
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 8
+2025/10/28 15:22:36 / Client 999 / Send Message / Lamport 9
+2025/10/28 15:22:36 / Server / Receive message from user 999 / Lamport 10
+2025/10/28 15:22:36 / Server / Broadcast message to user 999 from user 999 / Lamport 11
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 12
+2025/10/28 15:22:36 / Client 999 / Send Message / Lamport 13
+2025/10/28 15:22:36 / Server / Receive message from user 999 / Lamport 14
+2025/10/28 15:22:36 / Server / Broadcast message to user 999 from user 999 / Lamport 15
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 16
+2025/10/28 15:22:36 / Client 999 / Send Message / Lamport 17
+2025/10/28 15:22:36 / Server / Receive message from user 999 / Lamport 18
+2025/10/28 15:22:36 / Server / Broadcast message to user 999 from user 999 / Lamport 19
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 20
+2025/10/28 15:22:36 / Client 999 / Send Message / Lamport 21
+2025/10/28 15:22:36 / Server / Receive message from user 999 / Lamport 22
+2025/10/28 15:22:36 / Server / Broadcast message to user 999 from user 999 / Lamport 23
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 24
+2025/10/28 15:22:36 / Client 999 / Send Message / Lamport 25
+2025/10/28 15:22:36 / Server / Receive message from user 999 / Lamport 26
+2025/10/28 15:22:36 / Server / Broadcast message to user 999 from user 999 / Lamport 27
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 28
+2025/10/28 15:22:36 / Client 999 / Send Message / Lamport 29
+2025/10/28 15:22:36 / Server / Receive message from user 999 / Lamport 30
+2025/10/28 15:22:36 / Server / Broadcast message to user 999 from user 999 / Lamport 31
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 32
+2025/10/28 15:22:36 / Client 999 / Send Message / Lamport 33
+2025/10/28 15:22:36 / Server / Receive message from user 999 / Lamport 34
+2025/10/28 15:22:36 / Server / Broadcast message to user 999 from user 999 / Lamport 35
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 36
+2025/10/28 15:22:36 / Client 999 / Send Message / Lamport 37
+2025/10/28 15:22:36 / Server / Receive message from user 999 / Lamport 38
+2025/10/28 15:22:36 / Server / Broadcast message to user 999 from user 999 / Lamport 39
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 40
+2025/10/28 15:22:36 / Client 999 / Send Message / Lamport 41
+2025/10/28 15:22:36 / Server / Receive message from user 999 / Lamport 42
+2025/10/28 15:22:36 / Server / Broadcast message to user 999 from user 999 / Lamport 43
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 44
+2025/10/28 15:22:36 / Client 999 / Send Message / Lamport 45
+2025/10/28 15:22:36 / Server / Receive message from user 999 / Lamport 46
+2025/10/28 15:22:36 / Server / Broadcast message to user 999 from user 999 / Lamport 47
+2025/10/28 15:22:36 / Client 999 / Received [Client 999]'s Message from Server / Lamport 48
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 49
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 50
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 51
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 52
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 53
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 54
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 55
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 56
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 57
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 58
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 59
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 60
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 61
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 62
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 63
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 64
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 65
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 66
+2025/10/28 15:22:37 / Client 999 / Send Message / Lamport 67
+2025/10/28 15:22:38 / Client 999 / Send Message / Lamport 68
+2025/10/28 15:22:38 / Client 999 / Send Message / Lamport 69
+2025/10/28 15:22:38 / Client 999 / Send Message / Lamport 70
+2025/10/28 15:22:38 / Client 999 / Send Message / Lamport 71
+2025/10/28 15:22:38 / Client 999 / Send Message / Lamport 72
+2025/10/28 15:22:38 / Client 999 / Send Message / Lamport 73
+2025/10/28 15:22:38 / Client 999 / Send Message / Lamport 74
+2025/10/28 15:22:38 / Client 999 / Send Message / Lamport 75
+2025/10/28 15:22:38 / Client 999 / Send Message / Lamport 76
+2025/10/28 15:22:39 / Client 999 / Send Message / Lamport 77
+2025/10/28 15:22:39 / Client 999 / Send Message / Lamport 78
+2025/10/28 15:22:39 / Client 999 / Send Message / Lamport 79
+2025/10/28 15:22:39 / Client 999 / Send Message / Lamport 80
+2025/10/28 15:22:39 / Client 999 / Send Message / Lamport 81
+2025/10/28 15:22:39 / Client 999 / Send Message / Lamport 82
+2025/10/28 15:22:39 / Client 999 / Send Message / Lamport 83
+2025/10/28 15:22:39 / Client 999 / Send Message / Lamport 84
+2025/10/28 15:22:39 / Client 999 / Send Message / Lamport 85
+2025/10/28 15:22:39 / Client 999 / Send Message / Lamport 86
+2025/10/28 15:22:39 / Client 999 / Send Message / Lamport 87
+2025/10/28 15:23:15 / Server / Startup / 0
+2025/10/28 15:23:25 / Client 857 / Join Chat Request / Lamport 1
+2025/10/28 15:23:25 / Server / Client 857 Joins Chat / Lamport 2
+2025/10/28 15:23:25 / Server / Broadcast message to user 857 from user 857 / Lamport 3
+2025/10/28 15:23:25 / Client 857 / Received [Client 857]'s Message from Server / Lamport 4
+2025/10/28 15:23:25 / Client 857 / Send Message / Lamport 5
+2025/10/28 15:23:25 / Server / Receive message from user 857 / Lamport 6
+2025/10/28 15:23:25 / Server / Broadcast message to user 857 from user 857 / Lamport 7
+2025/10/28 15:23:25 / Client 857 / Received [Client 857]'s Message from Server / Lamport 8
+2025/10/28 15:23:25 / Client 857 / Send Message / Lamport 9
+2025/10/28 15:23:25 / Server / Receive message from user 857 / Lamport 10
+2025/10/28 15:23:25 / Server / Broadcast message to user 857 from user 857 / Lamport 11
+2025/10/28 15:23:25 / Client 857 / Received [Client 857]'s Message from Server / Lamport 12
+2025/10/28 15:23:25 / Client 857 / Send Message / Lamport 13
+2025/10/28 15:23:25 / Server / Receive message from user 857 / Lamport 14
+2025/10/28 15:23:25 / Server / Broadcast message to user 857 from user 857 / Lamport 15
+2025/10/28 15:23:25 / Client 857 / Received [Client 857]'s Message from Server / Lamport 16
+2025/10/28 15:23:25 / Client 857 / Send Message / Lamport 17
+2025/10/28 15:23:25 / Server / Receive message from user 857 / Lamport 18
+2025/10/28 15:23:25 / Server / Broadcast message to user 857 from user 857 / Lamport 19
+2025/10/28 15:23:25 / Client 857 / Received [Client 857]'s Message from Server / Lamport 20
+2025/10/28 15:23:25 / Client 857 / Send Message / Lamport 21
+2025/10/28 15:23:25 / Server / Receive message from user 857 / Lamport 22
+2025/10/28 15:23:25 / Server / Broadcast message to user 857 from user 857 / Lamport 23
+2025/10/28 15:23:25 / Client 857 / Received [Client 857]'s Message from Server / Lamport 24
+2025/10/28 15:23:25 / Client 857 / Send Message / Lamport 25
+2025/10/28 15:23:25 / Server / Receive message from user 857 / Lamport 26
+2025/10/28 15:23:25 / Server / Broadcast message to user 857 from user 857 / Lamport 27
+2025/10/28 15:23:25 / Client 857 / Received [Client 857]'s Message from Server / Lamport 28
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 29
+2025/10/28 15:23:26 / Server / Receive message from user 857 / Lamport 30
+2025/10/28 15:23:26 / Server / Broadcast message to user 857 from user 857 / Lamport 31
+2025/10/28 15:23:26 / Client 857 / Received [Client 857]'s Message from Server / Lamport 32
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 33
+2025/10/28 15:23:26 / Server / Receive message from user 857 / Lamport 34
+2025/10/28 15:23:26 / Server / Broadcast message to user 857 from user 857 / Lamport 35
+2025/10/28 15:23:26 / Client 857 / Received [Client 857]'s Message from Server / Lamport 36
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 37
+2025/10/28 15:23:26 / Server / Receive message from user 857 / Lamport 38
+2025/10/28 15:23:26 / Server / Broadcast message to user 857 from user 857 / Lamport 39
+2025/10/28 15:23:26 / Client 857 / Received [Client 857]'s Message from Server / Lamport 40
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 41
+2025/10/28 15:23:26 / Server / Receive message from user 857 / Lamport 42
+2025/10/28 15:23:26 / Server / Broadcast message to user 857 from user 857 / Lamport 43
+2025/10/28 15:23:26 / Client 857 / Received [Client 857]'s Message from Server / Lamport 44
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 45
+2025/10/28 15:23:26 / Server / Receive message from user 857 / Lamport 46
+2025/10/28 15:23:26 / Server / Broadcast message to user 857 from user 857 / Lamport 47
+2025/10/28 15:23:26 / Client 857 / Received [Client 857]'s Message from Server / Lamport 48
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 49
+2025/10/28 15:23:26 / Server / Receive message from user 857 / Lamport 50
+2025/10/28 15:23:26 / Server / Broadcast message to user 857 from user 857 / Lamport 51
+2025/10/28 15:23:26 / Client 857 / Received [Client 857]'s Message from Server / Lamport 52
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 53
+2025/10/28 15:23:26 / Server / Receive message from user 857 / Lamport 54
+2025/10/28 15:23:26 / Server / Broadcast message to user 857 from user 857 / Lamport 55
+2025/10/28 15:23:26 / Client 857 / Received [Client 857]'s Message from Server / Lamport 56
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 57
+2025/10/28 15:23:26 / Server / Receive message from user 857 / Lamport 58
+2025/10/28 15:23:26 / Server / Broadcast message to user 857 from user 857 / Lamport 59
+2025/10/28 15:23:26 / Client 857 / Received [Client 857]'s Message from Server / Lamport 60
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 61
+2025/10/28 15:23:26 / Server / Receive message from user 857 / Lamport 62
+2025/10/28 15:23:26 / Server / Broadcast message to user 857 from user 857 / Lamport 63
+2025/10/28 15:23:26 / Client 857 / Received [Client 857]'s Message from Server / Lamport 64
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 65
+2025/10/28 15:23:26 / Server / Receive message from user 857 / Lamport 66
+2025/10/28 15:23:26 / Server / Broadcast message to user 857 from user 857 / Lamport 67
+2025/10/28 15:23:26 / Client 857 / Received [Client 857]'s Message from Server / Lamport 68
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 69
+2025/10/28 15:23:26 / Server / Receive message from user 857 / Lamport 70
+2025/10/28 15:23:26 / Server / Broadcast message to user 857 from user 857 / Lamport 71
+2025/10/28 15:23:26 / Client 857 / Received [Client 857]'s Message from Server / Lamport 72
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 73
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 74
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 75
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 76
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 77
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 78
+2025/10/28 15:23:26 / Client 857 / Send Message / Lamport 79
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 80
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 81
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 82
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 83
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 84
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 85
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 86
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 87
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 88
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 89
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 90
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 91
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 92
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 93
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 94
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 95
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 96
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 97
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 98
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 99
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 100
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 101
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 102
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 103
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 104
+2025/10/28 15:23:27 / Client 857 / Send Message / Lamport 105
+2025/10/28 15:25:49 / Server / Startup / 0
+2025/10/28 15:25:53 / Client 900 / Join Chat Request / Lamport 1
+2025/10/28 15:25:54 / Server / Client 900 Joins Chat / Lamport 2
+2025/10/28 15:25:54 / Server / Broadcast message to user 900 from user 900 / Lamport 3
+2025/10/28 15:25:54 / Client 900 / Received [Client 900]'s Message from Server / Lamport 4
+2025/10/28 15:25:54 / Client 900 / Send Message / Lamport 5
+2025/10/28 15:25:54 / Server / Receive message from user 900 / Lamport 6
+2025/10/28 15:25:54 / Server / Broadcast message to user 900 from user 900 / Lamport 7
+2025/10/28 15:25:54 / Client 900 / Received [Client 900]'s Message from Server / Lamport 8
+2025/10/28 15:25:54 / Client 900 / Send Message / Lamport 9
+2025/10/28 15:25:54 / Server / Receive message from user 900 / Lamport 10
+2025/10/28 15:25:54 / Server / Broadcast message to user 900 from user 900 / Lamport 11
+2025/10/28 15:25:54 / Client 900 / Received [Client 900]'s Message from Server / Lamport 12
+2025/10/28 15:25:54 / Client 900 / Send Message / Lamport 13
+2025/10/28 15:25:54 / Server / Receive message from user 900 / Lamport 14
+2025/10/28 15:25:54 / Server / Broadcast message to user 900 from user 900 / Lamport 15
+2025/10/28 15:25:54 / Client 900 / Received [Client 900]'s Message from Server / Lamport 16
+2025/10/28 15:25:54 / Client 900 / Send Message / Lamport 17
+2025/10/28 15:25:54 / Server / Receive message from user 900 / Lamport 18
+2025/10/28 15:25:54 / Server / Broadcast message to user 900 from user 900 / Lamport 19
+2025/10/28 15:25:54 / Client 900 / Received [Client 900]'s Message from Server / Lamport 20
+2025/10/28 15:25:54 / Client 900 / Send Message / Lamport 21
+2025/10/28 15:25:54 / Server / Receive message from user 900 / Lamport 22
+2025/10/28 15:25:54 / Server / Broadcast message to user 900 from user 900 / Lamport 23
+2025/10/28 15:25:54 / Client 900 / Received [Client 900]'s Message from Server / Lamport 24
+2025/10/28 15:25:54 / Client 900 / Send Message / Lamport 25
+2025/10/28 15:25:54 / Server / Receive message from user 900 / Lamport 26
+2025/10/28 15:25:54 / Server / Broadcast message to user 900 from user 900 / Lamport 27
+2025/10/28 15:25:54 / Client 900 / Received [Client 900]'s Message from Server / Lamport 28
+2025/10/28 15:25:54 / Client 900 / Send Message / Lamport 29
+2025/10/28 15:25:54 / Server / Receive message from user 900 / Lamport 30
+2025/10/28 15:25:54 / Server / Broadcast message to user 900 from user 900 / Lamport 31
+2025/10/28 15:25:54 / Client 900 / Received [Client 900]'s Message from Server / Lamport 32
+2025/10/28 15:25:54 / Client 900 / Send Message / Lamport 33
+2025/10/28 15:25:54 / Server / Receive message from user 900 / Lamport 34
+2025/10/28 15:25:54 / Server / Broadcast message to user 900 from user 900 / Lamport 35
+2025/10/28 15:25:54 / Client 900 / Received [Client 900]'s Message from Server / Lamport 36
+2025/10/28 15:25:54 / Client 900 / Send Message / Lamport 37
+2025/10/28 15:25:54 / Server / Receive message from user 900 / Lamport 38
+2025/10/28 15:25:54 / Server / Broadcast message to user 900 from user 900 / Lamport 39
+2025/10/28 15:25:54 / Client 900 / Received [Client 900]'s Message from Server / Lamport 40
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 41
+2025/10/28 15:25:55 / Server / Receive message from user 900 / Lamport 42
+2025/10/28 15:25:55 / Client 900 / Received [Client 900]'s Message from Server / Lamport 44
+2025/10/28 15:25:55 / Server / Broadcast message to user 900 from user 900 / Lamport 43
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 45
+2025/10/28 15:25:55 / Server / Receive message from user 900 / Lamport 46
+2025/10/28 15:25:55 / Server / Broadcast message to user 900 from user 900 / Lamport 47
+2025/10/28 15:25:55 / Client 900 / Received [Client 900]'s Message from Server / Lamport 48
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 49
+2025/10/28 15:25:55 / Server / Receive message from user 900 / Lamport 50
+2025/10/28 15:25:55 / Server / Broadcast message to user 900 from user 900 / Lamport 51
+2025/10/28 15:25:55 / Client 900 / Received [Client 900]'s Message from Server / Lamport 52
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 53
+2025/10/28 15:25:55 / Server / Receive message from user 900 / Lamport 54
+2025/10/28 15:25:55 / Server / Broadcast message to user 900 from user 900 / Lamport 55
+2025/10/28 15:25:55 / Client 900 / Received [Client 900]'s Message from Server / Lamport 56
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 57
+2025/10/28 15:25:55 / Server / Receive message from user 900 / Lamport 58
+2025/10/28 15:25:55 / Server / Broadcast message to user 900 from user 900 / Lamport 59
+2025/10/28 15:25:55 / Client 900 / Received [Client 900]'s Message from Server / Lamport 60
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 61
+2025/10/28 15:25:55 / Server / Receive message from user 900 / Lamport 62
+2025/10/28 15:25:55 / Server / Broadcast message to user 900 from user 900 / Lamport 63
+2025/10/28 15:25:55 / Client 900 / Received [Client 900]'s Message from Server / Lamport 64
+2025/10/28 15:25:55 / Server / initiating graceful shutdown...
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 65
+2025/10/28 15:25:55 / Server / Receive message from user 900 / Lamport 66
+2025/10/28 15:25:55 / Server / Broadcast message to user 900 from user 900 / Lamport 67
+2025/10/28 15:25:55 / Client 900 / Received [Client 900]'s Message from Server / Lamport 68
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 69
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 70
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 71
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 72
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 73
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 74
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 75
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 76
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 77
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 78
+2025/10/28 15:25:55 / Client 900 / Send Message / Lamport 79
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 80
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 81
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 82
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 83
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 84
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 85
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 86
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 87
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 88
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 89
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 90
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 91
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 92
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 93
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 94
+2025/10/28 15:25:56 / Client 900 / Send Message / Lamport 95
+2025/10/28 15:25:57 / Client 900 / Send Message / Lamport 96
+2025/10/28 15:25:57 / Client 900 / Send Message / Lamport 97
+2025/10/28 15:25:57 / Client 900 / Send Message / Lamport 98
+2025/10/28 15:25:57 / Client 900 / Send Message / Lamport 99
+2025/10/28 15:25:57 / Client 900 / Send Message / Lamport 100
+2025/10/28 15:25:57 / Client 900 / Send Message / Lamport 101
+2025/10/28 15:25:57 / Client 900 / Send Message / Lamport 102
+2025/10/28 15:26:05 / Server / force stop / %!d(MISSING) 

@@ -22,6 +22,10 @@ import (
 var localLamport int32
 var mu sync.Mutex
 
+var fileLog *log.Logger
+var termLog *log.Logger
+
+
 /* ChitChat User */
 type ChitChatter struct {
 	ID   int32
@@ -64,7 +68,11 @@ func syncLamport(serverLamport int32) {
 /* JoinChat function call with lamport increments*/
 func localJoinChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter, isActivePointer *bool) grpc.ServerStreamingClient[pb.ChitChatMessage] {
 
-	incrementLamport()
+	incrementLamport()	
+	
+	// below fileLog done
+	fileLog.Printf("/ Client %d / Join Chat Request / Lamport %d", localChitChatter.ID, localLamport)
+	
 	stream1, err := client.JoinChat(context.Background(), &pb.User{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport})
 	if err != nil {
 		log.Fatalf("Not working in client 1")
@@ -73,37 +81,53 @@ func localJoinChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter
 	return stream1
 }
 
-/* LeaveChat function call with lamport increments*/
+// LeaveChat function call with lamport increments
 func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatter, isActivePointer *bool) {
 
 	incrementLamport()
+
+	// below fileLog done
+	fileLog.Printf("/ Client %d / Leave Chat Request / Lamport %d", localChitChatter.ID, localLamport)
+
 	client.LeaveChat(context.Background(), &pb.User{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport})
 	*isActivePointer = false
-	log.Println("client: I left the chat")
 }
 
+// receive proto ChitChatMessages from the stream
+// Receives messages as long as the stream is active,
+// which is tracked by the isActivePointer
 func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], isActivePointer *bool, localChitChatter ChitChatter) {
-	for *isActivePointer {
+	for *isActivePointer{
 		msg, err := msgStream.Recv()
 		if err == io.EOF {
 			break
 		}
-
-		log.Printf("Client %d, %s", localChitChatter.ID, msg.Message )
 		//log.Printf("local lamport: %d and lamport from server: %d", localLamport, msg.Lamport) //homemade debug
 		syncLamport(msg.Lamport)
+
+		// fileLog below done
+		fileLog.Printf("/ Client %d / Received [Client %d]'s Message from Server / Lamport %d", localChitChatter.ID, msg.User.Id, localLamport)
+		//termLog.Printf("%s at logical time %d: %s", msg.User.Name, msg.Lamport, msg.Message)
+		termLog.Println(msg.Message)
 		//log.Printf("local lamport after sync mechanism: %d", localLamport) //homemade debug
 	}
 }
 
+// Sends a proto ChitChatMessage to the Server
+// Increments the lamport making the request
 func localSendMessage(client pb.ChitChatServiceClient, localChitChatter ChitChatter, message string) {
 	incrementLamport()
+
+	// fileLog below done
+	fileLog.Printf("/ Client %d / Send Message / Lamport %d", localChitChatter.ID, localLamport)
+
 	client.Publish(context.Background(), &pb.ChitChatMessage{User: &pb.User{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport}, Message: message, Lamport: localLamport})
 }
 
-func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter, isActive *bool) {
-
-	for i := 0; i < 3; i++ {
+// Sends a total of three proto ChitChatMessages 
+// Uses the
+func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter) {
+	for i := 0; i < 50; i++ {
 
 		message, err := rn.GetRandomName("./all.last", &rn.Options{})
 
@@ -112,7 +136,7 @@ func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatt
 			log.Fatalf("Not working in messageLoop")
 		}
 		localSendMessage(client, localChitChatter, message)
-		time.Sleep(time.Duration(rand.Intn(5)) * time.Second)
+		//time.Sleep(time.Duration(rand.Intn(5)) * time.Second)
 	}
 }
 
@@ -121,15 +145,11 @@ func main() {
 	if e != nil {
 		log.Fatalf("Failed to open log file: %v", e)
 	}
-
-	//code below (line 127-132) comes from chatGPT
 	defer file.Close()
-	// Create a multi-writer to write to both the file and stdout
-	multiWriter := io.MultiWriter(os.Stdout, file)
-	// Set the log output to the multi-writer
-	log.SetOutput(multiWriter)
 
-
+	// Create two independent loggers
+	fileLog = log.New(file, "",log.Ldate|log.Ltime)
+	termLog = log.New(os.Stdout, "", 0) // plain chat-style output
 
 	/* Lamport Timestamp */
 	localLamport = 0
@@ -155,7 +175,7 @@ func main() {
 
 	go receiveMessages(stream1, isActivePointer, localChitChatter)
 
-	go SendMessageLoop(client, localChitChatter, isActivePointer)
+	go SendMessageLoop(client, localChitChatter)
 
 	time.Sleep(30 * time.Second)
 
