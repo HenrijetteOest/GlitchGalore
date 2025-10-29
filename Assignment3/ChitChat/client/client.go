@@ -4,12 +4,14 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"unicode/utf8"
 	"log"
 	"sync"
 	"time"
 	"os"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	
 
 	"math/rand" //for a random id
 
@@ -86,13 +88,14 @@ func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatte
 
 	fileLog.Printf("/ Client %d / Leave Chat Request / Lamport %d", localChitChatter.ID, localLamport)
 
-	client.LeaveChat(context.Background(), &pb.User{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport})
 	*isActivePointer = false
+	client.LeaveChat(context.Background(), &pb.User{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport})
 }
 
 // Receives messages as long as the stream is active,
 // which is tracked by the isActivePointer
 func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], isActivePointer *bool, localChitChatter ChitChatter) {
+	
 	for *isActivePointer{
 		msg, err := msgStream.Recv()
 		if err == io.EOF {
@@ -101,35 +104,42 @@ func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], i
 	
 		syncLamport(msg.Lamport)
 
-
 		fileLog.Printf("/ Client %d / Received [Client %d]'s Message from Server / Lamport %d", localChitChatter.ID, msg.User.Id, localLamport)
 		termLog.Println(msg.Message)
-		
 	}
 }
 
 // Sends a ChitChatMessage to the Server
 // Increments the lamport making the request
 func localSendMessage(client pb.ChitChatServiceClient, localChitChatter ChitChatter, message string) {
-	incrementLamport()
 
-	fileLog.Printf("/ Client %d / Send Message / Lamport %d", localChitChatter.ID, localLamport)
-
-	client.Publish(context.Background(), &pb.ChitChatMessage{User: &pb.User{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport}, Message: message, Lamport: localLamport})
+	if len(message) <= 128 && utf8.ValidString(message){
+		incrementLamport()
+		fileLog.Printf("/ Client %d / Send Message / Lamport %d", localChitChatter.ID, localLamport)
+		client.Publish(context.Background(), &pb.ChitChatMessage{User: &pb.User{Id: localChitChatter.ID, Name: localChitChatter.Name, Lamport: localLamport}, Message: message, Lamport: localLamport})
+	} else {
+		termLog.Println("Invalid message. A chitchat message must not exceed 128 characters");
+	}
 }
 
 // Sends a total of 50 proto ChitChatMessages 
-func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter) {
+func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter, isActivePointer *bool) {
 	for i := 0; i < 20; i++ {
-
-		message, err := rn.GetRandomName("./all.last", &rn.Options{})
-
-		message = fmt.Sprintf("%s", message)
-		if err != nil {
-			log.Fatalf("Not working in messageLoop")
+		if !*isActivePointer {
+			break
 		}
-		localSendMessage(client, localChitChatter, message)
-
+		
+		msg := "" 
+		for p := 0; p < 5; p++ {
+			message, err := rn.GetRandomName("./dracula.txt", &rn.Options{})
+			msg = fmt.Sprintf("%s %s", msg, message) 
+			if err != nil {
+				log.Fatalf("Not working in messageLoop")
+			}
+		}
+		
+		localSendMessage(client, localChitChatter, msg)
+		time.Sleep(time.Duration(int32(rand.Intn(5))) * time.Second)
 	}
 }
 
@@ -167,9 +177,9 @@ func main() {
 
 	go receiveMessages(stream1, isActivePointer, localChitChatter)
 
-	go SendMessageLoop(client, localChitChatter)
+	go SendMessageLoop(client, localChitChatter, isActivePointer)
 
-	time.Sleep(30 * time.Second)
+	time.Sleep(15 * time.Second)
 
 	localLeaveChat(client, localChitChatter, isActivePointer)
 

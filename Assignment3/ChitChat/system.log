@@ -1,88 +1,186 @@
-2025/10/28 20:15:07 / Client 244 / Join Chat Request / Lamport 1
-2025/10/28 20:15:12 / Server / Startup / 0
-2025/10/28 20:15:15 / Client 243 / Join Chat Request / Lamport 1
-2025/10/28 20:15:15 / Server / Client 243 Joins Chat / Lamport 2
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 3
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 4
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 5
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 6
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 7
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 8
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 9
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 10
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 11
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 12
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 13
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 14
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 15
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 16
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 17
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 18
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 19
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 20
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 21
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 22
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 23
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 24
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 25
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 26
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 27
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 28
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 29
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 30
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 31
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 32
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 33
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 34
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 35
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 36
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 37
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 38
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 39
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 40
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 41
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 42
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 43
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 44
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 45
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 46
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 47
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 48
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 49
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 50
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 51
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 52
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 53
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 54
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 55
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 56
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 57
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 58
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 59
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 60
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 61
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 62
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 63
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 64
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 65
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 66
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 67
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 68
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 69
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 70
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 71
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 72
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 73
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 74
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 75
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 76
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 77
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 78
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 79
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 80
-2025/10/28 20:15:15 / Client 243 / Send Message / Lamport 81
-2025/10/28 20:15:15 / Server / Receive message from user 243 / Lamport 82
-2025/10/28 20:15:15 / Server / Broadcast message to user 243 from user 243 / Lamport 83
-2025/10/28 20:15:15 / Client 243 / Received [Client 243]'s Message from Server / Lamport 84
-2025/10/28 20:15:16 / Server / force shutdown / 83
-2025/10/28 20:15:16 / Server / shutdowned / 83
+2025/10/29 17:00:10 / Server / Startup / 0
+2025/10/29 17:00:16 / Client 36 / Join Chat Request / Lamport 1
+2025/10/29 17:00:16 / Server / Client 36 Joins Chat / Lamport 2
+2025/10/29 17:00:16 / Server / Broadcast message to user 36 from user 36 / Lamport 3
+2025/10/29 17:00:16 / Client 36 / Received [Client 36]'s Message from Server / Lamport 4
+2025/10/29 17:00:16 / Client 36 / Send Message / Lamport 5
+2025/10/29 17:00:16 / Server / Receive message from user 36 / Lamport 6
+2025/10/29 17:00:16 / Server / Broadcast message to user 36 from user 36 / Lamport 7
+2025/10/29 17:00:16 / Client 36 / Received [Client 36]'s Message from Server / Lamport 8
+2025/10/29 17:00:16 / Client 36 / Send Message / Lamport 9
+2025/10/29 17:00:16 / Server / Receive message from user 36 / Lamport 10
+2025/10/29 17:00:16 / Server / Broadcast message to user 36 from user 36 / Lamport 11
+2025/10/29 17:00:16 / Client 36 / Received [Client 36]'s Message from Server / Lamport 12
+2025/10/29 17:00:17 / Client 332 / Join Chat Request / Lamport 1
+2025/10/29 17:00:17 / Server / Client 332 Joins Chat / Lamport 12
+2025/10/29 17:00:17 / Server / Broadcast message to user 36 from user 332 / Lamport 13
+2025/10/29 17:00:17 / Client 36 / Received [Client 332]'s Message from Server / Lamport 14
+2025/10/29 17:00:17 / Server / Broadcast message to user 332 from user 332 / Lamport 13
+2025/10/29 17:00:17 / Client 332 / Received [Client 332]'s Message from Server / Lamport 14
+2025/10/29 17:00:17 / Client 332 / Send Message / Lamport 15
+2025/10/29 17:00:17 / Server / Receive message from user 332 / Lamport 16
+2025/10/29 17:00:17 / Server / Broadcast message to user 36 from user 332 / Lamport 17
+2025/10/29 17:00:17 / Client 332 / Received [Client 332]'s Message from Server / Lamport 18
+2025/10/29 17:00:17 / Client 36 / Received [Client 332]'s Message from Server / Lamport 18
+2025/10/29 17:00:17 / Server / Broadcast message to user 332 from user 332 / Lamport 17
+2025/10/29 17:00:18 / Client 36 / Send Message / Lamport 19
+2025/10/29 17:00:18 / Server / Receive message from user 36 / Lamport 20
+2025/10/29 17:00:18 / Server / Broadcast message to user 36 from user 36 / Lamport 21
+2025/10/29 17:00:18 / Client 36 / Received [Client 36]'s Message from Server / Lamport 22
+2025/10/29 17:00:18 / Client 332 / Received [Client 36]'s Message from Server / Lamport 22
+2025/10/29 17:00:18 / Server / Broadcast message to user 332 from user 36 / Lamport 21
+2025/10/29 17:00:18 / Client 36 / Send Message / Lamport 23
+2025/10/29 17:00:18 / Server / Receive message from user 36 / Lamport 24
+2025/10/29 17:00:18 / Server / Broadcast message to user 36 from user 36 / Lamport 25
+2025/10/29 17:00:18 / Client 332 / Received [Client 36]'s Message from Server / Lamport 26
+2025/10/29 17:00:18 / Client 36 / Received [Client 36]'s Message from Server / Lamport 26
+2025/10/29 17:00:18 / Server / Broadcast message to user 332 from user 36 / Lamport 25
+2025/10/29 17:00:19 / Client 36 / Send Message / Lamport 27
+2025/10/29 17:00:19 / Server / Receive message from user 36 / Lamport 28
+2025/10/29 17:00:19 / Server / Broadcast message to user 36 from user 36 / Lamport 29
+2025/10/29 17:00:19 / Client 332 / Received [Client 36]'s Message from Server / Lamport 30
+2025/10/29 17:00:19 / Client 36 / Received [Client 36]'s Message from Server / Lamport 30
+2025/10/29 17:00:19 / Server / Broadcast message to user 332 from user 36 / Lamport 29
+2025/10/29 17:00:20 / Client 784 / Join Chat Request / Lamport 1
+2025/10/29 17:00:20 / Client 332 / Send Message / Lamport 31
+2025/10/29 17:00:20 / Server / Receive message from user 332 / Lamport 32
+2025/10/29 17:00:20 / Server / Broadcast message to user 36 from user 332 / Lamport 33
+2025/10/29 17:00:20 / Client 332 / Received [Client 332]'s Message from Server / Lamport 34
+2025/10/29 17:00:20 / Client 36 / Received [Client 332]'s Message from Server / Lamport 34
+2025/10/29 17:00:20 / Server / Broadcast message to user 332 from user 332 / Lamport 33
+2025/10/29 17:00:22 / Client 36 / Send Message / Lamport 35
+2025/10/29 17:00:22 / Server / Receive message from user 36 / Lamport 36
+2025/10/29 17:00:22 / Server / Broadcast message to user 36 from user 36 / Lamport 37
+2025/10/29 17:00:22 / Client 332 / Received [Client 36]'s Message from Server / Lamport 38
+2025/10/29 17:00:22 / Client 36 / Received [Client 36]'s Message from Server / Lamport 38
+2025/10/29 17:00:22 / Server / Broadcast message to user 332 from user 36 / Lamport 37
+2025/10/29 17:00:22 / Server / Client 784 Joins Chat / Lamport 38
+2025/10/29 17:00:22 / Server / Broadcast message to user 36 from user 784 / Lamport 39
+2025/10/29 17:00:22 / Client 332 / Received [Client 784]'s Message from Server / Lamport 40
+2025/10/29 17:00:22 / Client 36 / Received [Client 784]'s Message from Server / Lamport 40
+2025/10/29 17:00:22 / Server / Broadcast message to user 332 from user 784 / Lamport 39
+2025/10/29 17:00:22 / Client 784 / Received [Client 784]'s Message from Server / Lamport 40
+2025/10/29 17:00:22 / Server / Broadcast message to user 784 from user 784 / Lamport 39
+2025/10/29 17:00:22 / Client 784 / Send Message / Lamport 41
+2025/10/29 17:00:22 / Server / Receive message from user 784 / Lamport 42
+2025/10/29 17:00:22 / Server / Broadcast message to user 36 from user 784 / Lamport 43
+2025/10/29 17:00:22 / Client 332 / Received [Client 784]'s Message from Server / Lamport 44
+2025/10/29 17:00:22 / Client 36 / Received [Client 784]'s Message from Server / Lamport 44
+2025/10/29 17:00:22 / Server / Broadcast message to user 332 from user 784 / Lamport 43
+2025/10/29 17:00:22 / Client 784 / Received [Client 784]'s Message from Server / Lamport 44
+2025/10/29 17:00:22 / Server / Broadcast message to user 784 from user 784 / Lamport 43
+2025/10/29 17:00:24 / Client 332 / Send Message / Lamport 45
+2025/10/29 17:00:24 / Server / Receive message from user 332 / Lamport 46
+2025/10/29 17:00:24 / Server / Broadcast message to user 332 from user 332 / Lamport 47
+2025/10/29 17:00:24 / Client 332 / Received [Client 332]'s Message from Server / Lamport 48
+2025/10/29 17:00:24 / Client 784 / Received [Client 332]'s Message from Server / Lamport 48
+2025/10/29 17:00:24 / Client 36 / Received [Client 332]'s Message from Server / Lamport 48
+2025/10/29 17:00:24 / Server / Broadcast message to user 784 from user 332 / Lamport 47
+2025/10/29 17:00:24 / Server / Broadcast message to user 36 from user 332 / Lamport 47
+2025/10/29 17:00:26 / Client 36 / Send Message / Lamport 49
+2025/10/29 17:00:26 / Server / Receive message from user 36 / Lamport 50
+2025/10/29 17:00:26 / Server / Broadcast message to user 36 from user 36 / Lamport 51
+2025/10/29 17:00:26 / Client 36 / Received [Client 36]'s Message from Server / Lamport 52
+2025/10/29 17:00:26 / Client 332 / Received [Client 36]'s Message from Server / Lamport 52
+2025/10/29 17:00:26 / Client 784 / Received [Client 36]'s Message from Server / Lamport 52
+2025/10/29 17:00:26 / Server / Broadcast message to user 332 from user 36 / Lamport 51
+2025/10/29 17:00:26 / Server / Broadcast message to user 784 from user 36 / Lamport 51
+2025/10/29 17:00:26 / Client 36 / Send Message / Lamport 53
+2025/10/29 17:00:26 / Server / Receive message from user 36 / Lamport 54
+2025/10/29 17:00:26 / Server / Broadcast message to user 332 from user 36 / Lamport 55
+2025/10/29 17:00:26 / Client 784 / Received [Client 36]'s Message from Server / Lamport 56
+2025/10/29 17:00:26 / Client 36 / Received [Client 36]'s Message from Server / Lamport 56
+2025/10/29 17:00:26 / Client 332 / Received [Client 36]'s Message from Server / Lamport 56
+2025/10/29 17:00:26 / Server / Broadcast message to user 784 from user 36 / Lamport 55
+2025/10/29 17:00:26 / Server / Broadcast message to user 36 from user 36 / Lamport 55
+2025/10/29 17:00:26 / Client 332 / Send Message / Lamport 57
+2025/10/29 17:00:26 / Server / Receive message from user 332 / Lamport 58
+2025/10/29 17:00:26 / Server / Broadcast message to user 36 from user 332 / Lamport 59
+2025/10/29 17:00:26 / Client 332 / Received [Client 332]'s Message from Server / Lamport 60
+2025/10/29 17:00:26 / Client 36 / Received [Client 332]'s Message from Server / Lamport 60
+2025/10/29 17:00:26 / Client 784 / Received [Client 332]'s Message from Server / Lamport 60
+2025/10/29 17:00:26 / Server / Broadcast message to user 332 from user 332 / Lamport 59
+2025/10/29 17:00:26 / Server / Broadcast message to user 784 from user 332 / Lamport 59
+2025/10/29 17:00:27 / Client 784 / Send Message / Lamport 61
+2025/10/29 17:00:27 / Server / Receive message from user 784 / Lamport 62
+2025/10/29 17:00:27 / Server / Broadcast message to user 36 from user 784 / Lamport 63
+2025/10/29 17:00:27 / Client 784 / Received [Client 784]'s Message from Server / Lamport 64
+2025/10/29 17:00:27 / Client 36 / Received [Client 784]'s Message from Server / Lamport 64
+2025/10/29 17:00:27 / Client 332 / Received [Client 784]'s Message from Server / Lamport 64
+2025/10/29 17:00:27 / Server / Broadcast message to user 332 from user 784 / Lamport 63
+2025/10/29 17:00:27 / Server / Broadcast message to user 784 from user 784 / Lamport 63
+2025/10/29 17:00:27 / Client 36 / Send Message / Lamport 65
+2025/10/29 17:00:27 / Server / Receive message from user 36 / Lamport 66
+2025/10/29 17:00:27 / Server / Broadcast message to user 36 from user 36 / Lamport 67
+2025/10/29 17:00:27 / Client 332 / Received [Client 36]'s Message from Server / Lamport 68
+2025/10/29 17:00:27 / Client 784 / Received [Client 36]'s Message from Server / Lamport 68
+2025/10/29 17:00:27 / Client 36 / Received [Client 36]'s Message from Server / Lamport 68
+2025/10/29 17:00:27 / Server / Broadcast message to user 784 from user 36 / Lamport 67
+2025/10/29 17:00:27 / Server / Broadcast message to user 332 from user 36 / Lamport 67
+2025/10/29 17:00:29 / Client 36 / Send Message / Lamport 69
+2025/10/29 17:00:29 / Server / Receive message from user 36 / Lamport 70
+2025/10/29 17:00:29 / Server / Broadcast message to user 332 from user 36 / Lamport 71
+2025/10/29 17:00:29 / Client 36 / Received [Client 36]'s Message from Server / Lamport 72
+2025/10/29 17:00:29 / Client 784 / Received [Client 36]'s Message from Server / Lamport 72
+2025/10/29 17:00:29 / Client 332 / Received [Client 36]'s Message from Server / Lamport 72
+2025/10/29 17:00:29 / Server / Broadcast message to user 36 from user 36 / Lamport 71
+2025/10/29 17:00:29 / Server / Broadcast message to user 784 from user 36 / Lamport 71
+2025/10/29 17:00:30 / Client 332 / Send Message / Lamport 73
+2025/10/29 17:00:30 / Server / Receive message from user 332 / Lamport 74
+2025/10/29 17:00:30 / Server / Broadcast message to user 36 from user 332 / Lamport 75
+2025/10/29 17:00:30 / Client 332 / Received [Client 332]'s Message from Server / Lamport 76
+2025/10/29 17:00:30 / Client 784 / Received [Client 332]'s Message from Server / Lamport 76
+2025/10/29 17:00:30 / Client 36 / Received [Client 332]'s Message from Server / Lamport 76
+2025/10/29 17:00:30 / Server / Broadcast message to user 332 from user 332 / Lamport 75
+2025/10/29 17:00:30 / Server / Broadcast message to user 784 from user 332 / Lamport 75
+2025/10/29 17:00:30 / Client 36 / Send Message / Lamport 77
+2025/10/29 17:00:30 / Server / Receive message from user 36 / Lamport 78
+2025/10/29 17:00:30 / Server / Broadcast message to user 332 from user 36 / Lamport 79
+2025/10/29 17:00:30 / Client 36 / Received [Client 36]'s Message from Server / Lamport 80
+2025/10/29 17:00:30 / Client 784 / Received [Client 36]'s Message from Server / Lamport 80
+2025/10/29 17:00:30 / Client 332 / Received [Client 36]'s Message from Server / Lamport 80
+2025/10/29 17:00:30 / Server / Broadcast message to user 784 from user 36 / Lamport 79
+2025/10/29 17:00:30 / Server / Broadcast message to user 36 from user 36 / Lamport 79
+2025/10/29 17:00:30 / Client 36 / Send Message / Lamport 81
+2025/10/29 17:00:30 / Server / Receive message from user 36 / Lamport 82
+2025/10/29 17:00:30 / Server / Broadcast message to user 36 from user 36 / Lamport 83
+2025/10/29 17:00:30 / Client 332 / Received [Client 36]'s Message from Server / Lamport 84
+2025/10/29 17:00:30 / Client 36 / Received [Client 36]'s Message from Server / Lamport 84
+2025/10/29 17:00:30 / Client 784 / Received [Client 36]'s Message from Server / Lamport 84
+2025/10/29 17:00:30 / Server / Broadcast message to user 332 from user 36 / Lamport 83
+2025/10/29 17:00:30 / Server / Broadcast message to user 784 from user 36 / Lamport 83
+2025/10/29 17:00:31 / Client 784 / Send Message / Lamport 85
+2025/10/29 17:00:31 / Server / Receive message from user 784 / Lamport 86
+2025/10/29 17:00:31 / Server / Broadcast message to user 36 from user 784 / Lamport 87
+2025/10/29 17:00:31 / Client 332 / Received [Client 784]'s Message from Server / Lamport 88
+2025/10/29 17:00:31 / Client 784 / Received [Client 784]'s Message from Server / Lamport 88
+2025/10/29 17:00:31 / Client 36 / Received [Client 784]'s Message from Server / Lamport 88
+2025/10/29 17:00:31 / Server / Broadcast message to user 332 from user 784 / Lamport 87
+2025/10/29 17:00:31 / Server / Broadcast message to user 784 from user 784 / Lamport 87
+2025/10/29 17:00:31 / Client 36 / Leave Chat Request / Lamport 89
+2025/10/29 17:00:31 / Server / Client 36 Leaves Chat / Lamport 90
+2025/10/29 17:00:31 / Server / Broadcast message to user 332 from user 36 / Lamport 91
+2025/10/29 17:00:31 / Client 332 / Received [Client 36]'s Message from Server / Lamport 92
+2025/10/29 17:00:31 / Client 784 / Received [Client 36]'s Message from Server / Lamport 92
+2025/10/29 17:00:31 / Server / Broadcast message to user 784 from user 36 / Lamport 91
+2025/10/29 17:00:32 / Client 332 / Send Message / Lamport 93
+2025/10/29 17:00:32 / Server / Receive message from user 332 / Lamport 94
+2025/10/29 17:00:32 / Server / Broadcast message to user 332 from user 332 / Lamport 95
+2025/10/29 17:00:32 / Client 784 / Received [Client 332]'s Message from Server / Lamport 96
+2025/10/29 17:00:32 / Client 332 / Received [Client 332]'s Message from Server / Lamport 96
+2025/10/29 17:00:32 / Server / Broadcast message to user 784 from user 332 / Lamport 95
+2025/10/29 17:00:32 / Client 332 / Leave Chat Request / Lamport 97
+2025/10/29 17:00:32 / Server / Client 332 Leaves Chat / Lamport 98
+2025/10/29 17:00:32 / Server / Broadcast message to user 784 from user 332 / Lamport 99
+2025/10/29 17:00:32 / Client 784 / Received [Client 332]'s Message from Server / Lamport 100
+2025/10/29 17:00:34 / Client 784 / Send Message / Lamport 101
+2025/10/29 17:00:34 / Server / Receive message from user 784 / Lamport 102
+2025/10/29 17:00:34 / Server / Broadcast message to user 784 from user 784 / Lamport 103
+2025/10/29 17:00:34 / Client 784 / Received [Client 784]'s Message from Server / Lamport 104
+2025/10/29 17:00:36 / Client 784 / Send Message / Lamport 105
+2025/10/29 17:00:36 / Server / Receive message from user 784 / Lamport 106
+2025/10/29 17:00:36 / Server / Broadcast message to user 784 from user 784 / Lamport 107
+2025/10/29 17:00:36 / Client 784 / Received [Client 784]'s Message from Server / Lamport 108
+2025/10/29 17:00:37 / Client 784 / Leave Chat Request / Lamport 109
+2025/10/29 17:00:37 / Server / Client 784 Leaves Chat / Lamport 110
+2025/10/29 17:00:56 / Server / shutdowned / 110
