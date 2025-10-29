@@ -1,2 +1,306 @@
-2025/10/28 21:11:07 / Server / Startup / 0
-2025/10/28 21:12:57 / Server / Startup / 0
+2025/10/29 12:27:20 / Server / Startup / 0
+2025/10/29 12:27:25 / Client 881 / Join Chat Request / Lamport 1
+2025/10/29 12:27:25 / Server / Client 881 Joins Chat / Lamport 2
+2025/10/29 12:27:25 / Server / Broadcast message to user 881 from user 881 / Lamport 3
+2025/10/29 12:27:25 / Client 881 / Received [Client 881]'s Message from Server / Lamport 4
+2025/10/29 12:27:25 / Client 881 / Send Message / Lamport 5
+2025/10/29 12:27:25 / Server / Receive message from user 881 / Lamport 6
+2025/10/29 12:27:25 / Server / Broadcast message to user 881 from user 881 / Lamport 7
+2025/10/29 12:27:25 / Client 881 / Received [Client 881]'s Message from Server / Lamport 8
+2025/10/29 12:27:27 / Client 881 / Send Message / Lamport 9
+2025/10/29 12:27:27 / Server / Receive message from user 881 / Lamport 10
+2025/10/29 12:27:27 / Server / Broadcast message to user 881 from user 881 / Lamport 11
+2025/10/29 12:27:27 / Client 881 / Received [Client 881]'s Message from Server / Lamport 12
+2025/10/29 12:27:28 / Client 752 / Join Chat Request / Lamport 1
+2025/10/29 12:27:28 / Server / Client 752 Joins Chat / Lamport 12
+2025/10/29 12:27:28 / Server / Broadcast message to user 881 from user 752 / Lamport 13
+2025/10/29 12:27:28 / Server / Broadcast message to user 752 from user 752 / Lamport 13
+2025/10/29 12:27:28 / Client 881 / Received [Client 752]'s Message from Server / Lamport 14
+2025/10/29 12:27:28 / Client 752 / Received [Client 752]'s Message from Server / Lamport 14
+2025/10/29 12:27:28 / Client 752 / Send Message / Lamport 15
+2025/10/29 12:27:28 / Server / Receive message from user 752 / Lamport 16
+2025/10/29 12:27:28 / Server / Broadcast message to user 881 from user 752 / Lamport 17
+2025/10/29 12:27:28 / Client 752 / Received [Client 752]'s Message from Server / Lamport 18
+2025/10/29 12:27:28 / Server / Broadcast message to user 752 from user 752 / Lamport 17
+2025/10/29 12:27:28 / Client 881 / Received [Client 752]'s Message from Server / Lamport 18
+2025/10/29 12:27:28 / Client 752 / Send Message / Lamport 19
+2025/10/29 12:27:28 / Server / Receive message from user 752 / Lamport 20
+2025/10/29 12:27:28 / Server / Broadcast message to user 881 from user 752 / Lamport 21
+2025/10/29 12:27:28 / Client 752 / Received [Client 752]'s Message from Server / Lamport 22
+2025/10/29 12:27:28 / Client 881 / Received [Client 752]'s Message from Server / Lamport 22
+2025/10/29 12:27:28 / Server / Broadcast message to user 752 from user 752 / Lamport 21
+2025/10/29 12:27:29 / Client 752 / Send Message / Lamport 23
+2025/10/29 12:27:29 / Server / Receive message from user 752 / Lamport 24
+2025/10/29 12:27:29 / Server / Broadcast message to user 881 from user 752 / Lamport 25
+2025/10/29 12:27:29 / Client 881 / Received [Client 752]'s Message from Server / Lamport 26
+2025/10/29 12:27:29 / Client 752 / Received [Client 752]'s Message from Server / Lamport 26
+2025/10/29 12:27:29 / Server / Broadcast message to user 752 from user 752 / Lamport 25
+2025/10/29 12:27:29 / Client 881 / Send Message / Lamport 27
+2025/10/29 12:27:29 / Server / Receive message from user 881 / Lamport 28
+2025/10/29 12:27:29 / Server / Broadcast message to user 881 from user 881 / Lamport 29
+2025/10/29 12:27:29 / Client 881 / Received [Client 881]'s Message from Server / Lamport 30
+2025/10/29 12:27:29 / Client 752 / Received [Client 881]'s Message from Server / Lamport 30
+2025/10/29 12:27:29 / Server / Broadcast message to user 752 from user 881 / Lamport 29
+2025/10/29 12:27:30 / Client 881 / Send Message / Lamport 31
+2025/10/29 12:27:30 / Server / Receive message from user 881 / Lamport 32
+2025/10/29 12:27:30 / Server / Broadcast message to user 881 from user 881 / Lamport 33
+2025/10/29 12:27:30 / Client 752 / Received [Client 881]'s Message from Server / Lamport 34
+2025/10/29 12:27:30 / Server / Broadcast message to user 752 from user 881 / Lamport 33
+2025/10/29 12:27:30 / Client 881 / Received [Client 881]'s Message from Server / Lamport 34
+2025/10/29 12:27:32 / Client 752 / Send Message / Lamport 35
+2025/10/29 12:27:32 / Server / Receive message from user 752 / Lamport 36
+2025/10/29 12:27:32 / Server / Broadcast message to user 881 from user 752 / Lamport 37
+2025/10/29 12:27:32 / Client 881 / Received [Client 752]'s Message from Server / Lamport 38
+2025/10/29 12:27:32 / Client 752 / Received [Client 752]'s Message from Server / Lamport 38
+2025/10/29 12:27:32 / Server / Broadcast message to user 752 from user 752 / Lamport 37
+2025/10/29 12:27:32 / Client 881 / Send Message / Lamport 39
+2025/10/29 12:27:32 / Server / Receive message from user 881 / Lamport 40
+2025/10/29 12:27:32 / Server / Broadcast message to user 752 from user 881 / Lamport 41
+2025/10/29 12:27:32 / Client 881 / Received [Client 881]'s Message from Server / Lamport 42
+2025/10/29 12:27:32 / Client 752 / Received [Client 881]'s Message from Server / Lamport 42
+2025/10/29 12:27:32 / Server / Broadcast message to user 881 from user 881 / Lamport 41
+2025/10/29 12:27:34 / Client 881 / Send Message / Lamport 43
+2025/10/29 12:27:34 / Server / Receive message from user 881 / Lamport 44
+2025/10/29 12:27:34 / Server / Broadcast message to user 881 from user 881 / Lamport 45
+2025/10/29 12:27:34 / Client 881 / Received [Client 881]'s Message from Server / Lamport 46
+2025/10/29 12:27:34 / Client 752 / Received [Client 881]'s Message from Server / Lamport 46
+2025/10/29 12:27:34 / Server / Broadcast message to user 752 from user 881 / Lamport 45
+2025/10/29 12:27:34 / Client 881 / Send Message / Lamport 47
+2025/10/29 12:27:34 / Server / Receive message from user 881 / Lamport 48
+2025/10/29 12:27:34 / Server / Broadcast message to user 881 from user 881 / Lamport 49
+2025/10/29 12:27:34 / Client 752 / Received [Client 881]'s Message from Server / Lamport 50
+2025/10/29 12:27:34 / Client 881 / Received [Client 881]'s Message from Server / Lamport 50
+2025/10/29 12:27:34 / Server / Broadcast message to user 752 from user 881 / Lamport 49
+2025/10/29 12:27:35 / Client 817 / Join Chat Request / Lamport 1
+2025/10/29 12:27:35 / Client 752 / Send Message / Lamport 51
+2025/10/29 12:27:35 / Server / Receive message from user 752 / Lamport 52
+2025/10/29 12:27:35 / Server / Broadcast message to user 881 from user 752 / Lamport 53
+2025/10/29 12:27:35 / Client 752 / Received [Client 752]'s Message from Server / Lamport 54
+2025/10/29 12:27:35 / Client 881 / Received [Client 752]'s Message from Server / Lamport 54
+2025/10/29 12:27:35 / Server / Broadcast message to user 752 from user 752 / Lamport 53
+2025/10/29 12:27:35 / Server / Client 817 Joins Chat / Lamport 54
+2025/10/29 12:27:35 / Server / Broadcast message to user 881 from user 817 / Lamport 55
+2025/10/29 12:27:35 / Client 752 / Received [Client 817]'s Message from Server / Lamport 56
+2025/10/29 12:27:35 / Client 881 / Received [Client 817]'s Message from Server / Lamport 56
+2025/10/29 12:27:35 / Server / Broadcast message to user 817 from user 817 / Lamport 55
+2025/10/29 12:27:35 / Client 817 / Received [Client 817]'s Message from Server / Lamport 56
+2025/10/29 12:27:35 / Server / Broadcast message to user 752 from user 817 / Lamport 55
+2025/10/29 12:27:35 / Client 817 / Send Message / Lamport 57
+2025/10/29 12:27:35 / Server / Receive message from user 817 / Lamport 58
+2025/10/29 12:27:35 / Server / Broadcast message to user 881 from user 817 / Lamport 59
+2025/10/29 12:27:35 / Client 752 / Received [Client 817]'s Message from Server / Lamport 60
+2025/10/29 12:27:35 / Client 817 / Received [Client 817]'s Message from Server / Lamport 60
+2025/10/29 12:27:35 / Client 881 / Received [Client 817]'s Message from Server / Lamport 60
+2025/10/29 12:27:35 / Server / Broadcast message to user 752 from user 817 / Lamport 59
+2025/10/29 12:27:35 / Server / Broadcast message to user 817 from user 817 / Lamport 59
+2025/10/29 12:27:37 / Client 752 / Send Message / Lamport 61
+2025/10/29 12:27:37 / Server / Receive message from user 752 / Lamport 62
+2025/10/29 12:27:37 / Server / Broadcast message to user 881 from user 752 / Lamport 63
+2025/10/29 12:27:37 / Client 881 / Received [Client 752]'s Message from Server / Lamport 64
+2025/10/29 12:27:37 / Client 817 / Received [Client 752]'s Message from Server / Lamport 64
+2025/10/29 12:27:37 / Client 752 / Received [Client 752]'s Message from Server / Lamport 64
+2025/10/29 12:27:37 / Server / Broadcast message to user 752 from user 752 / Lamport 63
+2025/10/29 12:27:37 / Server / Broadcast message to user 817 from user 752 / Lamport 63
+2025/10/29 12:27:38 / Client 752 / Send Message / Lamport 65
+2025/10/29 12:27:38 / Server / Receive message from user 752 / Lamport 66
+2025/10/29 12:27:38 / Server / Broadcast message to user 881 from user 752 / Lamport 67
+2025/10/29 12:27:38 / Client 752 / Received [Client 752]'s Message from Server / Lamport 68
+2025/10/29 12:27:38 / Client 817 / Received [Client 752]'s Message from Server / Lamport 68
+2025/10/29 12:27:38 / Client 881 / Received [Client 752]'s Message from Server / Lamport 68
+2025/10/29 12:27:38 / Server / Broadcast message to user 752 from user 752 / Lamport 67
+2025/10/29 12:27:38 / Server / Broadcast message to user 817 from user 752 / Lamport 67
+2025/10/29 12:27:38 / Client 881 / Send Message / Lamport 69
+2025/10/29 12:27:38 / Server / Receive message from user 881 / Lamport 70
+2025/10/29 12:27:38 / Server / Broadcast message to user 881 from user 881 / Lamport 71
+2025/10/29 12:27:38 / Client 752 / Received [Client 881]'s Message from Server / Lamport 72
+2025/10/29 12:27:38 / Client 817 / Received [Client 881]'s Message from Server / Lamport 72
+2025/10/29 12:27:38 / Client 881 / Received [Client 881]'s Message from Server / Lamport 72
+2025/10/29 12:27:38 / Server / Broadcast message to user 752 from user 881 / Lamport 71
+2025/10/29 12:27:38 / Server / Broadcast message to user 817 from user 881 / Lamport 71
+2025/10/29 12:27:38 / Client 817 / Send Message / Lamport 73
+2025/10/29 12:27:38 / Server / Receive message from user 817 / Lamport 74
+2025/10/29 12:27:38 / Server / Broadcast message to user 881 from user 817 / Lamport 75
+2025/10/29 12:27:38 / Client 817 / Received [Client 817]'s Message from Server / Lamport 76
+2025/10/29 12:27:38 / Client 752 / Received [Client 817]'s Message from Server / Lamport 76
+2025/10/29 12:27:38 / Client 881 / Received [Client 817]'s Message from Server / Lamport 76
+2025/10/29 12:27:38 / Server / Broadcast message to user 752 from user 817 / Lamport 75
+2025/10/29 12:27:38 / Server / Broadcast message to user 817 from user 817 / Lamport 75
+2025/10/29 12:27:40 / Client 881 / Send Message / Lamport 77
+2025/10/29 12:27:40 / Server / Receive message from user 881 / Lamport 78
+2025/10/29 12:27:40 / Server / Broadcast message to user 881 from user 881 / Lamport 79
+2025/10/29 12:27:40 / Client 752 / Received [Client 881]'s Message from Server / Lamport 80
+2025/10/29 12:27:40 / Client 881 / Received [Client 881]'s Message from Server / Lamport 80
+2025/10/29 12:27:40 / Client 817 / Received [Client 881]'s Message from Server / Lamport 80
+2025/10/29 12:27:40 / Server / Broadcast message to user 752 from user 881 / Lamport 79
+2025/10/29 12:27:40 / Server / Broadcast message to user 817 from user 881 / Lamport 79
+2025/10/29 12:27:41 / Client 817 / Send Message / Lamport 81
+2025/10/29 12:27:41 / Server / Receive message from user 817 / Lamport 82
+2025/10/29 12:27:41 / Server / Broadcast message to user 752 from user 817 / Lamport 83
+2025/10/29 12:27:41 / Client 881 / Received [Client 817]'s Message from Server / Lamport 84
+2025/10/29 12:27:41 / Client 752 / Received [Client 817]'s Message from Server / Lamport 84
+2025/10/29 12:27:41 / Server / Broadcast message to user 881 from user 817 / Lamport 83
+2025/10/29 12:27:41 / Client 817 / Received [Client 817]'s Message from Server / Lamport 84
+2025/10/29 12:27:41 / Server / Broadcast message to user 817 from user 817 / Lamport 83
+2025/10/29 12:27:41 / Client 752 / Send Message / Lamport 85
+2025/10/29 12:27:41 / Server / Receive message from user 752 / Lamport 86
+2025/10/29 12:27:41 / Server / Broadcast message to user 881 from user 752 / Lamport 87
+2025/10/29 12:27:41 / Client 752 / Received [Client 752]'s Message from Server / Lamport 88
+2025/10/29 12:27:41 / Client 817 / Received [Client 752]'s Message from Server / Lamport 88
+2025/10/29 12:27:41 / Client 881 / Received [Client 752]'s Message from Server / Lamport 88
+2025/10/29 12:27:41 / Server / Broadcast message to user 752 from user 752 / Lamport 87
+2025/10/29 12:27:41 / Server / Broadcast message to user 817 from user 752 / Lamport 87
+2025/10/29 12:27:42 / Client 881 / Send Message / Lamport 89
+2025/10/29 12:27:42 / Server / Receive message from user 881 / Lamport 90
+2025/10/29 12:27:42 / Server / Broadcast message to user 881 from user 881 / Lamport 91
+2025/10/29 12:27:42 / Client 752 / Received [Client 881]'s Message from Server / Lamport 92
+2025/10/29 12:27:42 / Client 817 / Received [Client 881]'s Message from Server / Lamport 92
+2025/10/29 12:27:42 / Client 881 / Received [Client 881]'s Message from Server / Lamport 92
+2025/10/29 12:27:42 / Server / Broadcast message to user 752 from user 881 / Lamport 91
+2025/10/29 12:27:42 / Server / Broadcast message to user 817 from user 881 / Lamport 91
+2025/10/29 12:27:43 / Client 752 / Send Message / Lamport 93
+2025/10/29 12:27:43 / Server / Receive message from user 752 / Lamport 94
+2025/10/29 12:27:43 / Server / Broadcast message to user 881 from user 752 / Lamport 95
+2025/10/29 12:27:43 / Client 752 / Received [Client 752]'s Message from Server / Lamport 96
+2025/10/29 12:27:43 / Client 817 / Received [Client 752]'s Message from Server / Lamport 96
+2025/10/29 12:27:43 / Client 881 / Received [Client 752]'s Message from Server / Lamport 96
+2025/10/29 12:27:43 / Server / Broadcast message to user 752 from user 752 / Lamport 95
+2025/10/29 12:27:43 / Server / Broadcast message to user 817 from user 752 / Lamport 95
+2025/10/29 12:27:44 / Client 817 / Send Message / Lamport 97
+2025/10/29 12:27:44 / Server / Receive message from user 817 / Lamport 98
+2025/10/29 12:27:44 / Server / Broadcast message to user 881 from user 817 / Lamport 99
+2025/10/29 12:27:44 / Client 752 / Received [Client 817]'s Message from Server / Lamport 100
+2025/10/29 12:27:44 / Client 817 / Received [Client 817]'s Message from Server / Lamport 100
+2025/10/29 12:27:44 / Client 881 / Received [Client 817]'s Message from Server / Lamport 100
+2025/10/29 12:27:44 / Server / Broadcast message to user 752 from user 817 / Lamport 99
+2025/10/29 12:27:44 / Server / Broadcast message to user 817 from user 817 / Lamport 99
+2025/10/29 12:27:45 / Client 752 / Send Message / Lamport 101
+2025/10/29 12:27:45 / Server / Receive message from user 752 / Lamport 102
+2025/10/29 12:27:45 / Server / Broadcast message to user 752 from user 752 / Lamport 103
+2025/10/29 12:27:45 / Client 881 / Received [Client 752]'s Message from Server / Lamport 104
+2025/10/29 12:27:45 / Client 752 / Received [Client 752]'s Message from Server / Lamport 104
+2025/10/29 12:27:45 / Client 817 / Received [Client 752]'s Message from Server / Lamport 104
+2025/10/29 12:27:45 / Server / Broadcast message to user 881 from user 752 / Lamport 103
+2025/10/29 12:27:45 / Server / Broadcast message to user 817 from user 752 / Lamport 103
+2025/10/29 12:27:45 / Client 881 / Send Message / Lamport 105
+2025/10/29 12:27:45 / Server / Receive message from user 881 / Lamport 106
+2025/10/29 12:27:45 / Server / Broadcast message to user 881 from user 881 / Lamport 107
+2025/10/29 12:27:45 / Client 817 / Received [Client 881]'s Message from Server / Lamport 108
+2025/10/29 12:27:45 / Server / Broadcast message to user 752 from user 881 / Lamport 107
+2025/10/29 12:27:45 / Client 881 / Received [Client 881]'s Message from Server / Lamport 108
+2025/10/29 12:27:45 / Server / Broadcast message to user 817 from user 881 / Lamport 107
+2025/10/29 12:27:45 / Client 752 / Received [Client 881]'s Message from Server / Lamport 108
+2025/10/29 12:27:45 / Client 817 / Send Message / Lamport 109
+2025/10/29 12:27:45 / Server / Receive message from user 817 / Lamport 110
+2025/10/29 12:27:45 / Server / Broadcast message to user 881 from user 817 / Lamport 111
+2025/10/29 12:27:45 / Client 752 / Received [Client 817]'s Message from Server / Lamport 112
+2025/10/29 12:27:45 / Client 881 / Received [Client 817]'s Message from Server / Lamport 112
+2025/10/29 12:27:45 / Server / Broadcast message to user 752 from user 817 / Lamport 111
+2025/10/29 12:27:45 / Client 817 / Received [Client 817]'s Message from Server / Lamport 112
+2025/10/29 12:27:45 / Server / Broadcast message to user 817 from user 817 / Lamport 111
+2025/10/29 12:27:46 / Client 752 / Send Message / Lamport 113
+2025/10/29 12:27:46 / Server / Receive message from user 752 / Lamport 114
+2025/10/29 12:27:46 / Server / Broadcast message to user 881 from user 752 / Lamport 115
+2025/10/29 12:27:46 / Client 881 / Received [Client 752]'s Message from Server / Lamport 116
+2025/10/29 12:27:46 / Client 817 / Received [Client 752]'s Message from Server / Lamport 116
+2025/10/29 12:27:46 / Client 752 / Received [Client 752]'s Message from Server / Lamport 116
+2025/10/29 12:27:46 / Server / Broadcast message to user 752 from user 752 / Lamport 115
+2025/10/29 12:27:46 / Server / Broadcast message to user 817 from user 752 / Lamport 115
+2025/10/29 12:27:48 / Client 752 / Send Message / Lamport 117
+2025/10/29 12:27:48 / Server / Receive message from user 752 / Lamport 118
+2025/10/29 12:27:48 / Server / Broadcast message to user 817 from user 752 / Lamport 119
+2025/10/29 12:27:48 / Client 752 / Received [Client 752]'s Message from Server / Lamport 120
+2025/10/29 12:27:48 / Client 881 / Received [Client 752]'s Message from Server / Lamport 120
+2025/10/29 12:27:48 / Client 817 / Received [Client 752]'s Message from Server / Lamport 120
+2025/10/29 12:27:48 / Server / Broadcast message to user 881 from user 752 / Lamport 119
+2025/10/29 12:27:48 / Server / Broadcast message to user 752 from user 752 / Lamport 119
+2025/10/29 12:27:48 / Client 881 / Send Message / Lamport 121
+2025/10/29 12:27:48 / Server / Receive message from user 881 / Lamport 122
+2025/10/29 12:27:48 / Server / Broadcast message to user 881 from user 881 / Lamport 123
+2025/10/29 12:27:48 / Client 881 / Received [Client 881]'s Message from Server / Lamport 124
+2025/10/29 12:27:48 / Client 752 / Received [Client 881]'s Message from Server / Lamport 124
+2025/10/29 12:27:48 / Client 817 / Received [Client 881]'s Message from Server / Lamport 124
+2025/10/29 12:27:48 / Server / Broadcast message to user 752 from user 881 / Lamport 123
+2025/10/29 12:27:48 / Server / Broadcast message to user 817 from user 881 / Lamport 123
+2025/10/29 12:27:50 / Client 817 / Send Message / Lamport 125
+2025/10/29 12:27:50 / Server / Receive message from user 817 / Lamport 126
+2025/10/29 12:27:50 / Server / Broadcast message to user 817 from user 817 / Lamport 127
+2025/10/29 12:27:50 / Client 752 / Received [Client 817]'s Message from Server / Lamport 128
+2025/10/29 12:27:50 / Client 817 / Received [Client 817]'s Message from Server / Lamport 128
+2025/10/29 12:27:50 / Client 881 / Received [Client 817]'s Message from Server / Lamport 128
+2025/10/29 12:27:50 / Server / Broadcast message to user 881 from user 817 / Lamport 127
+2025/10/29 12:27:50 / Server / Broadcast message to user 752 from user 817 / Lamport 127
+2025/10/29 12:27:50 / Client 817 / Send Message / Lamport 129
+2025/10/29 12:27:50 / Server / Receive message from user 817 / Lamport 130
+2025/10/29 12:27:50 / Server / Broadcast message to user 881 from user 817 / Lamport 131
+2025/10/29 12:27:50 / Client 752 / Received [Client 817]'s Message from Server / Lamport 132
+2025/10/29 12:27:50 / Client 881 / Received [Client 817]'s Message from Server / Lamport 132
+2025/10/29 12:27:50 / Client 817 / Received [Client 817]'s Message from Server / Lamport 132
+2025/10/29 12:27:50 / Server / Broadcast message to user 752 from user 817 / Lamport 131
+2025/10/29 12:27:50 / Server / Broadcast message to user 817 from user 817 / Lamport 131
+2025/10/29 12:27:52 / Client 752 / Send Message / Lamport 133
+2025/10/29 12:27:52 / Client 881 / Send Message / Lamport 133
+2025/10/29 12:27:52 / Server / Receive message from user 752 / Lamport 134
+2025/10/29 12:27:52 / Server / Broadcast message to user 752 from user 752 / Lamport 135
+2025/10/29 12:27:52 / Client 881 / Received [Client 752]'s Message from Server / Lamport 136
+2025/10/29 12:27:52 / Client 752 / Received [Client 752]'s Message from Server / Lamport 136
+2025/10/29 12:27:52 / Client 817 / Received [Client 752]'s Message from Server / Lamport 136
+2025/10/29 12:27:52 / Server / Receive message from user 881 / Lamport 136
+2025/10/29 12:27:52 / Server / Broadcast message to user 817 from user 752 / Lamport 136
+2025/10/29 12:27:52 / Client 881 / Received [Client 881]'s Message from Server / Lamport 138
+2025/10/29 12:27:52 / Client 817 / Received [Client 881]'s Message from Server / Lamport 138
+2025/10/29 12:27:52 / Client 752 / Received [Client 881]'s Message from Server / Lamport 138
+2025/10/29 12:27:52 / Server / Broadcast message to user 881 from user 752 / Lamport 136
+2025/10/29 12:27:52 / Server / Broadcast message to user 752 from user 881 / Lamport 137
+2025/10/29 12:27:52 / Server / Broadcast message to user 881 from user 881 / Lamport 137
+2025/10/29 12:27:52 / Server / Broadcast message to user 817 from user 881 / Lamport 137
+2025/10/29 12:27:52 / Client 817 / Send Message / Lamport 139
+2025/10/29 12:27:52 / Server / Receive message from user 817 / Lamport 140
+2025/10/29 12:27:52 / Server / Broadcast message to user 881 from user 817 / Lamport 141
+2025/10/29 12:27:52 / Client 752 / Received [Client 817]'s Message from Server / Lamport 142
+2025/10/29 12:27:52 / Server / Broadcast message to user 752 from user 817 / Lamport 141
+2025/10/29 12:27:52 / Client 881 / Received [Client 817]'s Message from Server / Lamport 142
+2025/10/29 12:27:52 / Client 817 / Received [Client 817]'s Message from Server / Lamport 142
+2025/10/29 12:27:52 / Server / Broadcast message to user 817 from user 817 / Lamport 141
+2025/10/29 12:27:55 / Client 881 / Send Message / Lamport 143
+2025/10/29 12:27:55 / Server / Receive message from user 881 / Lamport 144
+2025/10/29 12:27:55 / Server / Broadcast message to user 752 from user 881 / Lamport 145
+2025/10/29 12:27:55 / Client 752 / Received [Client 881]'s Message from Server / Lamport 146
+2025/10/29 12:27:55 / Client 817 / Received [Client 881]'s Message from Server / Lamport 146
+2025/10/29 12:27:55 / Client 881 / Received [Client 881]'s Message from Server / Lamport 146
+2025/10/29 12:27:55 / Server / Broadcast message to user 881 from user 881 / Lamport 145
+2025/10/29 12:27:55 / Server / Broadcast message to user 817 from user 881 / Lamport 145
+2025/10/29 12:27:55 / Client 881 / Leave Chat Request / Lamport 147
+2025/10/29 12:27:55 / Server / Client 881 Leaves Chat / Lamport 148
+2025/10/29 12:27:55 / Server / Broadcast message to user 752 from user 881 / Lamport 149
+2025/10/29 12:27:55 / Client 817 / Received [Client 881]'s Message from Server / Lamport 150
+2025/10/29 12:27:55 / Client 752 / Received [Client 881]'s Message from Server / Lamport 150
+2025/10/29 12:27:55 / Server / Broadcast message to user 817 from user 881 / Lamport 149
+2025/10/29 12:27:56 / Client 752 / Send Message / Lamport 151
+2025/10/29 12:27:56 / Server / Receive message from user 752 / Lamport 152
+2025/10/29 12:27:56 / Server / Broadcast message to user 752 from user 752 / Lamport 153
+2025/10/29 12:27:56 / Client 752 / Received [Client 752]'s Message from Server / Lamport 154
+2025/10/29 12:27:56 / Client 817 / Received [Client 752]'s Message from Server / Lamport 154
+2025/10/29 12:27:56 / Server / Broadcast message to user 817 from user 752 / Lamport 153
+2025/10/29 12:27:56 / Client 817 / Send Message / Lamport 155
+2025/10/29 12:27:56 / Server / Receive message from user 817 / Lamport 156
+2025/10/29 12:27:56 / Server / Broadcast message to user 752 from user 817 / Lamport 157
+2025/10/29 12:27:56 / Client 817 / Received [Client 817]'s Message from Server / Lamport 158
+2025/10/29 12:27:56 / Server / Broadcast message to user 817 from user 817 / Lamport 157
+2025/10/29 12:27:56 / Client 752 / Received [Client 817]'s Message from Server / Lamport 158
+2025/10/29 12:27:58 / Client 752 / Leave Chat Request / Lamport 159
+2025/10/29 12:27:58 / Server / Client 752 Leaves Chat / Lamport 160
+2025/10/29 12:27:58 / Server / Broadcast message to user 817 from user 752 / Lamport 161
+2025/10/29 12:27:58 / Client 817 / Received [Client 752]'s Message from Server / Lamport 162
+2025/10/29 12:28:00 / Client 817 / Send Message / Lamport 163
+2025/10/29 12:28:00 / Server / Receive message from user 817 / Lamport 164
+2025/10/29 12:28:00 / Server / Broadcast message to user 817 from user 817 / Lamport 165
+2025/10/29 12:28:00 / Client 817 / Received [Client 817]'s Message from Server / Lamport 166
+2025/10/29 12:28:00 / Client 817 / Send Message / Lamport 167
+2025/10/29 12:28:00 / Server / Receive message from user 817 / Lamport 168
+2025/10/29 12:28:00 / Server / Broadcast message to user 817 from user 817 / Lamport 169
+2025/10/29 12:28:00 / Client 817 / Received [Client 817]'s Message from Server / Lamport 170
+2025/10/29 12:28:03 / Client 817 / Send Message / Lamport 171
+2025/10/29 12:28:03 / Server / Receive message from user 817 / Lamport 172
+2025/10/29 12:28:03 / Server / Broadcast message to user 817 from user 817 / Lamport 173
+2025/10/29 12:28:03 / Client 817 / Received [Client 817]'s Message from Server / Lamport 174
+2025/10/29 12:28:05 / Server / shutdowned / 173

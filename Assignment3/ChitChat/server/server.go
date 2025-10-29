@@ -25,7 +25,6 @@ type ChitChatServer struct {
 	pb.UnimplementedChitChatServiceServer
 	lamport     int32
 	userStreams map[int32]pb.ChitChatService_JoinChatServer
-	streamStart chan struct{}
 }
 
 // JoinChat receives a proto ChitChatMessage stream and a proto user
@@ -33,8 +32,6 @@ type ChitChatServer struct {
 // And then broadcasts to all active users in the map
 func (s *ChitChatServer) JoinChat(req *pb.User, stream pb.ChitChatService_JoinChatServer) error {
 	s.userStreams[req.Id] = stream //map version
-	s.streamStart <- struct{}{}
-
 	
 	if s.lamport < req.Lamport {
 		s.lamport = req.Lamport + 1
@@ -65,8 +62,11 @@ func (s *ChitChatServer) LeaveChat(ctx context.Context, req *pb.User) (*pb.Empty
 
 	
 	delete(s.userStreams, req.Id)
-
-	s.Broadcast(req, msg)
+	
+	if(len(s.userStreams) > 0) {
+		s.Broadcast(req, msg)
+	}
+	
 
 	return &pb.Empty{}, nil
 }
@@ -132,7 +132,7 @@ func main() {
 	fileLog = log.New(file, "", log.Ldate|log.Ltime)
 	termLog = log.New(os.Stdout, "", 0) // plain chat-style output
 
-	server := &ChitChatServer{lamport: 0, userStreams: make(map[int32]pb.ChitChatService_JoinChatServer), streamStart: make(chan struct{})}
+	server := &ChitChatServer{lamport: 0, userStreams: make(map[int32]pb.ChitChatService_JoinChatServer)}
 	server.start_server()
 
 }
@@ -153,8 +153,7 @@ func (s *ChitChatServer) start_server() {
 
 	// Below method inspired by https://github.com/grpc/grpc-go/blob/master/examples/features/gracefulstop/server/main.go
 	go func() {
-		<-s.streamStart  // tracks when the stream first starts
-		time.Sleep(45 * time.Second) // waits 10 seconds before starting shut down
+		time.Sleep(45 * time.Second) // waits 45 seconds before starting shut down
 		grpcServer.Stop()
 		fileLog.Printf("/ Server / shutdowned / %d", s.lamport)
 		termLog.Println("Server force shutdown")
