@@ -20,8 +20,4 @@ A dataset of female names `all.last` has also been included to use with the pack
 
 ### Client Message *0 0 Dracula 0 0*
 
-To generate messages for client to send we take a random word from Bram Stoker's **Dracula**. The method to get a random word, which is the same as for getting a random name. Note, if the package finds a space symbol " " it replaces it with a *0* in the text. The txt version of *Dracula*  was found here <https://github.com/newtfire/introDH-Hub/blob/master/textFiles/19c-fiction/stoker-dracula.txt>
-
-### Message size max 128
-
-To fulfill system specification 3, we have limited a client's message to be maximum 5 words (taken at random from *Dracula*). Very special circumstances would need to apply for the message size limitation to be broken, but this is highly unlikely due to the spaces.
+To generate messages for client to send we take a random word from Bram Stoker's *Dracula*. The method to get a random word, which is the same as for getting a random name. Note, if the package finds a space symbol " " it replaces it with a *0* in the text. The txt version of *Dracula*  was found here <https://github.com/newtfire/introDH-Hub/blob/master/textFiles/19c-fiction/stoker-dracula.txt>
