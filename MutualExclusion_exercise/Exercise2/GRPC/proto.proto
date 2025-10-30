@@ -1,0 +1,14 @@
+syntax = "proto3";
+package proto;
+option go_package = "proto"; 
+
+mesage Service{
+    rpc CanIHaveIt (Node) returns (Empty) //or maybe bool
+}
+
+// service RicartAgrawaService {
+//      rpc CriticalSectionRequest (Request) returns (Response)
+// }
+
+// message Request { int32 id, int32 lamport}
+// message response ( bool approved)
