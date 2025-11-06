@@ -59,10 +59,10 @@ func (s *NodeServer) start_server() {
 	// change the port number for each node
 	// Try for some time to find the port, if it doesn't find the port
 	// increment port number and try again
-	//listener, err := net.Listen("tcp", port) //hope it works with the variable instead of string
-	//if err != nil {
-	//	log.Fatalf("Did not work in server")
-	//}
+	listener, err := net.Listen("tcp", port) //hope it works with the variable instead of string
+	if err != nil {
+		log.Fatalf("Did not work in server")
+	}
 
 	grpcServer := grpc.NewServer()
 	pb.RegisterRicartAgrawalaServiceServer(grpcServer, s) //registers the unimplemented server (implements the server)

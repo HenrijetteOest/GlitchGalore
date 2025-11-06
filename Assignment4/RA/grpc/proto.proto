@@ -2,10 +2,22 @@ syntax = "proto3";
 package proto;
 option go_package = "./pb";
 
-message Node{
-    // int32 lamport = 1;
-    // int32 id = 2;
+message request{
+    int32 portnr = 1;
+    int32 lamport = 2;
 }
 
 message Empty {}
 
+message ArrivalAnnouncement {
+    int32 portnr = 1;
+}
+
+message response {
+    bool permission = 1;
+}
+
+service RA {
+    rpc SendArrivalAnnouncement (ArrivalAnnouncement) returns (Empty){};
+    rpc GiveCriticalSectionAccess (request) returns (response){};
+}
