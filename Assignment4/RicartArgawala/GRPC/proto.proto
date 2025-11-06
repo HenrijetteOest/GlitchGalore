@@ -1,0 +1,25 @@
+syntax = "proto3";
+package proto;
+option go_package = "./pb";
+
+message Node{
+    // int32 lamport = 1;
+    // int32 id = 2;
+}
+
+service RicartAgrawaService {
+    // rpc CriticalSectionRequest (Request) returns (Response)
+}
+
+//message Response ( bool approved)
+
+
+
+
+
+
+// service RicartAgrawaService {
+//      rpc CriticalSectionRequest (Request) returns (Response)
+// }
+
+// message Request { int32 id, int32 lamport}
