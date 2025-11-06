@@ -1,0 +1,11 @@
+syntax = "proto3";
+package proto;
+option go_package = "./pb";
+
+message Node{
+    // int32 lamport = 1;
+    // int32 id = 2;
+}
+
+message Empty {}
+
