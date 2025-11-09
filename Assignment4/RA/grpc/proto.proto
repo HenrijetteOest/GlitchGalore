@@ -13,4 +13,5 @@ message response {
 
 service RA {
     rpc RequestCriticalSectionAccess (request) returns (response){};
+
 }
