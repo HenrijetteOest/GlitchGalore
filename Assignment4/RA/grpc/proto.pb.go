@@ -23,7 +23,7 @@ const (
 
 type Request struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Portnr        int32                  `protobuf:"varint,1,opt,name=portnr,proto3" json:"portnr,omitempty"`
+	Portnr        string                 `protobuf:"bytes,1,opt,name=portnr,proto3" json:"portnr,omitempty"`
 	Lamport       int32                  `protobuf:"varint,2,opt,name=lamport,proto3" json:"lamport,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -59,96 +59,16 @@ func (*Request) Descriptor() ([]byte, []int) {
 	return file_proto_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Request) GetPortnr() int32 {
+func (x *Request) GetPortnr() string {
 	if x != nil {
 		return x.Portnr
 	}
-	return 0
+	return ""
 }
 
 func (x *Request) GetLamport() int32 {
 	if x != nil {
 		return x.Lamport
-	}
-	return 0
-}
-
-type Empty struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Empty) Reset() {
-	*x = Empty{}
-	mi := &file_proto_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Empty) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Empty) ProtoMessage() {}
-
-func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Empty.ProtoReflect.Descriptor instead.
-func (*Empty) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{1}
-}
-
-type ArrivalAnnouncement struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Portnr        int32                  `protobuf:"varint,1,opt,name=portnr,proto3" json:"portnr,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ArrivalAnnouncement) Reset() {
-	*x = ArrivalAnnouncement{}
-	mi := &file_proto_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ArrivalAnnouncement) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ArrivalAnnouncement) ProtoMessage() {}
-
-func (x *ArrivalAnnouncement) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ArrivalAnnouncement.ProtoReflect.Descriptor instead.
-func (*ArrivalAnnouncement) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ArrivalAnnouncement) GetPortnr() int32 {
-	if x != nil {
-		return x.Portnr
 	}
 	return 0
 }
@@ -162,7 +82,7 @@ type Response struct {
 
 func (x *Response) Reset() {
 	*x = Response{}
-	mi := &file_proto_proto_msgTypes[3]
+	mi := &file_proto_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -174,7 +94,7 @@ func (x *Response) String() string {
 func (*Response) ProtoMessage() {}
 
 func (x *Response) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[3]
+	mi := &file_proto_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -187,7 +107,7 @@ func (x *Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Response.ProtoReflect.Descriptor instead.
 func (*Response) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{3}
+	return file_proto_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Response) GetPermission() bool {
@@ -203,18 +123,14 @@ const file_proto_proto_rawDesc = "" +
 	"\n" +
 	"\vproto.proto\x12\x05proto\";\n" +
 	"\arequest\x12\x16\n" +
-	"\x06portnr\x18\x01 \x01(\x05R\x06portnr\x12\x18\n" +
-	"\alamport\x18\x02 \x01(\x05R\alamport\"\a\n" +
-	"\x05Empty\"-\n" +
-	"\x13ArrivalAnnouncement\x12\x16\n" +
-	"\x06portnr\x18\x01 \x01(\x05R\x06portnr\"*\n" +
+	"\x06portnr\x18\x01 \x01(\tR\x06portnr\x12\x18\n" +
+	"\alamport\x18\x02 \x01(\x05R\alamport\"*\n" +
 	"\bresponse\x12\x1e\n" +
 	"\n" +
 	"permission\x18\x01 \x01(\bR\n" +
-	"permission2\x8b\x01\n" +
-	"\x02RA\x12E\n" +
-	"\x17SendArrivalAnnouncement\x12\x1a.proto.ArrivalAnnouncement\x1a\f.proto.Empty\"\x00\x12>\n" +
-	"\x19GiveCriticalSectionAccess\x12\x0e.proto.request\x1a\x0f.proto.response\"\x00B\x06Z\x04./pbb\x06proto3"
+	"permission2G\n" +
+	"\x02RA\x12A\n" +
+	"\x1cRequestCriticalSectionAccess\x12\x0e.proto.request\x1a\x0f.proto.response\"\x00B\x06Z\x04./pbb\x06proto3"
 
 var (
 	file_proto_proto_rawDescOnce sync.Once
@@ -228,20 +144,16 @@ func file_proto_proto_rawDescGZIP() []byte {
 	return file_proto_proto_rawDescData
 }
 
-var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_proto_proto_goTypes = []any{
-	(*Request)(nil),             // 0: proto.request
-	(*Empty)(nil),               // 1: proto.Empty
-	(*ArrivalAnnouncement)(nil), // 2: proto.ArrivalAnnouncement
-	(*Response)(nil),            // 3: proto.response
+	(*Request)(nil),  // 0: proto.request
+	(*Response)(nil), // 1: proto.response
 }
 var file_proto_proto_depIdxs = []int32{
-	2, // 0: proto.RA.SendArrivalAnnouncement:input_type -> proto.ArrivalAnnouncement
-	0, // 1: proto.RA.GiveCriticalSectionAccess:input_type -> proto.request
-	1, // 2: proto.RA.SendArrivalAnnouncement:output_type -> proto.Empty
-	3, // 3: proto.RA.GiveCriticalSectionAccess:output_type -> proto.response
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	0, // 0: proto.RA.RequestCriticalSectionAccess:input_type -> proto.request
+	1, // 1: proto.RA.RequestCriticalSectionAccess:output_type -> proto.response
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -258,7 +170,7 @@ func file_proto_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_proto_rawDesc), len(file_proto_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

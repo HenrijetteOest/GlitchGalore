@@ -3,14 +3,8 @@ package proto;
 option go_package = "./pb";
 
 message request{
-    int32 portnr = 1;
+    string portnr = 1;
     int32 lamport = 2;
-}
-
-message Empty {}
-
-message ArrivalAnnouncement {
-    int32 portnr = 1;
 }
 
 message response {
@@ -18,6 +12,5 @@ message response {
 }
 
 service RA {
-    rpc SendArrivalAnnouncement (ArrivalAnnouncement) returns (Empty){};
-    rpc GiveCriticalSectionAccess (request) returns (response){};
+    rpc RequestCriticalSectionAccess (request) returns (response){};
 }

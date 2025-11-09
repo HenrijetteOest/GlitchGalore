@@ -5,13 +5,16 @@ import (
 	"log"
 	"net"
 	"os"
+	"context"
 	"strconv"
 	"time"
+	"sync"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
 	pb "RA/grpc"
+
 )
 
 type Node struct {
@@ -30,6 +33,9 @@ const (
 	Wanted  State = "WANTED"
 	Held    State = "HELD"
 )
+
+var mu sync.Mutex
+var cond = sync.NewCond(&mu)
 
 // Make Client first then server
 func (n *Node) JoinSystem() {
@@ -50,6 +56,69 @@ func (n *Node) JoinSystem() {
 	}
 
 }
+
+func (n *Node) CriticalSection() {
+	fmt.Printf("there is established accessed the critical section node: %s", n.Portnumber)
+	n.Lamport++
+
+	fmt.Printf("there is no more access to critical section node: %s", n.Portnumber)
+}
+
+func (n *Node) RequestCriticalSectionAccess(ctx context.Context, req *pb.Request) (*pb.Response, error) {
+
+	if n.State == Held || (n.State == Wanted || n.Lamport < req.Lamport) {
+
+		n.Queue = append(n.Queue, *req)
+
+	} else {
+		return &pb.Response{Permission: true}, nil
+	} 
+	mu.Lock()
+	for n.State != Release{
+		cond.Wait()
+	}
+	// TODO empty the queue here as well
+	mu.Unlock()
+	return &pb.Response{Permission: true}, nil 
+}
+
+func (n *Node) RequestAccess() {
+	n.State = Wanted
+	n.SendRequests()
+
+	if n.State == Held {
+		n.CriticalSection()
+		n.State = Release
+		cond.Signal()  // empty the queue (once the functionality has been added properly)
+	}
+}
+
+func (n *Node) SendRequests() {
+	waitGroup := sync.WaitGroup{}
+	n.Lamport++
+	
+	for node, _ := range n.SystemNodes {
+
+		waitGroup.Add(1)
+
+		go func(nodeConnection string) {
+			defer waitGroup.Done()
+			
+			_, err := n.SystemNodes[nodeConnection].RequestCriticalSectionAccess(context.Background(), &pb.Request{
+				Portnr: n.Portnumber, 
+				Lamport: n.Lamport,
+			})
+			if err != nil {
+				log.Printf("error trying to send request to node: %s  %v", nodeConnection, err)
+			}
+		}(node)
+	}
+	go func() {
+		waitGroup.Wait()
+		n.State = Held
+	}()
+}
+
 
 func (n *Node) StartServer() {
 	// Server section

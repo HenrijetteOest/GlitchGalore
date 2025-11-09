@@ -8,6 +8,7 @@ package pb
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -19,16 +20,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	RA_SendArrivalAnnouncement_FullMethodName   = "/proto.RA/SendArrivalAnnouncement"
-	RA_GiveCriticalSectionAccess_FullMethodName = "/proto.RA/GiveCriticalSectionAccess"
+	RA_RequestCriticalSectionAccess_FullMethodName = "/proto.RA/RequestCriticalSectionAccess"
 )
 
 // RAClient is the client API for RA service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RAClient interface {
-	SendArrivalAnnouncement(ctx context.Context, in *ArrivalAnnouncement, opts ...grpc.CallOption) (*Empty, error)
-	GiveCriticalSectionAccess(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
+	RequestCriticalSectionAccess(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
 }
 
 type rAClient struct {
@@ -39,20 +38,10 @@ func NewRAClient(cc grpc.ClientConnInterface) RAClient {
 	return &rAClient{cc}
 }
 
-func (c *rAClient) SendArrivalAnnouncement(ctx context.Context, in *ArrivalAnnouncement, opts ...grpc.CallOption) (*Empty, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, RA_SendArrivalAnnouncement_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rAClient) GiveCriticalSectionAccess(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
+func (c *rAClient) RequestCriticalSectionAccess(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Response)
-	err := c.cc.Invoke(ctx, RA_GiveCriticalSectionAccess_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, RA_RequestCriticalSectionAccess_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,8 +52,7 @@ func (c *rAClient) GiveCriticalSectionAccess(ctx context.Context, in *Request, o
 // All implementations must embed UnimplementedRAServer
 // for forward compatibility.
 type RAServer interface {
-	SendArrivalAnnouncement(context.Context, *ArrivalAnnouncement) (*Empty, error)
-	GiveCriticalSectionAccess(context.Context, *Request) (*Response, error)
+	RequestCriticalSectionAccess(context.Context, *Request) (*Response, error)
 	mustEmbedUnimplementedRAServer()
 }
 
@@ -75,11 +63,8 @@ type RAServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRAServer struct{}
 
-func (UnimplementedRAServer) SendArrivalAnnouncement(context.Context, *ArrivalAnnouncement) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SendArrivalAnnouncement not implemented")
-}
-func (UnimplementedRAServer) GiveCriticalSectionAccess(context.Context, *Request) (*Response, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GiveCriticalSectionAccess not implemented")
+func (UnimplementedRAServer) RequestCriticalSectionAccess(context.Context, *Request) (*Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RequestCriticalSectionAccess not implemented")
 }
 func (UnimplementedRAServer) mustEmbedUnimplementedRAServer() {}
 func (UnimplementedRAServer) testEmbeddedByValue()            {}
@@ -102,38 +87,20 @@ func RegisterRAServer(s grpc.ServiceRegistrar, srv RAServer) {
 	s.RegisterService(&RA_ServiceDesc, srv)
 }
 
-func _RA_SendArrivalAnnouncement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ArrivalAnnouncement)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RAServer).SendArrivalAnnouncement(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RA_SendArrivalAnnouncement_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RAServer).SendArrivalAnnouncement(ctx, req.(*ArrivalAnnouncement))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RA_GiveCriticalSectionAccess_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RA_RequestCriticalSectionAccess_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Request)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RAServer).GiveCriticalSectionAccess(ctx, in)
+		return srv.(RAServer).RequestCriticalSectionAccess(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RA_GiveCriticalSectionAccess_FullMethodName,
+		FullMethod: RA_RequestCriticalSectionAccess_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RAServer).GiveCriticalSectionAccess(ctx, req.(*Request))
+		return srv.(RAServer).RequestCriticalSectionAccess(ctx, req.(*Request))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -146,12 +113,8 @@ var RA_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*RAServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SendArrivalAnnouncement",
-			Handler:    _RA_SendArrivalAnnouncement_Handler,
-		},
-		{
-			MethodName: "GiveCriticalSectionAccess",
-			Handler:    _RA_GiveCriticalSectionAccess_Handler,
+			MethodName: "RequestCriticalSectionAccess",
+			Handler:    _RA_RequestCriticalSectionAccess_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
