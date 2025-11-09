@@ -1,87 +1,109 @@
 package main
 
 import (
-	"log"
-	"os"
 	"fmt"
+	"log"
 	"net"
+	"os"
 	"strconv"
-	"container/list"
+	"time"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
 	pb "RA/grpc"
-
 )
-
 
 type Node struct {
 	pb.UnimplementedRAServer
-	portnumber string;
-	lamport int32;
-	queue *list.List;
-	State state; 	// RELEASE, WANTED, & HELD
-
+	Portnumber  string
+	Lamport     int32 // sendRequest, receiveRequest (?), access Critical section
+	Queue       []pb.Request
+	State       State                  // RELEASE, WANTED, & HELD
+	SystemNodes map[string]pb.RAClient // portnumber and proto Ricart Agrawala client
 }
 
-type state string
+type State string
 
 const (
-	Release state = "RELEASE" 	
-	Wanted 	state = "WANTED"	
-	Held	state = "HELD"
+	Release State = "RELEASE"
+	Wanted  State = "WANTED"
+	Held    State = "HELD"
 )
 
 // Make Client first then server
-func (s *Node) JoinSystem() {	//doesn't feel like the right way to include the pointer
+func (n *Node) JoinSystem() {
+	// client connection establishes
+	for key := range n.SystemNodes {
+		hostingPort := "localhost:" + key
 
-	// Client section
-	hostingPort := "localhost:" + s.portnumber
+		conn, err := grpc.NewClient(hostingPort, grpc.WithTransportCredentials(insecure.NewCredentials()))
+		if err != nil {
+			log.Fatalf("Not working, %v", err)
+		}
 
-	// hostingPort in the grpc call below, used to be "localhost:5050"
-	conn, err := grpc.NewClient(hostingPort, grpc.WithTransportCredentials(insecure.NewCredentials()))
-	if err != nil {
-		log.Fatalf("Not working, %v", err)
+		defer conn.Close()
+		client := pb.NewRAClient(conn)
+		n.SystemNodes[key] = client
+
+		fmt.Printf("Client connection established on port %s... \n", key) // homemade error handling
 	}
 
-	defer conn.Close()
-	client := pb.NewRAClient(conn)
+}
 
-	fmt.Printf("Client connection established on port %s... \n", s.portnumber)
-	fmt.Printf("Client... %v \n", client)
-
+func (n *Node) StartServer() {
 	// Server section
-	tmp := ":" + s.portnumber
+	tmp := ":" + n.Portnumber
 	listener, err := net.Listen("tcp", tmp) //":5050"
 	if err != nil {
-		log.Fatalf("Did not work in server, erro: ", err)
+		log.Fatalf("Did not work in server, error: %v", err)
 	}
 
 	grpcServer := grpc.NewServer()
-	pb.RegisterRAServer(grpcServer, s) //registers the unimplemented server (implements the server)
+	pb.RegisterRAServer(grpcServer, n) //registers the unimplemented server (implements the server)
 
-	fmt.Printf("Server running on port %s...", s.portnumber)
+	fmt.Printf("Server running on port %s... \n", n.Portnumber)
 
 	err = grpcServer.Serve(listener) //activates the server
 	if err != nil {
 		log.Fatalf("Could not work in server")
+	}
+
+	for { 
+
 	}
 }
 
 func main() {
 	// Get the command line arguments
 	args := os.Args[1:] //this is without the program path in the argument array
-	input := args[0]
-	myId, err := strconv.Atoi(input)
+	//fmt.Printf("The args: %v \n", args) //homemade error handling
+
+	nodeId, err := strconv.Atoi(args[0]) //extracts the nodes id from argument list
 	if err != nil {
 		panic(err)
 	}
-	myPort := args[myId] // heres to hoping this will be seen as a int
 
-	fmt.Printf("My id: %d, Myport: %s \n", myId, myPort)
-	// potentially 
-	server := &Node{portnumber: myPort, lamport: 0, queue: list.New(), State: Release} 
-	server.JoinSystem()
+	myPort := args[nodeId] // heres to hoping this will be seen as a int
+	args = args[1:]        // remove the first index from the array
 
+	startMap := make(map[string]pb.RAClient) 
+
+	for key := range args {
+		if args[key] != myPort {
+			startMap[args[key]] = nil
+			//fmt.Printf("The key is: %d \n", key)   // homemade for errorhandling
+			//fmt.Printf("the value is: %s \n", args[key])
+		}
+	}
+
+	// fmt.Printf("My id: %d, Myport: %s \n", nodeId, myPort)     // homemade error handling
+	node := &Node{Portnumber: myPort, Lamport: 0, Queue: make([]pb.Request, 0), State: Release, SystemNodes: startMap}
+	go node.StartServer()
+	time.Sleep(1 * time.Second)
+	node.JoinSystem()
+
+	for {
+
+	}
 }
