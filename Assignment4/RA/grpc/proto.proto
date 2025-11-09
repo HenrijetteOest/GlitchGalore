@@ -9,9 +9,12 @@ message request{
 
 message response {
     bool permission = 1;
+    string portnr = 2;
 }
 
-service RA {
-    rpc RequestCriticalSectionAccess (request) returns (response){};
+message empty {}
 
+service RA {
+    rpc RequestCriticalSectionAccess (request) returns (empty){};
+    rpc SendPermission (response) returns (empty) {};
 }

@@ -8,7 +8,6 @@ package pb
 
 import (
 	context "context"
-
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -21,13 +20,15 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	RA_RequestCriticalSectionAccess_FullMethodName = "/proto.RA/RequestCriticalSectionAccess"
+	RA_SendPermission_FullMethodName               = "/proto.RA/SendPermission"
 )
 
 // RAClient is the client API for RA service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RAClient interface {
-	RequestCriticalSectionAccess(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
+	RequestCriticalSectionAccess(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Empty, error)
+	SendPermission(ctx context.Context, in *Response, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type rAClient struct {
@@ -38,10 +39,20 @@ func NewRAClient(cc grpc.ClientConnInterface) RAClient {
 	return &rAClient{cc}
 }
 
-func (c *rAClient) RequestCriticalSectionAccess(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
+func (c *rAClient) RequestCriticalSectionAccess(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Response)
+	out := new(Empty)
 	err := c.cc.Invoke(ctx, RA_RequestCriticalSectionAccess_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rAClient) SendPermission(ctx context.Context, in *Response, opts ...grpc.CallOption) (*Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, RA_SendPermission_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +63,8 @@ func (c *rAClient) RequestCriticalSectionAccess(ctx context.Context, in *Request
 // All implementations must embed UnimplementedRAServer
 // for forward compatibility.
 type RAServer interface {
-	RequestCriticalSectionAccess(context.Context, *Request) (*Response, error)
+	RequestCriticalSectionAccess(context.Context, *Request) (*Empty, error)
+	SendPermission(context.Context, *Response) (*Empty, error)
 	mustEmbedUnimplementedRAServer()
 }
 
@@ -63,8 +75,11 @@ type RAServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRAServer struct{}
 
-func (UnimplementedRAServer) RequestCriticalSectionAccess(context.Context, *Request) (*Response, error) {
+func (UnimplementedRAServer) RequestCriticalSectionAccess(context.Context, *Request) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RequestCriticalSectionAccess not implemented")
+}
+func (UnimplementedRAServer) SendPermission(context.Context, *Response) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendPermission not implemented")
 }
 func (UnimplementedRAServer) mustEmbedUnimplementedRAServer() {}
 func (UnimplementedRAServer) testEmbeddedByValue()            {}
@@ -105,6 +120,24 @@ func _RA_RequestCriticalSectionAccess_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RA_SendPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Response)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RAServer).SendPermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RA_SendPermission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RAServer).SendPermission(ctx, req.(*Response))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RA_ServiceDesc is the grpc.ServiceDesc for RA service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -115,6 +148,10 @@ var RA_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RequestCriticalSectionAccess",
 			Handler:    _RA_RequestCriticalSectionAccess_Handler,
+		},
+		{
+			MethodName: "SendPermission",
+			Handler:    _RA_SendPermission_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

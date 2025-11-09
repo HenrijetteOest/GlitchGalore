@@ -11,8 +11,6 @@ import (
 	"sync"
 	"time"
 
-	//"io"
-
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
@@ -21,11 +19,12 @@ import (
 
 type Node struct {
 	pb.UnimplementedRAServer
-	Portnumber string
-	Lamport    int32 // sendRequest, receiveRequest (?), access Critical section
-	//Queue       []pb.Request
-	State       State                  // RELEASE, WANTED, & HELD
-	SystemNodes map[string]pb.RAClient // portnumber and proto Ricart Agrawala client
+	Portnumber      string
+	Lamport         int32 // sendRequest, receiveRequest (?), access Critical section
+	Queue           []*pb.Request
+	State           State                  // RELEASE, WANTED, & HELD
+	SystemNodes     map[string]pb.RAClient // portnumber and proto Ricart Agrawala client
+	PermissionCount int32
 }
 
 type State string
@@ -48,85 +47,115 @@ var termLog *log.Logger
 func (n *Node) CriticalSection() {
 	fileLog.Printf("Node: %s made it to the Critical Section! MUAHAHAAAA \n", n.Portnumber)
 	termLog.Printf("Node: %s made it to the Critical Section! MUAHAHAAAA \n", n.Portnumber)
+	mu.Lock()
 	n.Lamport++
+	mu.Unlock()
 	time.Sleep(4 * time.Second)
 }
 
 // RequestCriticalSectionAccess is our rpc call
-func (n *Node) RequestCriticalSectionAccess(ctx context.Context, req *pb.Request) (*pb.Response, error) {
+func (n *Node) RequestCriticalSectionAccess(ctx context.Context, req *pb.Request) (*pb.Empty, error) {
 	fileLog.Printf("Node: %s received request from Node: %s", n.Portnumber, req.Portnr)
 	termLog.Printf("I have received a request from Node: %s", req.Portnr)
 
 	myPortnr, _ := strconv.Atoi(n.Portnumber)
 	reqPortnr, _ := strconv.Atoi(req.GetPortnr())
-	if n.State == Held || (n.State == Wanted && (n.Lamport < req.Lamport || (n.Lamport == req.Lamport && myPortnr > reqPortnr))) {
-		//n.Queue = append(n.Queue, *req)
+	// append to queue if we are in the critical section, or we want to and we either have higher lamport priority or the same lamport with higher portnumber
+	if n.State == Held || (n.State == Wanted && (n.Lamport < req.Lamport || (n.Lamport == req.Lamport && myPortnr > reqPortnr))) { //
 		mu.Lock()
-		for n.State != Release {
-			cond.Wait()
-		}
+		n.Queue = append(n.Queue, req)
 		mu.Unlock()
-
-		return &pb.Response{Permission: true}, nil
-
 	} else {
-
-		return &pb.Response{Permission: true}, nil
+		_, err := n.SystemNodes[req.GetPortnr()].SendPermission(context.Background(), &pb.Response{Permission: true, Portnr: n.Portnumber})
+		if err != nil {
+			log.Printf("error trying to send request to node: %s  %v", req.GetPortnr(), err)
+		}
 	}
+	return &pb.Empty{}, nil
 }
 
-// kald på i main
-// we change the state to wanted in Request Access and send it
+// sending a permission reson
+func (n *Node) SendPermission(ctx context.Context, resp *pb.Response) (*pb.Empty, error) {
+	fileLog.Printf("Node: %s has received permission from Node: %s", n.Portnumber, resp.GetPortnr())
+	termLog.Printf("I have received a permission")
+
+	mu.Lock()
+	n.PermissionCount++
+	termLog.Printf("Current permission count: %d, total permission count needed: %d", n.PermissionCount, len(n.SystemNodes))
+	cond.Broadcast()
+
+	mu.Unlock()
+
+	return &pb.Empty{}, nil
+}
+
+// Called from main
+// Check the node is RELEASE and neither WANTED nor HELD
 func (n *Node) RequestAccess() {
 	if n.State == Release {
-		n.State = Wanted
+		//n.State = Wanted
 		n.SendRequests()
 	}
 }
 
+// Uses a Wait Group to ask all other nodes permission to enter the CS concurrently
+// Once the node has received permission it calls to enter the CS from here
 func (n *Node) SendRequests() {
-	waitGroup := sync.WaitGroup{}
-	//n.Lamport++
+	mu.Lock()
+	n.State = Wanted
+	n.Lamport++ // increment Lamport timestamp for this request
+	mu.Unlock()
 
-	for node, _ := range n.SystemNodes {
-
-		waitGroup.Add(1)
-
+	// Send requests to all other nodes asynchronously
+	for nodeAddr := range n.SystemNodes {
 		go func(nodeConnection string) {
-			defer waitGroup.Done()
+			fileLog.Printf("Node: %s will ask Node: %s for permission", n.Portnumber, nodeConnection)
+			termLog.Printf("I will request permission from Node: %s", nodeConnection)
 
-			_, err := n.SystemNodes[nodeConnection].RequestCriticalSectionAccess(context.Background(), &pb.Request{
-				Portnr:  n.Portnumber,
-				Lamport: n.Lamport,
-			})
+			_, err := n.SystemNodes[nodeConnection].RequestCriticalSectionAccess(
+				context.Background(),
+				&pb.Request{
+					Portnr:  n.Portnumber,
+					Lamport: n.Lamport,
+				},
+			)
 			if err != nil {
-				log.Printf("error trying to send request to node: %s  %v", nodeConnection, err)
+				log.Printf("error trying to send request to node %s: %v", nodeConnection, err)
 			}
-		}(node)
+		}(nodeAddr)
 	}
-	waitGroup.Wait()
+
+	// Wait for all replies using sync.Cond
+	mu.Lock()
+	for int(n.PermissionCount) < len(n.SystemNodes) {
+		cond.Wait() // goroutine sleeps until cond.Broadcast() is called
+	}
 	n.State = Held
+	mu.Unlock()
+
+	// Critical section
 	n.CriticalSection()
 	fileLog.Printf("Node: %s has left the Critical Section", n.Portnumber)
 	termLog.Println("I have left the Critical Section ")
+
+	// Release and wake any deferred requests
+	mu.Lock()
+	n.PermissionCount = 0
 	n.State = Release
-	cond.Broadcast()
+	cond.Broadcast() // notify all waiting handlers
+	mu.Unlock()
 
-	/*
-		go func() {
-			waitGroup.Wait()
-			n.State = Held
-			n.CriticalSection()
-			n.State = Release
-			fileLog.Printf("Node: %s has left the Critical Section", n.Portnumber)
-			termLog.Println("I have left the Critical Section ")
-			cond.Broadcast()
-
-		}()
-	*/
+	for _, req := range n.Queue {
+		_, err := n.SystemNodes[req.Portnr].SendPermission(context.Background(), &pb.Response{Permission: true, Portnr: n.Portnumber})
+		if err != nil {
+			log.Printf("Error sending deferred permission to %s: %v", req.Portnr, err)
+		}
+		n.Queue = n.Queue[1:]
+	}
+	//n.Queue = n.Queue
 }
 
-// Make Client first then server
+// Make a Client connection and save it to the SystemNodes map
 func (n *Node) JoinSystem() {
 	// client connection establishes
 	for key := range n.SystemNodes {
@@ -146,6 +175,7 @@ func (n *Node) JoinSystem() {
 	}
 }
 
+// Establishes the server connection
 func (n *Node) StartServer() {
 	// Server section
 	tmp := ":" + n.Portnumber
@@ -205,8 +235,8 @@ func main() {
 	}
 
 	// fmt.Printf("My id: %d, Myport: %s \n", nodeId, myPort)     // homemade error handling
-	//node := &Node{Portnumber: myPort, Lamport: 0, Queue: make([]pb.Request, 0), State: Release, SystemNodes: startMap}
-	node := &Node{Portnumber: myPort, Lamport: 0, State: Release, SystemNodes: startMap}
+	node := &Node{Portnumber: myPort, Lamport: 0, Queue: make([]*pb.Request, 0), State: Release, SystemNodes: startMap, PermissionCount: 0}
+	//node := &Node{Portnumber: myPort, Lamport: 0, State: Release, SystemNodes: startMap}
 	go node.StartServer()
 	time.Sleep(10 * time.Second)
 	node.JoinSystem()
