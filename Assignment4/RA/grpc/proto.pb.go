@@ -75,8 +75,8 @@ func (x *Request) GetLamport() int32 {
 
 type Response struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Permission    bool                   `protobuf:"varint,1,opt,name=permission,proto3" json:"permission,omitempty"`
-	Portnr        string                 `protobuf:"bytes,2,opt,name=portnr,proto3" json:"portnr,omitempty"`
+	Portnr        string                 `protobuf:"bytes,1,opt,name=portnr,proto3" json:"portnr,omitempty"`
+	Lamport       int32                  `protobuf:"varint,2,opt,name=lamport,proto3" json:"lamport,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -111,18 +111,18 @@ func (*Response) Descriptor() ([]byte, []int) {
 	return file_proto_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Response) GetPermission() bool {
-	if x != nil {
-		return x.Permission
-	}
-	return false
-}
-
 func (x *Response) GetPortnr() string {
 	if x != nil {
 		return x.Portnr
 	}
 	return ""
+}
+
+func (x *Response) GetLamport() int32 {
+	if x != nil {
+		return x.Lamport
+	}
+	return 0
 }
 
 type Empty struct {
@@ -168,15 +168,13 @@ const file_proto_proto_rawDesc = "" +
 	"\vproto.proto\x12\x05proto\";\n" +
 	"\arequest\x12\x16\n" +
 	"\x06portnr\x18\x01 \x01(\tR\x06portnr\x12\x18\n" +
-	"\alamport\x18\x02 \x01(\x05R\alamport\"B\n" +
-	"\bresponse\x12\x1e\n" +
-	"\n" +
-	"permission\x18\x01 \x01(\bR\n" +
-	"permission\x12\x16\n" +
-	"\x06portnr\x18\x02 \x01(\tR\x06portnr\"\a\n" +
-	"\x05empty2w\n" +
-	"\x02RA\x12>\n" +
-	"\x1cRequestCriticalSectionAccess\x12\x0e.proto.request\x1a\f.proto.empty\"\x00\x121\n" +
+	"\alamport\x18\x02 \x01(\x05R\alamport\"<\n" +
+	"\bresponse\x12\x16\n" +
+	"\x06portnr\x18\x01 \x01(\tR\x06portnr\x12\x18\n" +
+	"\alamport\x18\x02 \x01(\x05R\alamport\"\a\n" +
+	"\x05empty2h\n" +
+	"\x02RA\x12/\n" +
+	"\rRequestAccess\x12\x0e.proto.request\x1a\f.proto.empty\"\x00\x121\n" +
 	"\x0eSendPermission\x12\x0f.proto.response\x1a\f.proto.empty\"\x00B\x06Z\x04./pbb\x06proto3"
 
 var (
@@ -198,9 +196,9 @@ var file_proto_proto_goTypes = []any{
 	(*Empty)(nil),    // 2: proto.empty
 }
 var file_proto_proto_depIdxs = []int32{
-	0, // 0: proto.RA.RequestCriticalSectionAccess:input_type -> proto.request
+	0, // 0: proto.RA.RequestAccess:input_type -> proto.request
 	1, // 1: proto.RA.SendPermission:input_type -> proto.response
-	2, // 2: proto.RA.RequestCriticalSectionAccess:output_type -> proto.empty
+	2, // 2: proto.RA.RequestAccess:output_type -> proto.empty
 	2, // 3: proto.RA.SendPermission:output_type -> proto.empty
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type

@@ -1,0 +1,504 @@
+2025/11/11 22:08:54 Server running on port 5000... 
+2025/11/11 22:08:57 Server running on port 5001... 
+2025/11/11 22:08:58 Server running on port 5002... 
+2025/11/11 22:09:04 Node: 5000 Client connection established on port 5001... 
+2025/11/11 22:09:04 Node: 5000 Client connection established on port 5002... 
+2025/11/11 22:09:07 Node: 5001 Client connection established on port 5000... 
+2025/11/11 22:09:07 Node: 5001 Client connection established on port 5002... 
+2025/11/11 22:09:08 Node: 5002 Client connection established on port 5000... 
+2025/11/11 22:09:08 Node: 5002 Client connection established on port 5001... 
+2025/11/11 22:09:13 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:09:13 Node: 5001 received request from Node: 5000
+2025/11/11 22:09:13 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:09:13 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:09:13 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:09:14 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:09:14 Node: 5000 received request from Node: 5001
+2025/11/11 22:09:14 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:09:14 Node: 5002 received request from Node: 5000
+2025/11/11 22:09:14 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:09:14 Node: 5000 received request from Node: 5002
+2025/11/11 22:09:14 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:09:14 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:14 Node: 5002 received request from Node: 5001
+2025/11/11 22:09:14 Node: 5001 received request from Node: 5002
+2025/11/11 22:09:14 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:09:18 Node: 5000 has left the Critical Section
+2025/11/11 22:09:18 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:09:18 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:18 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:09:21 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:09:21 Node: 5001 received request from Node: 5000
+2025/11/11 22:09:21 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:09:21 Node: 5002 received request from Node: 5000
+2025/11/11 22:09:22 Node: 5001 has left the Critical Section
+2025/11/11 22:09:22 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:09:22 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:22 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:09:26 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:09:26 Node: 5002 has left the Critical Section
+2025/11/11 22:09:26 Node: 5000 received request from Node: 5001
+2025/11/11 22:09:26 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:09:26 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:26 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:09:26 Node: 5002 received request from Node: 5001
+2025/11/11 22:09:26 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:09:29 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:09:29 Node: 5000 received request from Node: 5002
+2025/11/11 22:09:29 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:09:29 Node: 5001 received request from Node: 5002
+2025/11/11 22:09:30 Node: 5000 has left the Critical Section
+2025/11/11 22:09:30 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:09:30 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:30 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:09:33 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:09:33 Node: 5001 received request from Node: 5000
+2025/11/11 22:09:33 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:09:33 Node: 5002 received request from Node: 5000
+2025/11/11 22:09:34 Node: 5001 has left the Critical Section
+2025/11/11 22:09:34 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:09:34 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:34 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:09:38 Node: 5002 has left the Critical Section
+2025/11/11 22:09:38 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:09:38 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:09:38 Node: 5000 received request from Node: 5001
+2025/11/11 22:09:38 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:38 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:09:38 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:09:38 Node: 5000 received request from Node: 5002
+2025/11/11 22:09:38 Node: 5002 received request from Node: 5001
+2025/11/11 22:09:38 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:09:38 Node: 5001 received request from Node: 5002
+2025/11/11 22:09:38 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:09:42 Node: 5000 has left the Critical Section
+2025/11/11 22:09:42 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:09:42 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:42 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:09:42 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:09:42 Node: 5001 received request from Node: 5000
+2025/11/11 22:09:42 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:09:42 Node: 5002 received request from Node: 5000
+2025/11/11 22:09:46 Node: 5001 has left the Critical Section
+2025/11/11 22:09:46 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:09:46 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:46 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:09:50 Node: 5002 has left the Critical Section
+2025/11/11 22:09:50 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:09:50 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:09:50 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:50 Node: 5000 received request from Node: 5001
+2025/11/11 22:09:50 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:09:50 Node: 5002 received request from Node: 5001
+2025/11/11 22:09:50 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:09:52 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:09:52 Node: 5000 received request from Node: 5002
+2025/11/11 22:09:52 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:09:52 Node: 5001 received request from Node: 5002
+2025/11/11 22:09:54 Node: 5000 has left the Critical Section
+2025/11/11 22:09:54 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:09:54 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:54 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:09:58 Node: 5001 has left the Critical Section
+2025/11/11 22:09:58 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:09:58 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:09:58 Node: 5001 received request from Node: 5000
+2025/11/11 22:09:58 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:09:58 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:09:58 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:09:58 Node: 5000 received request from Node: 5001
+2025/11/11 22:09:58 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:09:58 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:09:58 Node: 5002 received request from Node: 5001
+2025/11/11 22:09:58 Node: 5002 received request from Node: 5000
+2025/11/11 22:10:02 Node: 5002 has left the Critical Section
+2025/11/11 22:10:02 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:10:02 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:10:02 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:10:03 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:10:03 Node: 5000 received request from Node: 5002
+2025/11/11 22:10:03 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:10:03 Node: 5001 received request from Node: 5002
+2025/11/11 22:10:06 Node: 5000 has left the Critical Section
+2025/11/11 22:10:06 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:10:06 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:10:06 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:10:10 Node: 5001 has left the Critical Section
+2025/11/11 22:10:10 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:10:10 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:10:10 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:10:10 Node: 5001 received request from Node: 5000
+2025/11/11 22:10:10 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:10:10 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:10:10 Node: 5002 received request from Node: 5000
+2025/11/11 22:10:14 Node: 5002 has left the Critical Section
+2025/11/11 22:10:14 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:10:14 Node: 5000 received request from Node: 5001
+2025/11/11 22:10:14 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:10:14 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:10:14 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:10:14 Node: 5002 received request from Node: 5001
+2025/11/11 22:10:14 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:10:18 Node: 5000 has left the Critical Section
+2025/11/11 22:10:18 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:10:18 Node: 5000 received request from Node: 5002
+2025/11/11 22:10:18 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:10:18 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:10:18 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:10:18 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:10:18 Node: 5001 received request from Node: 5002
+2025/11/11 22:10:19 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:10:19 Node: 5001 received request from Node: 5000
+2025/11/11 22:10:19 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:10:19 Node: 5002 received request from Node: 5000
+2025/11/11 22:10:22 Node: 5001 has left the Critical Section
+2025/11/11 22:10:22 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:10:22 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:10:22 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:10:25 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:10:25 Node: 5000 received request from Node: 5001
+2025/11/11 22:10:25 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:10:25 Node: 5002 received request from Node: 5001
+2025/11/11 22:10:26 Node: 5002 has left the Critical Section
+2025/11/11 22:10:26 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:10:26 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:10:26 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:10:28 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:10:28 Node: 5000 received request from Node: 5002
+2025/11/11 22:10:28 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:10:28 Node: 5001 received request from Node: 5002
+2025/11/11 22:10:30 Node: 5000 has left the Critical Section
+2025/11/11 22:10:30 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:10:30 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:10:30 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:10:34 Node: 5001 has left the Critical Section
+2025/11/11 22:10:34 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:10:34 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:10:35 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:10:35 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:10:35 Node: 5002 received request from Node: 5001
+2025/11/11 22:10:38 Node: 5002 has left the Critical Section
+2025/11/11 22:10:42 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:10:42 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:13:45 Server running on port 5000... 
+2025/11/11 22:13:46 Server running on port 5001... 
+2025/11/11 22:13:50 Server running on port 5002... 
+2025/11/11 22:13:55 Node: 5000 Client connection established on port 5001... 
+2025/11/11 22:13:55 Node: 5000 Client connection established on port 5002... 
+2025/11/11 22:13:56 Node: 5001 Client connection established on port 5000... 
+2025/11/11 22:13:56 Node: 5001 Client connection established on port 5002... 
+2025/11/11 22:14:00 Node: 5002 Client connection established on port 5000... 
+2025/11/11 22:14:00 Node: 5002 Client connection established on port 5001... 
+2025/11/11 22:14:03 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:14:03 Node: 5001 received request from Node: 5000
+2025/11/11 22:14:03 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:14:03 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:14:03 Node: 5002 received request from Node: 5000
+2025/11/11 22:14:04 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:14:04 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:04 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:14:04 Node: 5000 received request from Node: 5001
+2025/11/11 22:14:04 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:14:04 Node: 5002 received request from Node: 5001
+2025/11/11 22:14:05 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:14:06 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:14:06 Node: 5000 received request from Node: 5002
+2025/11/11 22:14:06 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:14:06 Node: 5001 received request from Node: 5002
+2025/11/11 22:14:08 Node: 5000 has left the Critical Section
+2025/11/11 22:14:08 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:14:08 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:08 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:14:08 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:14:08 Node: 5001 received request from Node: 5000
+2025/11/11 22:14:08 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:14:08 Node: 5002 received request from Node: 5000
+2025/11/11 22:14:12 Node: 5001 has left the Critical Section
+2025/11/11 22:14:12 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:14:12 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:12 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:14:15 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:14:15 Node: 5000 received request from Node: 5001
+2025/11/11 22:14:15 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:14:15 Node: 5002 received request from Node: 5001
+2025/11/11 22:14:16 Node: 5002 has left the Critical Section
+2025/11/11 22:14:16 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:14:16 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:16 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:14:18 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:14:18 Node: 5000 received request from Node: 5002
+2025/11/11 22:14:18 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:14:18 Node: 5001 received request from Node: 5002
+2025/11/11 22:14:20 Node: 5000 has left the Critical Section
+2025/11/11 22:14:20 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:14:20 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:20 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:14:20 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:14:20 Node: 5001 received request from Node: 5000
+2025/11/11 22:14:20 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:14:20 Node: 5002 received request from Node: 5000
+2025/11/11 22:14:24 Node: 5001 has left the Critical Section
+2025/11/11 22:14:24 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:14:24 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:24 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:14:26 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:14:26 Node: 5000 received request from Node: 5001
+2025/11/11 22:14:26 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:14:26 Node: 5002 received request from Node: 5001
+2025/11/11 22:14:28 Node: 5002 has left the Critical Section
+2025/11/11 22:14:28 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:14:28 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:28 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:14:31 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:14:31 Node: 5000 received request from Node: 5002
+2025/11/11 22:14:31 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:14:31 Node: 5001 received request from Node: 5002
+2025/11/11 22:14:32 Node: 5000 has left the Critical Section
+2025/11/11 22:14:32 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:14:32 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:32 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:14:34 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:14:34 Node: 5001 received request from Node: 5000
+2025/11/11 22:14:34 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:14:34 Node: 5002 received request from Node: 5000
+2025/11/11 22:14:36 Node: 5001 has left the Critical Section
+2025/11/11 22:14:36 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:14:36 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:36 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:14:40 Node: 5002 has left the Critical Section
+2025/11/11 22:14:40 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:14:40 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:14:40 Node: 5000 received request from Node: 5001
+2025/11/11 22:14:40 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:40 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:14:40 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:14:40 Node: 5000 received request from Node: 5002
+2025/11/11 22:14:40 Node: 5002 received request from Node: 5001
+2025/11/11 22:14:40 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:14:40 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:14:40 Node: 5001 received request from Node: 5002
+2025/11/11 22:14:44 Node: 5000 has left the Critical Section
+2025/11/11 22:14:44 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:14:44 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:44 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:14:46 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:14:46 Node: 5001 received request from Node: 5000
+2025/11/11 22:14:46 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:14:46 Node: 5002 received request from Node: 5000
+2025/11/11 22:14:48 Node: 5001 has left the Critical Section
+2025/11/11 22:14:48 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:14:48 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:48 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:14:48 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:14:48 Node: 5000 received request from Node: 5001
+2025/11/11 22:14:48 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:14:48 Node: 5002 received request from Node: 5001
+2025/11/11 22:14:52 Node: 5002 has left the Critical Section
+2025/11/11 22:14:52 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:14:52 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:52 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:14:55 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:14:55 Node: 5000 received request from Node: 5002
+2025/11/11 22:14:55 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:14:55 Node: 5001 received request from Node: 5002
+2025/11/11 22:14:56 Node: 5000 has left the Critical Section
+2025/11/11 22:14:56 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:14:56 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:14:56 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:14:59 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:14:59 Node: 5001 received request from Node: 5000
+2025/11/11 22:14:59 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:14:59 Node: 5002 received request from Node: 5000
+2025/11/11 22:15:00 Node: 5001 has left the Critical Section
+2025/11/11 22:15:00 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:15:00 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:15:00 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:15:01 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:15:01 Node: 5002 received request from Node: 5001
+2025/11/11 22:15:01 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:15:01 Node: 5000 received request from Node: 5001
+2025/11/11 22:15:04 Node: 5002 has left the Critical Section
+2025/11/11 22:15:04 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:15:04 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:15:04 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:15:04 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:15:04 Node: 5000 received request from Node: 5002
+2025/11/11 22:15:04 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:15:04 Node: 5001 received request from Node: 5002
+2025/11/11 22:15:08 Node: 5000 has left the Critical Section
+2025/11/11 22:15:08 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:15:08 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:15:08 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:15:10 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:15:10 Node: 5001 received request from Node: 5000
+2025/11/11 22:15:10 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:15:10 Node: 5002 received request from Node: 5000
+2025/11/11 22:15:12 Node: 5001 has left the Critical Section
+2025/11/11 22:15:12 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:15:12 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:15:12 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:15:14 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:15:14 Node: 5000 received request from Node: 5001
+2025/11/11 22:15:14 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:15:14 Node: 5002 received request from Node: 5001
+2025/11/11 22:15:16 Node: 5002 has left the Critical Section
+2025/11/11 22:15:16 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:15:16 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:15:16 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:15:16 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:15:16 Node: 5000 received request from Node: 5002
+2025/11/11 22:15:16 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:15:16 Node: 5001 received request from Node: 5002
+2025/11/11 22:15:20 Node: 5000 has left the Critical Section
+2025/11/11 22:15:20 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:15:20 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:15:20 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:15:21 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:15:21 Node: 5001 received request from Node: 5000
+2025/11/11 22:15:21 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:15:21 Node: 5002 received request from Node: 5000
+2025/11/11 22:15:24 Node: 5001 has left the Critical Section
+2025/11/11 22:15:24 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:15:24 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:15:24 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:15:27 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:15:27 Node: 5000 received request from Node: 5001
+2025/11/11 22:15:27 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:15:27 Node: 5002 received request from Node: 5001
+2025/11/11 22:15:28 Node: 5002 has left the Critical Section
+2025/11/11 22:15:28 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:15:28 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:15:28 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:15:29 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:15:29 Node: 5001 received request from Node: 5002
+2025/11/11 22:15:29 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:15:29 Node: 5000 received request from Node: 5002
+2025/11/11 22:15:32 Node: 5000 has left the Critical Section
+2025/11/11 22:15:32 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:15:32 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:15:32 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:15:34 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:15:34 Node: 5001 received request from Node: 5000
+2025/11/11 22:15:34 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:15:34 Node: 5002 received request from Node: 5000
+2025/11/11 22:15:36 Node: 5001 has left the Critical Section
+2025/11/11 22:15:36 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:15:36 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:15:36 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:15:37 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:15:37 Node: 5000 received request from Node: 5001
+2025/11/11 22:15:37 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:15:37 Node: 5002 received request from Node: 5001
+2025/11/11 22:15:40 Node: 5002 has left the Critical Section
+2025/11/11 22:18:26 Server running on port 5002... 
+2025/11/11 22:18:28 Server running on port 5001... 
+2025/11/11 22:18:30 Server running on port 5000... 
+2025/11/11 22:18:36 Node: 5002 Client connection established on port 5000... 
+2025/11/11 22:18:36 Node: 5002 Client connection established on port 5001... 
+2025/11/11 22:18:38 Node: 5001 Client connection established on port 5000... 
+2025/11/11 22:18:38 Node: 5001 Client connection established on port 5002... 
+2025/11/11 22:18:40 Node: 5000 Client connection established on port 5001... 
+2025/11/11 22:18:40 Node: 5000 Client connection established on port 5002... 
+2025/11/11 22:18:44 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:18:44 Node: 5000 received request from Node: 5002
+2025/11/11 22:18:44 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:18:44 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:18:44 Node: 5001 received request from Node: 5002
+2025/11/11 22:18:45 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:18:45 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:18:45 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:18:45 Node: 5002 received request from Node: 5000
+2025/11/11 22:18:45 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:18:45 Node: 5001 received request from Node: 5000
+2025/11/11 22:18:45 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:18:47 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:18:47 Node: 5000 received request from Node: 5001
+2025/11/11 22:18:47 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:18:47 Node: 5002 received request from Node: 5001
+2025/11/11 22:18:49 Node: 5002 has left the Critical Section
+2025/11/11 22:18:49 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:18:49 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:18:49 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:18:49 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:18:49 Node: 5000 received request from Node: 5002
+2025/11/11 22:18:49 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:18:49 Node: 5001 received request from Node: 5002
+2025/11/11 22:19:47 Server running on port 5002... 
+2025/11/11 22:19:49 Server running on port 5001... 
+2025/11/11 22:19:51 Server running on port 5000... 
+2025/11/11 22:19:57 Node: 5002 Client connection established on port 5000... 
+2025/11/11 22:19:57 Node: 5002 Client connection established on port 5001... 
+2025/11/11 22:19:59 Node: 5001 Client connection established on port 5000... 
+2025/11/11 22:19:59 Node: 5001 Client connection established on port 5002... 
+2025/11/11 22:20:01 Node: 5000 Client connection established on port 5001... 
+2025/11/11 22:20:01 Node: 5000 Client connection established on port 5002... 
+2025/11/11 22:20:05 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:20:05 Node: 5000 received request from Node: 5002
+2025/11/11 22:20:05 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:20:05 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:20:06 Node: 5001 received request from Node: 5002
+2025/11/11 22:20:06 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:20:06 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:20:07 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:20:07 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:20:07 Node: 5001 received request from Node: 5000
+2025/11/11 22:20:07 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:20:07 Node: 5000 received request from Node: 5001
+2025/11/11 22:20:07 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:20:07 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:20:07 Node: 5002 received request from Node: 5001
+2025/11/11 22:20:07 Node: 5002 received request from Node: 5000
+2025/11/11 22:20:10 Node: 5002 has left the Critical Section
+2025/11/11 22:20:10 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:20:10 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:20:10 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:20:13 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:20:13 Node: 5001 received request from Node: 5002
+2025/11/11 22:20:13 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:20:13 Node: 5000 received request from Node: 5002
+2025/11/11 22:20:14 Node: 5000 has left the Critical Section
+2025/11/11 22:20:14 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:20:14 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:20:14 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:20:15 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:20:15 Node: 5001 received request from Node: 5000
+2025/11/11 22:20:15 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:20:15 Node: 5002 received request from Node: 5000
+2025/11/11 22:20:18 Node: 5001 has left the Critical Section
+2025/11/11 22:20:18 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:20:18 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:20:18 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:20:20 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:20:20 Node: 5000 received request from Node: 5001
+2025/11/11 22:20:20 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:20:20 Node: 5002 received request from Node: 5001
+2025/11/11 22:20:22 Node: 5002 has left the Critical Section
+2025/11/11 22:20:22 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:20:22 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:20:22 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:20:23 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:20:23 Node: 5000 received request from Node: 5002
+2025/11/11 22:20:23 Node: 5002 will ask Node: 5001 for permission
+2025/11/11 22:20:23 Node: 5001 received request from Node: 5002
+2025/11/11 22:20:26 Node: 5000 has left the Critical Section
+2025/11/11 22:20:26 Node: 5001 has received permission from Node: 5000
+2025/11/11 22:20:26 Node: 5001 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:20:26 Node: 5002 has received permission from Node: 5000
+2025/11/11 22:20:26 Node: 5000 will ask Node: 5001 for permission
+2025/11/11 22:20:26 Node: 5001 received request from Node: 5000
+2025/11/11 22:20:26 Node: 5000 will ask Node: 5002 for permission
+2025/11/11 22:20:26 Node: 5002 received request from Node: 5000
+2025/11/11 22:20:30 Node: 5001 has left the Critical Section
+2025/11/11 22:20:30 Node: 5002 has received permission from Node: 5001
+2025/11/11 22:20:30 Node: 5002 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:20:30 Node: 5000 has received permission from Node: 5001
+2025/11/11 22:20:32 Node: 5001 will ask Node: 5000 for permission
+2025/11/11 22:20:32 Node: 5000 received request from Node: 5001
+2025/11/11 22:20:32 Node: 5001 will ask Node: 5002 for permission
+2025/11/11 22:20:32 Node: 5002 received request from Node: 5001
+2025/11/11 22:20:34 Node: 5002 has left the Critical Section
+2025/11/11 22:20:34 Node: 5000 has received permission from Node: 5002
+2025/11/11 22:20:34 Node: 5000 made it to the Critical Section! MUAHAHAAAA 
+2025/11/11 22:20:34 Node: 5001 has received permission from Node: 5002
+2025/11/11 22:20:37 Node: 5002 will ask Node: 5000 for permission
+2025/11/11 22:20:37 Node: 5002 will ask Node: 5001 for permission
