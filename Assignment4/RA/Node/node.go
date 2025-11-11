@@ -21,11 +21,11 @@ import (
 type Node struct {
 	pb.UnimplementedRAServer
 	Portnumber      string
-	Lamport         int32 // sendRequest, receiveRequest (?), access Critical section
-	Timestamp		int32  // lamport at time of message sending
+	Lamport         int32 
+	Timestamp		int32 // lamport at time of message sending
 	State           State // RELEASE, WANTED, & HELD
 	Queue           []*pb.Request
-	SystemNodes     map[string]pb.RAClient // portnumber and proto Ricart Agrawala client
+	SystemNodes     map[string]pb.RAClient // portnumber and connection 
 	PermissionCount int
 }
 
@@ -39,8 +39,8 @@ const (
 )
 
 /*---------- Make Lock ---------------------------------------------------*/
-var mu sync.Mutex // for deferring responding to requests
-var cond = sync.NewCond(&mu)
+var mu sync.Mutex 
+var cond = sync.NewCond(&mu) 
 
 /*---------- Create Global Log variables ----------------------------------*/
 var fileLog *log.Logger // For logging to system.log
@@ -71,7 +71,7 @@ func main() {
 		panic(err)
 	}
 
-	myPort := args[nodeId] // heres to hoping this will be seen as a int
+	myPort := args[nodeId] 
 	args = args[1:]        // remove the first index from the array (such that only we only have portnumbers left in the array)
 
 	/*-------- Create a map containing the other relevant Portnumbers ------------*/
@@ -87,7 +87,7 @@ func main() {
 
 	/*-------- Start Server for this Node -----------------------*/
 	node.StartServer()
-	time.Sleep(10 * time.Second) // sleep so we can create more servers.
+	time.Sleep(10 * time.Second) // sleep to ensure all nodes (servers) are up and running before trying to establish connections
 
 	/*-------- Establish connection to other servers ------------*/
 	node.JoinSystem()
@@ -117,10 +117,10 @@ func (n *Node) StartServer() {
 	/*---------- Make GrpcServer ---------------------------------*/
 	grpcServer := grpc.NewServer()
 	pb.RegisterRAServer(grpcServer, n) //registers the unimplemented server (implements the server)
-	//pb.RegisterRAServiceServer(grpcServer, n) 	// TODO delete this line?
 
-	/*---------- Log Status? ---------------------------------*/
-	// This print technically occurs too soon...
+
+	/*---------- Log Status ---------------------------------*/
+	// This print technically occurs too soon because we can't place it after err = grpcServer.Serve(listener)...
 	fileLog.Printf("Server running on port %s... \n", n.Portnumber)
 	termLog.Printf("Server running on port %s... \n", n.Portnumber)
 
@@ -172,7 +172,7 @@ func (n *Node) SendRequests() {
 	n.PermissionCount = 0
 	mu.Unlock()
 
-	/*---------- Asynchronously Send Requests to all other Nodes ----------------------*/
+	/*----------------------Send Requests to all other Nodes ----------------------*/
 	for node := range n.SystemNodes {
 		/*---------- Log Status SendRequest ---------------------------------------*/
 		fileLog.Printf("Node: %s will ask Node: %s for permission", n.Portnumber, node)
@@ -192,24 +192,16 @@ func (n *Node) SendRequests() {
 	}
 
 	/*---------- Wait for Permissions -----------------------------------*/
-	// wait if I have too few permissions
-	mu.Lock() 		// Wait for all replies using sync.Cond
-	for n.PermissionCount < len(n.SystemNodes) { // TODO delete for int(n.PermissionCount) < len(n.SystemNodes) {
-		cond.Wait()
+	
+	mu.Lock() 		
+	for n.PermissionCount < len(n.SystemNodes) { 
+		cond.Wait() // Wait for all replies using sync.Cond
 	}
-	//mu.Lock() 		// Wait for all replies using sync.Cond
+	
 	n.State = Held 	// Enough Permissions acquired, change state
 	mu.Unlock()
 	n.CriticalSection()
-	/*---------- Enter Critical Section if HELD -------------------*/
-	/*
-	if n.State == Held {
-		n.CriticalSection()
-	} else {
-		fileLog.Printf("FAIL: Node: %s tried to enter Critical Section but state was not HELD", n.Portnumber)
-		termLog.Println("FAIL: I tried to enter the Critical Section in a not HELD state")
-	}
-		*/
+	
 }
 
 func (n *Node) CriticalSection() {
@@ -223,7 +215,7 @@ func (n *Node) CriticalSection() {
 	mu.Unlock()
 
 	/*---------- Stay in Critical Section for 4 Seconds ----------------------------------*/
-	time.Sleep(4 * time.Second)
+	time.Sleep(3 * time.Second)
 	n.ExitCriticalSection()
 }
 
@@ -240,18 +232,16 @@ func (n *Node) ExitCriticalSection() {
 	mu.Lock()             // Release and wake any deferred requests
 	n.PermissionCount = 0 // Reset how many Permissions we have received.
 	n.State = Release     // No longer inside the Critical Section
-	//n.Lamport++			  // Increment lamport when leaving the 
+	n.Lamport++			  // Increment lamport when leaving the 
 	n.Timestamp = n.Lamport	// update the timestamp to no longer be too low
 	mu.Unlock()
 
 	/*---------- Reply by Sending Permissions to All Nodes Waiting for my Permission ------*/
-	//termLog.Printf("Node: %s, size of queue waiting for responses: %d ", n.Portnumber, len(n.Queue))
 	for _, req := range n.Queue {
 		_, err := n.SystemNodes[req.Portnr].SendPermission(context.Background(), &pb.Response{Portnr: n.Portnumber, Lamport: n.Timestamp})
 		if err != nil {
 			log.Printf("Error sending deferred permission to %s, Error: %v", req.Portnr, err)
 		}
-		//n.Queue = n.Queue[1:] // Remove Request from queue
 	}
 	n.Queue = nil //empty the queue
 }
@@ -297,7 +287,7 @@ func (n *Node) RequestAccess(ctx context.Context, req *pb.Request) (*pb.Empty, e
 	// UPDATED the lamport to timestamp at the time of request
 	/*---------- Compare Whether to Immediately Send a Respond or wait --------------------*/
 	// append to queue if we are in the critical section,
-	// or we want to and we either have higher lampTimestampority or the same lamTimestampth higher portnumber
+	// or we want to and our request has a higher priority than the others node, or if both request have the same priority and the requesting node has a higher portnumber
 	if n.State == Held || (n.State == Wanted && (n.Timestamp < req.Lamport || (n.Timestamp == req.Lamport && myPortnr < reqPortnr))) {
 		mu.Lock()
 		n.Queue = append(n.Queue, req)
