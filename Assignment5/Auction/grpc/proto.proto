@@ -5,8 +5,8 @@ option go_package = "./pb"; //Auction/grpc/proto
 message Empty{} 
 
 message Bidder{
-    int32 my_bid = 1;
-    int32 my_id = 2;
+    int32 bid = 1;
+    int32 id = 2;
 }
 
 message BidResponse{
@@ -14,8 +14,8 @@ message BidResponse{
 }
 
 message ResultResponse{
-    int32 higest_bid = 1;
-    bool item_sold = 2;
+    int32 highestBid = 1;
+    bool itemSold = 2;
 }
     
 

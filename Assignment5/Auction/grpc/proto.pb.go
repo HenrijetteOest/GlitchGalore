@@ -59,8 +59,8 @@ func (*Empty) Descriptor() ([]byte, []int) {
 
 type Bidder struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MyBid         int32                  `protobuf:"varint,1,opt,name=my_bid,json=myBid,proto3" json:"my_bid,omitempty"`
-	MyId          int32                  `protobuf:"varint,2,opt,name=my_id,json=myId,proto3" json:"my_id,omitempty"`
+	Bid           int32                  `protobuf:"varint,1,opt,name=bid,proto3" json:"bid,omitempty"`
+	Id            int32                  `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -95,16 +95,16 @@ func (*Bidder) Descriptor() ([]byte, []int) {
 	return file_proto_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Bidder) GetMyBid() int32 {
+func (x *Bidder) GetBid() int32 {
 	if x != nil {
-		return x.MyBid
+		return x.Bid
 	}
 	return 0
 }
 
-func (x *Bidder) GetMyId() int32 {
+func (x *Bidder) GetId() int32 {
 	if x != nil {
-		return x.MyId
+		return x.Id
 	}
 	return 0
 }
@@ -155,8 +155,8 @@ func (x *BidResponse) GetStatus() string {
 
 type ResultResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	HigestBid     int32                  `protobuf:"varint,1,opt,name=higest_bid,json=higestBid,proto3" json:"higest_bid,omitempty"`
-	ItemSold      bool                   `protobuf:"varint,2,opt,name=item_sold,json=itemSold,proto3" json:"item_sold,omitempty"`
+	HighestBid    int32                  `protobuf:"varint,1,opt,name=highestBid,proto3" json:"highestBid,omitempty"`
+	ItemSold      bool                   `protobuf:"varint,2,opt,name=itemSold,proto3" json:"itemSold,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -191,9 +191,9 @@ func (*ResultResponse) Descriptor() ([]byte, []int) {
 	return file_proto_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ResultResponse) GetHigestBid() int32 {
+func (x *ResultResponse) GetHighestBid() int32 {
 	if x != nil {
-		return x.HigestBid
+		return x.HighestBid
 	}
 	return 0
 }
@@ -210,16 +210,17 @@ var File_proto_proto protoreflect.FileDescriptor
 const file_proto_proto_rawDesc = "" +
 	"\n" +
 	"\vproto.proto\x12\x05proto\"\a\n" +
-	"\x05Empty\"4\n" +
-	"\x06Bidder\x12\x15\n" +
-	"\x06my_bid\x18\x01 \x01(\x05R\x05myBid\x12\x13\n" +
-	"\x05my_id\x18\x02 \x01(\x05R\x04myId\"%\n" +
+	"\x05Empty\"*\n" +
+	"\x06Bidder\x12\x10\n" +
+	"\x03bid\x18\x01 \x01(\x05R\x03bid\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\x05R\x02id\"%\n" +
 	"\vBidResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"L\n" +
-	"\x0eResultResponse\x12\x1d\n" +
+	"\x0eResultResponse\x12\x1e\n" +
 	"\n" +
-	"higest_bid\x18\x01 \x01(\x05R\thigestBid\x12\x1b\n" +
-	"\titem_sold\x18\x02 \x01(\bR\bitemSold2m\n" +
+	"highestBid\x18\x01 \x01(\x05R\n" +
+	"highestBid\x12\x1a\n" +
+	"\bitemSold\x18\x02 \x01(\bR\bitemSold2m\n" +
 	"\x0eAuctionService\x12*\n" +
 	"\x03Bid\x12\r.proto.Bidder\x1a\x12.proto.BidResponse\"\x00\x12/\n" +
 	"\x06Result\x12\f.proto.Empty\x1a\x15.proto.ResultResponse\"\x00B\x06Z\x04./pbb\x06proto3"

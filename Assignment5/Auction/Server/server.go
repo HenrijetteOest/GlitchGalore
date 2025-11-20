@@ -6,6 +6,8 @@ import (
 	"time"
 	"math/rand"
 	"errors"
+	"net"
+	"log"
 
 	"google.golang.org/grpc"
 
@@ -18,10 +20,10 @@ type AuctionServer struct {
 	pb.UnimplementedAuctionServiceServer
 	ID 					int32
 	LeaderID 			int32
-	//SynchronousID 	int32
-	//OtherServers 		map[int32]	//key: id //value: status i bidder?	// Track of other servers
-	BestBid 			HighestBidder	// Keep track of registered Client
-	RegisteredClients   [int32]bool 
+	//SynchronousID 	int32 // For Server backups
+	//OtherServers 		map[int32]	//key: id //value: status i bidder?	// keep track of other servers //for server backup
+	BestBid 			HighestBidder  // The best bid so far
+	RegisteredClients   map[int32]bool // Keep track of registered Clients
 	AuctionOngoing		bool
 }
 
@@ -41,9 +43,12 @@ func main() {
 	}
 	server.start_server()
 
-	go StartAndEndBiddingRound() // starts auctions at intervals
+	go server.StartAndEndBiddingRound() // starts auctions at intervals
+
+	select {}
 }
 
+// Starts the server (serve() is a goroutine )
 func (s *AuctionServer) start_server() {
 	lis, err := net.Listen("tcp", ":5050")
 	if err != nil {
@@ -51,7 +56,7 @@ func (s *AuctionServer) start_server() {
 	}
 	grpcServer := grpc.NewServer()
 	pb.RegisterAuctionServiceServer(grpcServer, s)
-	log.Printf("Auction Server %d listening on port 5050", s.ID)
+	fmt.Printf("Auction Server %d listening on port 5050\n", s.ID)
 
 	go func(){
 		if err := grpcServer.Serve(lis); err != nil {
@@ -60,43 +65,48 @@ func (s *AuctionServer) start_server() {
 	}()
 }
 
+/* Starts each bidding round by changing Auction Ongoing to true or false and updating the best bid thereafter  */
 func (s *AuctionServer) StartAndEndBiddingRound() {
-	for int i := 0; i < 5; i++ { 		// Total items to be bid on before the auction ends
-		s.HighestBidder(BidderID: -1, BidAmount: 0)		// reset the highest bidder
+	for i := 1; i < 6; i++ { 	
+			// Total items to be bid on before the auction ends
+		s.BestBid.BidderID = -1
+		s.BestBid.BidAmount = 0		// reset the highest bidder
+		
 		s.AuctionOngoing = true			// Auction round begins
-		log.Printf("	Round %d of auction has begun \n", i)
+		fmt.Printf("	Round %d of auction has begun \n", i)
 		time.Sleep(10 * time.Second)	// Auction round duration
+		
 		s.AuctionOngoing = false		// Auction round ends
-		log.Printf("	Round %d of auction is over \n", i)
+		fmt.Printf("	Round %d of auction is over, winning bid: %d by client: %d \n", i, s.BestBid.BidAmount, s.BestBid.BidderID)
 		time.Sleep(time.Duration(int32(rand.Intn(5))) * time.Second)	// Next item to be sold is prepared
 	}
-	log.Println("The auction is now over!")
+	fmt.Println("The auction is now over!")
 }
 
+/* Does not properly return the pb.BidResponse to Client (don't know why yet) */
 func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResponse, error) {
 	err := errors.New("EXCEPTION")	// makes the exception message
 	
-	if s.registeredClients[bidder.my_id] != true {
-		s.registeredClients[bidder.my_id] = true
-		// grpc call to another server to update the database
+	if s.RegisteredClients[bidder.Id] != true {
+		s.RegisteredClients[bidder.Id] = true
+		// add grpc call to another server to update the database
 	}
 	
-	if bidder.my_bid > s.HighestBidder.BidAmount && s.AuctionOngoing == true{
-		s.HighestBidder.BidAmount = bidder.my_bid
-		s.HighestBidder.BidderID = bidder.my_id
+	if bidder.Bid > s.BestBid.BidAmount && s.AuctionOngoing == true{
+		s.BestBid.BidAmount = bidder.Bid
+		s.BestBid.BidderID = bidder.Id
 		// return success or err (exception)
-		return &pb.BidResponse{status: "SUCCESS"}, err 
+		return &pb.BidResponse{Status: "SUCCESS"}, err 
 	} 
 	 
-	return &pb.BidResponse{status: "FAIL"}, err //used to be nil
+	return &pb.BidResponse{Status: "FAIL"}, err //used to be nil
 }
 
-func (s *AuctionServer) Result(ctx context.Context, *pb.Empty) (*pb.ResultResponse, error) {
+/* Returns the highest bid and whether the item has been sold yet or not   */
+func (s *AuctionServer) Result(ctx context.Context, empty *pb.Empty) (*pb.ResultResponse, error) {
 	return &pb.ResultResponse{
-		higest_bid: s.HighestBidder.BidAmount,	
-		item_sold: !s.AuctionOngoing,				// if auction is ongoing then the Item hasn't been sold
+		HighestBid: s.BestBid.BidAmount,	
+		ItemSold: !s.AuctionOngoing,		// if auction is ongoing then the Item hasn't been sold
 	}, nil	
 }
 
-
-/*****  FREEZER   ******/
