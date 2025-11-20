@@ -1,0 +1,30 @@
+syntax = "proto3";
+package proto;
+option go_package = "./pb"; //Auction/grpc/proto
+
+message Bidder{
+    string status = 1; //(FAIL; SUCCESS; EXCEPTION) //or int32
+}
+
+message BidResponse{
+    int32 my_bid = 1;
+    int32 my_id = 2;
+}
+
+message Empty{} 
+
+message ResultResponse{
+    int32 higest_bid = 1;
+    bool item_sold = 2;
+}
+    
+
+service AuctionService{
+    rpc Bid (Bidder) returns (BidResponse) {};    
+    rpc Result (Empty) returns (ResultResponse) {};
+    rpc SetLeader (Empty) returns (Empty) {};
+    rpc PublicSetLeader (Empty) returns (Empty) {};
+    rpc SetSyncFollower (Empty) returns (Empty) {};
+    rpc PublishSetSyncFollower(Empty) returns (Empty) {};
+    rpc UpdateDatabase (Empty) returns (Empty) {};
+}
