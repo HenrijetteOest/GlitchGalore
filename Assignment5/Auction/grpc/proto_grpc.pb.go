@@ -8,6 +8,7 @@ package pb
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -19,13 +20,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuctionService_Bid_FullMethodName                    = "/proto.AuctionService/Bid"
-	AuctionService_Result_FullMethodName                 = "/proto.AuctionService/Result"
-	AuctionService_SetLeader_FullMethodName              = "/proto.AuctionService/SetLeader"
-	AuctionService_PublicSetLeader_FullMethodName        = "/proto.AuctionService/PublicSetLeader"
-	AuctionService_SetSyncFollower_FullMethodName        = "/proto.AuctionService/SetSyncFollower"
-	AuctionService_PublishSetSyncFollower_FullMethodName = "/proto.AuctionService/PublishSetSyncFollower"
-	AuctionService_UpdateDatabase_FullMethodName         = "/proto.AuctionService/UpdateDatabase"
+	AuctionService_Bid_FullMethodName    = "/proto.AuctionService/Bid"
+	AuctionService_Result_FullMethodName = "/proto.AuctionService/Result"
 )
 
 // AuctionServiceClient is the client API for AuctionService service.
@@ -34,11 +30,6 @@ const (
 type AuctionServiceClient interface {
 	Bid(ctx context.Context, in *Bidder, opts ...grpc.CallOption) (*BidResponse, error)
 	Result(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ResultResponse, error)
-	SetLeader(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	PublicSetLeader(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	SetSyncFollower(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	PublishSetSyncFollower(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	UpdateDatabase(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type auctionServiceClient struct {
@@ -69,67 +60,12 @@ func (c *auctionServiceClient) Result(ctx context.Context, in *Empty, opts ...gr
 	return out, nil
 }
 
-func (c *auctionServiceClient) SetLeader(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, AuctionService_SetLeader_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *auctionServiceClient) PublicSetLeader(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, AuctionService_PublicSetLeader_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *auctionServiceClient) SetSyncFollower(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, AuctionService_SetSyncFollower_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *auctionServiceClient) PublishSetSyncFollower(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, AuctionService_PublishSetSyncFollower_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *auctionServiceClient) UpdateDatabase(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, AuctionService_UpdateDatabase_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // AuctionServiceServer is the server API for AuctionService service.
 // All implementations must embed UnimplementedAuctionServiceServer
 // for forward compatibility.
 type AuctionServiceServer interface {
 	Bid(context.Context, *Bidder) (*BidResponse, error)
 	Result(context.Context, *Empty) (*ResultResponse, error)
-	SetLeader(context.Context, *Empty) (*Empty, error)
-	PublicSetLeader(context.Context, *Empty) (*Empty, error)
-	SetSyncFollower(context.Context, *Empty) (*Empty, error)
-	PublishSetSyncFollower(context.Context, *Empty) (*Empty, error)
-	UpdateDatabase(context.Context, *Empty) (*Empty, error)
 	mustEmbedUnimplementedAuctionServiceServer()
 }
 
@@ -145,21 +81,6 @@ func (UnimplementedAuctionServiceServer) Bid(context.Context, *Bidder) (*BidResp
 }
 func (UnimplementedAuctionServiceServer) Result(context.Context, *Empty) (*ResultResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Result not implemented")
-}
-func (UnimplementedAuctionServiceServer) SetLeader(context.Context, *Empty) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetLeader not implemented")
-}
-func (UnimplementedAuctionServiceServer) PublicSetLeader(context.Context, *Empty) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PublicSetLeader not implemented")
-}
-func (UnimplementedAuctionServiceServer) SetSyncFollower(context.Context, *Empty) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetSyncFollower not implemented")
-}
-func (UnimplementedAuctionServiceServer) PublishSetSyncFollower(context.Context, *Empty) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PublishSetSyncFollower not implemented")
-}
-func (UnimplementedAuctionServiceServer) UpdateDatabase(context.Context, *Empty) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateDatabase not implemented")
 }
 func (UnimplementedAuctionServiceServer) mustEmbedUnimplementedAuctionServiceServer() {}
 func (UnimplementedAuctionServiceServer) testEmbeddedByValue()                        {}
@@ -218,96 +139,6 @@ func _AuctionService_Result_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuctionService_SetLeader_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuctionServiceServer).SetLeader(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuctionService_SetLeader_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuctionServiceServer).SetLeader(ctx, req.(*Empty))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuctionService_PublicSetLeader_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuctionServiceServer).PublicSetLeader(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuctionService_PublicSetLeader_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuctionServiceServer).PublicSetLeader(ctx, req.(*Empty))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuctionService_SetSyncFollower_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuctionServiceServer).SetSyncFollower(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuctionService_SetSyncFollower_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuctionServiceServer).SetSyncFollower(ctx, req.(*Empty))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuctionService_PublishSetSyncFollower_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuctionServiceServer).PublishSetSyncFollower(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuctionService_PublishSetSyncFollower_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuctionServiceServer).PublishSetSyncFollower(ctx, req.(*Empty))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuctionService_UpdateDatabase_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuctionServiceServer).UpdateDatabase(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuctionService_UpdateDatabase_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuctionServiceServer).UpdateDatabase(ctx, req.(*Empty))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // AuctionService_ServiceDesc is the grpc.ServiceDesc for AuctionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -322,26 +153,6 @@ var AuctionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Result",
 			Handler:    _AuctionService_Result_Handler,
-		},
-		{
-			MethodName: "SetLeader",
-			Handler:    _AuctionService_SetLeader_Handler,
-		},
-		{
-			MethodName: "PublicSetLeader",
-			Handler:    _AuctionService_PublicSetLeader_Handler,
-		},
-		{
-			MethodName: "SetSyncFollower",
-			Handler:    _AuctionService_SetSyncFollower_Handler,
-		},
-		{
-			MethodName: "PublishSetSyncFollower",
-			Handler:    _AuctionService_PublishSetSyncFollower_Handler,
-		},
-		{
-			MethodName: "UpdateDatabase",
-			Handler:    _AuctionService_UpdateDatabase_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
