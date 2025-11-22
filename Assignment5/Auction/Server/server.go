@@ -37,7 +37,7 @@ func main() {
 	// Get the id and leader from the terminal
 	i, _ := strconv.ParseInt(os.Args[1], 10, 32) 	 // parse id to int
 	id := int32(i)									 // cast to int32
-	isleader, _ := strconv.ParseBool(os.Args[2])		 // boolean, am a the leader?
+	isleader, _ := strconv.ParseBool(os.Args[2])	 // boolean, am a the leader?
 
 	server := &AuctionServer{
 		ID:                id,
@@ -47,9 +47,9 @@ func main() {
 		AuctionOngoing:    false,
 	}
 
-	if (server.IsLeader == true) { // If I am the leader
+	if (server.IsLeader == true) {  // If I am the leader node
 		server.start_server()
-	} else  { // or I am the synch
+	} else  { 						// or I am the synchronized node
 		server.start_backup_server()
 		
 		// how do you keep up to date with leader
@@ -69,8 +69,6 @@ func main() {
 		find new leader
 	}	
 	*/
-	
-	//server.start_server()	// start the primary server
 	
 	go server.StartAndEndBiddingRound() // starts auctions at intervals
 
@@ -93,7 +91,6 @@ func (s *AuctionServer) start_backup_server() {
 	}()
 }
 
-
 // Starts the server (serve() is a goroutine )
 func (s *AuctionServer) start_server() {
 	lis, err := net.Listen("tcp", ":5050")
@@ -109,20 +106,43 @@ func (s *AuctionServer) start_server() {
 			log.Fatalf("Failed to serve on the primary server: %v", err)
 		}
 	}()
+
+	/*
+	
+	Establish client connection to Backup Server
+		Backup running on port 6060
+		We want to establish a connection to that backup
+	
+	conn, err := grpc.NewClient("localhost:6060", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Fatalf("Client could not connect: %v", err)
+	}
+
+	defer conn.Close()
+	client := pb.NewAuctionServiceClient(conn)
+
+
+	*/
 }
 
 /* Starts each bidding round by changing Auction Ongoing to true or false and updating the best bid thereafter  */
 func (s *AuctionServer) StartAndEndBiddingRound() {
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 1; i++ {
 		// Total items to be bid on before the auction ends
 		s.BestBid.BidderID = -1
 		s.BestBid.BidAmount = 0 // reset the highest bidder
 
 		s.AuctionOngoing = true // Auction round begins
+		// Third grpc Call: Auction change
+		// WAIT for response
+
 		fmt.Printf("	Round %d of auction has begun \n", i)
 		time.Sleep(10 * time.Second) // Auction round duration
 
 		s.AuctionOngoing = false // Auction round ends
+		// Fourth grpc call: Auction change
+		// WAIT for response
+
 		fmt.Printf("	Round %d of auction is over, winning bid: %d by client: %d \n", i, s.BestBid.BidAmount, s.BestBid.BidderID)
 		time.Sleep(6 * time.Second) // Next item to be sold is prepared	// time.Duration(int32(rand.Intn(5)))
 	}
@@ -135,12 +155,16 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 
 	if s.RegisteredClients[bidder.Id] != true {
 		s.RegisteredClients[bidder.Id] = true
-		// add grpc call to another server to update the database
+		// First Update: add grpc call to another server to update the database
+		// WAIT for response before proceeding
 	}
 
 	if bidder.Bid > s.BestBid.BidAmount && s.AuctionOngoing == true {
 		s.BestBid.BidAmount = bidder.Bid
 		s.BestBid.BidderID = bidder.Id
+		// Second Update: grpc call to db
+		// WAIT for response before proceeding
+
 		// return success or err (exception)
 		return &pb.BidResponse{Status: "SUCCESS"}, err
 	}

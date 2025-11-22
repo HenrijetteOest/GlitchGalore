@@ -17,11 +17,21 @@ message ResultResponse{
     int32 highestBid = 1;
     bool itemSold = 2;
 }
-    
+
+message BackupResponse {
+    bool succes = 1;
+}
+
+message AuctionState {
+    bool Ongoing = 1;
+}
 
 service AuctionService{
     rpc Bid (Bidder) returns (BidResponse) {};    
     rpc Result (Empty) returns (ResultResponse) {};
+    rpc UpdateRegisteredClient (Bidder) returns (BackupResponse) {};
+    rpc UpdateHighestBid (Bidder) returns (BackupResponse) {};
+    rpc UpdateAuctionState (AuctionState) returns (BackupResponse) {};
 }
 
 

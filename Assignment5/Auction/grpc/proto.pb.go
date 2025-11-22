@@ -205,6 +205,94 @@ func (x *ResultResponse) GetItemSold() bool {
 	return false
 }
 
+type BackupResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Succes        bool                   `protobuf:"varint,1,opt,name=succes,proto3" json:"succes,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BackupResponse) Reset() {
+	*x = BackupResponse{}
+	mi := &file_proto_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BackupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BackupResponse) ProtoMessage() {}
+
+func (x *BackupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BackupResponse.ProtoReflect.Descriptor instead.
+func (*BackupResponse) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *BackupResponse) GetSucces() bool {
+	if x != nil {
+		return x.Succes
+	}
+	return false
+}
+
+type AuctionState struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Ongoing       bool                   `protobuf:"varint,1,opt,name=Ongoing,proto3" json:"Ongoing,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AuctionState) Reset() {
+	*x = AuctionState{}
+	mi := &file_proto_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AuctionState) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AuctionState) ProtoMessage() {}
+
+func (x *AuctionState) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AuctionState.ProtoReflect.Descriptor instead.
+func (*AuctionState) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *AuctionState) GetOngoing() bool {
+	if x != nil {
+		return x.Ongoing
+	}
+	return false
+}
+
 var File_proto_proto protoreflect.FileDescriptor
 
 const file_proto_proto_rawDesc = "" +
@@ -220,10 +308,17 @@ const file_proto_proto_rawDesc = "" +
 	"\n" +
 	"highestBid\x18\x01 \x01(\x05R\n" +
 	"highestBid\x12\x1a\n" +
-	"\bitemSold\x18\x02 \x01(\bR\bitemSold2m\n" +
+	"\bitemSold\x18\x02 \x01(\bR\bitemSold\"(\n" +
+	"\x0eBackupResponse\x12\x16\n" +
+	"\x06succes\x18\x01 \x01(\bR\x06succes\"(\n" +
+	"\fAuctionState\x12\x18\n" +
+	"\aOngoing\x18\x01 \x01(\bR\aOngoing2\xaf\x02\n" +
 	"\x0eAuctionService\x12*\n" +
 	"\x03Bid\x12\r.proto.Bidder\x1a\x12.proto.BidResponse\"\x00\x12/\n" +
-	"\x06Result\x12\f.proto.Empty\x1a\x15.proto.ResultResponse\"\x00B\x06Z\x04./pbb\x06proto3"
+	"\x06Result\x12\f.proto.Empty\x1a\x15.proto.ResultResponse\"\x00\x12@\n" +
+	"\x16UpdateRegisteredClient\x12\r.proto.Bidder\x1a\x15.proto.BackupResponse\"\x00\x12:\n" +
+	"\x10UpdateHighestBid\x12\r.proto.Bidder\x1a\x15.proto.BackupResponse\"\x00\x12B\n" +
+	"\x12UpdateAuctionState\x12\x13.proto.AuctionState\x1a\x15.proto.BackupResponse\"\x00B\x06Z\x04./pbb\x06proto3"
 
 var (
 	file_proto_proto_rawDescOnce sync.Once
@@ -237,20 +332,28 @@ func file_proto_proto_rawDescGZIP() []byte {
 	return file_proto_proto_rawDescData
 }
 
-var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_proto_proto_goTypes = []any{
 	(*Empty)(nil),          // 0: proto.Empty
 	(*Bidder)(nil),         // 1: proto.Bidder
 	(*BidResponse)(nil),    // 2: proto.BidResponse
 	(*ResultResponse)(nil), // 3: proto.ResultResponse
+	(*BackupResponse)(nil), // 4: proto.BackupResponse
+	(*AuctionState)(nil),   // 5: proto.AuctionState
 }
 var file_proto_proto_depIdxs = []int32{
 	1, // 0: proto.AuctionService.Bid:input_type -> proto.Bidder
 	0, // 1: proto.AuctionService.Result:input_type -> proto.Empty
-	2, // 2: proto.AuctionService.Bid:output_type -> proto.BidResponse
-	3, // 3: proto.AuctionService.Result:output_type -> proto.ResultResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	1, // 2: proto.AuctionService.UpdateRegisteredClient:input_type -> proto.Bidder
+	1, // 3: proto.AuctionService.UpdateHighestBid:input_type -> proto.Bidder
+	5, // 4: proto.AuctionService.UpdateAuctionState:input_type -> proto.AuctionState
+	2, // 5: proto.AuctionService.Bid:output_type -> proto.BidResponse
+	3, // 6: proto.AuctionService.Result:output_type -> proto.ResultResponse
+	4, // 7: proto.AuctionService.UpdateRegisteredClient:output_type -> proto.BackupResponse
+	4, // 8: proto.AuctionService.UpdateHighestBid:output_type -> proto.BackupResponse
+	4, // 9: proto.AuctionService.UpdateAuctionState:output_type -> proto.BackupResponse
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -267,7 +370,7 @@ func file_proto_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_proto_rawDesc), len(file_proto_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

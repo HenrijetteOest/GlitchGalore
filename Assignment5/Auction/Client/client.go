@@ -24,8 +24,6 @@ type AuctionClient struct {
 func main() {
 	fmt.Println("Starting Auction Client...")
 
-
-
 	conn, err := grpc.NewClient("localhost:5050", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Client could not connect: %v", err)
