@@ -11,6 +11,7 @@ import (
 	"os"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 
 	pb "Auction/grpc"
 )
@@ -24,6 +25,7 @@ type AuctionServer struct {
 	BestBid           	HighestBidder  // The best bid so far (potentially change to the proto message type instead)
 	RegisteredClients 	map[int32]bool // Keep track of registered Clients
 	AuctionOngoing    	bool
+	BackupConnection	pb.AuctionServiceClient
 }
 
 type HighestBidder struct {
@@ -45,31 +47,15 @@ func main() {
 		BestBid:           HighestBidder{BidderID: -1, BidAmount: 0},
 		RegisteredClients: make(map[int32]bool),
 		AuctionOngoing:    false,
+		BackupConnection:  nil,
 	}
 
 	if (server.IsLeader == true) {  // If I am the leader node
 		server.start_server()
 	} else  { 						// or I am the synchronized node
 		server.start_backup_server()
-		
-		// how do you keep up to date with leader
 	} 
-	
-	/* Help to understand how to run the server with leader or not
-					and  what true and false mean
-	//Leader_bool = true
-	//notLeader_bool = false
-	
-	go run ./server 1 1 (true)
-	go run ./server 2 0 (false)
-	*/
 
-	/* Pseudokode
-	if (crash happens...) {
-		find new leader
-	}	
-	*/
-	
 	go server.StartAndEndBiddingRound() // starts auctions at intervals
 
 	select {}
@@ -107,22 +93,16 @@ func (s *AuctionServer) start_server() {
 		}
 	}()
 
-	/*
-	
-	Establish client connection to Backup Server
-		Backup running on port 6060
-		We want to establish a connection to that backup
-	
+	/********** Connection to Backup Server **********************/
+
 	conn, err := grpc.NewClient("localhost:6060", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
-		log.Fatalf("Client could not connect: %v", err)
+		log.Fatalf("Primary Server could not connect to Backup server: %v", err)
 	}
 
 	defer conn.Close()
-	client := pb.NewAuctionServiceClient(conn)
-
-
-	*/
+	s.BackupConnection = pb.NewAuctionServiceClient(conn)	// either NewAuctionServiceClient or NewAuctionClient
+	fmt.Printf("Primary server connection to Backup server established \n")
 }
 
 /* Starts each bidding round by changing Auction Ongoing to true or false and updating the best bid thereafter  */
