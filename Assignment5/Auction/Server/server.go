@@ -7,6 +7,8 @@ import (
 	"log"
 	"net"
 	"time"
+	"strconv"
+	"os"
 
 	"google.golang.org/grpc"
 
@@ -15,13 +17,13 @@ import (
 
 type AuctionServer struct {
 	pb.UnimplementedAuctionServiceServer
-	ID       int32
-	LeaderID int32
+	ID       			int32
+	IsLeader			bool
 	//SynchronousID 	int32 // For Server backups
 	//OtherServers 		map[int32]	//key: id //value: status i bidder?	// keep track of other servers //for server backup
-	BestBid           HighestBidder  // The best bid so far
-	RegisteredClients map[int32]bool // Keep track of registered Clients
-	AuctionOngoing    bool
+	BestBid           	HighestBidder  // The best bid so far (potentially change to the proto message type instead)
+	RegisteredClients 	map[int32]bool // Keep track of registered Clients
+	AuctionOngoing    	bool
 }
 
 type HighestBidder struct {
@@ -31,19 +33,66 @@ type HighestBidder struct {
 
 func main() {
 	fmt.Println("Starting Auction Server...")
+
+	// Get the id and leader from the terminal
+	i, _ := strconv.ParseInt(os.Args[1], 10, 32) 	 // parse id to int
+	id := int32(i)									 // cast to int32
+	isleader, _ := strconv.ParseBool(os.Args[2])		 // boolean, am a the leader?
+
 	server := &AuctionServer{
-		ID:                1,
-		LeaderID:          1,
+		ID:                id,
+		IsLeader:          isleader,
 		BestBid:           HighestBidder{BidderID: -1, BidAmount: 0},
 		RegisteredClients: make(map[int32]bool),
 		AuctionOngoing:    false,
 	}
-	server.start_server()
 
+	if (server.IsLeader == true) { // If I am the leader
+		server.start_server()
+	} else  { // or I am the synch
+		server.start_backup_server()
+		
+		// how do you keep up to date with leader
+	} 
+	
+	/* Help to understand how to run the server with leader or not
+					and  what true and false mean
+	//Leader_bool = true
+	//notLeader_bool = false
+	
+	go run ./server 1 1 (true)
+	go run ./server 2 0 (false)
+	*/
+
+	/* Pseudokode
+	if (crash happens...) {
+		find new leader
+	}	
+	*/
+	
+	//server.start_server()	// start the primary server
+	
 	go server.StartAndEndBiddingRound() // starts auctions at intervals
 
 	select {}
 }
+
+// Starts the backup server (serve() is a goroutine )
+func (s *AuctionServer) start_backup_server() {
+	lis, err := net.Listen("tcp", ":6060")
+	if err != nil {
+		log.Fatalf("Failed to listen: %v", err)
+	}
+	grpcServer := grpc.NewServer()
+	pb.RegisterAuctionServiceServer(grpcServer, s)
+	fmt.Printf("Backup Auction Server %d listening on port 6060\n", s.ID)
+	go func() {
+		if err := grpcServer.Serve(lis); err != nil {
+			log.Fatalf("Failed to serve on the backup server: %v", err)
+		}
+	}()
+}
+
 
 // Starts the server (serve() is a goroutine )
 func (s *AuctionServer) start_server() {
@@ -57,7 +106,7 @@ func (s *AuctionServer) start_server() {
 
 	go func() {
 		if err := grpcServer.Serve(lis); err != nil {
-			log.Fatalf("Failed to serve: %v", err)
+			log.Fatalf("Failed to serve on the primary server: %v", err)
 		}
 	}()
 }
