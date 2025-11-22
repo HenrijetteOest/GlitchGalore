@@ -19,7 +19,7 @@ message ResultResponse{
 }
 
 message BackupResponse {
-    bool succes = 1;
+    bool success = 1;
 }
 
 message AuctionState {

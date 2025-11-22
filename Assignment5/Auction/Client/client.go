@@ -11,8 +11,10 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	//"google.golang.org/grpc/connectivity"
 
 	pb "Auction/grpc"
+
 )
 
 type AuctionClient struct {
@@ -46,6 +48,7 @@ func main() {
 	// Keep the client running
 	select {}
 }
+
 
 // bidding logic
 /* Only resets it's bidding price if it asks and the bidding is over  */
@@ -84,7 +87,9 @@ func BidCall(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
 	})
 
 	fmt.Printf("Client %d placed a bid of %d\n", LocalBidder.ID, LocalBidder.My_Bid)
+	
 
+	
 	/*
 		if err == nil {
 			fmt.Println("something went wrong in BidCall")
@@ -98,11 +103,46 @@ func BidCall(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
 }
 
 /* FREEZER */
-// Place a bid
+
 /*
+// Place a bid cases
 	Case 1: 	current bid < our_bid  &&   item NOT sold	-->  just bid
 	Case 2: 	current bid > our_bid  && 	item NOT sold	-->  increase our price and then bid
 	Case 3:		current bid < our_bid  && 	item IS sold	-->  lower our start price
 	Case 4:  	current bid > our_bid  && 	item IS sold	-->  lower our start price
 
 */
+
+
+/*
+// Below code hinders the client from sending grpc calls to the Server. 
+// Don't know why yet
+// FROM SERVER
+// in case Backup Server is not made within 30 seconds, give up on it and continue
+ctx, cancel := context.WithTimeout(context.Background(), 30 * time.Second)
+defer cancel()
+
+// Save our current state such that we can check if it is READY later
+currentState := conn.GetState()
+
+for {
+	// Below line will block until there is a state change or context times out
+	if !conn.WaitForStateChange(ctx, currentState)  {
+		fmt.Printf("Client: Timeout error in waiting for state change, state: %s \n", conn.GetState())
+		return 
+	} 
+	currentState = conn.GetState() 				// Update our current state	
+
+	if currentState == connectivity.Ready {		// Connection is ready
+		fmt.Printf("Connection is now ready for use %v \n", conn.GetState())
+		break
+	}
+
+	if currentState == connectivity.Shutdown {   // Connection has been shutdown
+		fmt.Printf("Connection was shut down... but we want to continue anyway (but can't just yet) \n")
+		break
+	}
+
+	// Delete error handling later
+	fmt.Printf("State changed to %s, wait for a state change\n", currentState.String())
+}*/

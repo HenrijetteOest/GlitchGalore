@@ -207,7 +207,7 @@ func (x *ResultResponse) GetItemSold() bool {
 
 type BackupResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Succes        bool                   `protobuf:"varint,1,opt,name=succes,proto3" json:"succes,omitempty"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -242,9 +242,9 @@ func (*BackupResponse) Descriptor() ([]byte, []int) {
 	return file_proto_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *BackupResponse) GetSucces() bool {
+func (x *BackupResponse) GetSuccess() bool {
 	if x != nil {
-		return x.Succes
+		return x.Success
 	}
 	return false
 }
@@ -308,9 +308,9 @@ const file_proto_proto_rawDesc = "" +
 	"\n" +
 	"highestBid\x18\x01 \x01(\x05R\n" +
 	"highestBid\x12\x1a\n" +
-	"\bitemSold\x18\x02 \x01(\bR\bitemSold\"(\n" +
-	"\x0eBackupResponse\x12\x16\n" +
-	"\x06succes\x18\x01 \x01(\bR\x06succes\"(\n" +
+	"\bitemSold\x18\x02 \x01(\bR\bitemSold\"*\n" +
+	"\x0eBackupResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"(\n" +
 	"\fAuctionState\x12\x18\n" +
 	"\aOngoing\x18\x01 \x01(\bR\aOngoing2\xaf\x02\n" +
 	"\x0eAuctionService\x12*\n" +
