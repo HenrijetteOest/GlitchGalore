@@ -64,7 +64,7 @@ func (s *AuctionServer) start_server() {
 
 /* Starts each bidding round by changing Auction Ongoing to true or false and updating the best bid thereafter  */
 func (s *AuctionServer) StartAndEndBiddingRound() {
-	for i := 1; i < 6; i++ {
+	for i := 0; i < 5; i++ {
 		// Total items to be bid on before the auction ends
 		s.BestBid.BidderID = -1
 		s.BestBid.BidAmount = 0 // reset the highest bidder

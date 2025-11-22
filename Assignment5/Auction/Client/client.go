@@ -6,6 +6,8 @@ import (
 	"log"
 	"math/rand"
 	"time"
+	"os"
+	"strconv"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -21,6 +23,9 @@ type AuctionClient struct {
 
 func main() {
 	fmt.Println("Starting Auction Client...")
+
+
+
 	conn, err := grpc.NewClient("localhost:5050", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Client could not connect: %v", err)
@@ -29,8 +34,12 @@ func main() {
 	defer conn.Close()
 	client := pb.NewAuctionServiceClient(conn)
 
+	i, err := strconv.ParseInt(os.Args[1], 10, 32) 	// ParseInt always returns a int64, but we specify it should only take up 32 bits
+	bidderId := int32(i)	// cast to int32
+
+
 	LocalBidder := &AuctionClient{
-		ID:     int32(1),                 // TODO: In a real scenario, this would be unique for each client
+		ID:     bidderId,                 // Remember to give clients different ids in the terminal
 		My_Bid: int32(rand.Intn(99) + 1), // Random start bid, between 1 and 100
 	}
 
@@ -42,7 +51,7 @@ func main() {
 
 // bidding logic
 /* Only resets it's bidding price if it asks and the bidding is over  */
-func PlaceBid(client pb.AuctionServiceClient, LocalClient *AuctionClient) {
+func PlaceBid(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
 	for i := 0; i < 30; i++ {
 		// Get current status of the action
 		res, err := client.Result(context.Background(), &pb.Empty{})
@@ -51,32 +60,32 @@ func PlaceBid(client pb.AuctionServiceClient, LocalClient *AuctionClient) {
 		}
 
 		if res.ItemSold == true { // If the auction is over, then reset price
-			LocalClient.My_Bid = int32(rand.Intn(99) + 1) // Resest bid field with a new random start bid, between 1 and 100
+			LocalBidder.My_Bid = int32(rand.Intn(99) + 1) // Resest bid field with a new random start bid, between 1 and 100
 
 		} else { // Auction round is still ongoing!
 			/*if res.HighestBid == 0 {
-				LocalClient.My_Bid = int32(rand.Intn(99) + 1)
+				LocalBidder.My_Bid = int32(rand.Intn(99) + 1)
 			}*/
-			if res.HighestBid >= LocalClient.My_Bid {
+			if res.HighestBid >= LocalBidder.My_Bid {
 				// Increase our bid price and then bid
-				LocalClient.My_Bid = res.HighestBid + int32(rand.Intn(49)+1) // increment bid by 1-50
-				fmt.Printf("	Client %d is increasing bid to %d\n", LocalClient.ID, LocalClient.My_Bid)
+				LocalBidder.My_Bid = res.HighestBid + int32(rand.Intn(49)+1) // increment bid by 1-50
+				fmt.Printf("	Client %d is increasing bid to %d\n", LocalBidder.ID, LocalBidder.My_Bid)
 			}
-			BidCall(client, LocalClient) // Do the grpc call
+			BidCall(client, LocalBidder) // Do the grpc call
 		}
 		time.Sleep(time.Duration(int32(rand.Intn(5))) * time.Second)
 	}
 }
 
-func BidCall(client pb.AuctionServiceClient, LocalClient *AuctionClient) {
+func BidCall(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
 	// res, err :=
 	// Bid() should return some things, but that doesn't work at the moment
 	client.Bid(context.Background(), &pb.Bidder{
-		Bid: LocalClient.My_Bid,
-		Id:  LocalClient.ID,
+		Bid: LocalBidder.My_Bid,
+		Id:  LocalBidder.ID,
 	})
 
-	fmt.Printf("Client %d placed a bid of %d\n", LocalClient.ID, LocalClient.My_Bid)
+	fmt.Printf("Client %d placed a bid of %d\n", LocalBidder.ID, LocalBidder.My_Bid)
 
 	/*
 		if err == nil {
@@ -84,9 +93,9 @@ func BidCall(client pb.AuctionServiceClient, LocalClient *AuctionClient) {
 		}
 
 		if res.Status == "SUCCESS" {
-			fmt.Printf("SUCCESS: Client %d placed a bid of %d\n", LocalClient.ID, LocalClient.My_Bid)
+			fmt.Printf("SUCCESS: Client %d placed a bid of %d\n", LocalBidder.ID, LocalBidder.My_Bid)
 		} else if res.Status == "FAIL" {
-			fmt.Printf("FAIL: Client %d failed to place a bid \n", LocalClient.ID)
+			fmt.Printf("FAIL: Client %d failed to place a bid \n", LocalBidder.ID)
 		}*/
 }
 
