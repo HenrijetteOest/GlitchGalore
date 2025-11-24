@@ -1,0 +1,74 @@
+2025/11/24 17:47:50 / Server / Startup / 0
+2025/11/24 17:47:55 / Client 154 / Join Chat Request / Lamport 1
+2025/11/24 17:47:56 / Server / Client 154 Joins Chat / Lamport 2
+2025/11/24 17:47:56 / Server / Broadcast message to user 154 from user 154 / Lamport 3
+2025/11/24 17:47:56 / Client 154 / Received [Client 154]'s Message from Server / Lamport 4
+2025/11/24 17:47:56 / Client 154 / Send Message / Lamport 5
+2025/11/24 17:47:56 / Server / Receive message from user 154 / Lamport 6
+2025/11/24 17:47:56 / Server / Broadcast message to user 154 from user 154 / Lamport 7
+2025/11/24 17:47:56 / Client 154 / Received [Client 154]'s Message from Server / Lamport 8
+2025/11/24 17:47:57 / Client 154 / Send Message / Lamport 9
+2025/11/24 17:47:57 / Server / Receive message from user 154 / Lamport 10
+2025/11/24 17:47:57 / Server / Broadcast message to user 154 from user 154 / Lamport 11
+2025/11/24 17:47:57 / Client 154 / Received [Client 154]'s Message from Server / Lamport 12
+2025/11/24 17:47:58 / Client 154 / Send Message / Lamport 13
+2025/11/24 17:47:58 / Server / Receive message from user 154 / Lamport 14
+2025/11/24 17:47:58 / Server / Broadcast message to user 154 from user 154 / Lamport 15
+2025/11/24 17:47:58 / Client 154 / Received [Client 154]'s Message from Server / Lamport 16
+2025/11/24 17:48:00 / Client 154 / Send Message / Lamport 17
+2025/11/24 17:48:00 / Server / Receive message from user 154 / Lamport 18
+2025/11/24 17:48:00 / Server / Broadcast message to user 154 from user 154 / Lamport 19
+2025/11/24 17:48:00 / Client 154 / Received [Client 154]'s Message from Server / Lamport 20
+2025/11/24 17:48:04 / Client 154 / Send Message / Lamport 21
+2025/11/24 17:48:04 / Server / Receive message from user 154 / Lamport 22
+2025/11/24 17:48:04 / Server / Broadcast message to user 154 from user 154 / Lamport 23
+2025/11/24 17:48:04 / Client 154 / Received [Client 154]'s Message from Server / Lamport 24
+2025/11/24 17:48:06 / Client 154 / Send Message / Lamport 25
+2025/11/24 17:48:06 / Server / Receive message from user 154 / Lamport 26
+2025/11/24 17:48:06 / Server / Broadcast message to user 154 from user 154 / Lamport 27
+2025/11/24 17:48:06 / Client 154 / Received [Client 154]'s Message from Server / Lamport 28
+2025/11/24 17:48:08 / Client 154 / Send Message / Lamport 29
+2025/11/24 17:48:08 / Server / Receive message from user 154 / Lamport 30
+2025/11/24 17:48:08 / Server / Broadcast message to user 154 from user 154 / Lamport 31
+2025/11/24 17:48:08 / Client 154 / Received [Client 154]'s Message from Server / Lamport 32
+2025/11/24 17:48:09 / Client 154 / Send Message / Lamport 33
+2025/11/24 17:48:09 / Server / Receive message from user 154 / Lamport 34
+2025/11/24 17:48:09 / Server / Broadcast message to user 154 from user 154 / Lamport 35
+2025/11/24 17:48:09 / Client 154 / Received [Client 154]'s Message from Server / Lamport 36
+2025/11/24 17:48:11 / Client 154 / Send Message / Lamport 37
+2025/11/24 17:48:11 / Server / Receive message from user 154 / Lamport 38
+2025/11/24 17:48:11 / Server / Broadcast message to user 154 from user 154 / Lamport 39
+2025/11/24 17:48:11 / Client 154 / Received [Client 154]'s Message from Server / Lamport 40
+2025/11/24 17:48:15 / Client 154 / Send Message / Lamport 41
+2025/11/24 17:48:15 / Server / Receive message from user 154 / Lamport 42
+2025/11/24 17:48:15 / Server / Broadcast message to user 154 from user 154 / Lamport 43
+2025/11/24 17:48:15 / Client 154 / Received [Client 154]'s Message from Server / Lamport 44
+2025/11/24 17:48:17 / Client 154 / Send Message / Lamport 45
+2025/11/24 17:48:17 / Server / Receive message from user 154 / Lamport 46
+2025/11/24 17:48:17 / Server / Broadcast message to user 154 from user 154 / Lamport 47
+2025/11/24 17:48:17 / Client 154 / Received [Client 154]'s Message from Server / Lamport 48
+2025/11/24 17:48:20 / Client 154 / Send Message / Lamport 49
+2025/11/24 17:48:20 / Server / Receive message from user 154 / Lamport 50
+2025/11/24 17:48:20 / Server / Broadcast message to user 154 from user 154 / Lamport 51
+2025/11/24 17:48:20 / Client 154 / Received [Client 154]'s Message from Server / Lamport 52
+2025/11/24 17:48:24 / Client 154 / Send Message / Lamport 53
+2025/11/24 17:48:24 / Server / Receive message from user 154 / Lamport 54
+2025/11/24 17:48:24 / Server / Broadcast message to user 154 from user 154 / Lamport 55
+2025/11/24 17:48:24 / Client 154 / Received [Client 154]'s Message from Server / Lamport 56
+2025/11/24 17:48:24 / Client 154 / Send Message / Lamport 57
+2025/11/24 17:48:24 / Server / Receive message from user 154 / Lamport 58
+2025/11/24 17:48:24 / Server / Broadcast message to user 154 from user 154 / Lamport 59
+2025/11/24 17:48:24 / Client 154 / Received [Client 154]'s Message from Server / Lamport 60
+2025/11/24 17:48:27 / Client 154 / Send Message / Lamport 61
+2025/11/24 17:48:27 / Server / Receive message from user 154 / Lamport 62
+2025/11/24 17:48:27 / Server / Broadcast message to user 154 from user 154 / Lamport 63
+2025/11/24 17:48:27 / Client 154 / Received [Client 154]'s Message from Server / Lamport 64
+2025/11/24 17:48:31 / Client 154 / Send Message / Lamport 65
+2025/11/24 17:48:31 / Server / Receive message from user 154 / Lamport 66
+2025/11/24 17:48:31 / Server / Broadcast message to user 154 from user 154 / Lamport 67
+2025/11/24 17:48:31 / Client 154 / Received [Client 154]'s Message from Server / Lamport 68
+2025/11/24 17:48:31 / Client 154 / Send Message / Lamport 69
+2025/11/24 17:48:31 / Server / Receive message from user 154 / Lamport 70
+2025/11/24 17:48:31 / Server / Broadcast message to user 154 from user 154 / Lamport 71
+2025/11/24 17:48:31 / Client 154 / Received [Client 154]'s Message from Server / Lamport 72
+2025/11/24 17:48:35 / Server / shutdowned / 71
