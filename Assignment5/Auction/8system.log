@@ -1,0 +1,160 @@
+2025/11/25 18:34:18 Starting Auction Client 2...
+2025/11/25 18:34:18 Client 2: Failed to get result from grpc call: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused" 
+2025/11/25 18:34:26 Starting Auction Server...
+2025/11/25 18:34:26 Auction Server 1 listening on port 5050
+2025/11/25 18:34:29 Starting Auction Server...
+2025/11/25 18:34:29 Backup Auction Server 3 listening on port 6060
+2025/11/25 18:34:31 Server: 1 | Primary server connection to Backup server created, state: READY 
+2025/11/25 18:34:31 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 18:34:31 Server: 3 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 18:34:31 Server: 3 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 18:34:31 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 18:34:31 ------ Round 0 of auction has begun ------------ 
+2025/11/25 18:34:40 Starting Auction Client 1...
+2025/11/25 18:34:41 Server: 1 | Updated map in backup: %!(EXTRA map[int32]bool=map[1:true])
+2025/11/25 18:34:41 Server: 3 | Backup Server, updating registered client 
+2025/11/25 18:34:41 Server: 3 | Updated map in back up: map[1:true]
+2025/11/25 18:34:41 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 45 
+2025/11/25 18:34:41 Server: 3 | Backup: updating auction values, bid = 1 and bidderId = 45 
+2025/11/25 18:34:41 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0002124e0})} 
+2025/11/25 18:34:41 Client 1 should have connected to backup server
+2025/11/25 18:34:41 Server: 3 | Backup Server, old Auction ongoing: true new Auction ongoing: false 
+2025/11/25 18:34:41 Server: 1 | Backup Server updated at the end of auction round 
+2025/11/25 18:34:41 ------ Round 0 of auction is over, winning bid: 45 by client: 1  ------------ 
+2025/11/25 18:34:41 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000212720})} 
+2025/11/25 18:34:41 Client 1 should have connected to backup server
+2025/11/25 18:34:42 Tried to place bid, error was: &{%!e(*status.Status=&{0xc00007ca80})} 
+2025/11/25 18:34:42 Client 1 should have connected to backup server
+2025/11/25 18:34:42 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000292ba0})} 
+2025/11/25 18:34:42 Client 1 should have connected to backup server
+2025/11/25 18:34:42 Tried to place bid, error was: &{%!e(*status.Status=&{0xc00007cf60})} 
+2025/11/25 18:34:42 Client 1 should have connected to backup server
+2025/11/25 18:34:43 Tried to place bid, error was: &{%!e(*status.Status=&{0xc00007d260})} 
+2025/11/25 18:34:43 Client 1 should have connected to backup server
+2025/11/25 18:34:43 Tried to place bid, error was: &{%!e(*status.Status=&{0xc00007d4a0})} 
+2025/11/25 18:34:43 Client 1 should have connected to backup server
+2025/11/25 18:34:43 Starting Auction Client 2...
+2025/11/25 18:34:43 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0000ae5a0})} 
+2025/11/25 18:34:43 Client 1 should have connected to backup server
+2025/11/25 18:34:44 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000293200})} 
+2025/11/25 18:34:44 Client 1 should have connected to backup server
+2025/11/25 18:34:44 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0000aec00})} 
+2025/11/25 18:34:44 Client 1 should have connected to backup server
+2025/11/25 18:34:44 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0000aef60})} 
+2025/11/25 18:34:44 Client 1 should have connected to backup server
+2025/11/25 18:34:45 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000213920})} 
+2025/11/25 18:34:45 Client 1 should have connected to backup server
+2025/11/25 18:34:45 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000293c20})} 
+2025/11/25 18:34:45 Client 1 should have connected to backup server
+2025/11/25 18:34:45 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0004ac1e0})} 
+2025/11/25 18:34:45 Client 1 should have connected to backup server
+2025/11/25 18:34:46 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0004ac4e0})} 
+2025/11/25 18:34:46 Client 1 should have connected to backup server
+2025/11/25 18:34:46 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0004ac660})} 
+2025/11/25 18:34:46 Client 1 should have connected to backup server
+2025/11/25 18:34:47 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0004ac960})} 
+2025/11/25 18:34:47 Client 1 should have connected to backup server
+2025/11/25 18:34:47 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0004acd20})} 
+2025/11/25 18:34:47 Client 1 should have connected to backup server
+2025/11/25 18:34:47 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 18:34:47 Server: 3 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 18:34:47 Server: 3 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 18:34:47 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 18:34:47 ------ Round 1 of auction has begun ------------ 
+2025/11/25 18:34:47 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0004ac660})} 
+2025/11/25 18:34:47 Client 1 should have connected to backup server
+2025/11/25 18:34:48 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000292720})} 
+2025/11/25 18:34:48 Client 1 should have connected to backup server
+2025/11/25 18:34:48 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0004ace40})} 
+2025/11/25 18:34:48 Client 1 should have connected to backup server
+2025/11/25 18:34:49 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000182300})} 
+2025/11/25 18:34:49 Client 1 should have connected to backup server
+2025/11/25 18:34:49 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0004ad140})} 
+2025/11/25 18:34:49 Client 1 should have connected to backup server
+2025/11/25 18:34:52 Tried to place bid, error was: &{%!e(*status.Status=&{0xc00062aea0})} 
+2025/11/25 18:34:52 Client 1 should have connected to backup server
+2025/11/25 18:34:52 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:34:52 Server: 1 | connection to backup server not active 
+2025/11/25 18:34:53 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0004ad6e0})} 
+2025/11/25 18:34:53 Client 1 should have connected to backup server
+2025/11/25 18:34:53 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0001826c0})} 
+2025/11/25 18:34:53 Client 1 should have connected to backup server
+2025/11/25 18:34:53 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000182ae0})} 
+2025/11/25 18:34:53 Client 1 should have connected to backup server
+2025/11/25 18:34:54 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0002d03c0})} 
+2025/11/25 18:34:54 Client 1 should have connected to backup server
+2025/11/25 18:34:57 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:34:57 Server: 1 | connection to backup server not active 
+2025/11/25 18:34:57 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000114720})} 
+2025/11/25 18:34:57 Client 2 should have connected to backup server
+2025/11/25 18:35:02 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:35:02 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 18:35:02 ------ Round 1 of auction is over, winning bid: 27 by client: 2  ------------ 
+2025/11/25 18:35:03 Tried to place bid, error was: &{%!e(*status.Status=&{0xc00053e240})} 
+2025/11/25 18:35:03 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0003145a0})} 
+2025/11/25 18:35:03 Client 1 should have connected to backup server
+2025/11/25 18:35:03 Client 2 should have connected to backup server
+2025/11/25 18:35:13 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0005d29c0})} 
+2025/11/25 18:35:13 Client 1 should have connected to backup server
+2025/11/25 18:35:13 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0003149c0})} 
+2025/11/25 18:35:13 Client 2 should have connected to backup server
+2025/11/25 18:35:13 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:35:13 Server: 1 | StartAndEndBiddingRound connection to backup server not active 
+2025/11/25 18:35:18 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:35:18 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 18:35:18 ------ Round 2 of auction has begun ------------ 
+2025/11/25 18:35:23 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0001836e0})} 
+2025/11/25 18:35:23 Client 1 should have connected to backup server
+2025/11/25 18:35:23 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000314d80})} 
+2025/11/25 18:35:23 Client 2 should have connected to backup server
+2025/11/25 18:35:33 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0005d3200})} 
+2025/11/25 18:35:33 Client 1 should have connected to backup server
+2025/11/25 18:35:33 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0003152c0})} 
+2025/11/25 18:35:33 Client 2 should have connected to backup server
+2025/11/25 18:35:33 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:35:33 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 18:35:33 ------ Round 2 of auction is over, winning bid: 0 by client: -1  ------------ 
+2025/11/25 18:35:43 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0002d0600})} 
+2025/11/25 18:35:43 Client 1 should have connected to backup server
+2025/11/25 18:35:43 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000115140})} 
+2025/11/25 18:35:43 Client 2 should have connected to backup server
+2025/11/25 18:35:44 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:35:44 Server: 1 | StartAndEndBiddingRound connection to backup server not active 
+2025/11/25 18:35:49 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:35:49 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 18:35:49 ------ Round 3 of auction has begun ------------ 
+2025/11/25 18:35:53 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0005d3f20})} 
+2025/11/25 18:35:53 Client 1 should have connected to backup server
+2025/11/25 18:35:53 Tried to place bid, error was: &{%!e(*status.Status=&{0xc00007f800})} 
+2025/11/25 18:35:53 Client 2 should have connected to backup server
+2025/11/25 18:36:03 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000115980})} 
+2025/11/25 18:36:03 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000212f00})} 
+2025/11/25 18:36:03 Client 2 should have connected to backup server
+2025/11/25 18:36:03 Client 1 should have connected to backup server
+2025/11/25 18:36:05 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:36:05 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 18:36:05 ------ Round 3 of auction is over, winning bid: 0 by client: -1  ------------ 
+2025/11/25 18:36:13 Tried to place bid, error was: &{%!e(*status.Status=&{0xc000213800})} 
+2025/11/25 18:36:13 Client 2 should have connected to backup server
+2025/11/25 18:36:13 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0000afd40})} 
+2025/11/25 18:36:13 Client 1 should have connected to backup server
+2025/11/25 18:36:16 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:36:16 Server: 1 | StartAndEndBiddingRound connection to backup server not active 
+2025/11/25 18:36:21 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:36:21 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 18:36:21 ------ Round 4 of auction has begun ------------ 
+2025/11/25 18:36:23 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0001f48a0})} 
+2025/11/25 18:36:23 Client 2 should have connected to backup server
+2025/11/25 18:36:23 Tried to place bid, error was: &{%!e(*status.Status=&{0xc00062a420})} 
+2025/11/25 18:36:23 Client 1 should have connected to backup server
+2025/11/25 18:36:33 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0002e85a0})} 
+2025/11/25 18:36:33 Client 2 should have connected to backup server
+2025/11/25 18:36:33 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0002d1440})} 
+2025/11/25 18:36:33 Client 1 should have connected to backup server
+2025/11/25 18:36:36 Server: 1 | Primary server lost connection to backup 
+2025/11/25 18:36:36 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 18:36:36 ------ Round 4 of auction is over, winning bid: 0 by client: -1  ------------ 
+2025/11/25 18:36:43 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0001f5200})} 
+2025/11/25 18:36:43 Client 2 should have connected to backup server
+2025/11/25 18:36:43 Tried to place bid, error was: &{%!e(*status.Status=&{0xc0004ad620})} 
+2025/11/25 18:36:43 Client 1 should have connected to backup server

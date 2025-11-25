@@ -1,0 +1,238 @@
+2025/11/25 18:56:12 Starting Auction Server...
+2025/11/25 18:56:12 Auction Server 1 listening on port 5050
+2025/11/25 18:56:13 Starting Auction Server...
+2025/11/25 18:56:13 Backup Auction Server 3 listening on port 6060
+2025/11/25 18:56:14 Server: 1 | Primary server connection to Backup server created, state: READY 
+2025/11/25 18:56:14 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 18:56:14 Server: 3 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 18:56:14 Server: 3 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 18:56:14 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 18:56:14 ------ Round 0 of auction has begun ------------ 
+2025/11/25 18:56:19 Starting Auction Client 1...
+2025/11/25 18:56:20 Server: 1 | Updated map in backup: %!(EXTRA map[int32]bool=map[1:true])
+2025/11/25 18:56:20 Server: 3 | Backup Server, updating registered client 
+2025/11/25 18:56:20 Server: 3 | Updated map in back up: map[1:true]
+2025/11/25 18:56:20 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 24 
+2025/11/25 18:56:20 Server: 3 | Backup: updating auction values, bid = 1 and bidderId = 24 
+2025/11/25 18:56:20 Client 1 | res is: SUCCESS 
+2025/11/25 18:56:20 SUCCESS: Client 1 placed a bid of 24 
+2025/11/25 18:56:20 Starting Auction Client 2...
+2025/11/25 18:56:21 Server: 1 | Updated map in backup: %!(EXTRA map[int32]bool=map[1:true 2:true])
+2025/11/25 18:56:21 Server: 3 | Backup Server, updating registered client 
+2025/11/25 18:56:21 Server: 3 | Updated map in back up: map[1:true 2:true]
+2025/11/25 18:56:21 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 78 
+2025/11/25 18:56:21 Server: 3 | Backup: updating auction values, bid = 2 and bidderId = 78 
+2025/11/25 18:56:21 Client 2 | res is: SUCCESS 
+2025/11/25 18:56:21 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 111 
+2025/11/25 18:56:21 SUCCESS: Client 2 placed a bid of 78 
+2025/11/25 18:56:21 Server: 3 | Backup: updating auction values, bid = 1 and bidderId = 111 
+2025/11/25 18:56:21 Client 1 | res is: SUCCESS 
+2025/11/25 18:56:21 SUCCESS: Client 1 placed a bid of 111 
+2025/11/25 18:56:22 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 152 
+2025/11/25 18:56:22 Server: 3 | Backup: updating auction values, bid = 1 and bidderId = 152 
+2025/11/25 18:56:22 Client 2 | res is: FAIL 
+2025/11/25 18:56:22 Client 1 | res is: SUCCESS 
+2025/11/25 18:56:22 SUCCESS: Client 1 placed a bid of 152 
+2025/11/25 18:56:23 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 180 
+2025/11/25 18:56:23 Server: 3 | Backup: updating auction values, bid = 2 and bidderId = 180 
+2025/11/25 18:56:23 Client 2 | res is: SUCCESS 
+2025/11/25 18:56:23 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 190 
+2025/11/25 18:56:23 SUCCESS: Client 2 placed a bid of 180 
+2025/11/25 18:56:23 Server: 3 | Backup: updating auction values, bid = 1 and bidderId = 190 
+2025/11/25 18:56:23 Client 1 | res is: SUCCESS 
+2025/11/25 18:56:23 SUCCESS: Client 1 placed a bid of 190 
+2025/11/25 18:56:24 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 216 
+2025/11/25 18:56:24 Server: 3 | Backup: updating auction values, bid = 2 and bidderId = 216 
+2025/11/25 18:56:24 Client 2 | res is: SUCCESS 
+2025/11/25 18:56:24 SUCCESS: Client 2 placed a bid of 216 
+2025/11/25 18:56:24 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 217 
+2025/11/25 18:56:24 Server: 3 | Backup: updating auction values, bid = 1 and bidderId = 217 
+2025/11/25 18:56:24 Client 1 | res is: SUCCESS 
+2025/11/25 18:56:24 SUCCESS: Client 1 placed a bid of 217 
+2025/11/25 18:56:24 Server: 3 | Backup Server, old Auction ongoing: true new Auction ongoing: false 
+2025/11/25 18:56:24 Server: 1 | Backup Server updated at the end of auction round 
+2025/11/25 18:56:24 ------ Round 0 of auction is over, winning bid: 217 by client: 1  ------------ 
+2025/11/25 18:56:30 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 18:56:30 Server: 3 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 18:56:30 Server: 3 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 18:56:30 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 18:56:30 ------ Round 1 of auction has begun ------------ 
+2025/11/25 18:56:31 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 6 
+2025/11/25 18:56:31 Server: 3 | Backup: updating auction values, bid = 2 and bidderId = 6 
+2025/11/25 18:56:31 Client 2 | res is: SUCCESS 
+2025/11/25 18:56:31 SUCCESS: Client 2 placed a bid of 6 
+2025/11/25 18:56:31 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 15 
+2025/11/25 18:56:31 Server: 3 | Backup: updating auction values, bid = 1 and bidderId = 15 
+2025/11/25 18:56:31 Client 1 | res is: SUCCESS 
+2025/11/25 18:56:31 SUCCESS: Client 1 placed a bid of 15 
+2025/11/25 18:56:32 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 24 
+2025/11/25 18:56:32 Server: 3 | Backup: updating auction values, bid = 2 and bidderId = 24 
+2025/11/25 18:56:32 Client 2 | res is: SUCCESS 
+2025/11/25 18:56:32 SUCCESS: Client 2 placed a bid of 24 
+2025/11/25 18:56:32 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 66 
+2025/11/25 18:56:32 Server: 3 | Backup: updating auction values, bid = 1 and bidderId = 66 
+2025/11/25 18:56:32 Client 1 | res is: SUCCESS 
+2025/11/25 18:56:32 SUCCESS: Client 1 placed a bid of 66 
+2025/11/25 18:56:33 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 79 
+2025/11/25 18:56:33 Server: 3 | Backup: updating auction values, bid = 2 and bidderId = 79 
+2025/11/25 18:56:33 Client 2 | res is: SUCCESS 
+2025/11/25 18:56:33 SUCCESS: Client 2 placed a bid of 79 
+2025/11/25 18:56:33 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 85 
+2025/11/25 18:56:33 Server: 3 | Backup: updating auction values, bid = 1 and bidderId = 85 
+2025/11/25 18:56:33 Client 1 | res is: SUCCESS 
+2025/11/25 18:56:33 SUCCESS: Client 1 placed a bid of 85 
+2025/11/25 18:56:34 Client 2: Failed to get result from grpc call: rpc error: code = Unavailable desc = error reading from server: read tcp 127.0.0.1:51518->127.0.0.1:5050: read: connection reset by peer will attempt to connect to backup server 
+2025/11/25 18:56:34 Client 1: Failed to get result from grpc call: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused" will attempt to connect to backup server 
+2025/11/25 18:56:34 Client 2 should have connected to backup server
+2025/11/25 18:56:34 Client 1 should have connected to backup server
+2025/11/25 18:56:34 res: highestBid:85
+2025/11/25 18:56:35 res: highestBid:85
+2025/11/25 18:56:35 Client 1 should have connected to backup server
+2025/11/25 18:56:35 Client 2 should have connected to backup server
+2025/11/25 18:56:37 Client 1 should have connected to backup server
+2025/11/25 18:56:37 Client 2 should have connected to backup server
+2025/11/25 18:56:38 Client 1 should have connected to backup server
+2025/11/25 18:56:38 Client 2 should have connected to backup server
+2025/11/25 18:56:38 Client 1 should have connected to backup server
+2025/11/25 18:56:38 Client 2 should have connected to backup server
+2025/11/25 18:56:43 Client 2 should have connected to backup server
+2025/11/25 18:56:43 Client 1 should have connected to backup server
+2025/11/25 18:56:48 Client 2 should have connected to backup server
+2025/11/25 18:56:48 Client 1 should have connected to backup server
+2025/11/25 18:56:48 Client 2 should have connected to backup server
+2025/11/25 18:56:48 Client 1 should have connected to backup server
+2025/11/25 18:56:48 Client 2 should have connected to backup server
+2025/11/25 18:56:48 Client 1 should have connected to backup server
+2025/11/25 18:56:49 Client 2 should have connected to backup server
+2025/11/25 18:56:49 Client 1 should have connected to backup server
+2025/11/25 18:56:49 Client 2 should have connected to backup server
+2025/11/25 18:56:49 Client 1 should have connected to backup server
+2025/11/25 18:56:49 Client 2 should have connected to backup server
+2025/11/25 18:56:49 Client 1 should have connected to backup server
+2025/11/25 18:56:50 Client 2 should have connected to backup server
+2025/11/25 18:56:50 Client 1 should have connected to backup server
+2025/11/25 18:56:50 Client 2 should have connected to backup server
+2025/11/25 18:56:50 Client 1 should have connected to backup server
+2025/11/25 18:56:50 Client 2 should have connected to backup server
+2025/11/25 18:56:50 Client 1 should have connected to backup server
+2025/11/25 18:56:51 Client 2 should have connected to backup server
+2025/11/25 18:56:51 Client 1 should have connected to backup server
+2025/11/25 18:56:51 Client 2 should have connected to backup server
+2025/11/25 18:56:51 Client 1 should have connected to backup server
+2025/11/25 18:56:54 Client 2 should have connected to backup server
+2025/11/25 18:56:54 Client 1 should have connected to backup server
+2025/11/25 18:56:54 Client 2 should have connected to backup server
+2025/11/25 18:56:54 Client 1 should have connected to backup server
+2025/11/25 18:56:54 Client 2 should have connected to backup server
+2025/11/25 18:56:55 Client 1 should have connected to backup server
+2025/11/25 18:56:55 Client 2 should have connected to backup server
+2025/11/25 18:56:55 Client 1 should have connected to backup server
+2025/11/25 18:56:57 Client 2 should have connected to backup server
+2025/11/25 18:56:57 Client 1 should have connected to backup server
+2025/11/25 18:56:58 Client 1 should have connected to backup server
+2025/11/25 18:56:58 Client 2 should have connected to backup server
+2025/11/25 18:56:58 Client 1 should have connected to backup server
+2025/11/25 18:56:58 Client 2 should have connected to backup server
+2025/11/25 18:56:58 Client 1 should have connected to backup server
+2025/11/25 18:56:58 Client 2 should have connected to backup server
+2025/11/25 18:56:59 Client 1 should have connected to backup server
+2025/11/25 18:56:59 Client 2 should have connected to backup server
+2025/11/25 18:56:59 Client 1 should have connected to backup server
+2025/11/25 18:56:59 Client 2 should have connected to backup server
+2025/11/25 18:57:00 Client 1 should have connected to backup server
+2025/11/25 18:57:00 Client 2 should have connected to backup server
+2025/11/25 18:57:00 Client 1 should have connected to backup server
+2025/11/25 18:57:00 Client 2 should have connected to backup server
+2025/11/25 18:57:05 Client 1 should have connected to backup server
+2025/11/25 18:57:05 Client 2 should have connected to backup server
+2025/11/25 18:57:10 Client 1 should have connected to backup server
+2025/11/25 18:57:10 Client 2 should have connected to backup server
+2025/11/25 18:57:10 Client 1 should have connected to backup server
+2025/11/25 18:57:10 Client 2 should have connected to backup server
+2025/11/25 18:57:11 Client 1 should have connected to backup server
+2025/11/25 18:57:11 Client 2 should have connected to backup server
+2025/11/25 18:57:12 Client 1 should have connected to backup server
+2025/11/25 18:57:12 Client 2 should have connected to backup server
+2025/11/25 18:57:13 Client 2 should have connected to backup server
+2025/11/25 18:57:13 Client 1 should have connected to backup server
+2025/11/25 18:57:13 Client 2 should have connected to backup server
+2025/11/25 18:57:13 Client 1 should have connected to backup server
+2025/11/25 18:57:13 Client 2 should have connected to backup server
+2025/11/25 18:57:13 Client 1 should have connected to backup server
+2025/11/25 18:57:14 Client 2 should have connected to backup server
+2025/11/25 18:57:14 Client 1 should have connected to backup server
+2025/11/25 18:57:14 Client 2 should have connected to backup server
+2025/11/25 18:57:14 Client 1 should have connected to backup server
+2025/11/25 18:57:15 Client 2 should have connected to backup server
+2025/11/25 18:57:15 Client 1 should have connected to backup server
+2025/11/25 18:57:19 Client 2 should have connected to backup server
+2025/11/25 18:57:19 Client 1 should have connected to backup server
+2025/11/25 18:57:20 Client 2 should have connected to backup server
+2025/11/25 18:57:20 Client 1 should have connected to backup server
+2025/11/25 18:57:20 Client 2 should have connected to backup server
+2025/11/25 18:57:20 Client 1 should have connected to backup server
+2025/11/25 18:57:24 Client 2 should have connected to backup server
+2025/11/25 18:57:24 Client 1 should have connected to backup server
+2025/11/25 18:57:25 Client 2 should have connected to backup server
+2025/11/25 18:57:25 Client 1 should have connected to backup server
+2025/11/25 18:57:28 Client 2 should have connected to backup server
+2025/11/25 18:57:28 Client 1 should have connected to backup server
+2025/11/25 18:57:29 Client 2 should have connected to backup server
+2025/11/25 18:57:29 Client 1 should have connected to backup server
+2025/11/25 18:57:29 Client 2 should have connected to backup server
+2025/11/25 18:57:29 Client 1 should have connected to backup server
+2025/11/25 18:57:29 Client 2 should have connected to backup server
+2025/11/25 18:57:29 Client 1 should have connected to backup server
+2025/11/25 18:57:34 Client 2 should have connected to backup server
+2025/11/25 18:57:34 Client 1 should have connected to backup server
+2025/11/25 18:57:34 Client 2 should have connected to backup server
+2025/11/25 18:57:34 Client 1 should have connected to backup server
+2025/11/25 18:57:35 Client 1 should have connected to backup server
+2025/11/25 18:57:35 Client 2 should have connected to backup server
+2025/11/25 18:57:36 Client 1 should have connected to backup server
+2025/11/25 18:57:36 Client 2 should have connected to backup server
+2025/11/25 18:57:36 Client 1 should have connected to backup server
+2025/11/25 18:57:36 Client 2 should have connected to backup server
+2025/11/25 18:57:37 Client 1 should have connected to backup server
+2025/11/25 18:57:37 Client 2 should have connected to backup server
+2025/11/25 18:57:37 Client 1 should have connected to backup server
+2025/11/25 18:57:37 Client 2 should have connected to backup server
+2025/11/25 18:57:37 Client 1 should have connected to backup server
+2025/11/25 18:57:37 Client 2 should have connected to backup server
+2025/11/25 18:57:38 Client 1 should have connected to backup server
+2025/11/25 18:57:38 Client 2 should have connected to backup server
+2025/11/25 18:57:38 Client 1 should have connected to backup server
+2025/11/25 18:57:38 Client 2 should have connected to backup server
+2025/11/25 18:57:38 Client 1 should have connected to backup server
+2025/11/25 18:57:38 Client 2 should have connected to backup server
+2025/11/25 18:57:41 Client 1 should have connected to backup server
+2025/11/25 18:57:41 Client 2 should have connected to backup server
+2025/11/25 18:57:46 Client 1 should have connected to backup server
+2025/11/25 18:57:46 Client 2 should have connected to backup server
+2025/11/25 18:57:47 Client 1 should have connected to backup server
+2025/11/25 18:57:47 Client 2 should have connected to backup server
+2025/11/25 18:57:47 Client 1 should have connected to backup server
+2025/11/25 18:57:47 Client 2 should have connected to backup server
+2025/11/25 18:57:47 Client 1 should have connected to backup server
+2025/11/25 18:57:47 Client 2 should have connected to backup server
+2025/11/25 18:57:48 Client 1 should have connected to backup server
+2025/11/25 18:57:48 Client 2 should have connected to backup server
+2025/11/25 18:57:48 Client 1 should have connected to backup server
+2025/11/25 18:57:48 Client 2 should have connected to backup server
+2025/11/25 18:57:49 Client 1 should have connected to backup server
+2025/11/25 18:57:49 Client 2 should have connected to backup server
+2025/11/25 18:57:49 Client 1 should have connected to backup server
+2025/11/25 18:57:49 Client 2 should have connected to backup server
+2025/11/25 18:57:49 Client 1 should have connected to backup server
+2025/11/25 18:57:49 Client 2 should have connected to backup server
+2025/11/25 18:57:50 Client 1 should have connected to backup server
+2025/11/25 18:57:50 Client 2 should have connected to backup server
+2025/11/25 18:57:50 Client 1 should have connected to backup server
+2025/11/25 18:57:50 Client 2 should have connected to backup server
+2025/11/25 18:57:51 Client 1 should have connected to backup server
+2025/11/25 18:57:51 Client 2 should have connected to backup server
+2025/11/25 18:57:51 Client 1 should have connected to backup server
+2025/11/25 18:57:51 Client 2 should have connected to backup server
+2025/11/25 18:57:51 Client 1 should have connected to backup server
+2025/11/25 18:57:51 Client 2 should have connected to backup server
+2025/11/25 18:58:01 Client 2 should have connected to backup server

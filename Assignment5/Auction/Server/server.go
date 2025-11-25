@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"errors"
 	"log"
 	"net"
 	"os"
@@ -157,9 +156,11 @@ func (s *AuctionServer) StartAndEndBiddingRound() {
 		s.BestBid.BidderID = -1
 		s.BestBid.BidAmount = 0 // reset the highest bidder
 
-		if s.Connection_Helper_Method(5, 2) == false { //looking for connection within 5 seconds
+		if s.Connection_Helper_Method(5, 2) == false && s.Connection != nil { //looking for connection within 5 seconds
 			fileLog.Printf("Server: %d | StartAndEndBiddingRound connection to backup server not active \n", s.ID)
 			termLog.Printf("Server: %d | StartAndEndBiddingRound connection to backup server not active \n", s.ID)
+		} else if s.Connection == nil {
+			return 
 		} else {
 			fileLog.Printf("Primary: reset auction values, bid = %d and bidderId = %d  \n", s.BestBid.BidderID, s.BestBid.BidAmount)
 			termLog.Printf("Primary: reset auction values, bid = %d and bidderId = %d  \n", s.BestBid.BidderID, s.BestBid.BidAmount)
@@ -198,9 +199,11 @@ func (s *AuctionServer) local_update_auction_state(when string) {
 	}
 
 	// Should only give false if the Backup server failed
-	if s.Connection_Helper_Method(5, 3) == false { //looking for connection within 5 seconds
+	if s.Connection_Helper_Method(5, 3) == false && s.Connection != nil { //looking for connection within 5 seconds
 		fileLog.Printf("Server: %d | local_update_auction_state connection to backup server not active \n", s.ID)
 		termLog.Printf("Server: %d | connection to backup server not active \n", s.ID)
+		return
+	} else {
 		return
 	}
 
@@ -219,10 +222,14 @@ func (s *AuctionServer) local_update_auction_state(when string) {
 
 /* Does not properly return the pb.BidResponse to Client (don't know why yet) */
 func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResponse, error) {
-	err := errors.New("EXCEPTION") // makes the exception message
-
-	s.Mu.Lock()
+	
+	s.Mu.Lock()	
 	defer s.Mu.Unlock()
+	
+	if(s.IsLeader == false) {
+		s.IsLeader = true
+		//go s.StartAndEndBiddingRound()
+	}
 
 	// Register the client if they have not already been registered
 	if s.RegisteredClients[bidder.Id] != true {
@@ -230,6 +237,8 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 		if s.Connection_Helper_Method(5, 4) == false { //looking for connection within 5 seconds
 			fileLog.Printf("Server: %d | connection to backup server not active \n", s.ID)
 			termLog.Printf("Server: %d | connection to backup server not active \n", s.ID)
+		} else if s.Connection == nil {
+			//return &pb.BidResponse{Status: "SUCCESS"}, nil
 		} else {
 			fileLog.Printf("Server: %d | Updated map in backup: ", s.ID, s.RegisteredClients)
 			termLog.Printf("Server: %d | Updated map in backup: ", s.ID, s.RegisteredClients)
@@ -248,6 +257,8 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 		if s.Connection_Helper_Method(5, 5) == false { //looking for connection within 5 seconds
 			fileLog.Printf("Server: %d | connection to backup server not active \n", s.ID)
 			termLog.Printf("Server: %d | connection to backup server not active \n", s.ID)
+		} else if s.Connection == nil {
+			return &pb.BidResponse{Status: "SUCCESS"}, nil
 		} else {
 			fileLog.Printf("Server: %d | Primary: updating auction values, bid = %d and bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
 			termLog.Printf("Server: %d | Primary: updating auction values, bid = %d and bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
@@ -259,10 +270,10 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 		}
 
 		// return success or err (exception)
-		return &pb.BidResponse{Status: "SUCCESS"}, err
+		return &pb.BidResponse{Status: "SUCCESS"}, nil
 	}
 
-	return &pb.BidResponse{Status: "FAIL"}, err //used to be nil instead of err
+	return &pb.BidResponse{Status: "FAIL"}, nil //used to be nil instead of err
 }
 
 /* Returns the highest bid and whether the item has been sold yet or not   */
@@ -319,8 +330,12 @@ func (s *AuctionServer) Connection_Helper_Method(timeout int, num int) bool {
 	// num = 3	local_update_auction_state
 	// num = 4 	Bid -> Register client
 	// num = 5 	Bid -> update highest bid
+	
 
 	conn := s.Connection
+	if conn == nil {
+		return false
+	}
 
 	// in case Backup Server is not made within 30 seconds, give up on it and continue
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(int(timeout))*time.Second)
