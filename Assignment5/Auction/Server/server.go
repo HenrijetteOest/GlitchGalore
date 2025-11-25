@@ -139,7 +139,16 @@ func (s *AuctionServer) StartAndEndBiddingRound() {
 		s.Mu.Lock()
 		s.BestBid.BidderID = -1
 		s.BestBid.BidAmount = 0 // reset the highest bidder
-		// (FIFTH) This should technically also have a grpc call UpdateHighestBid() to the backup server which updates the highest bid so far
+
+		if s.Connection_Helper_Method(5, 2) == false { //looking for connection within 5 seconds
+			fmt.Printf("	connection to backup server not active \n")
+		} else {
+			fmt.Printf("		Primary: reset auction values, bid = %d and bidderId = %d  \n", s.BestBid.BidderID, s.BestBid.BidAmount)
+			res, err := s.BackupConnection.UpdateHighestBid(context.Background(), &pb.Bidder{Bid: s.BestBid.BidderID, Id: s.BestBid.BidAmount})
+			if err != nil || res.Success != true { // We technically can never return success false as the code is now...
+				fmt.Printf("	Failed to update Highest Bid in Backup server \n")
+			}
+		}
 
 		s.AuctionOngoing = true               // Auction round begins
 		s.local_update_auction_state("start") // The local rpc handler to update auction state
@@ -166,7 +175,7 @@ func (s *AuctionServer) local_update_auction_state(when string) {
 	}
 
 	// Should only give false if the Backup server failed
-	if s.Connection_Helper_Method(5, 2) == false { //looking for connection within 5 seconds
+	if s.Connection_Helper_Method(5, 3) == false { //looking for connection within 5 seconds
 		fmt.Printf("	connection to backup server not active \n")
 		return
 	}
@@ -192,9 +201,10 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 	// Register the client if they have not already been registered
 	if s.RegisteredClients[bidder.Id] != true {
 		s.RegisteredClients[bidder.Id] = true
-		if s.Connection_Helper_Method(5, 3) == false { //looking for connection within 5 seconds
+		if s.Connection_Helper_Method(5, 4) == false { //looking for connection within 5 seconds
 			fmt.Printf("	connection to backup server not active \n")
 		} else {
+			fmt.Println("		Updated map in backup: ", s.RegisteredClients)
 			res, err := s.BackupConnection.UpdateRegisteredClient(context.Background(), &pb.Bidder{Bid: bidder.Bid, Id: bidder.Id})
 			if err != nil || res.Success != true { // We technically can never return success false as the code is now...
 				fmt.Printf("	Failed to update Backup server registered client\n")
@@ -205,6 +215,16 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 	if bidder.Bid > s.BestBid.BidAmount && s.AuctionOngoing == true {
 		s.BestBid.BidAmount = bidder.Bid
 		s.BestBid.BidderID = bidder.Id
+
+		if s.Connection_Helper_Method(5, 5) == false { //looking for connection within 5 seconds
+			fmt.Printf("	connection to backup server not active \n")
+		} else {
+			fmt.Printf("		Primary: updating auction values, bid = %d and bidderId = %d \n", s.BestBid.BidderID, s.BestBid.BidAmount)
+			res, err := s.BackupConnection.UpdateHighestBid(context.Background(), &pb.Bidder{Bid: bidder.Bid, Id: bidder.Id})
+			if err != nil || res.Success != true { // We technically can never return success false as the code is now...
+				fmt.Printf("	Failed to update Highest Bid in Backup server \n")
+			}
+		}
 		// Second Update: grpc call to db
 		// WAIT for response before proceeding
 
@@ -225,7 +245,7 @@ func (s *AuctionServer) Result(ctx context.Context, empty *pb.Empty) (*pb.Result
 	}, nil
 }
 
-/***********	Primary Server and Backup Server grpc Calls      ******************/
+/***************	Primary Server and Backup Server grpc Calls      ***********************/
 
 func (s *AuctionServer) UpdateAuctionState(ctx context.Context, state *pb.AuctionState) (*pb.BackupResponse, error) {
 	//s.Mu.Lock()
@@ -235,22 +255,22 @@ func (s *AuctionServer) UpdateAuctionState(ctx context.Context, state *pb.Auctio
 	return &pb.BackupResponse{Success: true}, nil
 }
 
-// TODO: make logic of the two missing grpc calls between the leader and backup server
 func (s *AuctionServer) UpdateRegisteredClient(ctx context.Context, bidder *pb.Bidder) (*pb.BackupResponse, error) {
 	fmt.Printf("Backup Server, updating registered client \n")
 	s.RegisteredClients[bidder.Id] = true
+	fmt.Println("	Updated map in back up:", s.RegisteredClients)
 	return &pb.BackupResponse{Success: true}, nil
 }
 
-/*
 func (s *AuctionServer) UpdateHighestBid(ctx context.Context, bidder *pb.Bidder) (*pb.BackupResponse, error) {
+	fmt.Printf("Backup Server updating highest: old highest: %v, new highest: %v \n", s.BestBid, bidder)
 	s.BestBid.BidAmount = bidder.Bid
 	s.BestBid.BidderID = bidder.Id
-return nil, status.Errorf(codes.Unimplemented, "method UpdateHighestBid not implemented")
+	fmt.Printf("		Backup: updating auction values, bid = %d and bidderId = %d \n", s.BestBid.BidderID, s.BestBid.BidAmount)
+	return &pb.BackupResponse{Success: true}, nil
 }
-*/
 
-/*******       Connection Helper Methods        ***********************************/
+/********************       Connection Helper Methods        ***********************************/
 
 /* Below method for checking the connection status, was made in cooperation with Gemini.
 Meaning we did make changes and other ressources as well	*/
@@ -267,7 +287,7 @@ func (s *AuctionServer) Connection_Helper_Method(timeout int, num int) bool {
 
 	for {
 		if currentState == connectivity.Ready { // Connection is ready
-			fmt.Printf("	Connection is now ready for use state: %v \n", conn.GetState())
+			//fmt.Printf("	Connection is now ready for use state: %v \n", conn.GetState())
 			break
 		}
 

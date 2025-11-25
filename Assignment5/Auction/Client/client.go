@@ -7,6 +7,7 @@ import (
 	"math/rand"
 	"os"
 	"strconv"
+	"time"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -72,6 +73,7 @@ func PlaceBid(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
 			BidCall(client, LocalBidder) // Do the grpc call
 		}
 		//time.Sleep(time.Duration(int32(rand.Intn(3))) * time.Second)
+		time.Sleep(1 * time.Second)
 	}
 }
 
