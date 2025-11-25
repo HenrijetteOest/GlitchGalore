@@ -188,10 +188,18 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 
 	s.Mu.Lock()
 	defer s.Mu.Unlock()
+
+	// Register the client if they have not already been registered
 	if s.RegisteredClients[bidder.Id] != true {
 		s.RegisteredClients[bidder.Id] = true
-		// First Update: add grpc call to another server to update the database
-		// WAIT for response before proceeding
+		if s.Connection_Helper_Method(5, 3) == false { //looking for connection within 5 seconds
+			fmt.Printf("	connection to backup server not active \n")
+		} else {
+			res, err := s.BackupConnection.UpdateRegisteredClient(context.Background(), &pb.Bidder{Bid: bidder.Bid, Id: bidder.Id})
+			if err != nil || res.Success != true { // We technically can never return success false as the code is now...
+				fmt.Printf("	Failed to update Backup server registered client\n")
+			}
+		}
 	}
 
 	if bidder.Bid > s.BestBid.BidAmount && s.AuctionOngoing == true {
@@ -204,7 +212,7 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 		return &pb.BidResponse{Status: "SUCCESS"}, err
 	}
 
-	return &pb.BidResponse{Status: "FAIL"}, err //used to be nil
+	return &pb.BidResponse{Status: "FAIL"}, err //used to be nil instead of err
 }
 
 /* Returns the highest bid and whether the item has been sold yet or not   */
@@ -220,20 +228,25 @@ func (s *AuctionServer) Result(ctx context.Context, empty *pb.Empty) (*pb.Result
 /***********	Primary Server and Backup Server grpc Calls      ******************/
 
 func (s *AuctionServer) UpdateAuctionState(ctx context.Context, state *pb.AuctionState) (*pb.BackupResponse, error) {
-	s.Mu.Lock()
-	defer s.Mu.Unlock()
+	//s.Mu.Lock()
+	//defer s.Mu.Unlock()
 	fmt.Printf("Backup Server, old Auction ongoing: %t new Auction ongoing: %t \n", s.AuctionOngoing, state.Ongoing)
 	s.AuctionOngoing = state.Ongoing
 	return &pb.BackupResponse{Success: true}, nil
 }
 
 // TODO: make logic of the two missing grpc calls between the leader and backup server
-/*
-func (s *AuctionServer) UpdateRegisteredClient(ctx context.Context, *pb.Bidder) (*pb.BackupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateRegisteredClient not implemented")
+func (s *AuctionServer) UpdateRegisteredClient(ctx context.Context, bidder *pb.Bidder) (*pb.BackupResponse, error) {
+	fmt.Printf("Backup Server, updating registered client \n")
+	s.RegisteredClients[bidder.Id] = true
+	return &pb.BackupResponse{Success: true}, nil
 }
-func (s *AuctionServer) UpdateHighestBid(ctx context.Context, *pb.Bidder) (*pb.BackupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateHighestBid not implemented")
+
+/*
+func (s *AuctionServer) UpdateHighestBid(ctx context.Context, bidder *pb.Bidder) (*pb.BackupResponse, error) {
+	s.BestBid.BidAmount = bidder.Bid
+	s.BestBid.BidderID = bidder.Id
+return nil, status.Errorf(codes.Unimplemented, "method UpdateHighestBid not implemented")
 }
 */
 
