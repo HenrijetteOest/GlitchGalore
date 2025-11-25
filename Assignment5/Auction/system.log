@@ -1,0 +1,1486 @@
+2025/11/25 20:14:27 Starting Auction Server...
+2025/11/25 20:14:27 Auction Server 1 listening on port 5050
+2025/11/25 20:14:27 Starting Auction Server...
+2025/11/25 20:14:27 Backup Auction Server 2 listening on port 6060
+2025/11/25 20:14:28 Server: 1 | Primary server connection to Backup server created, state: READY 
+2025/11/25 20:14:28 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 20:14:28 Server: 2 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 20:14:28 ------ Round 0 of auction has begun ------------ 
+2025/11/25 20:14:29 Starting Auction Client 1...
+2025/11/25 20:14:29 Server: 1 | Updated map in backup: %!(EXTRA map[int32]bool=map[1:true])
+2025/11/25 20:14:29 Server: 2 | Backup Server, updating registered client 
+2025/11/25 20:14:29 Server: 2 | Updated map in back up: map[1:true]
+2025/11/25 20:14:29 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 53 
+2025/11/25 20:14:29 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 53 
+2025/11/25 20:14:29 Client 1 | res is: SUCCESS 
+2025/11/25 20:14:29 SUCCESS: Client 1 placed a bid of 53 
+2025/11/25 20:14:30 Starting Auction Client 2...
+2025/11/25 20:14:30 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 57 
+2025/11/25 20:14:30 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 57 
+2025/11/25 20:14:30 Client 1 | res is: SUCCESS 
+2025/11/25 20:14:30 SUCCESS: Client 1 placed a bid of 57 
+2025/11/25 20:14:30 Server: 1 | Updated map in backup: %!(EXTRA map[int32]bool=map[1:true 2:true])
+2025/11/25 20:14:30 Server: 2 | Backup Server, updating registered client 
+2025/11/25 20:14:30 Server: 2 | Updated map in back up: map[1:true 2:true]
+2025/11/25 20:14:30 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 77 
+2025/11/25 20:14:30 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 77 
+2025/11/25 20:14:30 Client 2 | res is: SUCCESS 
+2025/11/25 20:14:30 SUCCESS: Client 2 placed a bid of 77 
+2025/11/25 20:14:31 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 106 
+2025/11/25 20:14:31 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 106 
+2025/11/25 20:14:31 Client 1 | res is: SUCCESS 
+2025/11/25 20:14:31 SUCCESS: Client 1 placed a bid of 106 
+2025/11/25 20:14:31 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 147 
+2025/11/25 20:14:31 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 147 
+2025/11/25 20:14:31 Client 2 | res is: SUCCESS 
+2025/11/25 20:14:31 SUCCESS: Client 2 placed a bid of 147 
+2025/11/25 20:14:32 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 148 
+2025/11/25 20:14:32 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 148 
+2025/11/25 20:14:32 Client 1 | res is: SUCCESS 
+2025/11/25 20:14:32 SUCCESS: Client 1 placed a bid of 148 
+2025/11/25 20:14:32 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 176 
+2025/11/25 20:14:32 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 176 
+2025/11/25 20:14:32 Client 2 | res is: SUCCESS 
+2025/11/25 20:14:32 SUCCESS: Client 2 placed a bid of 176 
+2025/11/25 20:14:33 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 193 
+2025/11/25 20:14:33 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 193 
+2025/11/25 20:14:33 Client 1 | res is: SUCCESS 
+2025/11/25 20:14:33 SUCCESS: Client 1 placed a bid of 193 
+2025/11/25 20:14:33 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 220 
+2025/11/25 20:14:33 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 220 
+2025/11/25 20:14:33 Client 2 | res is: SUCCESS 
+2025/11/25 20:14:33 SUCCESS: Client 2 placed a bid of 220 
+2025/11/25 20:14:34 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 260 
+2025/11/25 20:14:34 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 260 
+2025/11/25 20:14:34 Client 1 | res is: SUCCESS 
+2025/11/25 20:14:34 SUCCESS: Client 1 placed a bid of 260 
+2025/11/25 20:14:34 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 293 
+2025/11/25 20:14:34 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 293 
+2025/11/25 20:14:34 Client 2 | res is: SUCCESS 
+2025/11/25 20:14:34 SUCCESS: Client 2 placed a bid of 293 
+2025/11/25 20:14:35 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 328 
+2025/11/25 20:14:35 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 328 
+2025/11/25 20:14:35 Client 1 | res is: SUCCESS 
+2025/11/25 20:14:35 SUCCESS: Client 1 placed a bid of 328 
+2025/11/25 20:14:35 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 359 
+2025/11/25 20:14:35 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 359 
+2025/11/25 20:14:35 Client 2 | res is: SUCCESS 
+2025/11/25 20:14:35 SUCCESS: Client 2 placed a bid of 359 
+2025/11/25 20:14:36 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 396 
+2025/11/25 20:14:36 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 396 
+2025/11/25 20:14:36 Client 1 | res is: SUCCESS 
+2025/11/25 20:14:36 SUCCESS: Client 1 placed a bid of 396 
+2025/11/25 20:14:36 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 430 
+2025/11/25 20:14:36 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 430 
+2025/11/25 20:14:36 Client 2 | res is: SUCCESS 
+2025/11/25 20:14:36 SUCCESS: Client 2 placed a bid of 430 
+2025/11/25 20:14:37 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 438 
+2025/11/25 20:14:37 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 438 
+2025/11/25 20:14:37 Client 1 | res is: SUCCESS 
+2025/11/25 20:14:37 SUCCESS: Client 1 placed a bid of 438 
+2025/11/25 20:14:37 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 474 
+2025/11/25 20:14:37 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 474 
+2025/11/25 20:14:37 Client 2 | res is: SUCCESS 
+2025/11/25 20:14:37 SUCCESS: Client 2 placed a bid of 474 
+2025/11/25 20:14:38 ------ Round 0 of auction is over, winning bid: 474 by client: 2  ------------ 
+2025/11/25 20:14:49 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:14:49 Server: 1 | StartAndEndBiddingRound connection to backup server not active 
+2025/11/25 20:14:54 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:14:54 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 20:14:54 ------ Round 1 of auction has begun ------------ 
+2025/11/25 20:14:59 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:14:59 Server: 1 | connection to backup server not active 
+2025/11/25 20:14:59 Client 2 | res is: SUCCESS 
+2025/11/25 20:14:59 SUCCESS: Client 2 placed a bid of 82 
+2025/11/25 20:14:59 Client 1 | res is: FAIL 
+2025/11/25 20:15:05 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:15:05 Server: 1 | connection to backup server not active 
+2025/11/25 20:15:05 Client 2 | res is: FAIL 
+2025/11/25 20:15:05 Client 1 | res is: SUCCESS 
+2025/11/25 20:15:05 SUCCESS: Client 1 placed a bid of 93 
+2025/11/25 20:15:10 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:15:10 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 20:15:10 ------ Round 1 of auction is over, winning bid: 93 by client: 1  ------------ 
+2025/11/25 20:15:21 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:15:21 Server: 1 | StartAndEndBiddingRound connection to backup server not active 
+2025/11/25 20:15:26 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:15:26 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 20:15:26 ------ Round 2 of auction has begun ------------ 
+2025/11/25 20:15:31 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:15:31 Server: 1 | connection to backup server not active 
+2025/11/25 20:15:31 Client 1 | res is: SUCCESS 
+2025/11/25 20:15:31 SUCCESS: Client 1 placed a bid of 1 
+2025/11/25 20:15:36 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:15:36 Server: 1 | connection to backup server not active 
+2025/11/25 20:15:36 Client 2 | res is: SUCCESS 
+2025/11/25 20:15:36 SUCCESS: Client 2 placed a bid of 88 
+2025/11/25 20:15:41 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:15:41 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 20:15:41 ------ Round 2 of auction is over, winning bid: 88 by client: 2  ------------ 
+2025/11/25 20:15:41 Client 1 | res is: FAIL 
+2025/11/25 20:15:52 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:15:52 Server: 1 | StartAndEndBiddingRound connection to backup server not active 
+2025/11/25 20:15:57 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:15:57 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 20:15:57 ------ Round 3 of auction has begun ------------ 
+2025/11/25 20:16:02 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:16:02 Server: 1 | connection to backup server not active 
+2025/11/25 20:16:02 Client 1 | res is: SUCCESS 
+2025/11/25 20:16:02 Client 2 | res is: FAIL 
+2025/11/25 20:16:02 SUCCESS: Client 1 placed a bid of 54 
+2025/11/25 20:16:08 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:16:08 Server: 1 | connection to backup server not active 
+2025/11/25 20:16:08 Client 1 | res is: SUCCESS 
+2025/11/25 20:16:08 Client 2 | res is: FAIL 
+2025/11/25 20:16:08 SUCCESS: Client 1 placed a bid of 64 
+2025/11/25 20:16:13 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:16:13 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 20:16:13 ------ Round 3 of auction is over, winning bid: 64 by client: 1  ------------ 
+2025/11/25 20:16:24 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:16:24 Server: 1 | StartAndEndBiddingRound connection to backup server not active 
+2025/11/25 20:16:29 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:16:29 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 20:16:29 ------ Round 4 of auction has begun ------------ 
+2025/11/25 20:16:34 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:16:34 Server: 1 | connection to backup server not active 
+2025/11/25 20:16:34 Client 1 | res is: SUCCESS 
+2025/11/25 20:16:34 Client 2 | res is: FAIL 
+2025/11/25 20:16:34 SUCCESS: Client 1 placed a bid of 67 
+2025/11/25 20:16:40 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:16:40 Server: 1 | connection to backup server not active 
+2025/11/25 20:16:40 Client 1 | res is: FAIL 
+2025/11/25 20:16:40 Client 2 | res is: SUCCESS 
+2025/11/25 20:16:40 SUCCESS: Client 2 placed a bid of 85 
+2025/11/25 20:16:45 Server: 1 | Primary server lost connection to backup 
+2025/11/25 20:16:45 Server: 1 | local_update_auction_state connection to backup server not active 
+2025/11/25 20:16:45 ------ Round 4 of auction is over, winning bid: 85 by client: 2  ------------ 
+2025/11/25 20:16:51 ------ The auction is now over! ------------ 
+2025/11/25 20:37:46 Starting Auction Server...
+2025/11/25 20:37:46 Auction Server 1 listening on port 5050
+2025/11/25 20:37:48 Starting Auction Server...
+2025/11/25 20:37:48 Backup Auction Server 2 listening on port 6060
+2025/11/25 20:37:48 Server: 1 | Primary server connection to Backup server created, state: READY 
+2025/11/25 20:37:48 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 20:37:48 Server: 2 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 20:37:48 ------ Round 0 of auction has begun ------------ 
+2025/11/25 20:37:51 Starting Auction Client 1...
+2025/11/25 20:37:51 Server: 1 | Updated map in backup: %!(EXTRA map[int32]bool=map[1:true])
+2025/11/25 20:37:51 Server: 2 | Backup Server, updating registered client 
+2025/11/25 20:37:51 Server: 2 | Updated map in back up: map[1:true]
+2025/11/25 20:37:51 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 63 
+2025/11/25 20:37:51 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 63 
+2025/11/25 20:37:51 Client 1 | res is: SUCCESS 
+2025/11/25 20:37:51 SUCCESS: Client 1 placed a bid of 63 
+2025/11/25 20:37:52 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 108 
+2025/11/25 20:37:52 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 108 
+2025/11/25 20:37:52 Client 1 | res is: SUCCESS 
+2025/11/25 20:37:52 SUCCESS: Client 1 placed a bid of 108 
+2025/11/25 20:37:53 Starting Auction Client 2...
+2025/11/25 20:37:53 Server: 1 | Updated map in backup: %!(EXTRA map[int32]bool=map[1:true 2:true])
+2025/11/25 20:37:53 Server: 2 | Backup Server, updating registered client 
+2025/11/25 20:37:53 Server: 2 | Updated map in back up: map[1:true 2:true]
+2025/11/25 20:37:53 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 116 
+2025/11/25 20:37:53 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 116 
+2025/11/25 20:37:53 Client 2 | res is: SUCCESS 
+2025/11/25 20:37:53 SUCCESS: Client 2 placed a bid of 116 
+2025/11/25 20:37:53 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 145 
+2025/11/25 20:37:53 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 145 
+2025/11/25 20:37:53 Client 1 | res is: SUCCESS 
+2025/11/25 20:37:53 SUCCESS: Client 1 placed a bid of 145 
+2025/11/25 20:37:54 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 159 
+2025/11/25 20:37:54 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 159 
+2025/11/25 20:37:54 Client 2 | res is: SUCCESS 
+2025/11/25 20:37:54 SUCCESS: Client 2 placed a bid of 159 
+2025/11/25 20:37:54 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 174 
+2025/11/25 20:37:54 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 174 
+2025/11/25 20:37:54 Client 1 | res is: SUCCESS 
+2025/11/25 20:37:54 SUCCESS: Client 1 placed a bid of 174 
+2025/11/25 20:37:55 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 199 
+2025/11/25 20:37:55 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 199 
+2025/11/25 20:37:55 Client 2 | res is: SUCCESS 
+2025/11/25 20:37:55 SUCCESS: Client 2 placed a bid of 199 
+2025/11/25 20:37:55 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 204 
+2025/11/25 20:37:55 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 204 
+2025/11/25 20:37:55 Client 1 | res is: SUCCESS 
+2025/11/25 20:37:55 SUCCESS: Client 1 placed a bid of 204 
+2025/11/25 20:37:56 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 226 
+2025/11/25 20:37:56 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 226 
+2025/11/25 20:37:56 Client 2 | res is: SUCCESS 
+2025/11/25 20:37:56 SUCCESS: Client 2 placed a bid of 226 
+2025/11/25 20:37:56 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 262 
+2025/11/25 20:37:56 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 262 
+2025/11/25 20:37:56 Client 1 | res is: SUCCESS 
+2025/11/25 20:37:56 SUCCESS: Client 1 placed a bid of 262 
+2025/11/25 20:37:57 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 283 
+2025/11/25 20:37:57 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 283 
+2025/11/25 20:37:57 Client 2 | res is: SUCCESS 
+2025/11/25 20:37:57 SUCCESS: Client 2 placed a bid of 283 
+2025/11/25 20:37:57 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 332 
+2025/11/25 20:37:57 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 332 
+2025/11/25 20:37:57 Client 1 | res is: SUCCESS 
+2025/11/25 20:37:57 SUCCESS: Client 1 placed a bid of 332 
+2025/11/25 20:37:58 ------ Round 0 of auction is over, winning bid: 332 by client: 1  ------------ 
+2025/11/25 20:38:04 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 20:38:04 Server: 2 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 20:38:04 ------ Round 1 of auction has begun ------------ 
+2025/11/25 20:38:04 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 66 
+2025/11/25 20:38:04 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 66 
+2025/11/25 20:38:04 Client 2 | res is: SUCCESS 
+2025/11/25 20:38:04 SUCCESS: Client 2 placed a bid of 66 
+2025/11/25 20:38:04 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 98 
+2025/11/25 20:38:04 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 98 
+2025/11/25 20:38:04 Client 1 | res is: SUCCESS 
+2025/11/25 20:38:04 SUCCESS: Client 1 placed a bid of 98 
+2025/11/25 20:38:05 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 105 
+2025/11/25 20:38:05 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 105 
+2025/11/25 20:38:05 Client 2 | res is: SUCCESS 
+2025/11/25 20:38:05 SUCCESS: Client 2 placed a bid of 105 
+2025/11/25 20:38:05 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 111 
+2025/11/25 20:38:05 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 111 
+2025/11/25 20:38:06 Client 1 | res is: SUCCESS 
+2025/11/25 20:38:06 SUCCESS: Client 1 placed a bid of 111 
+2025/11/25 20:38:06 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 144 
+2025/11/25 20:38:06 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 144 
+2025/11/25 20:38:06 Client 2 | res is: SUCCESS 
+2025/11/25 20:38:06 SUCCESS: Client 2 placed a bid of 144 
+2025/11/25 20:38:07 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 186 
+2025/11/25 20:38:07 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 186 
+2025/11/25 20:38:07 Client 1 | res is: SUCCESS 
+2025/11/25 20:38:07 SUCCESS: Client 1 placed a bid of 186 
+2025/11/25 20:38:07 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 202 
+2025/11/25 20:38:07 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 202 
+2025/11/25 20:38:07 Client 2 | res is: SUCCESS 
+2025/11/25 20:38:07 SUCCESS: Client 2 placed a bid of 202 
+2025/11/25 20:38:08 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 220 
+2025/11/25 20:38:08 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 220 
+2025/11/25 20:38:08 Client 1 | res is: SUCCESS 
+2025/11/25 20:38:08 SUCCESS: Client 1 placed a bid of 220 
+2025/11/25 20:38:08 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 221 
+2025/11/25 20:38:08 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 221 
+2025/11/25 20:38:08 Client 2 | res is: SUCCESS 
+2025/11/25 20:38:08 SUCCESS: Client 2 placed a bid of 221 
+2025/11/25 20:38:09 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 235 
+2025/11/25 20:38:09 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 235 
+2025/11/25 20:38:09 Client 1 | res is: SUCCESS 
+2025/11/25 20:38:09 SUCCESS: Client 1 placed a bid of 235 
+2025/11/25 20:38:09 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 262 
+2025/11/25 20:38:09 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 262 
+2025/11/25 20:38:09 Client 2 | res is: SUCCESS 
+2025/11/25 20:38:09 SUCCESS: Client 2 placed a bid of 262 
+2025/11/25 20:38:10 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 288 
+2025/11/25 20:38:10 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 288 
+2025/11/25 20:38:10 Client 1 | res is: SUCCESS 
+2025/11/25 20:38:10 SUCCESS: Client 1 placed a bid of 288 
+2025/11/25 20:38:10 Client 2 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 20:38:10 Client 2 succesfully connected to backup server
+2025/11/25 20:38:11 Client 1 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 20:38:11 Client 1 succesfully connected to backup server
+2025/11/25 20:55:02 Client 1 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:6060: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 20:55:02 Client 1 succesfully connected to backup server
+2025/11/25 20:55:03 Client 2 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:6060: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 20:55:03 Client 2 succesfully connected to backup server
+2025/11/25 20:55:11 Starting Auction Server...
+2025/11/25 20:55:11 Auction Server 1 listening on port 5050
+2025/11/25 20:55:12 Starting Auction Server...
+2025/11/25 20:55:12 Backup Auction Server 2 listening on port 6060
+2025/11/25 20:55:14 Server: 1 | Primary server connection to Backup server created, state: READY 
+2025/11/25 20:55:14 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 20:55:14 Server: 2 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 20:55:14 Server: 2 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 20:55:14 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 20:55:14 ------ Round 0 of auction has begun ------------ 
+2025/11/25 20:55:15 Starting Auction Client 1...
+2025/11/25 20:55:15 Server: 1 | Updated map in backup: map[1:true]
+2025/11/25 20:55:15 Server: 2 | Backup Server, updating registered client 
+2025/11/25 20:55:15 Server: 2 | Updated map in back up: map[1:true]
+2025/11/25 20:55:15 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 9 
+2025/11/25 20:55:15 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 9 
+2025/11/25 20:55:15 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:15 SUCCESS: Client 1 placed a bid of 9 
+2025/11/25 20:55:16 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 40 
+2025/11/25 20:55:16 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 40 
+2025/11/25 20:55:16 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:16 SUCCESS: Client 1 placed a bid of 40 
+2025/11/25 20:55:17 Starting Auction Client 2...
+2025/11/25 20:55:17 Server: 1 | Updated map in backup: map[1:true 2:true]
+2025/11/25 20:55:17 Server: 2 | Backup Server, updating registered client 
+2025/11/25 20:55:17 Server: 2 | Updated map in back up: map[1:true 2:true]
+2025/11/25 20:55:17 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 50 
+2025/11/25 20:55:17 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 50 
+2025/11/25 20:55:17 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:17 SUCCESS: Client 2 placed a bid of 50 
+2025/11/25 20:55:17 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 59 
+2025/11/25 20:55:17 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 59 
+2025/11/25 20:55:17 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:17 SUCCESS: Client 1 placed a bid of 59 
+2025/11/25 20:55:18 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 99 
+2025/11/25 20:55:18 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 99 
+2025/11/25 20:55:18 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:18 SUCCESS: Client 2 placed a bid of 99 
+2025/11/25 20:55:18 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 114 
+2025/11/25 20:55:18 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 114 
+2025/11/25 20:55:18 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:18 SUCCESS: Client 1 placed a bid of 114 
+2025/11/25 20:55:19 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 134 
+2025/11/25 20:55:19 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 134 
+2025/11/25 20:55:19 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:19 SUCCESS: Client 2 placed a bid of 134 
+2025/11/25 20:55:19 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 146 
+2025/11/25 20:55:19 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 146 
+2025/11/25 20:55:19 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:19 SUCCESS: Client 1 placed a bid of 146 
+2025/11/25 20:55:20 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 193 
+2025/11/25 20:55:20 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 193 
+2025/11/25 20:55:20 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:20 SUCCESS: Client 2 placed a bid of 193 
+2025/11/25 20:55:20 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 210 
+2025/11/25 20:55:20 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 210 
+2025/11/25 20:55:20 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:20 SUCCESS: Client 1 placed a bid of 210 
+2025/11/25 20:55:21 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 240 
+2025/11/25 20:55:21 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 240 
+2025/11/25 20:55:21 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:21 SUCCESS: Client 2 placed a bid of 240 
+2025/11/25 20:55:21 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 259 
+2025/11/25 20:55:21 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 259 
+2025/11/25 20:55:21 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:21 SUCCESS: Client 1 placed a bid of 259 
+2025/11/25 20:55:22 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 278 
+2025/11/25 20:55:22 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 278 
+2025/11/25 20:55:22 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:22 SUCCESS: Client 2 placed a bid of 278 
+2025/11/25 20:55:22 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 286 
+2025/11/25 20:55:22 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 286 
+2025/11/25 20:55:22 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:22 SUCCESS: Client 1 placed a bid of 286 
+2025/11/25 20:55:23 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 288 
+2025/11/25 20:55:23 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 288 
+2025/11/25 20:55:23 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:23 SUCCESS: Client 2 placed a bid of 288 
+2025/11/25 20:55:23 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 308 
+2025/11/25 20:55:23 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 308 
+2025/11/25 20:55:23 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:23 SUCCESS: Client 1 placed a bid of 308 
+2025/11/25 20:55:24 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 311 
+2025/11/25 20:55:24 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 311 
+2025/11/25 20:55:24 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:24 SUCCESS: Client 2 placed a bid of 311 
+2025/11/25 20:55:24 Server: 2 | Backup Server, old Auction ongoing: true new Auction ongoing: false 
+2025/11/25 20:55:24 Server: 1 | Backup Server updated at the end of auction round 
+2025/11/25 20:55:24 ------ Round 0 of auction is over, winning bid: 311 by client: 2  ------------ 
+2025/11/25 20:55:30 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 20:55:30 Server: 2 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 20:55:30 Server: 2 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 20:55:30 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 20:55:30 ------ Round 1 of auction has begun ------------ 
+2025/11/25 20:55:30 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 57 
+2025/11/25 20:55:30 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 57 
+2025/11/25 20:55:30 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:30 SUCCESS: Client 1 placed a bid of 57 
+2025/11/25 20:55:31 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 83 
+2025/11/25 20:55:31 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 83 
+2025/11/25 20:55:31 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:31 SUCCESS: Client 2 placed a bid of 83 
+2025/11/25 20:55:31 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 101 
+2025/11/25 20:55:31 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 101 
+2025/11/25 20:55:31 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:31 SUCCESS: Client 1 placed a bid of 101 
+2025/11/25 20:55:32 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 135 
+2025/11/25 20:55:32 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 135 
+2025/11/25 20:55:32 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:32 SUCCESS: Client 2 placed a bid of 135 
+2025/11/25 20:55:32 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 139 
+2025/11/25 20:55:32 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 139 
+2025/11/25 20:55:32 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:32 SUCCESS: Client 1 placed a bid of 139 
+2025/11/25 20:55:33 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 175 
+2025/11/25 20:55:33 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 175 
+2025/11/25 20:55:33 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:33 SUCCESS: Client 2 placed a bid of 175 
+2025/11/25 20:55:33 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 202 
+2025/11/25 20:55:33 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 202 
+2025/11/25 20:55:33 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:33 SUCCESS: Client 1 placed a bid of 202 
+2025/11/25 20:55:34 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 203 
+2025/11/25 20:55:34 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 203 
+2025/11/25 20:55:34 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:34 SUCCESS: Client 2 placed a bid of 203 
+2025/11/25 20:55:34 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 247 
+2025/11/25 20:55:34 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 247 
+2025/11/25 20:55:34 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:34 SUCCESS: Client 1 placed a bid of 247 
+2025/11/25 20:55:35 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 249 
+2025/11/25 20:55:35 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 249 
+2025/11/25 20:55:35 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:35 SUCCESS: Client 2 placed a bid of 249 
+2025/11/25 20:55:35 Client 1 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 20:55:35 Client 1 succesfully connected to backup server
+2025/11/25 20:55:35 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:35 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:35 SUCCESS: Client 1 placed a bid of 258 
+2025/11/25 20:55:36 Client 2 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 20:55:36 Client 2 succesfully connected to backup server
+2025/11/25 20:55:36 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:36 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:36 SUCCESS: Client 2 placed a bid of 270 
+2025/11/25 20:55:36 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:36 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:36 SUCCESS: Client 1 placed a bid of 271 
+2025/11/25 20:55:37 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:37 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:37 SUCCESS: Client 2 placed a bid of 306 
+2025/11/25 20:55:37 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:37 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:37 SUCCESS: Client 1 placed a bid of 313 
+2025/11/25 20:55:38 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:38 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:38 SUCCESS: Client 2 placed a bid of 327 
+2025/11/25 20:55:38 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:38 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:38 SUCCESS: Client 1 placed a bid of 372 
+2025/11/25 20:55:39 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:39 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:39 SUCCESS: Client 2 placed a bid of 384 
+2025/11/25 20:55:39 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:39 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:39 SUCCESS: Client 1 placed a bid of 387 
+2025/11/25 20:55:40 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:40 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:40 SUCCESS: Client 2 placed a bid of 392 
+2025/11/25 20:55:40 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:40 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:40 SUCCESS: Client 1 placed a bid of 405 
+2025/11/25 20:55:41 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:41 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:41 SUCCESS: Client 2 placed a bid of 415 
+2025/11/25 20:55:41 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:41 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:41 SUCCESS: Client 1 placed a bid of 451 
+2025/11/25 20:55:42 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:42 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:42 SUCCESS: Client 2 placed a bid of 480 
+2025/11/25 20:55:42 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:42 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:42 SUCCESS: Client 1 placed a bid of 487 
+2025/11/25 20:55:43 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:43 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:43 SUCCESS: Client 2 placed a bid of 489 
+2025/11/25 20:55:43 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:43 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:43 SUCCESS: Client 1 placed a bid of 492 
+2025/11/25 20:55:44 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:44 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:44 SUCCESS: Client 2 placed a bid of 531 
+2025/11/25 20:55:44 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:44 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:44 SUCCESS: Client 1 placed a bid of 557 
+2025/11/25 20:55:45 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:45 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:45 SUCCESS: Client 2 placed a bid of 602 
+2025/11/25 20:55:45 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:45 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:45 SUCCESS: Client 1 placed a bid of 634 
+2025/11/25 20:55:46 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:46 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:46 SUCCESS: Client 2 placed a bid of 651 
+2025/11/25 20:55:46 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:46 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:46 SUCCESS: Client 1 placed a bid of 664 
+2025/11/25 20:55:47 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:47 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:47 SUCCESS: Client 2 placed a bid of 707 
+2025/11/25 20:55:47 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:47 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:47 SUCCESS: Client 1 placed a bid of 756 
+2025/11/25 20:55:48 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:48 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:48 SUCCESS: Client 2 placed a bid of 771 
+2025/11/25 20:55:48 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:48 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:48 SUCCESS: Client 1 placed a bid of 811 
+2025/11/25 20:55:49 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:49 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:49 SUCCESS: Client 2 placed a bid of 846 
+2025/11/25 20:55:49 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:49 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:49 SUCCESS: Client 1 placed a bid of 853 
+2025/11/25 20:55:50 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:50 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:50 SUCCESS: Client 2 placed a bid of 864 
+2025/11/25 20:55:50 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:50 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:50 SUCCESS: Client 1 placed a bid of 884 
+2025/11/25 20:55:51 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:51 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:51 SUCCESS: Client 2 placed a bid of 919 
+2025/11/25 20:55:51 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:51 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:51 SUCCESS: Client 1 placed a bid of 944 
+2025/11/25 20:55:52 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:52 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:52 SUCCESS: Client 2 placed a bid of 993 
+2025/11/25 20:55:52 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:52 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:52 SUCCESS: Client 1 placed a bid of 1005 
+2025/11/25 20:55:53 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:53 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:53 SUCCESS: Client 2 placed a bid of 1030 
+2025/11/25 20:55:53 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:53 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:53 SUCCESS: Client 1 placed a bid of 1038 
+2025/11/25 20:55:54 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:54 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:54 SUCCESS: Client 2 placed a bid of 1072 
+2025/11/25 20:55:54 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:54 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:54 SUCCESS: Client 1 placed a bid of 1074 
+2025/11/25 20:55:55 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:55 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:55 SUCCESS: Client 2 placed a bid of 1075 
+2025/11/25 20:55:55 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:55 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:55 SUCCESS: Client 1 placed a bid of 1096 
+2025/11/25 20:55:56 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:56 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:56 SUCCESS: Client 2 placed a bid of 1124 
+2025/11/25 20:55:56 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:56 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:56 SUCCESS: Client 1 placed a bid of 1163 
+2025/11/25 20:55:57 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:57 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:57 SUCCESS: Client 2 placed a bid of 1195 
+2025/11/25 20:55:57 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:57 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:57 SUCCESS: Client 1 placed a bid of 1201 
+2025/11/25 20:55:58 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:58 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:58 SUCCESS: Client 2 placed a bid of 1237 
+2025/11/25 20:55:58 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:58 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:58 SUCCESS: Client 1 placed a bid of 1273 
+2025/11/25 20:55:59 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:59 Client 2 | res is: SUCCESS 
+2025/11/25 20:55:59 SUCCESS: Client 2 placed a bid of 1320 
+2025/11/25 20:55:59 Server: 2 | connection to backup server not active 
+2025/11/25 20:55:59 Client 1 | res is: SUCCESS 
+2025/11/25 20:55:59 SUCCESS: Client 1 placed a bid of 1335 
+2025/11/25 20:56:00 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:00 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:00 SUCCESS: Client 2 placed a bid of 1337 
+2025/11/25 20:56:00 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:00 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:00 SUCCESS: Client 1 placed a bid of 1341 
+2025/11/25 20:56:01 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:01 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:01 SUCCESS: Client 2 placed a bid of 1347 
+2025/11/25 20:56:01 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:01 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:01 SUCCESS: Client 1 placed a bid of 1385 
+2025/11/25 20:56:02 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:02 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:02 SUCCESS: Client 2 placed a bid of 1410 
+2025/11/25 20:56:02 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:02 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:02 SUCCESS: Client 1 placed a bid of 1451 
+2025/11/25 20:56:03 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:03 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:03 SUCCESS: Client 2 placed a bid of 1498 
+2025/11/25 20:56:03 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:03 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:03 SUCCESS: Client 1 placed a bid of 1504 
+2025/11/25 20:56:04 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:04 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:04 SUCCESS: Client 2 placed a bid of 1527 
+2025/11/25 20:56:04 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:04 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:04 SUCCESS: Client 1 placed a bid of 1569 
+2025/11/25 20:56:05 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:05 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:05 SUCCESS: Client 2 placed a bid of 1603 
+2025/11/25 20:56:05 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:05 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:05 SUCCESS: Client 1 placed a bid of 1623 
+2025/11/25 20:56:06 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:06 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:06 SUCCESS: Client 2 placed a bid of 1660 
+2025/11/25 20:56:06 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:06 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:06 SUCCESS: Client 1 placed a bid of 1706 
+2025/11/25 20:56:07 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:07 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:07 SUCCESS: Client 2 placed a bid of 1745 
+2025/11/25 20:56:07 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:07 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:07 SUCCESS: Client 1 placed a bid of 1782 
+2025/11/25 20:56:08 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:08 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:08 SUCCESS: Client 2 placed a bid of 1798 
+2025/11/25 20:56:08 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:08 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:08 SUCCESS: Client 1 placed a bid of 1805 
+2025/11/25 20:56:09 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:09 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:09 SUCCESS: Client 2 placed a bid of 1825 
+2025/11/25 20:56:09 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:09 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:09 SUCCESS: Client 1 placed a bid of 1856 
+2025/11/25 20:56:10 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:10 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:10 SUCCESS: Client 2 placed a bid of 1874 
+2025/11/25 20:56:10 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:10 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:10 SUCCESS: Client 1 placed a bid of 1880 
+2025/11/25 20:56:11 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:11 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:11 SUCCESS: Client 2 placed a bid of 1888 
+2025/11/25 20:56:12 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:12 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:12 SUCCESS: Client 1 placed a bid of 1906 
+2025/11/25 20:56:12 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:12 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:12 SUCCESS: Client 2 placed a bid of 1922 
+2025/11/25 20:56:13 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:13 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:13 SUCCESS: Client 1 placed a bid of 1930 
+2025/11/25 20:56:13 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:13 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:13 SUCCESS: Client 2 placed a bid of 1938 
+2025/11/25 20:56:14 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:14 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:14 SUCCESS: Client 1 placed a bid of 1979 
+2025/11/25 20:56:14 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:14 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:14 SUCCESS: Client 2 placed a bid of 1980 
+2025/11/25 20:56:15 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:15 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:15 SUCCESS: Client 1 placed a bid of 2021 
+2025/11/25 20:56:15 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:15 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:15 SUCCESS: Client 2 placed a bid of 2066 
+2025/11/25 20:56:16 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:16 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:16 SUCCESS: Client 1 placed a bid of 2111 
+2025/11/25 20:56:16 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:16 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:16 SUCCESS: Client 2 placed a bid of 2132 
+2025/11/25 20:56:17 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:17 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:17 SUCCESS: Client 1 placed a bid of 2155 
+2025/11/25 20:56:17 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:17 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:17 SUCCESS: Client 2 placed a bid of 2166 
+2025/11/25 20:56:18 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:18 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:18 SUCCESS: Client 1 placed a bid of 2184 
+2025/11/25 20:56:18 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:18 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:18 SUCCESS: Client 2 placed a bid of 2212 
+2025/11/25 20:56:19 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:19 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:19 SUCCESS: Client 1 placed a bid of 2255 
+2025/11/25 20:56:19 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:19 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:19 SUCCESS: Client 2 placed a bid of 2271 
+2025/11/25 20:56:20 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:20 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:20 SUCCESS: Client 1 placed a bid of 2303 
+2025/11/25 20:56:20 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:20 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:20 SUCCESS: Client 2 placed a bid of 2333 
+2025/11/25 20:56:21 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:21 Client 1 | res is: SUCCESS 
+2025/11/25 20:56:21 SUCCESS: Client 1 placed a bid of 2370 
+2025/11/25 20:56:21 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:21 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:21 SUCCESS: Client 2 placed a bid of 2376 
+2025/11/25 20:56:22 Server: 2 | connection to backup server not active 
+2025/11/25 20:56:22 Client 2 | res is: SUCCESS 
+2025/11/25 20:56:22 SUCCESS: Client 2 placed a bid of 2399 
+2025/11/25 20:59:05 Starting Auction Server...
+2025/11/25 20:59:05 Auction Server 1 listening on port 5050
+2025/11/25 20:59:06 Starting Auction Server...
+2025/11/25 20:59:06 Backup Auction Server 2 listening on port 6060
+2025/11/25 20:59:07 Server: 1 | Primary server connection to Backup server created, state: READY 
+2025/11/25 20:59:07 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 20:59:07 Server: 2 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 20:59:07 Server: 2 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 20:59:07 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 20:59:07 ------ Round 0 of auction has begun ------------ 
+2025/11/25 20:59:08 Starting Auction Client 1...
+2025/11/25 20:59:08 Server: 1 | Updated map in backup: map[1:true]
+2025/11/25 20:59:08 Server: 2 | Backup Server, updating registered client 
+2025/11/25 20:59:08 Server: 2 | Updated map in back up: map[1:true]
+2025/11/25 20:59:08 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 18 
+2025/11/25 20:59:08 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 18 
+2025/11/25 20:59:08 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:08 SUCCESS: Client 1 placed a bid of 18 
+2025/11/25 20:59:09 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 47 
+2025/11/25 20:59:09 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 47 
+2025/11/25 20:59:09 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:09 SUCCESS: Client 1 placed a bid of 47 
+2025/11/25 20:59:10 Starting Auction Client 2...
+2025/11/25 20:59:10 Server: 1 | Updated map in backup: map[1:true 2:true]
+2025/11/25 20:59:10 Server: 2 | Backup Server, updating registered client 
+2025/11/25 20:59:10 Server: 2 | Updated map in back up: map[1:true 2:true]
+2025/11/25 20:59:10 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 76 
+2025/11/25 20:59:10 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 76 
+2025/11/25 20:59:10 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:10 SUCCESS: Client 2 placed a bid of 76 
+2025/11/25 20:59:10 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 114 
+2025/11/25 20:59:10 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 114 
+2025/11/25 20:59:10 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:10 SUCCESS: Client 1 placed a bid of 114 
+2025/11/25 20:59:11 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 144 
+2025/11/25 20:59:11 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 144 
+2025/11/25 20:59:11 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:11 SUCCESS: Client 2 placed a bid of 144 
+2025/11/25 20:59:11 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 164 
+2025/11/25 20:59:11 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 164 
+2025/11/25 20:59:11 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:11 SUCCESS: Client 1 placed a bid of 164 
+2025/11/25 20:59:12 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 175 
+2025/11/25 20:59:12 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 175 
+2025/11/25 20:59:12 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:12 SUCCESS: Client 2 placed a bid of 175 
+2025/11/25 20:59:12 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 189 
+2025/11/25 20:59:12 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 189 
+2025/11/25 20:59:12 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:12 SUCCESS: Client 1 placed a bid of 189 
+2025/11/25 20:59:13 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 230 
+2025/11/25 20:59:13 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 230 
+2025/11/25 20:59:13 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:13 SUCCESS: Client 2 placed a bid of 230 
+2025/11/25 20:59:13 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 247 
+2025/11/25 20:59:13 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 247 
+2025/11/25 20:59:13 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:13 SUCCESS: Client 1 placed a bid of 247 
+2025/11/25 20:59:14 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 293 
+2025/11/25 20:59:14 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 293 
+2025/11/25 20:59:14 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:14 SUCCESS: Client 2 placed a bid of 293 
+2025/11/25 20:59:14 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 304 
+2025/11/25 20:59:14 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 304 
+2025/11/25 20:59:14 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:14 SUCCESS: Client 1 placed a bid of 304 
+2025/11/25 20:59:15 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 333 
+2025/11/25 20:59:15 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 333 
+2025/11/25 20:59:15 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:15 SUCCESS: Client 2 placed a bid of 333 
+2025/11/25 20:59:15 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 376 
+2025/11/25 20:59:15 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 376 
+2025/11/25 20:59:15 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:15 SUCCESS: Client 1 placed a bid of 376 
+2025/11/25 20:59:16 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 415 
+2025/11/25 20:59:16 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 415 
+2025/11/25 20:59:16 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:16 SUCCESS: Client 2 placed a bid of 415 
+2025/11/25 20:59:16 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 456 
+2025/11/25 20:59:16 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 456 
+2025/11/25 20:59:16 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:16 SUCCESS: Client 1 placed a bid of 456 
+2025/11/25 20:59:17 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 467 
+2025/11/25 20:59:17 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 467 
+2025/11/25 20:59:17 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:17 SUCCESS: Client 2 placed a bid of 467 
+2025/11/25 20:59:17 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 507 
+2025/11/25 20:59:17 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 507 
+2025/11/25 20:59:17 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:17 SUCCESS: Client 1 placed a bid of 507 
+2025/11/25 20:59:17 Server: 2 | Backup Server, old Auction ongoing: true new Auction ongoing: false 
+2025/11/25 20:59:17 Server: 1 | Backup Server updated at the end of auction round 
+2025/11/25 20:59:17 ------ Round 0 of auction is over, winning bid: 507 by client: 1  ------------ 
+2025/11/25 20:59:23 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 20:59:23 Server: 2 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 20:59:23 Server: 2 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 20:59:23 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 20:59:23 ------ Round 1 of auction has begun ------------ 
+2025/11/25 20:59:24 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 46 
+2025/11/25 20:59:24 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 46 
+2025/11/25 20:59:24 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:24 SUCCESS: Client 2 placed a bid of 46 
+2025/11/25 20:59:24 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 50 
+2025/11/25 20:59:24 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 50 
+2025/11/25 20:59:24 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:24 SUCCESS: Client 1 placed a bid of 50 
+2025/11/25 20:59:25 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 75 
+2025/11/25 20:59:25 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 75 
+2025/11/25 20:59:25 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:25 SUCCESS: Client 2 placed a bid of 75 
+2025/11/25 20:59:25 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 98 
+2025/11/25 20:59:25 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 98 
+2025/11/25 20:59:25 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:25 SUCCESS: Client 1 placed a bid of 98 
+2025/11/25 20:59:26 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 110 
+2025/11/25 20:59:26 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 110 
+2025/11/25 20:59:26 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:26 SUCCESS: Client 2 placed a bid of 110 
+2025/11/25 20:59:26 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 137 
+2025/11/25 20:59:26 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 137 
+2025/11/25 20:59:26 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:26 SUCCESS: Client 1 placed a bid of 137 
+2025/11/25 20:59:27 Client 2 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 20:59:27 Client 2 succesfully connected to backup server
+2025/11/25 20:59:27 Client 1 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 20:59:27 Client 1 succesfully connected to backup server
+2025/11/25 20:59:27 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:27 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:27 SUCCESS: Client 2 placed a bid of 162 
+2025/11/25 20:59:27 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:27 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:27 SUCCESS: Client 1 placed a bid of 192 
+2025/11/25 20:59:28 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:28 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:28 SUCCESS: Client 2 placed a bid of 217 
+2025/11/25 20:59:28 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:28 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:28 SUCCESS: Client 1 placed a bid of 223 
+2025/11/25 20:59:29 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:29 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:29 SUCCESS: Client 2 placed a bid of 272 
+2025/11/25 20:59:29 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:29 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:29 SUCCESS: Client 1 placed a bid of 314 
+2025/11/25 20:59:30 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:30 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:30 SUCCESS: Client 2 placed a bid of 328 
+2025/11/25 20:59:30 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:30 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:30 SUCCESS: Client 1 placed a bid of 361 
+2025/11/25 20:59:31 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:31 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:31 SUCCESS: Client 2 placed a bid of 362 
+2025/11/25 20:59:31 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:31 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:31 SUCCESS: Client 1 placed a bid of 378 
+2025/11/25 20:59:32 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:32 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:32 SUCCESS: Client 2 placed a bid of 392 
+2025/11/25 20:59:32 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:32 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:32 SUCCESS: Client 1 placed a bid of 396 
+2025/11/25 20:59:33 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:33 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:33 SUCCESS: Client 2 placed a bid of 441 
+2025/11/25 20:59:33 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:33 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:33 SUCCESS: Client 1 placed a bid of 479 
+2025/11/25 20:59:34 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:34 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:34 SUCCESS: Client 2 placed a bid of 509 
+2025/11/25 20:59:34 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:34 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:34 SUCCESS: Client 1 placed a bid of 553 
+2025/11/25 20:59:35 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:35 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:35 SUCCESS: Client 2 placed a bid of 565 
+2025/11/25 20:59:35 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:35 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:35 SUCCESS: Client 1 placed a bid of 605 
+2025/11/25 20:59:36 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:36 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:36 SUCCESS: Client 2 placed a bid of 648 
+2025/11/25 20:59:36 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:36 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:36 SUCCESS: Client 1 placed a bid of 685 
+2025/11/25 20:59:37 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:37 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:37 SUCCESS: Client 2 placed a bid of 692 
+2025/11/25 20:59:37 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:37 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:37 SUCCESS: Client 1 placed a bid of 708 
+2025/11/25 20:59:38 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:38 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:38 SUCCESS: Client 2 placed a bid of 726 
+2025/11/25 20:59:38 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:38 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:38 SUCCESS: Client 1 placed a bid of 774 
+2025/11/25 20:59:39 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:39 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:39 SUCCESS: Client 2 placed a bid of 816 
+2025/11/25 20:59:39 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:39 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:39 SUCCESS: Client 1 placed a bid of 831 
+2025/11/25 20:59:40 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:40 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:40 SUCCESS: Client 2 placed a bid of 836 
+2025/11/25 20:59:40 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:40 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:40 SUCCESS: Client 1 placed a bid of 856 
+2025/11/25 20:59:41 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:41 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:41 SUCCESS: Client 2 placed a bid of 873 
+2025/11/25 20:59:41 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:41 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:41 SUCCESS: Client 1 placed a bid of 911 
+2025/11/25 20:59:42 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:42 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:42 SUCCESS: Client 2 placed a bid of 956 
+2025/11/25 20:59:42 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:42 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:42 SUCCESS: Client 1 placed a bid of 965 
+2025/11/25 20:59:43 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:43 Client 2 | res is: SUCCESS 
+2025/11/25 20:59:43 SUCCESS: Client 2 placed a bid of 1006 
+2025/11/25 20:59:43 Server: 2 | connection to backup server not active: highest bid 
+2025/11/25 20:59:43 Client 1 | res is: SUCCESS 
+2025/11/25 20:59:43 SUCCESS: Client 1 placed a bid of 1014 
+2025/11/25 20:59:44 Client 2 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:6060: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 20:59:44 Client 2 succesfully connected to backup server
+2025/11/25 20:59:44 Client 1 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:6060: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 20:59:44 Client 1 succesfully connected to backup server
+2025/11/25 21:00:12 Starting Auction Server...
+2025/11/25 21:00:12 Auction Server 1 listening on port 5050
+2025/11/25 21:00:14 Starting Auction Server...
+2025/11/25 21:00:14 Backup Auction Server 2 listening on port 6060
+2025/11/25 21:00:15 Server: 1 | Primary server connection to Backup server created, state: READY 
+2025/11/25 21:00:15 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 21:00:15 Server: 2 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 21:00:15 Server: 2 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 21:00:15 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 21:00:15 ------ Round 0 of auction has begun ------------ 
+2025/11/25 21:00:15 Starting Auction Client 1...
+2025/11/25 21:00:16 Server: 1 | Updated map in backup: map[1:true]
+2025/11/25 21:00:16 Server: 2 | Backup Server, updating registered client 
+2025/11/25 21:00:16 Server: 2 | Updated map in back up: map[1:true]
+2025/11/25 21:00:16 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 54 
+2025/11/25 21:00:16 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 54 
+2025/11/25 21:00:16 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:16 SUCCESS: Client 1 placed a bid of 54 
+2025/11/25 21:00:17 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 57 
+2025/11/25 21:00:17 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 57 
+2025/11/25 21:00:17 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:17 SUCCESS: Client 1 placed a bid of 57 
+2025/11/25 21:00:17 Starting Auction Client 2...
+2025/11/25 21:00:18 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 94 
+2025/11/25 21:00:18 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 94 
+2025/11/25 21:00:18 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:18 SUCCESS: Client 1 placed a bid of 94 
+2025/11/25 21:00:18 Server: 1 | Updated map in backup: map[1:true 2:true]
+2025/11/25 21:00:18 Server: 2 | Backup Server, updating registered client 
+2025/11/25 21:00:18 Server: 2 | Updated map in back up: map[1:true 2:true]
+2025/11/25 21:00:18 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 127 
+2025/11/25 21:00:18 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 127 
+2025/11/25 21:00:18 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:18 SUCCESS: Client 2 placed a bid of 127 
+2025/11/25 21:00:19 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 144 
+2025/11/25 21:00:19 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 144 
+2025/11/25 21:00:19 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:19 SUCCESS: Client 1 placed a bid of 144 
+2025/11/25 21:00:19 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 161 
+2025/11/25 21:00:19 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 161 
+2025/11/25 21:00:19 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:19 SUCCESS: Client 2 placed a bid of 161 
+2025/11/25 21:00:20 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 182 
+2025/11/25 21:00:20 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 182 
+2025/11/25 21:00:20 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:20 SUCCESS: Client 1 placed a bid of 182 
+2025/11/25 21:00:20 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 208 
+2025/11/25 21:00:20 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 208 
+2025/11/25 21:00:20 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:20 SUCCESS: Client 2 placed a bid of 208 
+2025/11/25 21:00:21 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 218 
+2025/11/25 21:00:21 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 218 
+2025/11/25 21:00:21 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:21 SUCCESS: Client 1 placed a bid of 218 
+2025/11/25 21:00:21 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 236 
+2025/11/25 21:00:21 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 236 
+2025/11/25 21:00:21 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:21 SUCCESS: Client 2 placed a bid of 236 
+2025/11/25 21:00:22 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 277 
+2025/11/25 21:00:22 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 277 
+2025/11/25 21:00:22 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:22 SUCCESS: Client 1 placed a bid of 277 
+2025/11/25 21:00:22 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 320 
+2025/11/25 21:00:22 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 320 
+2025/11/25 21:00:22 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:22 SUCCESS: Client 2 placed a bid of 320 
+2025/11/25 21:00:23 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 336 
+2025/11/25 21:00:23 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 336 
+2025/11/25 21:00:23 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:23 SUCCESS: Client 1 placed a bid of 336 
+2025/11/25 21:00:23 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 341 
+2025/11/25 21:00:23 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 341 
+2025/11/25 21:00:23 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:23 SUCCESS: Client 2 placed a bid of 341 
+2025/11/25 21:00:24 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 345 
+2025/11/25 21:00:24 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 345 
+2025/11/25 21:00:24 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:24 SUCCESS: Client 1 placed a bid of 345 
+2025/11/25 21:00:24 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 386 
+2025/11/25 21:00:24 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 386 
+2025/11/25 21:00:24 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:24 SUCCESS: Client 2 placed a bid of 386 
+2025/11/25 21:00:25 Server: 2 | Backup Server, old Auction ongoing: true new Auction ongoing: false 
+2025/11/25 21:00:25 Server: 1 | Backup Server updated at the end of auction round 
+2025/11/25 21:00:25 ------ Round 0 of auction is over, winning bid: 386 by client: 2  ------------ 
+2025/11/25 21:00:31 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 21:00:31 Server: 2 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 21:00:31 Server: 2 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 21:00:31 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 21:00:31 ------ Round 1 of auction has begun ------------ 
+2025/11/25 21:00:31 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 30 
+2025/11/25 21:00:31 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 30 
+2025/11/25 21:00:31 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:31 SUCCESS: Client 1 placed a bid of 30 
+2025/11/25 21:00:31 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 96 
+2025/11/25 21:00:31 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 96 
+2025/11/25 21:00:31 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:31 SUCCESS: Client 2 placed a bid of 96 
+2025/11/25 21:00:32 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 127 
+2025/11/25 21:00:32 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 127 
+2025/11/25 21:00:32 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:32 SUCCESS: Client 1 placed a bid of 127 
+2025/11/25 21:00:32 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 141 
+2025/11/25 21:00:32 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 141 
+2025/11/25 21:00:32 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:32 SUCCESS: Client 2 placed a bid of 141 
+2025/11/25 21:00:33 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 173 
+2025/11/25 21:00:33 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 173 
+2025/11/25 21:00:33 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:33 SUCCESS: Client 1 placed a bid of 173 
+2025/11/25 21:00:33 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 201 
+2025/11/25 21:00:33 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 201 
+2025/11/25 21:00:33 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:33 SUCCESS: Client 2 placed a bid of 201 
+2025/11/25 21:00:34 Client 1 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 21:00:34 Client 1 succesfully connected to backup server
+2025/11/25 21:00:34 Client 2 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 21:00:34 Client 2 succesfully connected to backup server
+2025/11/25 21:00:34 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:34 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:34 SUCCESS: Client 2 placed a bid of 207 
+2025/11/25 21:00:34 SUCCESS: Client 1 placed a bid of 205 
+2025/11/25 21:00:35 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:35 Client 1 | res is: FAIL 
+2025/11/25 21:00:35 SUCCESS: Client 2 placed a bid of 246 
+2025/11/25 21:00:36 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:36 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:36 SUCCESS: Client 2 placed a bid of 273 
+2025/11/25 21:00:36 SUCCESS: Client 1 placed a bid of 253 
+2025/11/25 21:00:37 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:37 SUCCESS: Client 1 placed a bid of 315 
+2025/11/25 21:00:37 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:37 SUCCESS: Client 2 placed a bid of 319 
+2025/11/25 21:00:38 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:38 SUCCESS: Client 1 placed a bid of 345 
+2025/11/25 21:00:38 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:38 SUCCESS: Client 2 placed a bid of 368 
+2025/11/25 21:00:39 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:39 Client 2 | res is: FAIL 
+2025/11/25 21:00:39 SUCCESS: Client 1 placed a bid of 403 
+2025/11/25 21:00:40 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:40 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:40 SUCCESS: Client 1 placed a bid of 438 
+2025/11/25 21:00:40 SUCCESS: Client 2 placed a bid of 452 
+2025/11/25 21:00:41 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:41 Client 2 | res is: FAIL 
+2025/11/25 21:00:41 SUCCESS: Client 1 placed a bid of 470 
+2025/11/25 21:00:42 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:42 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:42 SUCCESS: Client 2 placed a bid of 489 
+2025/11/25 21:00:42 SUCCESS: Client 1 placed a bid of 474 
+2025/11/25 21:00:43 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:43 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:43 SUCCESS: Client 2 placed a bid of 500 
+2025/11/25 21:00:43 SUCCESS: Client 1 placed a bid of 526 
+2025/11/25 21:00:44 Client 2 | res is: FAIL 
+2025/11/25 21:00:44 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:44 SUCCESS: Client 1 placed a bid of 561 
+2025/11/25 21:00:45 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:45 SUCCESS: Client 1 placed a bid of 563 
+2025/11/25 21:00:45 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:45 SUCCESS: Client 2 placed a bid of 586 
+2025/11/25 21:00:46 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:46 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:46 SUCCESS: Client 1 placed a bid of 587 
+2025/11/25 21:00:46 SUCCESS: Client 2 placed a bid of 621 
+2025/11/25 21:00:47 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:47 Client 1 | res is: FAIL 
+2025/11/25 21:00:47 SUCCESS: Client 2 placed a bid of 635 
+2025/11/25 21:00:48 Client 1 | res is: FAIL 
+2025/11/25 21:00:48 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:48 SUCCESS: Client 2 placed a bid of 682 
+2025/11/25 21:00:49 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:49 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:49 SUCCESS: Client 1 placed a bid of 690 
+2025/11/25 21:00:49 SUCCESS: Client 2 placed a bid of 723 
+2025/11/25 21:00:50 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:50 SUCCESS: Client 1 placed a bid of 732 
+2025/11/25 21:00:50 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:50 SUCCESS: Client 2 placed a bid of 742 
+2025/11/25 21:00:51 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:51 Client 2 | res is: FAIL 
+2025/11/25 21:00:51 SUCCESS: Client 1 placed a bid of 777 
+2025/11/25 21:00:52 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:52 SUCCESS: Client 2 placed a bid of 801 
+2025/11/25 21:00:52 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:52 SUCCESS: Client 1 placed a bid of 811 
+2025/11/25 21:00:53 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:53 SUCCESS: Client 2 placed a bid of 856 
+2025/11/25 21:00:53 Client 1 | res is: FAIL 
+2025/11/25 21:00:54 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:54 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:54 SUCCESS: Client 1 placed a bid of 882 
+2025/11/25 21:00:54 SUCCESS: Client 2 placed a bid of 862 
+2025/11/25 21:00:55 Client 2 | res is: FAIL 
+2025/11/25 21:00:55 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:55 SUCCESS: Client 1 placed a bid of 924 
+2025/11/25 21:00:56 Client 1 | res is: SUCCESS 
+2025/11/25 21:00:56 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:56 SUCCESS: Client 1 placed a bid of 965 
+2025/11/25 21:00:56 SUCCESS: Client 2 placed a bid of 931 
+2025/11/25 21:00:57 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:57 Client 1 | res is: FAIL 
+2025/11/25 21:00:57 SUCCESS: Client 2 placed a bid of 999 
+2025/11/25 21:00:58 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:58 Client 1 | res is: FAIL 
+2025/11/25 21:00:58 SUCCESS: Client 2 placed a bid of 1031 
+2025/11/25 21:00:59 Client 2 | res is: SUCCESS 
+2025/11/25 21:00:59 Client 1 | res is: FAIL 
+2025/11/25 21:00:59 SUCCESS: Client 2 placed a bid of 1057 
+2025/11/25 21:01:00 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:00 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:00 SUCCESS: Client 1 placed a bid of 1094 
+2025/11/25 21:01:00 SUCCESS: Client 2 placed a bid of 1103 
+2025/11/25 21:01:01 Client 1 | res is: FAIL 
+2025/11/25 21:01:01 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:01 SUCCESS: Client 2 placed a bid of 1149 
+2025/11/25 21:01:02 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:02 SUCCESS: Client 2 placed a bid of 1185 
+2025/11/25 21:01:02 Client 1 | res is: FAIL 
+2025/11/25 21:01:03 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:03 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:03 SUCCESS: Client 2 placed a bid of 1219 
+2025/11/25 21:01:03 SUCCESS: Client 1 placed a bid of 1229 
+2025/11/25 21:01:04 Client 2 | res is: FAIL 
+2025/11/25 21:01:04 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:04 SUCCESS: Client 1 placed a bid of 1262 
+2025/11/25 21:01:05 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:05 SUCCESS: Client 2 placed a bid of 1266 
+2025/11/25 21:01:05 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:05 SUCCESS: Client 1 placed a bid of 1278 
+2025/11/25 21:01:06 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:06 SUCCESS: Client 2 placed a bid of 1279 
+2025/11/25 21:01:06 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:06 SUCCESS: Client 1 placed a bid of 1317 
+2025/11/25 21:01:07 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:07 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:07 SUCCESS: Client 2 placed a bid of 1348 
+2025/11/25 21:01:07 SUCCESS: Client 1 placed a bid of 1354 
+2025/11/25 21:01:08 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:08 SUCCESS: Client 1 placed a bid of 1356 
+2025/11/25 21:01:08 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:08 SUCCESS: Client 2 placed a bid of 1396 
+2025/11/25 21:01:09 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:09 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:09 SUCCESS: Client 1 placed a bid of 1428 
+2025/11/25 21:01:09 SUCCESS: Client 2 placed a bid of 1401 
+2025/11/25 21:01:10 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:10 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:10 SUCCESS: Client 1 placed a bid of 1434 
+2025/11/25 21:01:10 SUCCESS: Client 2 placed a bid of 1454 
+2025/11/25 21:01:11 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:11 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:11 SUCCESS: Client 1 placed a bid of 1466 
+2025/11/25 21:01:11 SUCCESS: Client 2 placed a bid of 1481 
+2025/11/25 21:01:12 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:12 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:12 SUCCESS: Client 2 placed a bid of 1498 
+2025/11/25 21:01:12 SUCCESS: Client 1 placed a bid of 1513 
+2025/11/25 21:01:13 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:13 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:13 SUCCESS: Client 1 placed a bid of 1542 
+2025/11/25 21:01:13 SUCCESS: Client 2 placed a bid of 1531 
+2025/11/25 21:01:14 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:14 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:14 SUCCESS: Client 1 placed a bid of 1554 
+2025/11/25 21:01:14 SUCCESS: Client 2 placed a bid of 1586 
+2025/11/25 21:01:15 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:15 Client 2 | res is: FAIL 
+2025/11/25 21:01:15 SUCCESS: Client 1 placed a bid of 1597 
+2025/11/25 21:01:16 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:16 Client 2 | res is: FAIL 
+2025/11/25 21:01:16 SUCCESS: Client 1 placed a bid of 1635 
+2025/11/25 21:01:17 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:17 SUCCESS: Client 1 placed a bid of 1646 
+2025/11/25 21:01:17 Client 2 | res is: FAIL 
+2025/11/25 21:01:18 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:18 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:18 SUCCESS: Client 1 placed a bid of 1677 
+2025/11/25 21:01:18 SUCCESS: Client 2 placed a bid of 1679 
+2025/11/25 21:01:19 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:19 SUCCESS: Client 2 placed a bid of 1714 
+2025/11/25 21:01:19 Client 1 | res is: FAIL 
+2025/11/25 21:01:20 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:20 Client 2 | res is: FAIL 
+2025/11/25 21:01:20 SUCCESS: Client 1 placed a bid of 1756 
+2025/11/25 21:01:21 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:21 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:21 SUCCESS: Client 1 placed a bid of 1786 
+2025/11/25 21:01:21 SUCCESS: Client 2 placed a bid of 1793 
+2025/11/25 21:01:22 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:22 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:22 SUCCESS: Client 2 placed a bid of 1808 
+2025/11/25 21:01:22 SUCCESS: Client 1 placed a bid of 1815 
+2025/11/25 21:01:23 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:23 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:23 SUCCESS: Client 2 placed a bid of 1832 
+2025/11/25 21:01:23 SUCCESS: Client 1 placed a bid of 1856 
+2025/11/25 21:01:24 Client 1 | res is: SUCCESS 
+2025/11/25 21:01:24 Client 2 | res is: SUCCESS 
+2025/11/25 21:01:24 SUCCESS: Client 1 placed a bid of 1864 
+2025/11/25 21:01:24 SUCCESS: Client 2 placed a bid of 1884 
+2025/11/25 21:01:25 Client 2 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:6060: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 21:01:25 Client 2 succesfully connected to backup server
+2025/11/25 21:01:25 Client 1 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:6060: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 21:01:25 Client 1 succesfully connected to backup server
+2025/11/25 21:02:27 Starting Auction Server...
+2025/11/25 21:02:27 Auction Server 1 listening on port 5050
+2025/11/25 21:02:29 Starting Auction Server...
+2025/11/25 21:02:29 Backup Auction Server 2 listening on port 6060
+2025/11/25 21:02:30 Server: 1 | Primary server connection to Backup server created, state: READY 
+2025/11/25 21:02:30 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 21:02:30 Server: 2 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 21:02:30 Server: 2 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 21:02:30 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 21:02:30 ------ Round 0 of auction has begun ------------ 
+2025/11/25 21:02:31 Starting Auction Client 1...
+2025/11/25 21:02:31 Server: 1 | Updated map in backup: map[1:true]
+2025/11/25 21:02:31 Server: 2 | Backup Server, updating registered client 
+2025/11/25 21:02:31 Server: 2 | Updated map in back up: map[1:true]
+2025/11/25 21:02:31 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 57 
+2025/11/25 21:02:31 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 57 
+2025/11/25 21:02:31 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:31 SUCCESS: Client 1 placed a bid of 57 
+2025/11/25 21:02:32 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 96 
+2025/11/25 21:02:32 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 96 
+2025/11/25 21:02:32 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:32 SUCCESS: Client 1 placed a bid of 96 
+2025/11/25 21:02:33 Starting Auction Client 2...
+2025/11/25 21:02:33 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 114 
+2025/11/25 21:02:33 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 114 
+2025/11/25 21:02:33 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:33 SUCCESS: Client 1 placed a bid of 114 
+2025/11/25 21:02:33 Server: 1 | Updated map in backup: map[1:true 2:true]
+2025/11/25 21:02:33 Server: 2 | Backup Server, updating registered client 
+2025/11/25 21:02:33 Server: 2 | Updated map in back up: map[1:true 2:true]
+2025/11/25 21:02:33 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 135 
+2025/11/25 21:02:33 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 135 
+2025/11/25 21:02:33 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:33 SUCCESS: Client 2 placed a bid of 135 
+2025/11/25 21:02:34 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 180 
+2025/11/25 21:02:34 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 180 
+2025/11/25 21:02:34 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:34 SUCCESS: Client 1 placed a bid of 180 
+2025/11/25 21:02:34 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 207 
+2025/11/25 21:02:34 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 207 
+2025/11/25 21:02:34 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:34 SUCCESS: Client 2 placed a bid of 207 
+2025/11/25 21:02:35 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 225 
+2025/11/25 21:02:35 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 225 
+2025/11/25 21:02:35 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:35 SUCCESS: Client 1 placed a bid of 225 
+2025/11/25 21:02:35 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 234 
+2025/11/25 21:02:35 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 234 
+2025/11/25 21:02:35 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:35 SUCCESS: Client 2 placed a bid of 234 
+2025/11/25 21:02:36 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 235 
+2025/11/25 21:02:36 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 235 
+2025/11/25 21:02:36 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:36 SUCCESS: Client 1 placed a bid of 235 
+2025/11/25 21:02:36 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 255 
+2025/11/25 21:02:36 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 255 
+2025/11/25 21:02:36 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:36 SUCCESS: Client 2 placed a bid of 255 
+2025/11/25 21:02:37 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 276 
+2025/11/25 21:02:37 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 276 
+2025/11/25 21:02:37 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:37 SUCCESS: Client 1 placed a bid of 276 
+2025/11/25 21:02:37 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 277 
+2025/11/25 21:02:37 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 277 
+2025/11/25 21:02:37 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:37 SUCCESS: Client 2 placed a bid of 277 
+2025/11/25 21:02:38 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 304 
+2025/11/25 21:02:38 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 304 
+2025/11/25 21:02:38 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:38 SUCCESS: Client 1 placed a bid of 304 
+2025/11/25 21:02:38 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 313 
+2025/11/25 21:02:38 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 313 
+2025/11/25 21:02:38 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:38 SUCCESS: Client 2 placed a bid of 313 
+2025/11/25 21:02:39 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 345 
+2025/11/25 21:02:39 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 345 
+2025/11/25 21:02:39 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:39 SUCCESS: Client 1 placed a bid of 345 
+2025/11/25 21:02:39 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 373 
+2025/11/25 21:02:39 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 373 
+2025/11/25 21:02:39 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:39 SUCCESS: Client 2 placed a bid of 373 
+2025/11/25 21:02:40 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 411 
+2025/11/25 21:02:40 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 411 
+2025/11/25 21:02:40 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:40 SUCCESS: Client 1 placed a bid of 411 
+2025/11/25 21:02:40 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 431 
+2025/11/25 21:02:40 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 431 
+2025/11/25 21:02:40 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:40 SUCCESS: Client 2 placed a bid of 431 
+2025/11/25 21:02:40 Server: 2 | Backup Server, old Auction ongoing: true new Auction ongoing: false 
+2025/11/25 21:02:40 Server: 1 | Backup Server updated at the end of auction round 
+2025/11/25 21:02:40 ------ Round 0 of auction is over, winning bid: 431 by client: 2  ------------ 
+2025/11/25 21:02:46 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 21:02:46 Server: 2 | Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 21:02:46 Server: 2 | Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 21:02:46 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/25 21:02:46 ------ Round 1 of auction has begun ------------ 
+2025/11/25 21:02:47 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 52 
+2025/11/25 21:02:47 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 52 
+2025/11/25 21:02:47 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:47 SUCCESS: Client 1 placed a bid of 52 
+2025/11/25 21:02:47 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 58 
+2025/11/25 21:02:47 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 58 
+2025/11/25 21:02:47 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:47 SUCCESS: Client 2 placed a bid of 58 
+2025/11/25 21:02:48 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 76 
+2025/11/25 21:02:48 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 76 
+2025/11/25 21:02:48 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:48 SUCCESS: Client 1 placed a bid of 76 
+2025/11/25 21:02:48 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 88 
+2025/11/25 21:02:48 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 88 
+2025/11/25 21:02:48 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:48 SUCCESS: Client 2 placed a bid of 88 
+2025/11/25 21:02:49 Server: 1 | Primary: updating auction values, bid = 1 and bidderId = 111 
+2025/11/25 21:02:49 Server: 2 | Backup: updating auction values, bid = 1 and bidderId = 111 
+2025/11/25 21:02:49 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:49 SUCCESS: Client 1 placed a bid of 111 
+2025/11/25 21:02:49 Server: 1 | Primary: updating auction values, bid = 2 and bidderId = 120 
+2025/11/25 21:02:49 Server: 2 | Backup: updating auction values, bid = 2 and bidderId = 120 
+2025/11/25 21:02:49 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:49 SUCCESS: Client 2 placed a bid of 120 
+2025/11/25 21:02:50 Client 1 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 21:02:50 Client 1 succesfully connected to backup server
+2025/11/25 21:02:50 Client 2 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 21:02:50 Client 2 succesfully connected to backup server
+2025/11/25 21:02:50 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 138 
+2025/11/25 21:02:50 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:50 SUCCESS: Client 1 placed a bid of 138 
+2025/11/25 21:02:50 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 150 
+2025/11/25 21:02:50 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:50 SUCCESS: Client 2 placed a bid of 150 
+2025/11/25 21:02:51 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 176 
+2025/11/25 21:02:51 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:51 SUCCESS: Client 1 placed a bid of 176 
+2025/11/25 21:02:51 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 205 
+2025/11/25 21:02:51 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:51 SUCCESS: Client 2 placed a bid of 205 
+2025/11/25 21:02:52 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 222 
+2025/11/25 21:02:52 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:52 SUCCESS: Client 1 placed a bid of 222 
+2025/11/25 21:02:52 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 263 
+2025/11/25 21:02:52 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:52 SUCCESS: Client 2 placed a bid of 263 
+2025/11/25 21:02:53 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 269 
+2025/11/25 21:02:53 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:53 SUCCESS: Client 1 placed a bid of 269 
+2025/11/25 21:02:53 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 276 
+2025/11/25 21:02:53 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:53 SUCCESS: Client 2 placed a bid of 276 
+2025/11/25 21:02:54 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 292 
+2025/11/25 21:02:54 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:54 SUCCESS: Client 1 placed a bid of 292 
+2025/11/25 21:02:54 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 313 
+2025/11/25 21:02:54 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:54 SUCCESS: Client 2 placed a bid of 313 
+2025/11/25 21:02:55 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 324 
+2025/11/25 21:02:55 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:55 SUCCESS: Client 1 placed a bid of 324 
+2025/11/25 21:02:55 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 332 
+2025/11/25 21:02:55 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:55 SUCCESS: Client 2 placed a bid of 332 
+2025/11/25 21:02:56 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 360 
+2025/11/25 21:02:56 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:56 SUCCESS: Client 1 placed a bid of 360 
+2025/11/25 21:02:56 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 396 
+2025/11/25 21:02:56 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:56 SUCCESS: Client 2 placed a bid of 396 
+2025/11/25 21:02:57 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 427 
+2025/11/25 21:02:57 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:57 SUCCESS: Client 1 placed a bid of 427 
+2025/11/25 21:02:57 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 471 
+2025/11/25 21:02:57 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:57 SUCCESS: Client 2 placed a bid of 471 
+2025/11/25 21:02:58 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 518 
+2025/11/25 21:02:58 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:58 SUCCESS: Client 1 placed a bid of 518 
+2025/11/25 21:02:58 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 535 
+2025/11/25 21:02:58 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:58 SUCCESS: Client 2 placed a bid of 535 
+2025/11/25 21:02:59 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 568 
+2025/11/25 21:02:59 Client 1 | res is: SUCCESS 
+2025/11/25 21:02:59 SUCCESS: Client 1 placed a bid of 568 
+2025/11/25 21:02:59 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 610 
+2025/11/25 21:02:59 Client 2 | res is: SUCCESS 
+2025/11/25 21:02:59 SUCCESS: Client 2 placed a bid of 610 
+2025/11/25 21:03:00 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 658 
+2025/11/25 21:03:00 Client 1 | res is: SUCCESS 
+2025/11/25 21:03:00 SUCCESS: Client 1 placed a bid of 658 
+2025/11/25 21:03:00 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 696 
+2025/11/25 21:03:00 Client 2 | res is: SUCCESS 
+2025/11/25 21:03:00 SUCCESS: Client 2 placed a bid of 696 
+2025/11/25 21:03:01 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 728 
+2025/11/25 21:03:01 Client 1 | res is: SUCCESS 
+2025/11/25 21:03:01 SUCCESS: Client 1 placed a bid of 728 
+2025/11/25 21:03:01 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 748 
+2025/11/25 21:03:01 Client 2 | res is: SUCCESS 
+2025/11/25 21:03:01 SUCCESS: Client 2 placed a bid of 748 
+2025/11/25 21:03:02 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 797 
+2025/11/25 21:03:02 Client 1 | res is: SUCCESS 
+2025/11/25 21:03:02 SUCCESS: Client 1 placed a bid of 797 
+2025/11/25 21:03:02 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 841 
+2025/11/25 21:03:02 Client 2 | res is: SUCCESS 
+2025/11/25 21:03:02 SUCCESS: Client 2 placed a bid of 841 
+2025/11/25 21:03:03 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 860 
+2025/11/25 21:03:03 Client 1 | res is: SUCCESS 
+2025/11/25 21:03:03 SUCCESS: Client 1 placed a bid of 860 
+2025/11/25 21:03:03 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 874 
+2025/11/25 21:03:03 Client 2 | res is: SUCCESS 
+2025/11/25 21:03:03 SUCCESS: Client 2 placed a bid of 874 
+2025/11/25 21:03:04 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 917 
+2025/11/25 21:03:04 Client 1 | res is: SUCCESS 
+2025/11/25 21:03:04 SUCCESS: Client 1 placed a bid of 917 
+2025/11/25 21:03:04 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 918 
+2025/11/25 21:03:04 Client 2 | res is: SUCCESS 
+2025/11/25 21:03:04 SUCCESS: Client 2 placed a bid of 918 
+2025/11/25 21:03:05 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 966 
+2025/11/25 21:03:05 Client 1 | res is: SUCCESS 
+2025/11/25 21:03:05 SUCCESS: Client 1 placed a bid of 966 
+2025/11/25 21:03:05 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 1000 
+2025/11/25 21:03:05 Client 2 | res is: SUCCESS 
+2025/11/25 21:03:05 SUCCESS: Client 2 placed a bid of 1000 
+2025/11/25 21:03:06 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 1037 
+2025/11/25 21:03:06 Client 1 | res is: SUCCESS 
+2025/11/25 21:03:06 SUCCESS: Client 1 placed a bid of 1037 
+2025/11/25 21:03:06 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 1063 
+2025/11/25 21:03:06 Client 2 | res is: SUCCESS 
+2025/11/25 21:03:06 SUCCESS: Client 2 placed a bid of 1063 
+2025/11/25 21:03:07 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 1078 
+2025/11/25 21:03:07 Client 1 | res is: SUCCESS 
+2025/11/25 21:03:07 SUCCESS: Client 1 placed a bid of 1078 
+2025/11/25 21:03:07 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 1122 
+2025/11/25 21:03:07 Client 2 | res is: SUCCESS 
+2025/11/25 21:03:07 SUCCESS: Client 2 placed a bid of 1122 
+2025/11/25 21:03:08 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 1145 
+2025/11/25 21:03:08 Client 1 | res is: SUCCESS 
+2025/11/25 21:03:08 SUCCESS: Client 1 placed a bid of 1145 
+2025/11/25 21:03:08 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 1160 
+2025/11/25 21:03:08 Client 2 | res is: SUCCESS 
+2025/11/25 21:03:08 SUCCESS: Client 2 placed a bid of 1160 
+2025/11/25 21:03:09 Server: 2 | Backup is now primary: updating auction values bid = 1 and bidderId = 1204 
+2025/11/25 21:03:09 Client 1 | res is: SUCCESS 
+2025/11/25 21:03:09 SUCCESS: Client 1 placed a bid of 1204 
+2025/11/25 21:03:09 Server: 2 | Backup is now primary: updating auction values bid = 2 and bidderId = 1227 
+2025/11/25 21:03:09 Client 2 | res is: SUCCESS 
+2025/11/25 21:03:09 SUCCESS: Client 2 placed a bid of 1227 
+2025/11/25 21:03:10 Client 1 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:6060: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 21:03:10 Client 1 succesfully connected to backup server
+2025/11/25 21:03:10 Client 2 asked for result: Lost Connection to primary server: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:6060: connect: connection refused". Will attempt to connect to backup server 
+2025/11/25 21:03:10 Client 2 succesfully connected to backup server

@@ -14,7 +14,6 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 
 	pb "Auction/grpc"
-
 )
 
 type AuctionServer struct {
@@ -33,12 +32,12 @@ type HighestBidder struct {
 	BidderID  int32
 	BidAmount int32
 }
+
 var fileLog *log.Logger
 var termLog *log.Logger
 
-
 func main() {
-	
+
 	file, e := os.OpenFile("system.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if e != nil {
 		log.Fatalf("Failed to open log file: %v", e)
@@ -48,7 +47,7 @@ func main() {
 	// Create two independent loggers
 	fileLog = log.New(file, "", log.Ldate|log.Ltime)
 	termLog = log.New(os.Stdout, "", 0) // plain chat-style output
-	
+
 	fileLog.Println("Starting Auction Server...")
 
 	// Get the id and leader from the terminal
@@ -157,10 +156,10 @@ func (s *AuctionServer) StartAndEndBiddingRound() {
 		s.BestBid.BidAmount = 0 // reset the highest bidder
 
 		if s.Connection_Helper_Method(5, 2) == false && s.Connection != nil { //looking for connection within 5 seconds
-			fileLog.Printf("Server: %d | StartAndEndBiddingRound connection to backup server not active \n", s.ID)
-			termLog.Printf("Server: %d | StartAndEndBiddingRound connection to backup server not active \n", s.ID)
+			fileLog.Printf("Server: %d | connection to backup server not active: StartAndEndBiddingRound \n", s.ID)
+			termLog.Printf("Server: %d | connection to backup server not active: StartAndEndBiddingRound \n", s.ID)
 		} else if s.Connection == nil {
-			return 
+			return
 		} else {
 			fileLog.Printf("Primary: reset auction values, bid = %d and bidderId = %d  \n", s.BestBid.BidderID, s.BestBid.BidAmount)
 			termLog.Printf("Primary: reset auction values, bid = %d and bidderId = %d  \n", s.BestBid.BidderID, s.BestBid.BidAmount)
@@ -201,9 +200,9 @@ func (s *AuctionServer) local_update_auction_state(when string) {
 	// Should only give false if the Backup server failed
 	if s.Connection_Helper_Method(5, 3) == false && s.Connection != nil { //looking for connection within 5 seconds
 		fileLog.Printf("Server: %d | local_update_auction_state connection to backup server not active \n", s.ID)
-		termLog.Printf("Server: %d | connection to backup server not active \n", s.ID)
+		termLog.Printf("Server: %d | connection to backup server not active: local_update_auction_state \n", s.ID)
 		return
-	} else {
+	} else if s.Connection == nil {
 		return
 	}
 
@@ -222,12 +221,13 @@ func (s *AuctionServer) local_update_auction_state(when string) {
 
 /* Does not properly return the pb.BidResponse to Client (don't know why yet) */
 func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResponse, error) {
-	
-	s.Mu.Lock()	
+
+	s.Mu.Lock()
 	defer s.Mu.Unlock()
-	
-	if(s.IsLeader == false) {
+
+	if s.IsLeader == false {
 		s.IsLeader = true
+		s.AuctionOngoing = true
 		//go s.StartAndEndBiddingRound()
 	}
 
@@ -235,13 +235,13 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 	if s.RegisteredClients[bidder.Id] != true {
 		s.RegisteredClients[bidder.Id] = true
 		if s.Connection_Helper_Method(5, 4) == false { //looking for connection within 5 seconds
-			fileLog.Printf("Server: %d | connection to backup server not active \n", s.ID)
-			termLog.Printf("Server: %d | connection to backup server not active \n", s.ID)
+			fileLog.Printf("Server: %d | connection to backup server not active: registered client \n", s.ID)
+			termLog.Printf("Server: %d | connection to backup server not active: registered client \n", s.ID)
 		} else if s.Connection == nil {
 			//return &pb.BidResponse{Status: "SUCCESS"}, nil
 		} else {
-			fileLog.Printf("Server: %d | Updated map in backup: ", s.ID, s.RegisteredClients)
-			termLog.Printf("Server: %d | Updated map in backup: ", s.ID, s.RegisteredClients)
+			fileLog.Printf("Server: %d | Updated map in backup: %v", s.ID, s.RegisteredClients)
+			termLog.Printf("Server: %d | Updated map in backup: %v", s.ID, s.RegisteredClients)
 			res, err := s.BackupConnection.UpdateRegisteredClient(context.Background(), &pb.Bidder{Bid: bidder.Bid, Id: bidder.Id})
 			if err != nil || res.Success != true { // We technically can never return success false as the code is now...
 				fileLog.Printf("Server: %d | Failed to update Backup server registered client\n", s.ID)
@@ -254,21 +254,22 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 		s.BestBid.BidAmount = bidder.Bid
 		s.BestBid.BidderID = bidder.Id
 
-		if s.Connection_Helper_Method(5, 5) == false { //looking for connection within 5 seconds
-			fileLog.Printf("Server: %d | connection to backup server not active \n", s.ID)
-			termLog.Printf("Server: %d | connection to backup server not active \n", s.ID)
+		if s.Connection_Helper_Method(5, 5) == false && s.Connection != nil { //looking for connection within 5 seconds
+			fileLog.Printf("Server: %d | connection to backup server not active: highest bid \n", s.ID)
+			termLog.Printf("Server: %d | connection to backup server not active: highest bid \n", s.ID)
 		} else if s.Connection == nil {
+			fileLog.Printf("Server: %d | Backup is now primary: updating auction values bid = %d, bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
+			termLog.Printf("Server: %d | Backup is now primary: updating auction values bid = %d, bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
 			return &pb.BidResponse{Status: "SUCCESS"}, nil
 		} else {
-			fileLog.Printf("Server: %d | Primary: updating auction values, bid = %d and bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
-			termLog.Printf("Server: %d | Primary: updating auction values, bid = %d and bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
+			fileLog.Printf("Server: %d | Primary: updating auction values, bid = %d, bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
+			termLog.Printf("Server: %d | Primary: updating auction values, bid = %d, bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
 			res, err := s.BackupConnection.UpdateHighestBid(context.Background(), &pb.Bidder{Bid: bidder.Bid, Id: bidder.Id})
 			if err != nil || res.Success != true { // We technically can never return success false as the code is now...
 				fileLog.Printf("Server: %d | Failed to update Highest Bid in Backup server \n", s.ID)
 				termLog.Printf("Server: %d | Failed to update Highest Bid in Backup server \n", s.ID)
 			}
 		}
-
 		// return success or err (exception)
 		return &pb.BidResponse{Status: "SUCCESS"}, nil
 	}
@@ -291,7 +292,7 @@ func (s *AuctionServer) Result(ctx context.Context, empty *pb.Empty) (*pb.Result
 func (s *AuctionServer) UpdateAuctionState(ctx context.Context, state *pb.AuctionState) (*pb.BackupResponse, error) {
 	fileLog.Printf("Server: %d | Backup Server, old Auction ongoing: %t new Auction ongoing: %t \n", s.ID, s.AuctionOngoing, state.Ongoing)
 	termLog.Printf("Server: %d | Backup Server, old Auction ongoing: %t new Auction ongoing: %t \n", s.ID, s.AuctionOngoing, state.Ongoing)
-	
+
 	s.AuctionOngoing = state.Ongoing
 	return &pb.BackupResponse{Success: true}, nil
 }
@@ -299,12 +300,12 @@ func (s *AuctionServer) UpdateAuctionState(ctx context.Context, state *pb.Auctio
 func (s *AuctionServer) UpdateRegisteredClient(ctx context.Context, bidder *pb.Bidder) (*pb.BackupResponse, error) {
 	fileLog.Printf("Server: %d | Backup Server, updating registered client \n", s.ID)
 	termLog.Printf("Server: %d | Backup Server, updating registered client \n", s.ID)
-	
+
 	s.RegisteredClients[bidder.Id] = true
-	
+
 	fileLog.Printf("Server: %d | Updated map in back up: %v", s.ID, s.RegisteredClients)
 	termLog.Printf("Server: %d | Updated map in back up: %v", s.ID, s.RegisteredClients)
-	
+
 	return &pb.BackupResponse{Success: true}, nil
 }
 
@@ -318,7 +319,6 @@ func (s *AuctionServer) UpdateHighestBid(ctx context.Context, bidder *pb.Bidder)
 	return &pb.BackupResponse{Success: true}, nil
 }
 
-
 /********************       Connection Helper Methods        ***********************************/
 
 /* Below method for checking the connection status, was made in cooperation with Gemini.
@@ -330,7 +330,6 @@ func (s *AuctionServer) Connection_Helper_Method(timeout int, num int) bool {
 	// num = 3	local_update_auction_state
 	// num = 4 	Bid -> Register client
 	// num = 5 	Bid -> update highest bid
-	
 
 	conn := s.Connection
 	if conn == nil {
