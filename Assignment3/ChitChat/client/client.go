@@ -86,6 +86,7 @@ func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatte
 
 	incrementLamport()
 
+	
 	fileLog.Printf("/ Client %d / Leave Chat Request / Lamport %d", localChitChatter.ID, localLamport)
 
 	*isActivePointer = false
@@ -94,7 +95,7 @@ func localLeaveChat(client pb.ChitChatServiceClient, localChitChatter ChitChatte
 
 // Receives messages as long as the stream is active,
 // which is tracked by the isActivePointer
-func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], isActivePointer *bool, localChitChatter ChitChatter) {
+func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], isActivePointer *bool, localChitChatter ChitChatter, wg *sync.WaitGroup) {
 	
 	for *isActivePointer{
 		msg, err := msgStream.Recv()
@@ -107,6 +108,7 @@ func receiveMessages(msgStream grpc.ServerStreamingClient[pb.ChitChatMessage], i
 		fileLog.Printf("/ Client %d / Received [Client %d]'s Message from Server / Lamport %d", localChitChatter.ID, msg.User.Id, localLamport)
 		termLog.Println(msg.Message)
 	}
+	wg.Done()
 }
 
 // Sends a ChitChatMessage to the Server
@@ -123,7 +125,7 @@ func localSendMessage(client pb.ChitChatServiceClient, localChitChatter ChitChat
 }
 
 // Sends a total of 50 proto ChitChatMessages 
-func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter, isActivePointer *bool) {
+func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatter, isActivePointer *bool, wg *sync.WaitGroup) {
 	for i := 0; i < 20; i++ {
 		if !*isActivePointer {
 			break
@@ -141,6 +143,7 @@ func SendMessageLoop(client pb.ChitChatServiceClient, localChitChatter ChitChatt
 		localSendMessage(client, localChitChatter, msg)
 		time.Sleep(time.Duration(int32(rand.Intn(5))) * time.Second)
 	}
+	wg.Done()
 }
 
 func main() {
@@ -175,11 +178,18 @@ func main() {
 	/* join chat method call */
 	stream1 := localJoinChat(client, localChitChatter, isActivePointer)
 
-	go receiveMessages(stream1, isActivePointer, localChitChatter)
+	var wg sync.WaitGroup
 
-	go SendMessageLoop(client, localChitChatter, isActivePointer)
+	wg.Add(1)
+	go receiveMessages(stream1, isActivePointer, localChitChatter, &wg)
+	
 
-	time.Sleep(15 * time.Second)
+	wg.Add(1)
+	go SendMessageLoop(client, localChitChatter, isActivePointer, &wg)
+	
+	wg.Wait()
+
+	
 
 	localLeaveChat(client, localChitChatter, isActivePointer)
 

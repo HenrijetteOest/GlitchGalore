@@ -1,0 +1,45 @@
+syntax = "proto3";
+package proto;
+option go_package = "./pb"; //Auction/grpc/proto
+
+message Empty{} 
+
+message Bidder{
+    int32 bid = 1;
+    int32 id = 2;
+}
+
+message BidResponse{
+    string status = 1; //(FAIL; SUCCESS; EXCEPTION) //or int32
+}
+
+message ResultResponse{
+    int32 highestBid = 1;
+    bool itemSold = 2;
+}
+
+message BackupResponse {
+    bool success = 1;
+}
+
+message AuctionState {
+    bool Ongoing = 1;
+}
+
+service AuctionService{
+    rpc Bid (Bidder) returns (BidResponse) {};    
+    rpc Result (Empty) returns (ResultResponse) {};
+    rpc UpdateRegisteredClient (Bidder) returns (BackupResponse) {};
+    rpc UpdateHighestBid (Bidder) returns (BackupResponse) {};
+    rpc UpdateAuctionState (AuctionState) returns (BackupResponse) {};
+}
+
+
+/*  FREEZER  */
+/*
+rpc SetLeader (Empty) returns (Empty) {};
+rpc PublicLeader (Empty) returns (Empty) {};  // Notifies clients of the new leader
+rpc SetSyncFollower (Empty) returns (Empty) {};
+rpc PublishSyncFollower(Empty) returns (Empty) {};
+rpc UpdateDatabase (Empty) returns (Empty) {};
+*/
