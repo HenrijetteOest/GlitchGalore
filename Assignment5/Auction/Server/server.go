@@ -8,6 +8,7 @@ import (
 	"net"
 	"os"
 	"strconv"
+	"sync"
 	"time"
 
 	"google.golang.org/grpc"
@@ -26,6 +27,7 @@ type AuctionServer struct {
 	AuctionOngoing    bool
 	BackupConnection  pb.AuctionServiceClient
 	Connection        *grpc.ClientConn
+	Mu                sync.Mutex
 }
 
 type HighestBidder struct {
@@ -49,6 +51,7 @@ func main() {
 		AuctionOngoing:    false,
 		BackupConnection:  nil,
 		Connection:        nil,
+		Mu:                sync.Mutex{},
 	}
 
 	if server.IsLeader == true { // If I am the leader node
@@ -93,9 +96,14 @@ func (s *AuctionServer) start_backup_connection() {
 		return
 	}
 
+	// lock access to server fields to safely update server fields
+	s.Mu.Lock()
+	// initialize servers Backup Connection
 	s.BackupConnection = pb.NewAuctionServiceClient(conn)
 	// save the connection for later check ups
 	s.Connection = conn
+	// unlock mutex when done
+	s.Mu.Unlock()
 
 	// Check the connection before proceeding
 	if s.Connection_Helper_Method(30, 1) == false {
@@ -127,20 +135,24 @@ func (s *AuctionServer) start_backup_server() {
 /* Starts each bidding round by changing Auction Ongoing to true or false and updating the best bid thereafter  */
 func (s *AuctionServer) StartAndEndBiddingRound() {
 	for i := 0; i < 5; i++ { // Total items to be bid on before the auction ends
+
+		s.Mu.Lock()
 		s.BestBid.BidderID = -1
 		s.BestBid.BidAmount = 0 // reset the highest bidder
 		// (FIFTH) This should technically also have a grpc call UpdateHighestBid() to the backup server which updates the highest bid so far
 
 		s.AuctionOngoing = true               // Auction round begins
 		s.local_update_auction_state("start") // The local rpc handler to update auction state
+		s.Mu.Unlock()
 
 		fmt.Printf("Round %d of auction has begun \n", i)
 		time.Sleep(10 * time.Second) // Auction round duration
 
+		s.Mu.Lock()
 		s.AuctionOngoing = false // Auction round ends
 		s.local_update_auction_state("end")
-
 		fmt.Printf("Round %d of auction is over, winning bid: %d by client: %d \n", i, s.BestBid.BidAmount, s.BestBid.BidderID)
+		s.Mu.Unlock()
 		time.Sleep(6 * time.Second) // Next item to be sold is being prepared (takes 6 seconds)
 	}
 	fmt.Println("The auction is now over!")
@@ -174,6 +186,8 @@ func (s *AuctionServer) local_update_auction_state(when string) {
 func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResponse, error) {
 	err := errors.New("EXCEPTION") // makes the exception message
 
+	s.Mu.Lock()
+	defer s.Mu.Unlock()
 	if s.RegisteredClients[bidder.Id] != true {
 		s.RegisteredClients[bidder.Id] = true
 		// First Update: add grpc call to another server to update the database
@@ -195,6 +209,8 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 
 /* Returns the highest bid and whether the item has been sold yet or not   */
 func (s *AuctionServer) Result(ctx context.Context, empty *pb.Empty) (*pb.ResultResponse, error) {
+	s.Mu.Lock()
+	defer s.Mu.Unlock()
 	return &pb.ResultResponse{
 		HighestBid: s.BestBid.BidAmount,
 		ItemSold:   !s.AuctionOngoing, // if auction is ongoing then the Item hasn't been sold
@@ -204,6 +220,8 @@ func (s *AuctionServer) Result(ctx context.Context, empty *pb.Empty) (*pb.Result
 /***********	Primary Server and Backup Server grpc Calls      ******************/
 
 func (s *AuctionServer) UpdateAuctionState(ctx context.Context, state *pb.AuctionState) (*pb.BackupResponse, error) {
+	s.Mu.Lock()
+	defer s.Mu.Unlock()
 	fmt.Printf("Backup Server, old Auction ongoing: %t new Auction ongoing: %t \n", s.AuctionOngoing, state.Ongoing)
 	s.AuctionOngoing = state.Ongoing
 	return &pb.BackupResponse{Success: true}, nil

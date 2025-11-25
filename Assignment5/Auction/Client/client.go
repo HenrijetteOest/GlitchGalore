@@ -5,16 +5,15 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
-	"time"
 	"os"
 	"strconv"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+
 	//"google.golang.org/grpc/connectivity"
 
 	pb "Auction/grpc"
-
 )
 
 type AuctionClient struct {
@@ -34,9 +33,8 @@ func main() {
 	defer conn.Close()
 	client := pb.NewAuctionServiceClient(conn)
 
-	i, err := strconv.ParseInt(os.Args[1], 10, 32) 	// ParseInt always returns a int64, but we specify it should only take up 32 bits
-	bidderId := int32(i)	// cast to int32
-
+	i, err := strconv.ParseInt(os.Args[1], 10, 32) // ParseInt always returns a int64, but we specify it should only take up 32 bits
+	bidderId := int32(i)                           // cast to int32
 
 	LocalBidder := &AuctionClient{
 		ID:     bidderId,                 // Remember to give clients different ids in the terminal
@@ -49,11 +47,10 @@ func main() {
 	select {}
 }
 
-
 // bidding logic
 /* Only resets it's bidding price if it asks and the bidding is over  */
 func PlaceBid(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
-	for i := 0; i < 30; i++ {
+	for { // i := 0; i < 100; i++
 		// Get current status of the action
 		res, err := client.Result(context.Background(), &pb.Empty{})
 		if err != nil {
@@ -74,7 +71,7 @@ func PlaceBid(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
 			}
 			BidCall(client, LocalBidder) // Do the grpc call
 		}
-		time.Sleep(time.Duration(int32(rand.Intn(5))) * time.Second)
+		//time.Sleep(time.Duration(int32(rand.Intn(3))) * time.Second)
 	}
 }
 
@@ -87,9 +84,7 @@ func BidCall(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
 	})
 
 	fmt.Printf("Client %d placed a bid of %d\n", LocalBidder.ID, LocalBidder.My_Bid)
-	
 
-	
 	/*
 		if err == nil {
 			fmt.Println("something went wrong in BidCall")
@@ -113,9 +108,8 @@ func BidCall(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
 
 */
 
-
 /*
-// Below code hinders the client from sending grpc calls to the Server. 
+// Below code hinders the client from sending grpc calls to the Server.
 // Don't know why yet
 // FROM SERVER
 // in case Backup Server is not made within 30 seconds, give up on it and continue
@@ -129,9 +123,9 @@ for {
 	// Below line will block until there is a state change or context times out
 	if !conn.WaitForStateChange(ctx, currentState)  {
 		fmt.Printf("Client: Timeout error in waiting for state change, state: %s \n", conn.GetState())
-		return 
-	} 
-	currentState = conn.GetState() 				// Update our current state	
+		return
+	}
+	currentState = conn.GetState() 				// Update our current state
 
 	if currentState == connectivity.Ready {		// Connection is ready
 		fmt.Printf("Connection is now ready for use %v \n", conn.GetState())
