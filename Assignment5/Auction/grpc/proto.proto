@@ -24,6 +24,7 @@ message BackupResponse {
 
 message AuctionState {
     bool Ongoing = 1;
+    int32 AuctionRound = 2;
 }
 
 service AuctionService{
@@ -33,13 +34,3 @@ service AuctionService{
     rpc UpdateHighestBid (Bidder) returns (BackupResponse) {};
     rpc UpdateAuctionState (AuctionState) returns (BackupResponse) {};
 }
-
-
-/*  FREEZER  */
-/*
-rpc SetLeader (Empty) returns (Empty) {};
-rpc PublicLeader (Empty) returns (Empty) {};  // Notifies clients of the new leader
-rpc SetSyncFollower (Empty) returns (Empty) {};
-rpc PublishSyncFollower(Empty) returns (Empty) {};
-rpc UpdateDatabase (Empty) returns (Empty) {};
-*/

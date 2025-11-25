@@ -20,6 +20,7 @@ type AuctionServer struct {
 	pb.UnimplementedAuctionServiceServer
 	ID                int32
 	IsLeader          bool
+	AuctionRound      int32
 	BestBid           HighestBidder  // The best bid so far (potentially change to the proto message type instead)
 	RegisteredClients map[int32]bool // Keep track of registered Clients
 	AuctionOngoing    bool
@@ -58,6 +59,7 @@ func main() {
 	server := &AuctionServer{
 		ID:                id,
 		IsLeader:          isleader,
+		AuctionRound:      0,
 		BestBid:           HighestBidder{BidderID: -1, BidAmount: 0},
 		RegisteredClients: make(map[int32]bool),
 		AuctionOngoing:    false,
@@ -72,6 +74,7 @@ func main() {
 		go server.StartAndEndBiddingRound() // starts auctions at intervals
 	} else { // Else I am the synchronized node (and only does what I am told)
 		server.start_backup_server()
+		go server.StartAndEndBiddingRound()
 		// the backup does NOT start a bidding rounds
 	}
 
@@ -149,18 +152,20 @@ func (s *AuctionServer) start_backup_server() {
 
 /* Starts each bidding round by changing Auction Ongoing to true or false and updating the best bid thereafter  */
 func (s *AuctionServer) StartAndEndBiddingRound() {
-	for i := 0; i < 5; i++ { // Total items to be bid on before the auction ends
+	for !s.IsLeader {
+		time.Sleep(4 * time.Second)
+	}
 
+	for s.AuctionRound < 5 { // Total items to be bid on before the auction ends
 		s.Mu.Lock()
 		s.BestBid.BidderID = -1
 		s.BestBid.BidAmount = 0 // reset the highest bidder
 
+		// Below if statement is only for the Primary server (with a backup)
 		if s.Connection_Helper_Method(5, 2) == false && s.Connection != nil { //looking for connection within 5 seconds
 			fileLog.Printf("Server: %d | connection to backup server not active: StartAndEndBiddingRound \n", s.ID)
 			termLog.Printf("Server: %d | connection to backup server not active: StartAndEndBiddingRound \n", s.ID)
-		} else if s.Connection == nil {
-			return
-		} else {
+		} else if s.Connection != nil {
 			fileLog.Printf("Primary: reset auction values, bid = %d and bidderId = %d  \n", s.BestBid.BidderID, s.BestBid.BidAmount)
 			termLog.Printf("Primary: reset auction values, bid = %d and bidderId = %d  \n", s.BestBid.BidderID, s.BestBid.BidAmount)
 			res, err := s.BackupConnection.UpdateHighestBid(context.Background(), &pb.Bidder{Bid: s.BestBid.BidderID, Id: s.BestBid.BidAmount})
@@ -174,17 +179,19 @@ func (s *AuctionServer) StartAndEndBiddingRound() {
 		s.local_update_auction_state("start") // The local rpc handler to update auction state
 		s.Mu.Unlock()
 
-		fileLog.Printf("------ Round %d of auction has begun ------------ \n", i)
-		termLog.Printf("------ Round %d of auction has begun ------------ \n", i)
+		fileLog.Printf("------ Round %d of auction has begun ------------ \n", s.AuctionRound)
+		termLog.Printf("------ Round %d of auction has begun ------------ \n", s.AuctionRound)
 		time.Sleep(10 * time.Second) // Auction round duration
 
 		s.Mu.Lock()
+		fileLog.Printf("------ Round %d of auction is over, winning bid: %d by client: %d  ------------ \n", s.AuctionRound, s.BestBid.BidAmount, s.BestBid.BidderID)
+		termLog.Printf("------ Round %d of auction is over, winning bid: %d by client: %d  ------------ \n", s.AuctionRound, s.BestBid.BidAmount, s.BestBid.BidderID)
+		s.AuctionRound++
 		s.AuctionOngoing = false // Auction round ends
 		s.local_update_auction_state("end")
-		fileLog.Printf("------ Round %d of auction is over, winning bid: %d by client: %d  ------------ \n", i, s.BestBid.BidAmount, s.BestBid.BidderID)
-		termLog.Printf("------ Round %d of auction is over, winning bid: %d by client: %d  ------------ \n", i, s.BestBid.BidAmount, s.BestBid.BidderID)
 		s.Mu.Unlock()
-		time.Sleep(6 * time.Second) // Next item to be sold is being prepared (takes 6 seconds)
+		time.Sleep(3 * time.Second) // Next item to be sold is being prepared (takes 3 seconds)
+
 	}
 	fileLog.Println("------ The auction is now over! ------------ ")
 	termLog.Println("------ The auction is now over! ------------ ")
@@ -206,7 +213,7 @@ func (s *AuctionServer) local_update_auction_state(when string) {
 		return
 	}
 
-	res, err := s.BackupConnection.UpdateAuctionState(context.Background(), &pb.AuctionState{Ongoing: s.AuctionOngoing})
+	res, err := s.BackupConnection.UpdateAuctionState(context.Background(), &pb.AuctionState{Ongoing: s.AuctionOngoing, AuctionRound: s.AuctionRound})
 	if err != nil || res.Success != true { // We technically can never return success false as the code is now...
 		fileLog.Printf("Server: %d | Failed to update Backup server auction state at %s of round: %v \n", s.ID, when, err)
 		termLog.Printf("Server: %d | Failed to update Backup server auction state at %s of round: %v \n", s.ID, when, err)
@@ -227,8 +234,7 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 
 	if s.IsLeader == false {
 		s.IsLeader = true
-		s.AuctionOngoing = true
-		//go s.StartAndEndBiddingRound()
+		// s.AuctionOngoing = true
 	}
 
 	// Register the client if they have not already been registered
@@ -294,6 +300,7 @@ func (s *AuctionServer) UpdateAuctionState(ctx context.Context, state *pb.Auctio
 	termLog.Printf("Server: %d | Backup Server, old Auction ongoing: %t new Auction ongoing: %t \n", s.ID, s.AuctionOngoing, state.Ongoing)
 
 	s.AuctionOngoing = state.Ongoing
+	s.AuctionRound = state.AuctionRound
 	return &pb.BackupResponse{Success: true}, nil
 }
 

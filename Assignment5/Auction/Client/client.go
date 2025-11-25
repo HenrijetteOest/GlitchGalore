@@ -71,19 +71,13 @@ func (s *AuctionClient) MakeBid() {
 		// Get current status of the action
 		res, err := s.Client.Result(context.Background(), &pb.Empty{})
 		if err != nil {
+
 			fileLog.Printf("Client %d asked for result: Lost Connection to primary server: %v. Will attempt to connect to backup server \n", s.ID, err)
 			termLog.Printf("Client %d asked for result: Lost Connection to primary server: %v will attempt to connect to backup server  \n", s.ID, err)
+			//create connection to backup server
+			s.ReestablishConnection()
 
-			conn, err := grpc.NewClient("localhost:6060", grpc.WithTransportCredentials(insecure.NewCredentials()))
-			if err != nil {
-				log.Fatalf("Client could not connect to backup server: %v", err)
-			}
-			//defer conn.Close()
-			s.Conn = conn
-			s.Client = pb.NewAuctionServiceClient(conn)
-			fileLog.Printf("Client %d succesfully connected to backup server", s.ID)
-			termLog.Printf("Client %d succesfully connected to backup server", s.ID)
-
+			//resend failed result query
 			res, err = s.Client.Result(context.Background(), &pb.Empty{})
 			if err != nil {
 				termLog.Printf("Client %d failed to switch to backup after primary crashed (request for result)\n", s.ID)
@@ -96,13 +90,10 @@ func (s *AuctionClient) MakeBid() {
 			s.My_Bid = int32(rand.Intn(99) + 1) // Resest bid field with a new random start bid, between 1 and 100 for next auction
 
 		} else { // Auction round is still ongoing!
-			/*if res.HighestBid == 0 {
-				LocalBidder.My_Bid = int32(rand.Intn(99) + 1)
-			}*/
 			if res.HighestBid >= s.My_Bid {
 				// Increase our bid price and then bid
 				s.My_Bid = res.HighestBid + int32(rand.Intn(49)+1) // increment bid by 1-50
-				//fileLog.Printf("Client %d is increasing bid to %d\n", LocalBidder.ID, LocalBidder.My_Bid)
+				//fileLog.Printf("Client %d is increasing bid to %d\n", s.ID, s.My_Bid)
 				termLog.Printf("Client %d is increasing bid to %d\n", s.ID, s.My_Bid)
 			}
 			s.PlaceBid() // Do the grpc call
@@ -112,24 +103,10 @@ func (s *AuctionClient) MakeBid() {
 	}
 }
 
-func (s *AuctionClient) PlaceBid() { //client pb.AuctionServiceClient, LocalBidder *AuctionClient
-	/*
-		client.Bid(context.Background(), &pb.Bidder{
-			Bid: LocalBidder.My_Bid,
-			Id:  LocalBidder.ID,
-		})*/
-
+func (s *AuctionClient) PlaceBid() {
 	res, err := s.Client.Bid(context.Background(), &pb.Bidder{Bid: s.My_Bid, Id: s.ID})
 	if err != nil { // Handle primary server crash
-		conn, err := grpc.NewClient("localhost:6060", grpc.WithTransportCredentials(insecure.NewCredentials()))
-		if err != nil {
-			log.Fatalf("Client could not connect to backup server: %v", err)
-		}
-		defer conn.Close()
-		s.Conn = conn
-		s.Client = pb.NewAuctionServiceClient(conn)
-		var connStatus = conn.GetState().String()
-		fileLog.Printf("Client %d has made new connection to backup server. Connection state: %s", s.ID, connStatus)
+		s.ReestablishConnection()
 		s.PlaceBid() // If things went wrong, repeat last grpc call
 	}
 
@@ -139,6 +116,19 @@ func (s *AuctionClient) PlaceBid() { //client pb.AuctionServiceClient, LocalBidd
 		fileLog.Printf("SUCCESS: Client %d placed a bid of %d \n", s.ID, s.My_Bid)
 		termLog.Printf("SUCCESS: Client %d placed a bid of %d \n", s.ID, s.My_Bid)
 	}
+}
+
+func (s *AuctionClient) ReestablishConnection() {
+
+	conn, err := grpc.NewClient("localhost:6060", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Fatalf("Client could not connect to backup server: %v", err)
+	}
+
+	s.Conn = conn
+	s.Client = pb.NewAuctionServiceClient(conn)
+	fileLog.Printf("Client %d succesfully connected to backup server", s.ID)
+	termLog.Printf("Client %d succesfully connected to backup server", s.ID)
 }
 
 /* FREEZER */
