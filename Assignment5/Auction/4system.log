@@ -1,0 +1,116 @@
+2025/11/25 17:11:27 Starting Auction Server...
+2025/11/25 17:11:27 Auction Server 1 listening on port 5050
+2025/11/25 17:11:31 Starting Auction Server...
+2025/11/25 17:11:31 Backup Auction Server 2 listening on port 6060
+2025/11/25 17:11:33 Server: 1, Primary server connection to Backup server created, state: READY 
+2025/11/25 17:11:33 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/25 17:11:33 Server: 2. Backup: updating auction values, bid = 0 and bidderId = -1 
+2025/11/25 17:11:33 Server: 2. Backup Server, old Auction ongoing: false new Auction ongoing: true 
+2025/11/25 17:11:33 Backup Server updated at the start of auction round 
+2025/11/25 17:11:33 Round 0 of auction has begun 
+2025/11/25 17:11:34 Starting Auction Client 1...
+2025/11/25 17:11:35 Updated map in backup:  map[1:true]
+2025/11/25 17:11:35 Server: 2. Backup Server, updating registered client 
+2025/11/25 17:11:35 Server: 2. Updated map in back up: map[1:true]
+2025/11/25 17:11:35 Server: 1. Primary: updating auction values, bid = 1 and bidderId = 78 
+2025/11/25 17:11:35 Server: 2. Backup: updating auction values, bid = 1 and bidderId = 78 
+2025/11/25 17:11:35 Client 1 placed a bid of 78
+2025/11/25 17:11:36 Server: 1. Primary: updating auction values, bid = 1 and bidderId = 112 
+2025/11/25 17:11:36 Server: 2. Backup: updating auction values, bid = 1 and bidderId = 112 
+2025/11/25 17:11:36 Client 1 placed a bid of 112
+2025/11/25 17:11:37 Server: 1. Primary: updating auction values, bid = 1 and bidderId = 148 
+2025/11/25 17:11:37 Server: 2. Backup: updating auction values, bid = 1 and bidderId = 148 
+2025/11/25 17:11:37 Client 1 placed a bid of 148
+2025/11/25 17:11:37 Starting Auction Client 2...
+2025/11/25 17:11:37 Updated map in backup:  map[1:true 2:true]
+2025/11/25 17:11:37 Server: 2. Backup Server, updating registered client 
+2025/11/25 17:11:37 Server: 2. Updated map in back up: map[1:true 2:true]
+2025/11/25 17:11:37 Server: 1. Primary: updating auction values, bid = 2 and bidderId = 150 
+2025/11/25 17:11:37 Server: 2. Backup: updating auction values, bid = 2 and bidderId = 150 
+2025/11/25 17:11:37 Client 2 placed a bid of 150
+2025/11/25 17:11:38 Server: 1. Primary: updating auction values, bid = 1 and bidderId = 195 
+2025/11/25 17:11:38 Server: 2. Backup: updating auction values, bid = 1 and bidderId = 195 
+2025/11/25 17:11:38 Client 1 placed a bid of 195
+2025/11/25 17:11:38 Server: 1. Primary: updating auction values, bid = 2 and bidderId = 232 
+2025/11/25 17:11:38 Server: 2. Backup: updating auction values, bid = 2 and bidderId = 232 
+2025/11/25 17:11:38 Client 2 placed a bid of 232
+2025/11/25 17:11:39 Server: 1. Primary: updating auction values, bid = 1 and bidderId = 264 
+2025/11/25 17:11:39 Server: 2. Backup: updating auction values, bid = 1 and bidderId = 264 
+2025/11/25 17:11:39 Client 1 placed a bid of 264
+2025/11/25 17:11:39 Server: 1. Primary: updating auction values, bid = 2 and bidderId = 301 
+2025/11/25 17:11:39 Server: 2. Backup: updating auction values, bid = 2 and bidderId = 301 
+2025/11/25 17:11:39 Client 2 placed a bid of 301
+2025/11/25 17:11:40 Server: 1. Primary: updating auction values, bid = 1 and bidderId = 318 
+2025/11/25 17:11:40 Server: 2. Backup: updating auction values, bid = 1 and bidderId = 318 
+2025/11/25 17:11:40 Client 1 placed a bid of 318
+2025/11/25 17:11:40 Server: 1. Primary: updating auction values, bid = 2 and bidderId = 342 
+2025/11/25 17:11:40 Server: 2. Backup: updating auction values, bid = 2 and bidderId = 342 
+2025/11/25 17:11:40 Client 2 placed a bid of 342
+2025/11/25 17:11:41 Server: 1. Primary: updating auction values, bid = 1 and bidderId = 371 
+2025/11/25 17:11:41 Server: 2. Backup: updating auction values, bid = 1 and bidderId = 371 
+2025/11/25 17:11:41 Client 1 placed a bid of 371
+2025/11/25 17:11:41 Server: 1. Primary: updating auction values, bid = 2 and bidderId = 390 
+2025/11/25 17:11:41 Server: 2. Backup: updating auction values, bid = 2 and bidderId = 390 
+2025/11/25 17:11:41 Client 2 placed a bid of 390
+2025/11/25 17:11:42 Server: 1. Primary: updating auction values, bid = 1 and bidderId = 438 
+2025/11/25 17:11:42 Server: 2. Backup: updating auction values, bid = 1 and bidderId = 438 
+2025/11/25 17:11:42 Client 1 placed a bid of 438
+2025/11/25 17:11:42 Server: 1. Primary: updating auction values, bid = 2 and bidderId = 448 
+2025/11/25 17:11:42 Server: 2. Backup: updating auction values, bid = 2 and bidderId = 448 
+2025/11/25 17:11:42 Client 2 placed a bid of 448
+2025/11/25 17:11:43 Server: 1. Primary: updating auction values, bid = 1 and bidderId = 479 
+2025/11/25 17:11:43 Server: 2. Backup: updating auction values, bid = 1 and bidderId = 479 
+2025/11/25 17:11:43 Client 1 placed a bid of 479
+2025/11/25 17:11:43 Server: 2. Backup Server, old Auction ongoing: true new Auction ongoing: false 
+2025/11/25 17:11:43 Backup Server updated at the end of auction round 
+2025/11/25 17:11:43 Round 0 of auction is over, winning bid: 479 by client: 1 
+2025/11/25 17:11:54 Server: 0. Primary server timeout error, state: 1, call number: 2 
+2025/11/25 17:11:54 connection to backup server not active 
+2025/11/25 17:11:59 Server: 0. Primary server timeout error, state: 1, call number: 3 
+2025/11/25 17:11:59 connection to backup server not active 
+2025/11/25 17:11:59 Round 1 of auction has begun 
+2025/11/25 17:12:04 Server: 0. Primary server timeout error, state: 1, call number: 5 
+2025/11/25 17:12:04 connection to backup server not active 
+2025/11/25 17:12:04 Client 1 placed a bid of 80
+2025/11/25 17:12:04 Client 2 placed a bid of 68
+2025/11/25 17:12:10 Server: 0. Primary server timeout error, state: 1, call number: 5 
+2025/11/25 17:12:10 connection to backup server not active 
+2025/11/25 17:12:10 Client 2 placed a bid of 81
+2025/11/25 17:12:15 Server: 0. Primary server timeout error, state: 1, call number: 5 
+2025/11/25 17:12:15 connection to backup server not active 
+2025/11/25 17:12:15 Client 1 placed a bid of 86
+2025/11/25 17:12:20 Server: 0. Primary server timeout error, state: 1, call number: 3 
+2025/11/25 17:12:20 connection to backup server not active 
+2025/11/25 17:12:20 Round 1 of auction is over, winning bid: 86 by client: 1 
+2025/11/25 17:12:31 Server: 0. Primary server timeout error, state: 1, call number: 2 
+2025/11/25 17:12:31 connection to backup server not active 
+2025/11/25 17:12:36 Server: 0. Primary server timeout error, state: 1, call number: 3 
+2025/11/25 17:12:36 connection to backup server not active 
+2025/11/25 17:12:36 Round 2 of auction has begun 
+2025/11/25 17:12:41 Server: 0. Primary server timeout error, state: 1, call number: 5 
+2025/11/25 17:12:41 connection to backup server not active 
+2025/11/25 17:12:41 Client 2 placed a bid of 29
+2025/11/25 17:12:46 Server: 0. Primary server timeout error, state: 1, call number: 5 
+2025/11/25 17:12:46 connection to backup server not active 
+2025/11/25 17:12:46 Client 1 placed a bid of 41
+2025/11/25 17:12:51 Server: 0. Primary server timeout error, state: 1, call number: 3 
+2025/11/25 17:12:51 connection to backup server not active 
+2025/11/25 17:12:51 Round 2 of auction is over, winning bid: 41 by client: 1 
+2025/11/25 17:12:51 Client 2 placed a bid of 83
+2025/11/25 17:13:02 Server: 0. Primary server timeout error, state: 1, call number: 2 
+2025/11/25 17:13:02 connection to backup server not active 
+2025/11/25 17:13:07 Server: 0. Primary server timeout error, state: 1, call number: 3 
+2025/11/25 17:13:07 connection to backup server not active 
+2025/11/25 17:13:07 Round 3 of auction has begun 
+2025/11/25 17:13:12 Server: 0. Primary server timeout error, state: 1, call number: 5 
+2025/11/25 17:13:12 connection to backup server not active 
+2025/11/25 17:13:12 Client 1 placed a bid of 5
+2025/11/25 17:13:17 Server: 0. Primary server timeout error, state: 1, call number: 5 
+2025/11/25 17:13:17 connection to backup server not active 
+2025/11/25 17:13:17 Client 2 placed a bid of 33
+2025/11/25 17:13:22 Server: 0. Primary server timeout error, state: 1, call number: 3 
+2025/11/25 17:13:22 connection to backup server not active 
+2025/11/25 17:13:22 Round 3 of auction is over, winning bid: 33 by client: 2 
+2025/11/25 17:13:22 Client 1 placed a bid of 38
+2025/11/25 17:13:25 Client 2: Failed to get result from grpc call: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused" 
+2025/11/25 17:13:25 Client 1: Failed to get result from grpc call: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:5050: connect: connection refused" 
