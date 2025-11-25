@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"math/rand"
 	"os"
@@ -11,10 +10,10 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-
 	//"google.golang.org/grpc/connectivity"
 
 	pb "Auction/grpc"
+
 )
 
 type AuctionClient struct {
@@ -23,8 +22,21 @@ type AuctionClient struct {
 	My_Bid int32
 }
 
+var fileLog *log.Logger
+var termLog *log.Logger
+
 func main() {
-	fmt.Println("Starting Auction Client...")
+
+	file, e := os.OpenFile("system.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if e != nil {
+		log.Fatalf("Failed to open log file: %v", e)
+	}
+	defer file.Close()
+
+	// Create two independent loggers
+	fileLog = log.New(file, "", log.Ldate|log.Ltime)
+	termLog = log.New(os.Stdout, "", 0) // plain chat-style output
+	
 
 	conn, err := grpc.NewClient("localhost:5050", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -42,6 +54,9 @@ func main() {
 		My_Bid: int32(rand.Intn(99) + 1), // Random start bid, between 1 and 100
 	}
 
+	fileLog.Printf("Starting Auction Client %d...\n",LocalBidder.ID) 
+	termLog.Printf("Starting Auction Client %d...\n", LocalBidder.ID) 
+
 	go PlaceBid(client, LocalBidder)
 
 	// Keep the client running
@@ -55,7 +70,9 @@ func PlaceBid(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
 		// Get current status of the action
 		res, err := client.Result(context.Background(), &pb.Empty{})
 		if err != nil {
-			fmt.Printf("Failed to get result from grpc call: %v", err)
+	
+			fileLog.Printf("Client %d: Failed to get result from grpc call: %v \n", LocalBidder.ID, err)
+			termLog.Printf("Client %d: Failed to get result from grpc call: %v \n", LocalBidder.ID, err)
 		}
 
 		if res.ItemSold == true { // If the auction is over, then reset price
@@ -68,11 +85,12 @@ func PlaceBid(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
 			if res.HighestBid >= LocalBidder.My_Bid {
 				// Increase our bid price and then bid
 				LocalBidder.My_Bid = res.HighestBid + int32(rand.Intn(49)+1) // increment bid by 1-50
-				fmt.Printf("	Client %d is increasing bid to %d\n", LocalBidder.ID, LocalBidder.My_Bid)
+				//fileLog.Printf("Client %d is increasing bid to %d\n", LocalBidder.ID, LocalBidder.My_Bid)
+				termLog.Printf("Client %d is increasing bid to %d\n", LocalBidder.ID, LocalBidder.My_Bid)
 			}
 			BidCall(client, LocalBidder) // Do the grpc call
 		}
-		//time.Sleep(time.Duration(int32(rand.Intn(3))) * time.Second)
+		//time.Sleep(time.Duration(int32(rand.Intn(3)+1)) * time.Second)
 		time.Sleep(1 * time.Second)
 	}
 }
@@ -85,7 +103,8 @@ func BidCall(client pb.AuctionServiceClient, LocalBidder *AuctionClient) {
 		Id:  LocalBidder.ID,
 	})
 
-	fmt.Printf("Client %d placed a bid of %d\n", LocalBidder.ID, LocalBidder.My_Bid)
+	fileLog.Printf("Client %d placed a bid of %d\n", LocalBidder.ID, LocalBidder.My_Bid)
+	termLog.Printf("Client %d placed a bid of %d\n", LocalBidder.ID, LocalBidder.My_Bid)
 
 	/*
 		if err == nil {
