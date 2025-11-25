@@ -15,11 +15,9 @@ import (
 )
 
 type AuctionClient struct {
-	// client pb.AuctionServiceClient
 	ID     int32
 	My_Bid int32
 	Client pb.AuctionServiceClient
-	Conn   *grpc.ClientConn
 }
 
 var fileLog *log.Logger
@@ -52,7 +50,6 @@ func main() {
 		ID:     bidderId,                 // Remember to give clients different ids in the terminal
 		My_Bid: int32(rand.Intn(99) + 1), // Random start bid, between 1 and 100
 		Client: client,
-		Conn:   conn,
 	}
 
 	fileLog.Printf("Starting Auction Client %d...\n", LocalBidder.ID)
@@ -67,20 +64,21 @@ func main() {
 // bidding logic
 /* Only resets it's bidding price if it asks and the bidding is over  */
 func (s *AuctionClient) MakeBid() {
-	for { // i := 0; i < 100; i++
+	for {
 		// Get current status of the action
 		res, err := s.Client.Result(context.Background(), &pb.Empty{})
 		if err != nil {
 
-			fileLog.Printf("Client %d asked for result: Lost Connection to primary server: %v. Will attempt to connect to backup server \n", s.ID, err)
-			termLog.Printf("Client %d asked for result: Lost Connection to primary server: %v will attempt to connect to backup server  \n", s.ID, err)
+			fileLog.Printf("Client: %d | asked for result: Lost Connection to primary server: %v. Will attempt to connect to backup server \n", s.ID, err)
+			termLog.Printf("I asked for result: Lost Connection to primary server: %v will attempt to connect to backup server  \n", err)
 			//create connection to backup server
 			s.ReestablishConnection()
 
 			//resend failed result query
 			res, err = s.Client.Result(context.Background(), &pb.Empty{})
 			if err != nil {
-				termLog.Printf("Client %d failed to switch to backup after primary crashed (request for result)\n", s.ID)
+				fileLog.Printf("Client: %d | failed to switch to backup after primary crashed (request for result)\n", s.ID)
+				termLog.Printf("I failed to switch to backup after primary crashed (request for result)\n")
 			}
 
 			termLog.Printf("error handling for request result from server: %v \n", res)
@@ -93,13 +91,12 @@ func (s *AuctionClient) MakeBid() {
 			if res.HighestBid >= s.My_Bid {
 				// Increase our bid price and then bid
 				s.My_Bid = res.HighestBid + int32(rand.Intn(49)+1) // increment bid by 1-50
-				//fileLog.Printf("Client %d is increasing bid to %d\n", s.ID, s.My_Bid)
-				termLog.Printf("Client %d is increasing bid to %d\n", s.ID, s.My_Bid)
+				termLog.Printf("my bid is increasing bid to %d\n", s.My_Bid)
 			}
 			s.PlaceBid() // Do the grpc call
 		}
-		//time.Sleep(time.Duration(int32(rand.Intn(3)+1)) * time.Second)
-		time.Sleep(1 * time.Second)
+		time.Sleep(time.Duration(int32(rand.Intn(3)+1)) * time.Second)
+		//time.Sleep(1 * time.Second)
 	}
 }
 
@@ -110,11 +107,13 @@ func (s *AuctionClient) PlaceBid() {
 		s.PlaceBid() // If things went wrong, repeat last grpc call
 	}
 
-	fileLog.Printf("Client %d | res is: %s \n", s.ID, res.Status)
-
-	if res.Status == "SUCCESS" {
-		fileLog.Printf("SUCCESS: Client %d placed a bid of %d \n", s.ID, s.My_Bid)
-		termLog.Printf("SUCCESS: Client %d placed a bid of %d \n", s.ID, s.My_Bid)
+	switch res.Status {
+	case "SUCCESS":
+		fileLog.Printf("Client: %d | placed a succesful bid of %d \n", s.ID, s.My_Bid)
+		termLog.Printf("I placed a succesful bid of %d \n", s.My_Bid)
+	case "FAIL":
+		fileLog.Printf("Client: %d's bid of %d was rejected \n", s.ID, s.My_Bid)
+		termLog.Printf("My bid of %d was rejected\n", s.My_Bid)
 	}
 }
 
@@ -125,10 +124,9 @@ func (s *AuctionClient) ReestablishConnection() {
 		log.Fatalf("Client could not connect to backup server: %v", err)
 	}
 
-	s.Conn = conn
 	s.Client = pb.NewAuctionServiceClient(conn)
-	fileLog.Printf("Client %d succesfully connected to backup server", s.ID)
-	termLog.Printf("Client %d succesfully connected to backup server", s.ID)
+	fileLog.Printf("Client: %d | succesfully connected to backup server", s.ID)
+	termLog.Printf("I succesfully connected to backup server")
 }
 
 /* FREEZER */
@@ -141,36 +139,3 @@ func (s *AuctionClient) ReestablishConnection() {
 	Case 4:  	current bid > our_bid  && 	item IS sold	-->  lower our start price
 
 */
-
-/*
-// Below code hinders the client from sending grpc calls to the Server.
-// Don't know why yet
-// FROM SERVER
-// in case Backup Server is not made within 30 seconds, give up on it and continue
-ctx, cancel := context.WithTimeout(context.Background(), 30 * time.Second)
-defer cancel()
-
-// Save our current state such that we can check if it is READY later
-currentState := conn.GetState()
-
-for {
-	// Below line will block until there is a state change or context times out
-	if !conn.WaitForStateChange(ctx, currentState)  {
-		fmt.Printf("Client: Timeout error in waiting for state change, state: %s \n", conn.GetState())
-		return
-	}
-	currentState = conn.GetState() 				// Update our current state
-
-	if currentState == connectivity.Ready {		// Connection is ready
-		fmt.Printf("Connection is now ready for use %v \n", conn.GetState())
-		break
-	}
-
-	if currentState == connectivity.Shutdown {   // Connection has been shutdown
-		fmt.Printf("Connection was shut down... but we want to continue anyway (but can't just yet) \n")
-		break
-	}
-
-	// Delete error handling later
-	fmt.Printf("State changed to %s, wait for a state change\n", currentState.String())
-}*/

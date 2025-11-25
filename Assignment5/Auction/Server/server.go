@@ -179,13 +179,13 @@ func (s *AuctionServer) StartAndEndBiddingRound() {
 		s.local_update_auction_state("start") // The local rpc handler to update auction state
 		s.Mu.Unlock()
 
-		fileLog.Printf("------ Round %d of auction has begun ------------ \n", s.AuctionRound)
-		termLog.Printf("------ Round %d of auction has begun ------------ \n", s.AuctionRound)
+		fileLog.Printf("------ Round %d of auction has begun ------------------------------------------ \n", s.AuctionRound)
+		termLog.Printf("------ Round %d of auction has begun ------------------------------------------ \n", s.AuctionRound)
 		time.Sleep(10 * time.Second) // Auction round duration
 
 		s.Mu.Lock()
-		fileLog.Printf("------ Round %d of auction is over, winning bid: %d by client: %d  ------------ \n", s.AuctionRound, s.BestBid.BidAmount, s.BestBid.BidderID)
-		termLog.Printf("------ Round %d of auction is over, winning bid: %d by client: %d  ------------ \n", s.AuctionRound, s.BestBid.BidAmount, s.BestBid.BidderID)
+		fileLog.Printf("------ Round %d of auction is over: winning bid: %d by client: %d  ------------ \n", s.AuctionRound, s.BestBid.BidAmount, s.BestBid.BidderID)
+		termLog.Printf("------ Round %d of auction is over: winning bid: %d by client: %d  ------------ \n", s.AuctionRound, s.BestBid.BidAmount, s.BestBid.BidderID)
 		s.AuctionRound++
 		s.AuctionOngoing = false // Auction round ends
 		s.local_update_auction_state("end")
@@ -193,8 +193,8 @@ func (s *AuctionServer) StartAndEndBiddingRound() {
 		time.Sleep(3 * time.Second) // Next item to be sold is being prepared (takes 3 seconds)
 
 	}
-	fileLog.Println("------ The auction is now over! ------------ ")
-	termLog.Println("------ The auction is now over! ------------ ")
+	fileLog.Printf("------ The auction is now over! ----------------------------------------------- \n")
+	termLog.Printf("------ The auction is now over! ----------------------------------------------- \n")
 }
 
 // Ensures only the leader does this call
@@ -206,7 +206,7 @@ func (s *AuctionServer) local_update_auction_state(when string) {
 
 	// Should only give false if the Backup server failed
 	if s.Connection_Helper_Method(5, 3) == false && s.Connection != nil { //looking for connection within 5 seconds
-		fileLog.Printf("Server: %d | local_update_auction_state connection to backup server not active \n", s.ID)
+		fileLog.Printf("Server: %d | connection to backup server not active: local_update_auction_state  \n", s.ID)
 		termLog.Printf("Server: %d | connection to backup server not active: local_update_auction_state \n", s.ID)
 		return
 	} else if s.Connection == nil {
@@ -234,7 +234,7 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 
 	if s.IsLeader == false {
 		s.IsLeader = true
-		// s.AuctionOngoing = true
+		fileLog.Println("!!!-- PRIMARY SERVER CRASH. BACKUP HAS BEEN PROMOTED TO PRIMARY ----!!!")
 	}
 
 	// Register the client if they have not already been registered
@@ -264,8 +264,8 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 			fileLog.Printf("Server: %d | connection to backup server not active: highest bid \n", s.ID)
 			termLog.Printf("Server: %d | connection to backup server not active: highest bid \n", s.ID)
 		} else if s.Connection == nil {
-			fileLog.Printf("Server: %d | Backup is now primary: updating auction values bid = %d, bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
-			termLog.Printf("Server: %d | Backup is now primary: updating auction values bid = %d, bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
+			fileLog.Printf("Server: %d | Backup: updating auction values bid = %d, bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
+			termLog.Printf("Server: %d | Backup: updating auction values bid = %d, bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
 			return &pb.BidResponse{Status: "SUCCESS"}, nil
 		} else {
 			fileLog.Printf("Server: %d | Primary: updating auction values, bid = %d, bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
@@ -296,8 +296,8 @@ func (s *AuctionServer) Result(ctx context.Context, empty *pb.Empty) (*pb.Result
 /***************	Primary Server and Backup Server grpc Calls      ***********************/
 
 func (s *AuctionServer) UpdateAuctionState(ctx context.Context, state *pb.AuctionState) (*pb.BackupResponse, error) {
-	fileLog.Printf("Server: %d | Backup Server, old Auction ongoing: %t new Auction ongoing: %t \n", s.ID, s.AuctionOngoing, state.Ongoing)
-	termLog.Printf("Server: %d | Backup Server, old Auction ongoing: %t new Auction ongoing: %t \n", s.ID, s.AuctionOngoing, state.Ongoing)
+	fileLog.Printf("Server: %d | Backup Server: old Auction ongoing: %t new Auction ongoing: %t \n", s.ID, s.AuctionOngoing, state.Ongoing)
+	termLog.Printf("Server: %d | Backup Server: old Auction ongoing: %t new Auction ongoing: %t \n", s.ID, s.AuctionOngoing, state.Ongoing)
 
 	s.AuctionOngoing = state.Ongoing
 	s.AuctionRound = state.AuctionRound
@@ -305,8 +305,8 @@ func (s *AuctionServer) UpdateAuctionState(ctx context.Context, state *pb.Auctio
 }
 
 func (s *AuctionServer) UpdateRegisteredClient(ctx context.Context, bidder *pb.Bidder) (*pb.BackupResponse, error) {
-	fileLog.Printf("Server: %d | Backup Server, updating registered client \n", s.ID)
-	termLog.Printf("Server: %d | Backup Server, updating registered client \n", s.ID)
+	fileLog.Printf("Server: %d | Backup Server: updating registered client \n", s.ID)
+	termLog.Printf("Server: %d | Backup Server: updating registered client \n", s.ID)
 
 	s.RegisteredClients[bidder.Id] = true
 
@@ -320,8 +320,8 @@ func (s *AuctionServer) UpdateHighestBid(ctx context.Context, bidder *pb.Bidder)
 	s.BestBid.BidAmount = bidder.Bid
 	s.BestBid.BidderID = bidder.Id
 
-	fileLog.Printf("Server: %d | Backup: updating auction values, bid = %d and bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
-	termLog.Printf("Server: %d | Backup: updating auction values, bid = %d and bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
+	fileLog.Printf("Server: %d | Backup: updating auction values: bid = %d and bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
+	termLog.Printf("Server: %d | Backup: updating auction values: bid = %d and bidderId = %d \n", s.ID, s.BestBid.BidderID, s.BestBid.BidAmount)
 
 	return &pb.BackupResponse{Success: true}, nil
 }
@@ -358,13 +358,14 @@ func (s *AuctionServer) Connection_Helper_Method(timeout int, num int) bool {
 
 		//could be deleted later
 		if currentState == connectivity.Shutdown { // Connection has been shutdown
-			fileLog.Printf("Server: %d | Connection to backup server was shut down! Backup server must have crashed \n", s.ID)
-			termLog.Printf("Connection was shut down... but we want to continue anyway (but can't just yet) \n")
+			fileLog.Printf("1 Server: %d | Connection to backup server was shut down! Backup server must have crashed \n", s.ID)
+			termLog.Printf("1 Connection was shut down... but we want to continue anyway (but can't just yet) \n")
 			return false
 		}
 
 		// Below line will block until there is a state change or context times out
 		if !conn.WaitForStateChange(ctx, currentState) {
+			//fileLog.Println("!!!----- BACKUP SERVER CRASHED -----!!!")
 			fileLog.Printf("Server: %d | Primary server lost connection to backup \n", s.ID)
 			termLog.Printf("Server: %d | Primary server lost connection to backup \n", s.ID)
 			return false
