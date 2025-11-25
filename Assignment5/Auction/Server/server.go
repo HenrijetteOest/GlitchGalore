@@ -126,7 +126,7 @@ func (s *AuctionServer) start_backup_connection() {
 		termLog.Printf("Could not get the connection to the backup server working \n")
 		return
 	}
-	fileLog.Printf("Server: %d, Primary server connection to Backup server created, state: %s \n", s.ID, conn.GetState())
+	fileLog.Printf("Server: %d | Primary server connection to Backup server created, state: %s \n", s.ID, conn.GetState())
 	termLog.Printf("Primary server connection to Backup server created, state: %s \n", conn.GetState())
 }
 
