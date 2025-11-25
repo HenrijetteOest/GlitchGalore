@@ -6,27 +6,26 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"time"
-	"strconv"
 	"os"
+	"strconv"
+	"time"
 
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/connectivity"
+	"google.golang.org/grpc/credentials/insecure"
 
 	pb "Auction/grpc"
-
 )
 
 type AuctionServer struct {
 	pb.UnimplementedAuctionServiceServer
-	ID       			int32
-	IsLeader			bool
-	BestBid           	HighestBidder  // The best bid so far (potentially change to the proto message type instead)
-	RegisteredClients 	map[int32]bool // Keep track of registered Clients
-	AuctionOngoing    	bool
-	BackupConnection	pb.AuctionServiceClient
-	Connection			*grpc.ClientConn
+	ID                int32
+	IsLeader          bool
+	BestBid           HighestBidder  // The best bid so far (potentially change to the proto message type instead)
+	RegisteredClients map[int32]bool // Keep track of registered Clients
+	AuctionOngoing    bool
+	BackupConnection  pb.AuctionServiceClient
+	Connection        *grpc.ClientConn
 }
 
 type HighestBidder struct {
@@ -38,9 +37,9 @@ func main() {
 	fmt.Println("Starting Auction Server...")
 
 	// Get the id and leader from the terminal
-	i, _ := strconv.ParseInt(os.Args[1], 10, 32) 	 // parse id to int
-	id := int32(i)									 // cast to int32
-	isleader, _ := strconv.ParseBool(os.Args[2])	 // boolean, am a the leader?
+	i, _ := strconv.ParseInt(os.Args[1], 10, 32) // parse id to int
+	id := int32(i)                               // cast to int32
+	isleader, _ := strconv.ParseBool(os.Args[2]) // boolean, am a the leader?
 
 	server := &AuctionServer{
 		ID:                id,
@@ -49,19 +48,19 @@ func main() {
 		RegisteredClients: make(map[int32]bool),
 		AuctionOngoing:    false,
 		BackupConnection:  nil,
-		Connection:		   nil,
+		Connection:        nil,
 	}
 
-	if (server.IsLeader == true) {  			// If I am the leader node
-		server.start_server()					// Host the server 
-		server.start_backup_connection()		// connect to backup server
-		go server.StartAndEndBiddingRound() 	// starts auctions at intervals
-	} else  { 									// Else I am the synchronized node (and only does what I am told)
-		server.start_backup_server()	
+	if server.IsLeader == true { // If I am the leader node
+		server.start_server()               // Host the server
+		server.start_backup_connection()    // connect to backup server
+		go server.StartAndEndBiddingRound() // starts auctions at intervals
+	} else { // Else I am the synchronized node (and only does what I am told)
+		server.start_backup_server()
 		// the backup does NOT start a bidding rounds
-	} 
+	}
 
-	select {}									// Keep the server running
+	select {} // Keep the server running
 }
 
 /***********	Create the Server and Backup Server   ******************/
@@ -85,8 +84,8 @@ func (s *AuctionServer) start_server() {
 
 /********** Connection to Backup Server **********************/
 
-func (s *AuctionServer ) start_backup_connection() {
-	
+func (s *AuctionServer) start_backup_connection() {
+
 	// changed grpc.NewClient() to grpc.Dial
 	conn, err := grpc.Dial("localhost:6060", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -123,27 +122,26 @@ func (s *AuctionServer) start_backup_server() {
 	}()
 }
 
-
 /********** Auction Logic **********************/
 
 /* Starts each bidding round by changing Auction Ongoing to true or false and updating the best bid thereafter  */
 func (s *AuctionServer) StartAndEndBiddingRound() {
-	for i := 0; i < 5; i++ { 					// Total items to be bid on before the auction ends
+	for i := 0; i < 5; i++ { // Total items to be bid on before the auction ends
 		s.BestBid.BidderID = -1
-		s.BestBid.BidAmount = 0 				// reset the highest bidder
+		s.BestBid.BidAmount = 0 // reset the highest bidder
 		// (FIFTH) This should technically also have a grpc call UpdateHighestBid() to the backup server which updates the highest bid so far
 
-		s.AuctionOngoing = true 				// Auction round begins
-		s.local_update_auction_state("start")	// The local rpc handler to update auction state 
-		
-		fmt.Printf("Round %d of auction has begun \n", i)
-		time.Sleep(10 * time.Second) 			// Auction round duration
+		s.AuctionOngoing = true               // Auction round begins
+		s.local_update_auction_state("start") // The local rpc handler to update auction state
 
-		s.AuctionOngoing = false 				// Auction round ends
+		fmt.Printf("Round %d of auction has begun \n", i)
+		time.Sleep(10 * time.Second) // Auction round duration
+
+		s.AuctionOngoing = false // Auction round ends
 		s.local_update_auction_state("end")
 
 		fmt.Printf("Round %d of auction is over, winning bid: %d by client: %d \n", i, s.BestBid.BidAmount, s.BestBid.BidderID)
-		time.Sleep(6 * time.Second) 			// Next item to be sold is being prepared (takes 6 seconds)	
+		time.Sleep(6 * time.Second) // Next item to be sold is being prepared (takes 6 seconds)
 	}
 	fmt.Println("The auction is now over!")
 }
@@ -151,27 +149,26 @@ func (s *AuctionServer) StartAndEndBiddingRound() {
 // Ensures only the leader does this call
 // and that we contact the backup server with a working connection
 func (s *AuctionServer) local_update_auction_state(when string) {
-	if !s.IsLeader { 	// only the leader server should be making this call
-		return 							
-	} 
+	if !s.IsLeader { // only the leader server should be making this call
+		return
+	}
 
 	// Should only give false if the Backup server failed
-	if s.Connection_Helper_Method(5, 2) == false { //looking for connection within 3 seconds
+	if s.Connection_Helper_Method(5, 2) == false { //looking for connection within 5 seconds
 		fmt.Printf("	connection to backup server not active \n")
 		return
 	}
 
 	res, err := s.BackupConnection.UpdateAuctionState(context.Background(), &pb.AuctionState{Ongoing: s.AuctionOngoing})
-	if err != nil || res.Success != true { 	// We technically can never return success false as the code is now...
+	if err != nil || res.Success != true { // We technically can never return success false as the code is now...
 		fmt.Printf("	Failed to update Backup server auction state at %s of round: %v \n", when, err)
 	}
 
 	// Delete later Homemade ERROR HANDLING:
-	if res.Success {		
+	if res.Success {
 		fmt.Printf("		Backup Server updated at the %s of auction round \n", when)
 	}
 }
-
 
 /* Does not properly return the pb.BidResponse to Client (don't know why yet) */
 func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResponse, error) {
@@ -222,42 +219,41 @@ func (s *AuctionServer) UpdateHighestBid(ctx context.Context, *pb.Bidder) (*pb.B
 }
 */
 
-
 /*******       Connection Helper Methods        ***********************************/
 
 /* Below method for checking the connection status, was made in cooperation with Gemini.
-	Meaning we did make changes and other ressources as well	*/
+Meaning we did make changes and other ressources as well	*/
 
-func (s *AuctionServer) Connection_Helper_Method(timeout int, num int) (bool) {
+func (s *AuctionServer) Connection_Helper_Method(timeout int, num int) bool {
 	conn := s.Connection
 
 	// in case Backup Server is not made within 30 seconds, give up on it and continue
-	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(int(timeout)) * time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(int(timeout))*time.Second)
 	defer cancel()
 
 	// Save our current state such that we can check if it is READY later
 	currentState := conn.GetState()
-	
+
 	for {
-		if currentState == connectivity.Ready {		// Connection is ready
+		if currentState == connectivity.Ready { // Connection is ready
 			fmt.Printf("	Connection is now ready for use state: %v \n", conn.GetState())
 			break
 		}
 
 		// Below line will block until there is a state change or context times out
-		if !conn.WaitForStateChange(ctx, currentState)  {
+		if !conn.WaitForStateChange(ctx, currentState) {
 			fmt.Printf("	Primary server timeout error, state: %v, call number: %d \n", conn.GetState(), num)
 			return false
-		} 
-		
-		currentState = conn.GetState() 				// Update our current state	
-		
+		}
+
+		currentState = conn.GetState() // Update our current state
+
 		//could be deleted later
-		if currentState == connectivity.Shutdown {   // Connection has been shutdown
+		if currentState == connectivity.Shutdown { // Connection has been shutdown
 			fmt.Printf("	Connection was shut down... but we want to continue anyway (but can't just yet) \n")
 			break
 		}
-		
+
 		// Delete error handling later
 		fmt.Printf("State changed to %s, wait for a state change\n", currentState.String())
 	}
