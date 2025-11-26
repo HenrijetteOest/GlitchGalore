@@ -14,6 +14,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 
 	pb "Auction/grpc"
+
 )
 
 type AuctionServer struct {
@@ -21,8 +22,8 @@ type AuctionServer struct {
 	ID                int32
 	IsLeader          bool
 	AuctionRound      int32
-	BestBid           HighestBidder  // The best bid so far (potentially change to the proto message type instead)
-	RegisteredClients map[int32]bool // Keep track of registered Clients
+	BestBid           HighestBidder  
+	RegisteredClients map[int32]bool 
 	AuctionOngoing    bool
 	BackupConnection  pb.AuctionServiceClient
 	Connection        *grpc.ClientConn
@@ -54,7 +55,7 @@ func main() {
 	// Get the id and leader from the terminal
 	i, _ := strconv.ParseInt(os.Args[1], 10, 32) // parse id to int
 	id := int32(i)                               // cast to int32
-	isleader, _ := strconv.ParseBool(os.Args[2]) // boolean, am a the leader?
+	isleader, _ := strconv.ParseBool(os.Args[2]) // boolean, am I the leader?
 
 	server := &AuctionServer{
 		ID:                id,
@@ -68,14 +69,15 @@ func main() {
 		Mu:                sync.Mutex{},
 	}
 
-	if server.IsLeader == true { // If I am the leader node
+	// Either make the primary server
+	// or the backup server
+	if server.IsLeader == true { 
 		server.start_server()               // Host the server
 		server.start_backup_connection()    // connect to backup server
 		go server.StartAndEndBiddingRound() // starts auctions at intervals
-	} else { // Else I am the synchronized node (and only does what I am told)
+	} else {  
 		server.start_backup_server()
 		go server.StartAndEndBiddingRound()
-		// the backup does NOT start a bidding rounds
 	}
 
 	select {} // Keep the server running
@@ -103,9 +105,8 @@ func (s *AuctionServer) start_server() {
 
 /********** Connection to Backup Server **********************/
 
+// Makes a client conn for the calling function (should be the primary server)
 func (s *AuctionServer) start_backup_connection() {
-
-	// changed grpc.NewClient() to grpc.Dial
 	conn, err := grpc.Dial("localhost:6060", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Primary Server could not dial to Backup server: %v", err)
@@ -116,7 +117,7 @@ func (s *AuctionServer) start_backup_connection() {
 	s.Mu.Lock()
 	// initialize servers Backup Connection
 	s.BackupConnection = pb.NewAuctionServiceClient(conn)
-	// save the connection for later check ups
+	// save the connection for later check ups (the connection_helper_method needs this connection to work)
 	s.Connection = conn
 	// unlock mutex when done
 	s.Mu.Unlock()
@@ -152,15 +153,21 @@ func (s *AuctionServer) start_backup_server() {
 
 /* Starts each bidding round by changing Auction Ongoing to true or false and updating the best bid thereafter  */
 func (s *AuctionServer) StartAndEndBiddingRound() {
+	// The backup server will be stuck in this loop as long as it is not the leader
+	// Once the primary server crashes, there will at most pass 4 seconds before backup proceeds
 	for !s.IsLeader {
 		time.Sleep(4 * time.Second)
 	}
 
 	for s.AuctionRound < 5 { // Total items to be bid on before the auction ends
 		s.Mu.Lock()
-		s.BestBid.BidderID = -1
-		s.BestBid.BidAmount = 0 // reset the highest bidder
 
+		/********* reset the highest bidder *************/
+
+		s.BestBid.BidderID = -1
+		s.BestBid.BidAmount = 0
+
+		/********* Update the backup server *************/
 		// Below if statement is only for the Primary server (with a backup)
 		if s.Connection_Helper_Method(5, 2) == false && s.Connection != nil { //looking for connection within 5 seconds
 			fileLog.Printf("Server: %d | connection to backup server not active: StartAndEndBiddingRound \n", s.ID)
@@ -175,6 +182,7 @@ func (s *AuctionServer) StartAndEndBiddingRound() {
 			}
 		}
 
+		/********* Start the auction round *************/
 		s.AuctionOngoing = true               // Auction round begins
 		s.local_update_auction_state("start") // The local rpc handler to update auction state
 		s.Mu.Unlock()
@@ -183,6 +191,7 @@ func (s *AuctionServer) StartAndEndBiddingRound() {
 		termLog.Printf("------ Round %d of auction has begun ------------------------------------------ \n", s.AuctionRound)
 		time.Sleep(10 * time.Second) // Auction round duration
 
+		/********* End the auction round *************/
 		s.Mu.Lock()
 		fileLog.Printf("------ Round %d of auction is over: winning bid: %d by client: %d  ------------ \n", s.AuctionRound, s.BestBid.BidAmount, s.BestBid.BidderID)
 		termLog.Printf("------ Round %d of auction is over: winning bid: %d by client: %d  ------------ \n", s.AuctionRound, s.BestBid.BidAmount, s.BestBid.BidderID)
@@ -197,14 +206,16 @@ func (s *AuctionServer) StartAndEndBiddingRound() {
 	termLog.Printf("------ The auction is now over! ----------------------------------------------- \n")
 }
 
-// Ensures only the leader does this call
-// and that we contact the backup server with a working connection
+// Updates the backup up server with the change in auction state.
+// Should only be called by the leader and a server with a backup connection
 func (s *AuctionServer) local_update_auction_state(when string) {
-	if !s.IsLeader { // only the leader server should be making this call
+	// ensures only the leader server should be making this call
+	if !s.IsLeader { 
 		return
 	}
 
-	// Should only give false if the Backup server failed
+	// Below if-else statement helps the primary server check the client connection to the back up server 
+	// AND has the backup server exit this method. As it should not try and update its own non-existing backup server
 	if s.Connection_Helper_Method(5, 3) == false && s.Connection != nil { //looking for connection within 5 seconds
 		fileLog.Printf("Server: %d | connection to backup server not active: local_update_auction_state  \n", s.ID)
 		termLog.Printf("Server: %d | connection to backup server not active: local_update_auction_state \n", s.ID)
@@ -214,19 +225,21 @@ func (s *AuctionServer) local_update_auction_state(when string) {
 	}
 
 	res, err := s.BackupConnection.UpdateAuctionState(context.Background(), &pb.AuctionState{Ongoing: s.AuctionOngoing, AuctionRound: s.AuctionRound})
-	if err != nil || res.Success != true { // We technically can never return success false as the code is now...
+	if err != nil || res.Success != true { // We technically can never return success == false as the code is now
 		fileLog.Printf("Server: %d | Failed to update Backup server auction state at %s of round: %v \n", s.ID, when, err)
 		termLog.Printf("Server: %d | Failed to update Backup server auction state at %s of round: %v \n", s.ID, when, err)
 	}
 
-	// Delete later Homemade ERROR HANDLING:
+	// Homemade ERROR HANDLING:
 	if res.Success {
 		fileLog.Printf("Server: %d | Backup Server updated at the %s of auction round \n", s.ID, when)
 		termLog.Printf("Backup Server updated at the %s of auction round \n", when)
 	}
 }
 
-/* Does not properly return the pb.BidResponse to Client (don't know why yet) */
+// grpc call between Auction client and server (the leader server)
+// registers a cliet to the map of clients (if it is the first call)
+// places a bid if the bid is valid and returns success or fail thereafter
 func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResponse, error) {
 
 	s.Mu.Lock()
@@ -240,12 +253,12 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 	// Register the client if they have not already been registered
 	if s.RegisteredClients[bidder.Id] != true {
 		s.RegisteredClients[bidder.Id] = true
-		if s.Connection_Helper_Method(5, 4) == false { //looking for connection within 5 seconds
+
+		// Below if-else statement is only relavant for the primary server (as it regards updating the backup server)
+		if s.Connection_Helper_Method(5, 4) == false && s.Connection != nil { //looking for connection within 5 seconds
 			fileLog.Printf("Server: %d | connection to backup server not active: registered client \n", s.ID)
 			termLog.Printf("Server: %d | connection to backup server not active: registered client \n", s.ID)
-		} else if s.Connection == nil {
-			//return &pb.BidResponse{Status: "SUCCESS"}, nil
-		} else {
+		} else if s.Connection != nil{
 			fileLog.Printf("Server: %d | Updated map in backup: %v", s.ID, s.RegisteredClients)
 			termLog.Printf("Server: %d | Updated map in backup: %v", s.ID, s.RegisteredClients)
 			res, err := s.BackupConnection.UpdateRegisteredClient(context.Background(), &pb.Bidder{Bid: bidder.Bid, Id: bidder.Id})
@@ -260,6 +273,8 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 		s.BestBid.BidAmount = bidder.Bid
 		s.BestBid.BidderID = bidder.Id
 
+		// Below if-else statement is BOTH for primary and the backup server 
+		// This returns a result to the client who tried to bid
 		if s.Connection_Helper_Method(5, 5) == false && s.Connection != nil { //looking for connection within 5 seconds
 			fileLog.Printf("Server: %d | connection to backup server not active: highest bid \n", s.ID)
 			termLog.Printf("Server: %d | connection to backup server not active: highest bid \n", s.ID)
@@ -276,11 +291,10 @@ func (s *AuctionServer) Bid(ctx context.Context, bidder *pb.Bidder) (*pb.BidResp
 				termLog.Printf("Server: %d | Failed to update Highest Bid in Backup server \n", s.ID)
 			}
 		}
-		// return success or err (exception)
 		return &pb.BidResponse{Status: "SUCCESS"}, nil
 	}
 
-	return &pb.BidResponse{Status: "FAIL"}, nil //used to be nil instead of err
+	return &pb.BidResponse{Status: "FAIL"}, nil
 }
 
 /* Returns the highest bid and whether the item has been sold yet or not   */
@@ -289,12 +303,14 @@ func (s *AuctionServer) Result(ctx context.Context, empty *pb.Empty) (*pb.Result
 	defer s.Mu.Unlock()
 	return &pb.ResultResponse{
 		HighestBid: s.BestBid.BidAmount,
-		ItemSold:   !s.AuctionOngoing, // if auction is ongoing then the Item hasn't been sold
+		ItemSold:   !s.AuctionOngoing, // if auction is ongoing then the item hasn't been sold
 	}, nil
 }
 
 /***************	Primary Server and Backup Server grpc Calls      ***********************/
 
+// Updates the auction state (auction ongoing and the auction round) in the backup server
+// returns true
 func (s *AuctionServer) UpdateAuctionState(ctx context.Context, state *pb.AuctionState) (*pb.BackupResponse, error) {
 	fileLog.Printf("Server: %d | Backup Server: old Auction ongoing: %t new Auction ongoing: %t \n", s.ID, s.AuctionOngoing, state.Ongoing)
 	termLog.Printf("Server: %d | Backup Server: old Auction ongoing: %t new Auction ongoing: %t \n", s.ID, s.AuctionOngoing, state.Ongoing)
@@ -304,6 +320,8 @@ func (s *AuctionServer) UpdateAuctionState(ctx context.Context, state *pb.Auctio
 	return &pb.BackupResponse{Success: true}, nil
 }
 
+// Updates regsitered client in the backup server
+// returns true
 func (s *AuctionServer) UpdateRegisteredClient(ctx context.Context, bidder *pb.Bidder) (*pb.BackupResponse, error) {
 	fileLog.Printf("Server: %d | Backup Server: updating registered client \n", s.ID)
 	termLog.Printf("Server: %d | Backup Server: updating registered client \n", s.ID)
@@ -316,6 +334,8 @@ func (s *AuctionServer) UpdateRegisteredClient(ctx context.Context, bidder *pb.B
 	return &pb.BackupResponse{Success: true}, nil
 }
 
+// Updates the highest bid in the backup server
+// returns true
 func (s *AuctionServer) UpdateHighestBid(ctx context.Context, bidder *pb.Bidder) (*pb.BackupResponse, error) {
 	s.BestBid.BidAmount = bidder.Bid
 	s.BestBid.BidderID = bidder.Id
@@ -328,9 +348,9 @@ func (s *AuctionServer) UpdateHighestBid(ctx context.Context, bidder *pb.Bidder)
 
 /********************       Connection Helper Methods        ***********************************/
 
-/* Below method for checking the connection status, was made in cooperation with Gemini.
-Meaning we did make changes and other ressources as well	*/
-
+// Checks the client connection in *AuctionServer is READY for use within a given time frame
+// returns true if it is READY, 
+// returns false if the connection is not READY or if it doesn't exist
 func (s *AuctionServer) Connection_Helper_Method(timeout int, num int) bool {
 	// num = 1	initial connection creation
 	// num = 2	startAndEndBiddingRound
@@ -343,7 +363,7 @@ func (s *AuctionServer) Connection_Helper_Method(timeout int, num int) bool {
 		return false
 	}
 
-	// in case Backup Server is not made within 30 seconds, give up on it and continue
+	// in case Backup Server is not made within "timeout" number of seconds, give up on it and continue
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(int(timeout))*time.Second)
 	defer cancel()
 
@@ -352,15 +372,7 @@ func (s *AuctionServer) Connection_Helper_Method(timeout int, num int) bool {
 
 	for {
 		if currentState == connectivity.Ready { // Connection is ready
-			//fmt.Printf("	Connection is ready for use state: %v \n", conn.GetState())
 			break
-		}
-
-		//could be deleted later
-		if currentState == connectivity.Shutdown { // Connection has been shutdown
-			fileLog.Printf("1 Server: %d | Connection to backup server was shut down! Backup server must have crashed \n", s.ID)
-			termLog.Printf("1 Connection was shut down... but we want to continue anyway (but can't just yet) \n")
-			return false
 		}
 
 		// Below line will block until there is a state change or context times out
@@ -373,8 +385,6 @@ func (s *AuctionServer) Connection_Helper_Method(timeout int, num int) bool {
 
 		currentState = conn.GetState() // Update our current state
 
-		// Delete error handling later
-		termLog.Printf("State changed to %s, wait for a state change\n", currentState.String())
 	}
 	return true
 }

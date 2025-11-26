@@ -10,7 +10,7 @@ message Bidder{
 }
 
 message BidResponse{
-    string status = 1; //(FAIL; SUCCESS; EXCEPTION) //or int32
+    string status = 1;
 }
 
 message ResultResponse{

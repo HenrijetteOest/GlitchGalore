@@ -16,23 +16,6 @@ In another terminal navigate to the Auction folder, and create as many clients a
 `go run ./client 2`
 Remember to give each client a different id number.
 
-## TODO
+## To Crash a Server!
 
-The current to do list:
-
-1) add logic for the last two grpc methods to Server (the calls between the leader and backup server)
-
-2) update the bid() grpc call to update the backup server as well.
-
-3) Client needs to wait for a bid response before placing the next bid (if it doesn't already do this)
-
-4) Create and handle crashes    (we are partially resistant to the backup server crashing (but not the leader))
-    - logic to crash leader
-    - logic for Client to switch to Backup (or for backup to take)
-
-5) Check linearisability is upheld (we might need lamports...)
-
-Nice to have:
-6) a log file
-7) Client logic to handle poor initial connection (such that a client doesn't crash if it is made before the server)
-8) Let the HighestBidder struct in Server be a proto message type instead
+Navigate to a terminal with a running server and simply hit `ctrl + c` or `command + c` if you are on mac, to terminate the program. Then check the `System.log` file or the second server terminal to see how the program is still running.
