@@ -1,0 +1,125 @@
+2025/11/26 15:53:34 Starting Auction Server...
+2025/11/26 15:53:34 Auction Server 1 listening on port 5050
+2025/11/26 15:53:34 Starting Auction Server...
+2025/11/26 15:53:34 Backup Auction Server 2 listening on port 6060
+2025/11/26 15:53:35 Server: 1 | Primary server connection to Backup server created, state: READY 
+2025/11/26 15:53:35 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/26 15:53:35 Server: 2 | Backup: updating auction values: bid = 0 and bidderId = -1 
+2025/11/26 15:53:35 Server: 2 | Backup Server: old Auction ongoing: false new Auction ongoing: true 
+2025/11/26 15:53:35 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/26 15:53:35 Server: 1 | ------ Round 0 of auction has begun ------------------------------------------ 
+2025/11/26 15:53:38 Starting Auction Client 1...
+2025/11/26 15:53:38 Server: 1 | Updated map in backup: map[1:true]
+2025/11/26 15:53:38 Server: 2 | Backup Server: updating registered client 
+2025/11/26 15:53:38 Server: 2 | Updated map in back up: map[1:true]
+2025/11/26 15:53:38 Server: 1 | Primary: updating auction values, bid = 1, bidderId = 42 
+2025/11/26 15:53:38 Server: 2 | Backup: updating auction values: bid = 1 and bidderId = 42 
+2025/11/26 15:53:38 Client: 1 | placed a succesful bid of 42 
+2025/11/26 15:53:39 Server: 1 | Primary: updating auction values, bid = 1, bidderId = 66 
+2025/11/26 15:53:39 Server: 2 | Backup: updating auction values: bid = 1 and bidderId = 66 
+2025/11/26 15:53:39 Client: 1 | placed a succesful bid of 66 
+2025/11/26 15:53:40 Starting Auction Client 2...
+2025/11/26 15:53:40 Server: 1 | Updated map in backup: map[1:true 2:true]
+2025/11/26 15:53:40 Server: 2 | Backup Server: updating registered client 
+2025/11/26 15:53:40 Server: 2 | Updated map in back up: map[1:true 2:true]
+2025/11/26 15:53:40 Server: 1 | Primary: updating auction values, bid = 2, bidderId = 86 
+2025/11/26 15:53:40 Server: 2 | Backup: updating auction values: bid = 2 and bidderId = 86 
+2025/11/26 15:53:40 Client: 2 | placed a succesful bid of 86 
+2025/11/26 15:53:41 Server: 1 | Primary: updating auction values, bid = 2, bidderId = 124 
+2025/11/26 15:53:41 Server: 2 | Backup: updating auction values: bid = 2 and bidderId = 124 
+2025/11/26 15:53:41 Client: 2 | placed a succesful bid of 124 
+2025/11/26 15:53:42 Server: 1 | Primary: updating auction values, bid = 2, bidderId = 127 
+2025/11/26 15:53:42 Server: 2 | Backup: updating auction values: bid = 2 and bidderId = 127 
+2025/11/26 15:53:42 Client: 2 | placed a succesful bid of 127 
+2025/11/26 15:53:42 Server: 1 | Primary: updating auction values, bid = 1, bidderId = 167 
+2025/11/26 15:53:42 Server: 2 | Backup: updating auction values: bid = 1 and bidderId = 167 
+2025/11/26 15:53:42 Client: 1 | placed a succesful bid of 167 
+2025/11/26 15:53:44 Server: 1 | Primary: updating auction values, bid = 2, bidderId = 183 
+2025/11/26 15:53:44 Server: 2 | Backup: updating auction values: bid = 2 and bidderId = 183 
+2025/11/26 15:53:44 Client: 2 | placed a succesful bid of 183 
+2025/11/26 15:53:45 Server: 1 | Primary: updating auction values, bid = 1, bidderId = 214 
+2025/11/26 15:53:45 Server: 2 | Backup: updating auction values: bid = 1 and bidderId = 214 
+2025/11/26 15:53:45 Client: 1 | placed a succesful bid of 214 
+2025/11/26 15:53:45 Server: 1 | ------ Round 0 of auction is over: winning bid: 214 by client: 1  ------------ 
+2025/11/26 15:53:45 Server: 2 | Backup Server: old Auction ongoing: true new Auction ongoing: false 
+2025/11/26 15:53:45 Server: 1 | Backup Server updated at the end of auction round 
+2025/11/26 15:53:55 Primary: reset auction values, bid = -1 and bidderId = 0  
+2025/11/26 15:53:55 Server: 2 | Backup: updating auction values: bid = 0 and bidderId = -1 
+2025/11/26 15:53:55 Server: 2 | Backup Server: old Auction ongoing: false new Auction ongoing: true 
+2025/11/26 15:53:55 Server: 1 | Backup Server updated at the start of auction round 
+2025/11/26 15:53:55 Server: 1 | ------ Round 1 of auction has begun ------------------------------------------ 
+2025/11/26 15:53:56 Server: 1 | Primary: updating auction values, bid = 2, bidderId = 28 
+2025/11/26 15:53:56 Server: 2 | Backup: updating auction values: bid = 2 and bidderId = 28 
+2025/11/26 15:53:56 Client: 2 | placed a succesful bid of 28 
+2025/11/26 15:53:56 Server: 1 | Primary: updating auction values, bid = 1, bidderId = 31 
+2025/11/26 15:53:56 Server: 2 | Backup: updating auction values: bid = 1 and bidderId = 31 
+2025/11/26 15:53:56 Client: 1 | placed a succesful bid of 31 
+2025/11/26 15:53:59 Server: 1 | Primary: updating auction values, bid = 2, bidderId = 62 
+2025/11/26 15:53:59 Server: 2 | Backup: updating auction values: bid = 2 and bidderId = 62 
+2025/11/26 15:53:59 Client: 2 | placed a succesful bid of 62 
+2025/11/26 15:53:59 Server: 1 | Primary: updating auction values, bid = 1, bidderId = 74 
+2025/11/26 15:53:59 Server: 2 | Backup: updating auction values: bid = 1 and bidderId = 74 
+2025/11/26 15:53:59 Client: 1 | placed a succesful bid of 74 
+2025/11/26 15:54:01 Server: 1 | Primary: updating auction values, bid = 2, bidderId = 91 
+2025/11/26 15:54:01 Server: 2 | Backup: updating auction values: bid = 2 and bidderId = 91 
+2025/11/26 15:54:01 Client: 2 | placed a succesful bid of 91 
+2025/11/26 15:54:01 Server: 1 | Primary: updating auction values, bid = 1, bidderId = 108 
+2025/11/26 15:54:01 Server: 2 | Backup: updating auction values: bid = 1 and bidderId = 108 
+2025/11/26 15:54:01 Client: 1 | placed a succesful bid of 108 
+2025/11/26 15:54:03 Server: 1 | Primary: updating auction values, bid = 2, bidderId = 113 
+2025/11/26 15:54:03 Server: 2 | Backup: updating auction values: bid = 2 and bidderId = 113 
+2025/11/26 15:54:03 Client: 2 | placed a succesful bid of 113 
+2025/11/26 15:54:04 Server: 1 | Primary: updating auction values, bid = 2, bidderId = 119 
+2025/11/26 15:54:04 Server: 2 | Backup: updating auction values: bid = 2 and bidderId = 119 
+2025/11/26 15:54:04 Client: 2 | placed a succesful bid of 119 
+2025/11/26 15:54:04 Server: 1 | Primary: updating auction values, bid = 1, bidderId = 149 
+2025/11/26 15:54:04 Server: 2 | Backup: updating auction values: bid = 1 and bidderId = 149 
+2025/11/26 15:54:04 Client: 1 | placed a succesful bid of 149 
+2025/11/26 15:54:05 Server: 1 | Primary: updating auction values, bid = 2, bidderId = 162 
+2025/11/26 15:54:05 Server: 2 | Backup: updating auction values: bid = 2 and bidderId = 162 
+2025/11/26 15:54:05 Client: 2 | placed a succesful bid of 162 
+2025/11/26 15:54:05 Server: 1 | ------ Round 1 of auction is over: winning bid: 162 by client: 2  ------------ 
+2025/11/26 15:54:05 Server: 2 | Backup Server: old Auction ongoing: true new Auction ongoing: false 
+2025/11/26 15:54:05 Server: 1 | Backup Server updated at the end of auction round 
+2025/11/26 15:54:20 !!!----- BACKUP SERVER CRASHED -----!!!
+2025/11/26 15:54:20 Server: 1 | Primary server lost connection to backup 
+2025/11/26 15:54:20 Server: 1 | connection to backup server not active: StartAndEndBiddingRound 
+2025/11/26 15:54:20 Server: 1 | ------ Round 2 of auction has begun ------------------------------------------ 
+2025/11/26 15:54:20 Client: 1 | placed a succesful bid of 48 
+2025/11/26 15:54:20 Client: 2 | placed a succesful bid of 72 
+2025/11/26 15:54:21 Client: 1 | placed a succesful bid of 106 
+2025/11/26 15:54:23 Client: 2 | placed a succesful bid of 115 
+2025/11/26 15:54:23 Client: 1 | placed a succesful bid of 164 
+2025/11/26 15:54:24 Client: 2 | placed a succesful bid of 170 
+2025/11/26 15:54:24 Client: 1 | placed a succesful bid of 217 
+2025/11/26 15:54:26 Client: 2 | placed a succesful bid of 264 
+2025/11/26 15:54:26 Client: 1 | placed a succesful bid of 311 
+2025/11/26 15:54:27 Client: 1 | placed a succesful bid of 357 
+2025/11/26 15:54:29 Client: 1 | placed a succesful bid of 371 
+2025/11/26 15:54:29 Client: 2 | placed a succesful bid of 378 
+2025/11/26 15:54:30 Server: 1 | ------ Round 2 of auction is over: winning bid: 378 by client: 2  ------------ 
+2025/11/26 15:54:40 Server: 1 | ------ Round 3 of auction has begun ------------------------------------------ 
+2025/11/26 15:54:40 Client: 2 | placed a succesful bid of 9 
+2025/11/26 15:54:41 Client: 1 | placed a succesful bid of 32 
+2025/11/26 15:54:42 Client: 2 | placed a succesful bid of 39 
+2025/11/26 15:54:44 Client: 1 | placed a succesful bid of 60 
+2025/11/26 15:54:44 Client: 2 | placed a succesful bid of 101 
+2025/11/26 15:54:45 Client: 1 | placed a succesful bid of 138 
+2025/11/26 15:54:46 Client: 2 | placed a succesful bid of 171 
+2025/11/26 15:54:48 Client: 1 | placed a succesful bid of 189 
+2025/11/26 15:54:49 Client: 1 | placed a succesful bid of 201 
+2025/11/26 15:54:49 Client: 2 | placed a succesful bid of 233 
+2025/11/26 15:54:50 Server: 1 | ------ Round 3 of auction is over: winning bid: 233 by client: 2  ------------ 
+2025/11/26 15:55:00 Server: 1 | ------ Round 4 of auction has begun ------------------------------------------ 
+2025/11/26 15:55:00 Client: 1 | placed a succesful bid of 78 
+2025/11/26 15:55:01 Client: 2 | placed a succesful bid of 109 
+2025/11/26 15:55:01 Client: 1 | placed a succesful bid of 157 
+2025/11/26 15:55:04 Client: 2 | placed a succesful bid of 167 
+2025/11/26 15:55:04 Client: 1 | placed a succesful bid of 179 
+2025/11/26 15:55:05 Client: 2 | placed a succesful bid of 189 
+2025/11/26 15:55:05 Client: 1 | placed a succesful bid of 207 
+2025/11/26 15:55:06 Client: 2 | placed a succesful bid of 249 
+2025/11/26 15:55:07 Client: 2 | placed a succesful bid of 256 
+2025/11/26 15:55:07 Client: 1 | placed a succesful bid of 285 
+2025/11/26 15:55:10 Server: 1 | ------ Round 4 of auction is over: winning bid: 285 by client: 1  ------------ 
+2025/11/26 15:55:20 Server: 1 | ------ The auction is now over! ---------------------------------------------- 
