@@ -39,7 +39,7 @@ var fileLog *log.Logger
 var termLog *log.Logger
 
 func main() {
-
+	/********* Create the log file  *************/
 	file, e := os.OpenFile("system.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if e != nil {
 		log.Fatalf("Failed to open log file: %v", e)
@@ -52,6 +52,7 @@ func main() {
 
 	fileLog.Println("Starting Auction Server...")
 
+	/********* Create Auction Server  *************/
 	// Get the id and leader from the terminal
 	i, _ := strconv.ParseInt(os.Args[1], 10, 32) // parse id to int
 	id := int32(i)                               // cast to int32
@@ -69,6 +70,7 @@ func main() {
 		Mu:                sync.Mutex{},
 	}
 
+	/********* Start Auction Logic *************/
 	// Either make the primary server
 	// or the backup server
 	if server.IsLeader == true { 
@@ -209,7 +211,7 @@ func (s *AuctionServer) StartAndEndBiddingRound() {
 // Updates the backup up server with the change in auction state.
 // Should only be called by the leader and a server with a backup connection
 func (s *AuctionServer) local_update_auction_state(when string) {
-	// ensures only the leader server should be making this call
+	// Only the leader server should be making this call
 	if !s.IsLeader { 
 		return
 	}
